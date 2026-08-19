@@ -1,0 +1,40 @@
+[2026-08-19T23:31:24] Chưa có session — mở trình duyệt để bạn đăng nhập tay lần đầu...
+[2026-08-19T23:32:08] ✅ Đã lưu session vào data/session.json
+[2026-08-19T23:32:09] ⚠️ Không còn video mới trong videos/. Hãy bổ sung thêm rồi chạy lại. Dừng.
+[2026-08-19T23:39:52] Đang đăng: D:\videos\snaptik.vn_7643314315495329045.mp4
+[2026-08-19T23:40:23] ❌ Lần 1: hết thời gian chờ xác nhận đăng thành công cho D:\videos\snaptik.vn_7643314315495329045.mp4
+[2026-08-19T23:40:23] Đang đăng: D:\videos\snaptik.vn_7643314315495329045.mp4
+[2026-08-19T23:43:28] Đang đăng: D:\videos\snaptik.vn_7643314315495329045.mp4
+[2026-08-19T23:44:01] ❌ Lần 1: hết thời gian chờ xác nhận đăng thành công cho D:\videos\snaptik.vn_7643314315495329045.mp4
+[2026-08-19T23:44:01] Đang đăng: D:\videos\snaptik.vn_7643314315495329045.mp4
+[2026-08-19T23:44:34] ❌ Lần 2: hết thời gian chờ xác nhận đăng thành công cho D:\videos\snaptik.vn_7643314315495329045.mp4
+[2026-08-19T23:44:34] ⏭️ Bỏ qua video lỗi: D:\videos\snaptik.vn_7643314315495329045.mp4 (không đánh dấu đã đăng, sẽ thử lại lần chạy sau)
+[2026-08-19T23:44:34] ⏳ Chờ 14 phút 7 giây trước video tiếp theo...
+[2026-08-19T23:46:14] Đang đăng: D:\videos\snaptik.vn_7643314315495329045.mp4
+[2026-08-19T23:46:52] ❌ Lần 1: hết thời gian chờ xác nhận đăng thành công cho D:\videos\snaptik.vn_7643314315495329045.mp4
+[2026-08-19T23:46:52] Đang đăng: D:\videos\snaptik.vn_7643314315495329045.mp4
+[2026-08-19T23:47:26] ❌ Lần 2: hết thời gian chờ xác nhận đăng thành công cho D:\videos\snaptik.vn_7643314315495329045.mp4
+[2026-08-19T23:47:26] ⏭️ Bỏ qua video lỗi: D:\videos\snaptik.vn_7643314315495329045.mp4 (không đánh dấu đã đăng, sẽ thử lại lần chạy sau)
+[2026-08-19T23:47:26] ⏳ Chờ 13 phút 26 giây trước video tiếp theo...
+[2026-08-19T23:48:52] Đang đăng: D:\videos\snaptik.vn_7643314315495329045.mp4
+[2026-08-19T23:50:40] Đang đăng: D:\videos\snaptik.vn_7643314315495329045.mp4
+[2026-08-19T23:51:04] Đang đăng: D:\videos\snaptik.vn_7643314315495329045.mp4
+[2026-08-19T23:51:59] ❌ Lần 1: hết thời gian chờ xác nhận đăng thành công cho D:\videos\snaptik.vn_7643314315495329045.mp4
+[2026-08-19T23:51:59] Đang đăng: D:\videos\snaptik.vn_7643314315495329045.mp4
+[2026-08-19T23:56:46] Đang đăng: D:\videos\snaptik.vn_7643314315495329045.mp4
+[2026-08-19T23:58:50] Đang đăng: D:\videos\snaptik.vn_7643314315495329045.mp4
+[2026-08-19T23:59:19] ✅ Đăng thành công: D:\videos\snaptik.vn_7643314315495329045.mp4
+[2026-08-20T00:01:26] Đang đăng: D:\videos\snaptik.vn_7643314315495329045.mp4
+[2026-08-20T00:01:59] ✅ Đăng thành công: D:\videos\snaptik.vn_7643314315495329045.mp4
+[2026-08-20T00:02:00] ⏳ Chờ 9 phút 15 giây trước video tiếp theo...
+[2026-08-20T00:03:48] Đang đăng: D:\videos\snaptik.vn_7674669969166044436.mp4
+[2026-08-20T00:04:18] ✅ Đăng thành công: D:\videos\snaptik.vn_7674669969166044436.mp4
+[2026-08-20T00:04:19] ⏳ Chờ 0 phút 23 giây trước video tiếp theo...
+[2026-08-20T00:04:42] ⚠️ Không còn video mới trong videos/. Hãy bổ sung thêm rồi chạy lại. Dừng.
+[2026-08-20T00:06:42] Đang đăng: D:\videos\snaptik.vn_7643314315495329045.mp4
+[2026-08-20T00:07:24] ✅ Đăng thành công: D:\videos\snaptik.vn_7643314315495329045.mp4
+[2026-08-20T00:07:25] ⏳ Chờ 0 phút 12 giây trước video tiếp theo...
+[2026-08-20T00:07:37] Đang đăng: D:\videos\snaptik.vn_7674669969166044436.mp4
+[2026-08-20T00:08:05] ✅ Đăng thành công: D:\videos\snaptik.vn_7674669969166044436.mp4
+[2026-08-20T00:08:06] ⏳ Chờ 0 phút 18 giây trước video tiếp theo...
+[2026-08-20T00:08:24] ⚠️ Không còn video mới trong videos/. Hãy bổ sung thêm rồi chạy lại. Dừng.
