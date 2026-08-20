@@ -43,7 +43,7 @@ SELECTORS = {
 
 # ---- Cấu hình vòng lặp ----
 MIN_DELAY_SEC = 10     # delay tối thiểu giữa 2 lần đăng (10 giây)
-MAX_DELAY_SEC = 20     # delay tối đa (30 giây)
+MAX_DELAY_SEC = 15     # delay tối đa (30 giây)
 MAX_RETRIES_PER_VIDEO = 2
 
 # ---- Hashtag & caption ----

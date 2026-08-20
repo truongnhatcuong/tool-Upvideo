@@ -38,3 +38,41 @@
 [2026-08-20T00:08:05] ✅ Đăng thành công: D:\videos\snaptik.vn_7674669969166044436.mp4
 [2026-08-20T00:08:06] ⏳ Chờ 0 phút 18 giây trước video tiếp theo...
 [2026-08-20T00:08:24] ⚠️ Không còn video mới trong videos/. Hãy bổ sung thêm rồi chạy lại. Dừng.
+[2026-08-20T22:04:39] Đang đăng: D:\videos\temp_video.mp4
+[2026-08-20T22:05:06] ✅ Đăng thành công: D:\videos\temp_video.mp4
+[2026-08-20T22:05:21] Đang đăng: D:\videos\temp_video.mp4
+[2026-08-20T22:05:47] ✅ Đăng thành công: D:\videos\temp_video.mp4
+[2026-08-20T22:06:01] Đang đăng: D:\videos\temp_video.mp4
+[2026-08-20T22:06:30] ✅ Đăng thành công: D:\videos\temp_video.mp4
+[2026-08-20T22:06:43] Đang đăng: D:\videos\temp_video.mp4
+[2026-08-20T22:07:10] ✅ Đăng thành công: D:\videos\temp_video.mp4
+[2026-08-20T22:13:47] Đang đăng: D:\videos\temp_video.mp4
+[2026-08-20T22:14:29] Đang đăng: D:\videos\temp_video.mp4
+[2026-08-20T22:24:15] Đang đăng: D:\videos\temp_video.mp4
+[2026-08-20T22:24:43] ✅ Đăng thành công: D:\videos\temp_video.mp4
+[2026-08-20T22:24:59] Đang đăng: D:\videos\temp_video.mp4
+[2026-08-20T22:25:24] ✅ Đăng thành công: D:\videos\temp_video.mp4
+[2026-08-20T22:25:38] Đang đăng: D:\videos\temp_video.mp4
+[2026-08-20T22:26:03] ✅ Đăng thành công: D:\videos\temp_video.mp4
+[2026-08-20T22:26:18] Đang đăng: D:\videos\temp_video.mp4
+[2026-08-20T22:26:43] ✅ Đăng thành công: D:\videos\temp_video.mp4
+[2026-08-20T22:27:01] Đang đăng: D:\videos\temp_video.mp4
+[2026-08-20T22:27:26] ✅ Đăng thành công: D:\videos\temp_video.mp4
+[2026-08-20T22:27:45] Đang đăng: D:\videos\temp_video.mp4
+[2026-08-20T22:28:10] ✅ Đăng thành công: D:\videos\temp_video.mp4
+[2026-08-20T22:28:25] Đang đăng: D:\videos\temp_video.mp4
+[2026-08-20T22:28:51] ✅ Đăng thành công: D:\videos\temp_video.mp4
+[2026-08-20T22:29:05] Đang đăng: D:\videos\temp_video.mp4
+[2026-08-20T22:29:31] ✅ Đăng thành công: D:\videos\temp_video.mp4
+[2026-08-20T22:29:50] Đang đăng: D:\videos\temp_video.mp4
+[2026-08-20T22:30:14] ✅ Đăng thành công: D:\videos\temp_video.mp4
+[2026-08-20T22:30:28] Đang đăng: D:\videos\temp_video.mp4
+[2026-08-20T22:30:53] ✅ Đăng thành công: D:\videos\temp_video.mp4
+[2026-08-20T22:36:44] Đang đăng: D:\videos\temp_video.mp4
+[2026-08-20T22:37:12] ✅ Đăng thành công: D:\videos\temp_video.mp4
+[2026-08-20T22:37:33] Đang đăng: D:\videos\temp_video.mp4
+[2026-08-20T22:37:59] ✅ Đăng thành công: D:\videos\temp_video.mp4
+[2026-08-20T22:38:23] Đang đăng: D:\videos\temp_video.mp4
+[2026-08-20T22:38:49] ✅ Đăng thành công: D:\videos\temp_video.mp4
+[2026-08-20T22:39:07] Đang đăng: D:\videos\temp_video.mp4
+[2026-08-20T22:39:33] ✅ Đăng thành công: D:\videos\temp_video.mp4
