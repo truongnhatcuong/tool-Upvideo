@@ -28,7 +28,7 @@ LOG_PATH = "data/log.txt"
 # ---- CHỌN TƯ CÁCH ĐĂNG (TRANG CÁ NHÂN HAY FANPAGE) ----
 # Gõ CHÍNH XÁC tên hiển thị trên web. 
 # Ví dụ: "Tôi" (nếu muốn đăng cá nhân) hoặc "xe hay" (nếu muốn đăng page)
-IDENTITY_NAME = "bóng đá"
+IDENTITY_NAME = "Gái Xinh"
 
 # ---- SELECTOR trên trang upload (PHẢI SỬA cho đúng site thật) ----
 SELECTORS = {

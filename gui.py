@@ -32,8 +32,8 @@ class UCirclePipelineApp(ctk.CTk):
     def __init__(self):
         super().__init__()
         self.title("TikTok -> UCircle Auto Pipeline")
-        self.geometry("900x750")
-        self.minsize(800, 650)
+        self.geometry("900x850")
+        self.minsize(800, 750)
         self.is_running = False
         self.log_queue = queue.Queue()
         self._build_ui()
@@ -98,6 +98,18 @@ class UCirclePipelineApp(ctk.CTk):
         if os.path.exists("../TikTokLinkExtractor/cookies.txt"):
             self.cookie_entry.insert(0, "../TikTokLinkExtractor/cookies.txt")
         self.cookie_entry.pack(side="left")
+
+        # 5. Hashtags
+        ctk.CTkLabel(form_frame, text="Hashtags (cách bằng dấu phẩy):", font=ctk.CTkFont(weight="bold")).grid(row=3, column=0, padx=15, pady=5, sticky="nw")
+        self.hashtags_entry = ctk.CTkEntry(form_frame, height=38)
+        self.hashtags_entry.insert(0, ", ".join(config.HASHTAG_POOL))
+        self.hashtags_entry.grid(row=3, column=1, padx=(0, 15), pady=5, sticky="ew")
+
+        # 6. Captions
+        ctk.CTkLabel(form_frame, text="Mẫu Caption (mỗi dòng 1 mẫu):", font=ctk.CTkFont(weight="bold")).grid(row=4, column=0, padx=15, pady=5, sticky="nw")
+        self.captions_textbox = ctk.CTkTextbox(form_frame, height=80)
+        self.captions_textbox.insert("1.0", "\n".join(config.CAPTION_TEMPLATES))
+        self.captions_textbox.grid(row=4, column=1, padx=(0, 15), pady=(5, 15), sticky="ew")
 
         # Action Buttons
         action_frame = ctk.CTkFrame(self, fg_color="transparent")
@@ -185,6 +197,13 @@ class UCirclePipelineApp(ctk.CTk):
             limit = 0
 
         config.IDENTITY_NAME = self.identity_entry.get().strip()
+        
+        raw_tags = self.hashtags_entry.get().strip()
+        config.HASHTAG_POOL = [t.strip() for t in raw_tags.split(",") if t.strip()]
+        
+        raw_captions = self.captions_textbox.get("1.0", "end-1c").strip()
+        config.CAPTION_TEMPLATES = [c.strip() for c in raw_captions.split("\n") if c.strip()]
+        
         cookies_path = self.cookie_entry.get().strip()
         browser_cookie = self.browser_menu.get()
         if browser_cookie == "Không dùng":

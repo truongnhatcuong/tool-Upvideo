@@ -76,3 +76,9 @@
 [2026-08-20T22:38:49] ✅ Đăng thành công: D:\videos\temp_video.mp4
 [2026-08-20T22:39:07] Đang đăng: D:\videos\temp_video.mp4
 [2026-08-20T22:39:33] ✅ Đăng thành công: D:\videos\temp_video.mp4
+[2026-08-20T23:23:14] Đang đăng: D:\videos\temp_video.mp4
+[2026-08-20T23:24:01] ✅ Đăng thành công: D:\videos\temp_video.mp4
+[2026-08-20T23:24:22] Đang đăng: D:\videos\temp_video.mp4
+[2026-08-20T23:24:59] ✅ Đăng thành công: D:\videos\temp_video.mp4
+[2026-08-20T23:25:20] Đang đăng: D:\videos\temp_video.mp4
+[2026-08-20T23:26:16] ✅ Đăng thành công: D:\videos\temp_video.mp4
