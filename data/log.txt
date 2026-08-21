@@ -82,3 +82,4 @@
 [2026-08-20T23:24:59] ✅ Đăng thành công: D:\videos\temp_video.mp4
 [2026-08-20T23:25:20] Đang đăng: D:\videos\temp_video.mp4
 [2026-08-20T23:26:16] ✅ Đăng thành công: D:\videos\temp_video.mp4
+[2026-08-21T09:37:46] ⚠️ Không còn video mới trong videos/. Hãy bổ sung thêm rồi chạy lại. Dừng.

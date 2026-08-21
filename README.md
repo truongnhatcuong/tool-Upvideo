@@ -1,48 +1,64 @@
-# UCircle & TikTok Automator Pipeline
+# TikTok Video Link Extractor -> Xuất Excel
 
-Phần mềm tự động hóa toàn trình: **Quét kênh TikTok -> Tải Video (bỏ qua logo) -> Đăng tự động lên UCircle**.
-Với cơ chế **Cuốn chiếu (Pipeline)**, video được tải về, đăng ngay lập tức, sau đó xóa file tạm khỏi ổ cứng. Tránh tình trạng tải 1000 video làm đầy bộ nhớ và RAM.
+Công cụ tự động quét danh sách liên kết (link) video TikTok từ trang cá nhân (kênh), video, hashtag, hoặc tìm kiếm và xuất ra file Excel (`.xlsx`) với định dạng cột `|link|`.
 
-## Tính năng nổi bật
-- **Giao diện trực quan (GUI):** Dễ dàng cấu hình và theo dõi luồng công việc.
-- **Vượt TikTok Anti-Bot:** Tích hợp phương pháp lấy Cookie tĩnh (cookies.txt), giải quyết triệt để lỗi `Failed to decrypt with DPAPI` hoặc `Unable to extract universal data`.
-- **Pipeline Siêu nhẹ:** Không tốn tài nguyên ổ cứng. Tải đến đâu, up đến đó, xóa dọn dẹp ngay.
-- **Tự động đăng UCircle:** Tự động điều khiển trình duyệt ẩn (Playwright) upload file, ghi chú, tag và chuyển đổi tài khoản cá nhân/fanpage.
-- **Chống Trùng Lặp:** Lưu trữ danh sách đã tải trong `data/posted.json` và `data/downloaded.json` để không tải/đăng lại video cũ ở các lần chạy sau.
+---
 
-## Cài đặt (Chỉ làm 1 lần)
+## 🌟 Tính năng chính
 
-1. Mở Terminal/CMD tại thư mục `ucircle-py`:
+- **Quét link TikTok hàng loạt:** Hỗ trợ quét kênh profile (`@username`), hashtag, tìm kiếm hoặc link video lẻ.
+- **Xuất file Excel (`.xlsx` / `.csv`):** Xuất toàn bộ danh sách link sang file Excel chuẩn định dạng cột `|link|` (cột đầu tiên tên là `link`).
+- **Giao diện trực quan (GUI) & Dòng lệnh (CLI):** Cung cấp cả ứng dụng đồ họa hiện đại (`gui.py`) lẫn lệnh terminal (`main.py`).
+- **Tự động mở file:** Tùy chọn tự động mở file Excel và thư mục `exports/` ngay sau khi quét xong.
+- **Hỗ trợ Cookie:** Nhập file `cookies.txt` (Netscape format) nếu TikTok yêu cầu xác minh / đăng nhập.
+
+---
+
+## 🛠️ Cài đặt (Chỉ làm 1 lần)
+
+1. Mở Terminal / Command Prompt tại thư mục dự án và cài đặt các thư viện cần thiết:
 ```bash
 pip install -r requirements.txt
 playwright install chromium
 ```
 
-## Cách chạy phần mềm
+---
 
-Mở Terminal và gõ:
+## 🚀 Hướng dẫn sử dụng
+
+### Cách 1: Sử dụng Giao diện đồ họa (Khuyên dùng)
+- Trên Windows: Nhấp đúp chuột vào file **`run_windows.bat`** hoặc mở terminal gõ:
 ```bash
 python gui.py
 ```
-Giao diện phần mềm sẽ hiện ra.
+- **Các bước thực hiện:**
+  1. Nhập link kênh/profile TikTok (ví dụ: `https://www.tiktok.com/@vtv24news`).
+  2. Điền số lượng video tối đa cần lấy (nhập `0` để quét tất cả video của kênh).
+  3. Bấm nút **"🚀 BẮT ĐẦU QUÉT & XUẤT EXCEL"**.
+  4. Tool sẽ tự động cuộn trang, thu thập toàn bộ link video và lưu vào thư mục `exports/` rồi mở file Excel cho bạn.
 
-## Hướng dẫn lấy Cookie TikTok (Bắt buộc)
-Do TikTok cập nhật bảo mật (App-Bound Encryption), tool không thể tự động "hút" cookie từ trình duyệt đang mở. Bạn cần cấp cho tool file `cookies.txt` theo các bước sau:
+---
 
-1. Mở Chrome, cài đặt Extension: **[Get cookies.txt LOCALLY](https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc)**
-2. Truy cập vào trang web `tiktok.com` và **đăng nhập** tài khoản của bạn (để mở khóa chặn xem video).
-3. Bấm vào biểu tượng Extension "Get cookies.txt LOCALLY" ở góc phải trình duyệt, chọn **Export**.
-4. Lưu file `tiktok_cookies.txt` về máy.
-5. Trên giao diện Tool `gui.py`, tại mục **Cookie File**, bấm **Browse** và chọn file `tiktok_cookies.txt` vừa tải về.
+### Cách 2: Sử dụng Dòng lệnh (CLI)
+Chạy trực tiếp:
+```bash
+python main.py
+```
+hoặc truyền trực tiếp tham số:
+```bash
+# Quét 50 video từ kênh và lưu vào file chỉ định:
+python main.py https://www.tiktok.com/@vtv24news --limit 50 --output exports/danh_sach.xlsx
 
-## Cấu hình nâng cao (Tuỳ chọn)
-- Nếu cần thay đổi độ trễ giữa các lần đăng (để tránh bị UCircle đánh dấu spam), bạn mở file `config.py` và chỉnh sửa:
-  ```python
-  MIN_DELAY_SEC = 25  # Thời gian chờ tối thiểu (giây)
-  MAX_DELAY_SEC = 40  # Thời gian chờ tối đa (giây)
-  ```
-- File `config.py` cũng chứa các XPath (Selectors) của web UCircle. Nếu UCircle đổi giao diện, bạn chỉ cần cập nhật lại selector ở đây mà không cần sửa code cốt lõi.
+# Quét tất cả video:
+python main.py https://www.tiktok.com/@vtv24news
+```
 
-## Xử lý sự cố (Troubleshooting)
-- **Lỗi không lấy được video TikTok:** Đảm bảo file `cookies.txt` của bạn còn hạn (chưa bị đăng xuất trên web). Thử vào lại TikTok, export file cookie mới và nạp lại vào tool.
-- **Tool đăng lên UCircle nhưng bị dừng giữa chừng:** Theo dõi cửa sổ Chromium (chế độ Headless=False) xem có bị kẹt ở bước chọn Fanpage hay hashtag không. Nếu kẹt, cập nhật lại DOM Selector trong `config.py`.
+---
+
+## 📁 Cấu trúc file xuất Excel
+File Excel được lưu trong thư mục `exports/` với cấu trúc chuẩn:
+| link |
+| :--- |
+| `https://www.tiktok.com/@username/video/7123456789012345678` |
+| `https://www.tiktok.com/@username/video/7123456789012345679` |
+| `https://www.tiktok.com/@username/video/7123456789012345680` |

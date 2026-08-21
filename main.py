@@ -1,27 +1,22 @@
 """
-CHẠY: python main.py
+CHẠY TOOL QUÉT LINK TIKTOK & XUẤT EXCEL:
+    python main.py
+hoặc:
+    python main.py <url> [--limit N] [--output path.xlsx]
 
-Lần đầu chạy: trình duyệt sẽ mở ra trang login, bạn đăng nhập tay 1 lần,
-quay lại đây gõ Enter -> tool lưu session, những lần sau tự động luôn,
-không cần đăng nhập lại.
-
-Sau khi có session, tool tự lặp: lấy video mới trong videos/ -> điền
-mô tả + hashtag -> bấm đăng -> đánh dấu đã đăng -> chờ vài phút -> video kế tiếp.
+Ví dụ:
+    python main.py https://www.tiktok.com/@vtv24news --limit 20
 """
 
 import os
-import shutil
-import random
-import time
+import sys
+import argparse
 import datetime
-
-from playwright.sync_api import sync_playwright, TimeoutError as PWTimeout
+from playwright.sync_api import sync_playwright
 
 import config
-from dedupe import load_posted_set, is_duplicate, mark_as_posted
-from caption import generate_caption
-
-VIDEO_EXTS = (".mp4", ".mov", ".mkv", ".webm")
+from tiktok_extractor import extract_tiktok_links
+from exporter import export_to_excel
 
 
 def log(msg: str):
@@ -32,156 +27,108 @@ def log(msg: str):
         f.write(line + "\n")
 
 
-def get_pending_videos(posted_set: set):
-    if not os.path.isdir(config.VIDEO_FOLDER):
-        return []
-    files = [
-        os.path.join(config.VIDEO_FOLDER, f)
-        for f in os.listdir(config.VIDEO_FOLDER)
-        if f.lower().endswith(VIDEO_EXTS)
-    ]
-    return [f for f in files if not is_duplicate(f, posted_set)]
-
-
-def random_delay_sec():
-    return random.randint(config.MIN_DELAY_SEC, config.MAX_DELAY_SEC)
-
-
-def ensure_logged_in(playwright):
-    """Nếu chưa có session -> mở trình duyệt cho user login tay 1 lần."""
-    os.makedirs(os.path.dirname(config.STORAGE_STATE_PATH), exist_ok=True)
-
-    if os.path.exists(config.STORAGE_STATE_PATH):
-        return  # đã có session rồi, không cần login lại
-
-    log("Chưa có session — mở trình duyệt để bạn đăng nhập tay lần đầu...")
-    browser = playwright.chromium.launch(headless=False)
-    context = browser.new_context()
-    page = context.new_page()
-    page.goto(config.LOGIN_URL)
-
-    input("👉 Đăng nhập xong trong cửa sổ trình duyệt thì quay lại đây, nhấn Enter... ")
-
-    context.storage_state(path=config.STORAGE_STATE_PATH)
-    log(f"✅ Đã lưu session vào {config.STORAGE_STATE_PATH}")
-    browser.close()
-
-
-def upload_one_video(page, file_path: str):
-    description, hashtags = generate_caption(file_path)
-    sel = config.SELECTORS
-
-    log(f"Đang đăng: {file_path}")
-    page.goto(config.UPLOAD_URL)
-
-    # Click nút "Đăng Sóng" (+)
-    if "create_button" in sel:
-        page.click(sel["create_button"])
-        page.wait_for_timeout(1000)
-
-    # Click chuyển sang tab "Tải lên"
-    if "tab_file" in sel:
-        page.click(sel["tab_file"])
-        page.wait_for_timeout(1000)
-
-    # Bắt đầu chọn file
-    page.set_input_files(sel["file_input"], file_path)
-    
-    # Chờ giao diện tải lên (preview) xuất hiện
-    page.wait_for_timeout(2000)
-
-    # Chọn tư cách đăng (Trang cá nhân hoặc Fanpage) bằng TÊN
-    identity_name = getattr(config, "IDENTITY_NAME", "Tôi")
-    # Playwright có tính năng tìm element chứa chữ (has-text) rất tiện
-    identity_selector = f'button[role="radio"]:has-text("{identity_name}")'
+def open_file_in_os(file_path: str):
+    """Mở file tự động trên Windows/macOS/Linux."""
     try:
-        page.click(identity_selector, timeout=3000)
-    except Exception:
-        log(f"⚠️ Không tìm thấy nút chọn tư cách đăng có tên '{identity_name}'.")
+        if sys.platform.startswith("win"):
+            os.startfile(file_path)
+        elif sys.platform.startswith("darwin"):
+            os.system(f'open "{file_path}"')
+        else:
+            os.system(f'xdg-open "{file_path}"')
+    except Exception as e:
+        print(f"[!] Không thể tự mở file: {e}")
 
-    # Điền chú thích (chỉ text, không chứa hashtag)
-    page.fill(sel["description_box"], description)
 
-    # Thêm từng hashtag rời qua nút bấm
-    if "hashtag_add_button" in sel:
-        # Tách chuỗi "#trend #viral #fyp" thành danh sách
-        tags = hashtags.split()
-        for tag in tags:
-            try:
-                # Bấm nút "+ hashtag"
-                page.click(sel["hashtag_add_button"])
-                page.wait_for_timeout(300)
-                # Gõ chữ hashtag (thường trình duyệt tự focus vào ô nhập sau khi bấm nút)
-                page.keyboard.type(tag)
-                page.wait_for_timeout(200)
-                # Bấm phím Enter để chốt tag
-                page.keyboard.press("Enter")
-                page.wait_for_timeout(300)
-            except Exception as e:
-                log(f"⚠️ Lỗi khi thêm hashtag {tag}: {e}")
+def run_interactive():
+    print("=" * 60)
+    print("  🚀 TIKTOK VIDEO LINK EXTRACTOR -> EXCEL EXPORT")
+    print("  Định dạng xuất file: Excel với cột |link|")
+    print("=" * 60)
 
-    # Bấm đăng
-    page.click(sel["submit_button"])
-    
-    # Đợi nút "Đăng video khác" hiện ra (tức là đã đăng xong)
-    page.wait_for_selector(sel["success_indicator"], timeout=120_000)
-    log(f"✅ Đăng thành công: {file_path}")
+    url = input("👉 Nhập Link TikTok (Kênh/Profile, Video, Hashtag, Search): ").strip()
+    if not url:
+        print("❌ URL không được để trống!")
+        return
 
-    # Bấm nút "Đăng video khác" để giao diện quay về trạng thái sẵn sàng cho vòng lặp tiếp theo
+    raw_limit = input(f"👉 Giới hạn số lượng video (Mặc định {config.DEFAULT_LIMIT} = Lấy tất cả): ").strip()
     try:
-        page.click(sel["success_indicator"])
-        page.wait_for_timeout(1000)
-    except Exception:
-        pass
+        limit = int(raw_limit) if raw_limit else config.DEFAULT_LIMIT
+    except ValueError:
+        limit = 0
 
+    cookies_path = config.COOKIES_PATH if os.path.exists(config.COOKIES_PATH) else None
 
-def move_to_posted(file_path: str):
-    os.makedirs(config.POSTED_FOLDER, exist_ok=True)
-    dest = os.path.join(config.POSTED_FOLDER, os.path.basename(file_path))
-    shutil.move(file_path, dest)
-
-
-def run():
+    print("\n⏳ Đang khởi tạo trình duyệt quét link...")
     with sync_playwright() as p:
-        ensure_logged_in(p)
+        links = extract_tiktok_links(
+            p,
+            url=url,
+            limit=limit,
+            headless=config.HEADLESS,
+            cookies_path=cookies_path,
+        )
 
-        browser = p.chromium.launch(headless=config.HEADLESS)
-        context = browser.new_context(storage_state=config.STORAGE_STATE_PATH)
-        page = context.new_page()
+    if not links:
+        log("❌ Không tìm thấy video nào!")
+        return
 
-        while True:
-            posted_set = load_posted_set()
-            pending = get_pending_videos(posted_set)
+    print(f"\n✅ Đã quét thành công {len(links)} links video!")
+    print("📊 Đang xuất dữ liệu ra file Excel format |link|...")
 
-            if not pending:
-                log("⚠️ Không còn video mới trong videos/. Hãy bổ sung thêm rồi chạy lại. Dừng.")
-                break
+    out_file = export_to_excel(
+        links=links,
+        column_name=config.EXCEL_COLUMN_NAME,
+        export_dir=config.DEFAULT_EXPORT_DIR,
+    )
 
-            video = pending[0]
-            success = False
+    log(f"🎉 Hoàn tất! File Excel đã được lưu tại: {out_file}")
 
-            for attempt in range(1, config.MAX_RETRIES_PER_VIDEO + 1):
-                try:
-                    upload_one_video(page, video)
-                    success = True
-                    break
-                except PWTimeout:
-                    log(f"❌ Lần {attempt}: hết thời gian chờ xác nhận đăng thành công cho {video}")
-                except Exception as e:
-                    log(f"❌ Lần {attempt}: lỗi khi đăng {video} -> {e}")
+    # Hỏi user có muốn mở file ngay không
+    choice = input("\n👉 Bạn có muốn mở file Excel vừa xuất không? (y/n, mặc định y): ").strip().lower()
+    if choice in ("", "y", "yes"):
+        open_file_in_os(out_file)
 
-            if success:
-                mark_as_posted(video, posted_set)
-                move_to_posted(video)
-            else:
-                log(f"⏭️ Bỏ qua video lỗi: {video} (không đánh dấu đã đăng, sẽ thử lại lần chạy sau)")
 
-            delay = random_delay_sec()
-            log(f"⏳ Chờ {delay // 60} phút {delay % 60} giây trước video tiếp theo...")
-            time.sleep(delay)
+def run_cli(args):
+    cookies_path = args.cookies or (config.COOKIES_PATH if os.path.exists(config.COOKIES_PATH) else None)
+    
+    with sync_playwright() as p:
+        links = extract_tiktok_links(
+            p,
+            url=args.url,
+            limit=args.limit,
+            headless=args.headless,
+            cookies_path=cookies_path,
+        )
 
-        browser.close()
+    if not links:
+        print("❌ Không tìm thấy video nào!")
+        return
+
+    out_file = export_to_excel(
+        links=links,
+        output_path=args.output,
+        column_name=config.EXCEL_COLUMN_NAME,
+        export_dir=config.DEFAULT_EXPORT_DIR,
+    )
+
+    print(f"🎉 Đã xuất thành công {len(links)} links ra: {out_file}")
+
+
+def main():
+    if len(sys.argv) > 1 and not sys.argv[1].startswith("-") and "gui" not in sys.argv[1]:
+        parser = argparse.ArgumentParser(description="TikTok Link Extractor -> Excel")
+        parser.add_argument("url", help="TikTok URL (channel, video, search, etc.)")
+        parser.add_argument("--limit", "-l", type=int, default=0, help="Số lượng video tối đa (0 = tất cả)")
+        parser.add_argument("--output", "-o", type=str, default=None, help="Đường dẫn file Excel xuất ra")
+        parser.add_argument("--cookies", "-c", type=str, default=None, help="Đường dẫn file cookies.txt")
+        parser.add_argument("--headless", action="store_true", help="Chạy trình duyệt ẩn")
+        args = parser.parse_args()
+        run_cli(args)
+    else:
+        run_interactive()
 
 
 if __name__ == "__main__":
-    run()
+    main()
