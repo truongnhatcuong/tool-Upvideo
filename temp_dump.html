@@ -1,0 +1,198 @@
+<!DOCTYPE html><html lang="vi" style="--uc-vvh: 720px; --uc-vv-top: 0px;"><head>
+    <meta charset="UTF-8">
+    <!-- viewport-fit=cover -> env(safe-area-*) usable (notch/home-bar); interactive-widget=resizes-content ->
+         Android/Chromium resize the layout with the on-screen keyboard so the composer stays visible;
+         maximum-scale=1 -> no iOS auto-zoom on input focus. The chat room is a full-viewport keyboard-safe PWA shell. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+    <title>UCircle</title>
+    <meta name="theme-color" content="#14B8A6">
+    <meta name="description" content="UCircle — Trusted Community Business Network. A product of Uniton Future.">
+    <link rel="icon" type="image/svg+xml" href="/UCIRCLE_FAVICON.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;display=swap" rel="stylesheet">
+    <script type="module" crossorigin="" src="/assets/app-VO63ZLVu.js"></script>
+    <link rel="stylesheet" crossorigin="" href="/assets/app-gwUAFJgv.css">
+  <link rel="manifest" href="/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/registerSW.js"></script><link rel="modulepreload" as="script" crossorigin="" href="/assets/WaveeUploadPage-DR0_ZBgZ.js"><link rel="stylesheet" crossorigin="" href="/assets/WaveeUploadPage-BzO4Mm5T.css"></head>
+  <body>
+    <!-- ═══════════════════════════════════════════════════════════════════════════════════════════
+         UCIRCLE SYMBOL SPRITE — 16 <symbol>s, PASTED VERBATIM from the LOCKED canon.
+         Source: docs/00_CANON/UCIRCLE_SYMBOL_STANDARD_v1_0_LOCKED.html  (eco_doc f17daa08,
+         git blob cf8977542659b09841e0699a49a9cf86e1711bfc). eco_task 1060 PHA 1.
+
+         WHY IT LIVES IN app.html AND NOT IN A REACT COMPONENT — three measured reasons:
+          1. THERE IS NO PERSISTENT REACT SHELL. src/main.tsx is ONE flat <Routes> with 60 routes,
+             zero nested routes and zero <Outlet>; AppShell covers 41 of 60 and REMOUNTS on every
+             navigation. A sprite mounted inside it would unmount mid-session. <body> is the only
+             true once-per-document location.
+          2. <use href="#id"> RESOLVES WITHIN THE DOCUMENT. Cross-file <use href="/x.svg#id"> is not
+             reliably supported (Safari), so the symbols must be in this document, not a fetched file.
+          3. THE SPRITE CARRIES 81 HEX LITERALS AND THAT IS CANON, NOT DEBT. Master law 1: identity
+             symbols have a BODY and do not borrow the page background; law 2 requires 3:1 on white
+             AND dark, which the master achieves by baking contrast into the body ("Cung mot <symbol>,
+             khong doi mot token nao"). Inlining these as .tsx would file ~81 UC-TOKEN-001 BLOCK
+             findings against a file whose colours are deliberately theme-invariant. Stated plainly:
+             the uiux ratchet scans `git ls-files src` for .css/.ts/.tsx only, so app.html is NOT
+             scanned. That is a consequence of this placement, not the reason for it.
+
+         DO NOT EDIT THE MARKUP BELOW. It is canon placed verbatim (R-UC17). To change a symbol,
+         change the master and re-place it.
+         ══════════════════════════════════════════════════════════════════════════════════════════ -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <linearGradient id="g-kim" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FDFEFF"></stop><stop offset=".55" stop-color="#E3EAF2"></stop><stop offset="1" stop-color="#BFCCDA"></stop></linearGradient>
+  <linearGradient id="g-thuy" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4E9BFF"></stop><stop offset=".5" stop-color="#1F6FEB"></stop><stop offset="1" stop-color="#0E4CB0"></stop></linearGradient>
+  <linearGradient id="g-moc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#35C98D"></stop><stop offset=".5" stop-color="#12855C"></stop><stop offset="1" stop-color="#0A5D40"></stop></linearGradient>
+  <linearGradient id="g-hoa" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF7A5C"></stop><stop offset=".5" stop-color="#D93A2B"></stop><stop offset="1" stop-color="#9E1F16"></stop></linearGradient>
+  <linearGradient id="g-tho" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EBA845"></stop><stop offset=".5" stop-color="#B8791A"></stop><stop offset="1" stop-color="#8A570D"></stop></linearGradient>
+  <linearGradient id="g-hl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".52"></stop><stop offset="1" stop-color="#fff" stop-opacity="0"></stop></linearGradient>
+  <linearGradient id="g-hl-kim" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".95"></stop><stop offset="1" stop-color="#fff" stop-opacity="0"></stop></linearGradient>
+
+  <!-- gradient cho CUNG VƯỢNG · userSpaceOnUse, trải dọc vòng 80×80 -> nguồn sáng từ đỉnh -->
+  <linearGradient id="ga-kim" gradientUnits="userSpaceOnUse" x1="40" y1="6" x2="40" y2="74"><stop offset="0" stop-color="#FDFEFF"></stop><stop offset=".5" stop-color="#D3DEEA"></stop><stop offset="1" stop-color="#8C9DAE"></stop></linearGradient>
+  <linearGradient id="ga-thuy" gradientUnits="userSpaceOnUse" x1="40" y1="6" x2="40" y2="74"><stop offset="0" stop-color="#7FB6FF"></stop><stop offset=".5" stop-color="#2E7BE8"></stop><stop offset="1" stop-color="#0E4CB0"></stop></linearGradient>
+  <linearGradient id="ga-moc" gradientUnits="userSpaceOnUse" x1="40" y1="6" x2="40" y2="74"><stop offset="0" stop-color="#5FE0AC"></stop><stop offset=".5" stop-color="#14926A"></stop><stop offset="1" stop-color="#0A5D40"></stop></linearGradient>
+  <linearGradient id="ga-hoa" gradientUnits="userSpaceOnUse" x1="40" y1="6" x2="40" y2="74"><stop offset="0" stop-color="#FF9A80"></stop><stop offset=".5" stop-color="#DC4231"></stop><stop offset="1" stop-color="#9E1F16"></stop></linearGradient>
+  <linearGradient id="ga-tho" gradientUnits="userSpaceOnUse" x1="40" y1="6" x2="40" y2="74"><stop offset="0" stop-color="#F5C877"></stop><stop offset=".5" stop-color="#B8791A"></stop><stop offset="1" stop-color="#8A570D"></stop></linearGradient>
+
+  <filter id="f-lift" x="-30%" y="-30%" width="160%" height="160%">
+    <feDropShadow dx="0" dy="1.4" stdDeviation="1.6" flood-color="#0E1720" flood-opacity=".34"></feDropShadow>
+  </filter>
+
+  <!-- ── họ NH ── -->
+  <symbol id="uc-sym-nh-kim" viewBox="0 0 64 64">
+    <circle cx="32" cy="33.5" r="27" fill="#8C9DAE" opacity=".26"></circle>
+    <circle cx="32" cy="31" r="27" fill="url(#g-kim)" stroke="#5C6B7C" stroke-width="2"></circle>
+    <ellipse cx="32" cy="19" rx="17" ry="9" fill="url(#g-hl-kim)"></ellipse>
+    <path d="M32 15l4.6 10.6L47 30.2l-10.4 4.6L32 45.4l-4.6-10.6L17 30.2l10.4-4.6z" fill="#2B3A4C"></path>
+  </symbol>
+  <symbol id="uc-sym-nh-thuy" viewBox="0 0 64 64">
+    <circle cx="32" cy="33.5" r="27" fill="#0E4CB0" opacity=".28"></circle>
+    <circle cx="32" cy="31" r="27" fill="url(#g-thuy)"></circle>
+    <ellipse cx="32" cy="19" rx="17" ry="9" fill="url(#g-hl)"></ellipse>
+    <path d="M32 16c6.5 8.4 11 14.2 11 19.4A11 11 0 0 1 21 35.4C21 30.2 25.5 24.4 32 16z" fill="#fff"></path>
+    <ellipse cx="27.5" cy="35" rx="2.6" ry="4" fill="#BFD9FF" opacity=".85"></ellipse>
+  </symbol>
+  <symbol id="uc-sym-nh-moc" viewBox="0 0 64 64">
+    <circle cx="32" cy="33.5" r="27" fill="#0A5D40" opacity=".28"></circle>
+    <circle cx="32" cy="31" r="27" fill="url(#g-moc)"></circle>
+    <ellipse cx="32" cy="19" rx="17" ry="9" fill="url(#g-hl)"></ellipse>
+    <path d="M32 45V27" stroke="#fff" stroke-width="4" stroke-linecap="round"></path>
+    <path d="M32 30c-7 0-11-4-11-9 6 0 11 3 11 9z" fill="#fff"></path>
+    <path d="M32 27c0-6 4-10 10-10 0 6-4 10-10 10z" fill="#fff"></path>
+  </symbol>
+  <symbol id="uc-sym-nh-hoa" viewBox="0 0 64 64">
+    <circle cx="32" cy="33.5" r="27" fill="#9E1F16" opacity=".28"></circle>
+    <circle cx="32" cy="31" r="27" fill="url(#g-hoa)"></circle>
+    <ellipse cx="32" cy="19" rx="17" ry="9" fill="url(#g-hl)"></ellipse>
+    <path d="M33 14c1 7-5 9-5 15a9 9 0 0 0 14 7c2-6-3-8-2-14-2 3-4 4-5 3 1-4-1-8-2-11z" fill="#fff"></path>
+    <path d="M28 33c-3 2-4 5-4 7a8 8 0 0 0 8 8c-4-4-5-9-4-15z" fill="#FFD9CF"></path>
+  </symbol>
+  <symbol id="uc-sym-nh-tho" viewBox="0 0 64 64">
+    <circle cx="32" cy="33.5" r="27" fill="#8A570D" opacity=".28"></circle>
+    <circle cx="32" cy="31" r="27" fill="url(#g-tho)"></circle>
+    <ellipse cx="32" cy="19" rx="17" ry="9" fill="url(#g-hl)"></ellipse>
+    <path d="M18 42l10-16 6.5 10L38 30l8 12z" fill="#fff"></path>
+    <circle cx="28" cy="26" r="3" fill="#FFF1D6"></circle>
+  </symbol>
+
+  <!-- ── họ ACT ── -->
+  <symbol id="uc-sym-act-react" viewBox="0 0 64 64">
+    <circle cx="32" cy="32" r="21" fill="none" stroke="currentColor" stroke-width="4"></circle>
+    <path d="M32 21.5l3 7.5 7.5 3-7.5 3-3 7.5-3-7.5-7.5-3 7.5-3z" fill="currentColor"></path>
+  </symbol>
+  <symbol id="uc-sym-act-comment" viewBox="0 0 64 64">
+    <path d="M12 26a10 10 0 0 1 10-10h20a10 10 0 0 1 10 10v10a10 10 0 0 1-10 10H30l-11 8v-8h-1a6 6 0 0 1-6-6z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"></path>
+  </symbol>
+  <symbol id="uc-sym-act-share" viewBox="0 0 64 64">
+    <path d="M32 42V13" stroke="currentColor" stroke-width="4" stroke-linecap="round"></path>
+    <path d="M22 23l10-10 10 10" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+    <path d="M16 36v9a5 5 0 0 0 5 5h22a5 5 0 0 0 5-5v-9" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"></path>
+  </symbol>
+  <symbol id="uc-sym-act-qot" viewBox="0 0 64 64">
+    <circle cx="32" cy="32" r="20" fill="none" stroke="currentColor" stroke-width="4"></circle>
+    <circle cx="32" cy="32" r="8" fill="none" stroke="currentColor" stroke-width="4"></circle>
+    <path d="M32 12v6M32 46v6M12 32h6M46 32h6" stroke="currentColor" stroke-width="4" stroke-linecap="round"></path>
+  </symbol>
+
+  <!-- ── họ RING · 5 biến thể vượng, r=32, C=201,0619, dasharray 33/168,0619 ── -->
+  <symbol id="uc-ring-ok-hoa" viewBox="0 0 80 80">
+    <g fill="none" transform="rotate(-90 40 40)" stroke-linecap="round">
+      <circle cx="40" cy="40" r="32" stroke="#B8791A" stroke-width="3.5" stroke-dasharray="33 168.06" stroke-dashoffset="-40.21"></circle>
+      <circle cx="40" cy="40" r="32" stroke="#5C6B7C" stroke-width="3.5" stroke-dasharray="33 168.06" stroke-dashoffset="-80.42"></circle>
+      <circle cx="40" cy="40" r="32" stroke="#2E7BE8" stroke-width="3.5" stroke-dasharray="33 168.06" stroke-dashoffset="-120.64"></circle>
+      <circle cx="40" cy="40" r="32" stroke="#14926A" stroke-width="3.5" stroke-dasharray="33 168.06" stroke-dashoffset="-160.85"></circle>
+      <g filter="url(#f-lift)">
+        <circle cx="40" cy="40" r="32" stroke="#9E1F16" stroke-width="12" stroke-dasharray="33 168.06" opacity=".5" transform="translate(0 1.5)"></circle>
+        <circle cx="40" cy="40" r="32" stroke="url(#ga-hoa)" stroke-width="10" stroke-dasharray="33 168.06"></circle>
+        <circle cx="40" cy="40" r="32" stroke="#fff" stroke-width="3" stroke-dasharray="33 168.06" opacity=".42" transform="translate(0 -2.2)"></circle>
+      </g>
+    </g>
+  </symbol>
+  <symbol id="uc-ring-ok-tho" viewBox="0 0 80 80">
+    <g fill="none" transform="rotate(-90 40 40)" stroke-linecap="round">
+      <circle cx="40" cy="40" r="32" stroke="#DC4231" stroke-width="3.5" stroke-dasharray="33 168.06"></circle>
+      <circle cx="40" cy="40" r="32" stroke="#5C6B7C" stroke-width="3.5" stroke-dasharray="33 168.06" stroke-dashoffset="-80.42"></circle>
+      <circle cx="40" cy="40" r="32" stroke="#2E7BE8" stroke-width="3.5" stroke-dasharray="33 168.06" stroke-dashoffset="-120.64"></circle>
+      <circle cx="40" cy="40" r="32" stroke="#14926A" stroke-width="3.5" stroke-dasharray="33 168.06" stroke-dashoffset="-160.85"></circle>
+      <g filter="url(#f-lift)">
+        <circle cx="40" cy="40" r="32" stroke="#8A570D" stroke-width="12" stroke-dasharray="33 168.06" stroke-dashoffset="-40.21" opacity=".5" transform="translate(0 1.5)"></circle>
+        <circle cx="40" cy="40" r="32" stroke="url(#ga-tho)" stroke-width="10" stroke-dasharray="33 168.06" stroke-dashoffset="-40.21"></circle>
+        <circle cx="40" cy="40" r="32" stroke="#fff" stroke-width="3" stroke-dasharray="33 168.06" stroke-dashoffset="-40.21" opacity=".42" transform="translate(0 -2.2)"></circle>
+      </g>
+    </g>
+  </symbol>
+  <symbol id="uc-ring-ok-kim" viewBox="0 0 80 80">
+    <g fill="none" transform="rotate(-90 40 40)" stroke-linecap="round">
+      <circle cx="40" cy="40" r="32" stroke="#DC4231" stroke-width="3.5" stroke-dasharray="33 168.06"></circle>
+      <circle cx="40" cy="40" r="32" stroke="#B8791A" stroke-width="3.5" stroke-dasharray="33 168.06" stroke-dashoffset="-40.21"></circle>
+      <circle cx="40" cy="40" r="32" stroke="#2E7BE8" stroke-width="3.5" stroke-dasharray="33 168.06" stroke-dashoffset="-120.64"></circle>
+      <circle cx="40" cy="40" r="32" stroke="#14926A" stroke-width="3.5" stroke-dasharray="33 168.06" stroke-dashoffset="-160.85"></circle>
+      <g filter="url(#f-lift)">
+        <circle cx="40" cy="40" r="32" stroke="#5C6B7C" stroke-width="12" stroke-dasharray="33 168.06" stroke-dashoffset="-80.42" opacity=".62" transform="translate(0 1.5)"></circle>
+        <circle cx="40" cy="40" r="32" stroke="url(#ga-kim)" stroke-width="10" stroke-dasharray="33 168.06" stroke-dashoffset="-80.42"></circle>
+        <circle cx="40" cy="40" r="32" stroke="#2B3A4C" stroke-width="10.4" stroke-dasharray="33 168.06" stroke-dashoffset="-80.42" opacity=".22"></circle>
+        <circle cx="40" cy="40" r="32" stroke="url(#ga-kim)" stroke-width="9" stroke-dasharray="33 168.06" stroke-dashoffset="-80.42"></circle>
+      </g>
+    </g>
+  </symbol>
+  <symbol id="uc-ring-ok-thuy" viewBox="0 0 80 80">
+    <g fill="none" transform="rotate(-90 40 40)" stroke-linecap="round">
+      <circle cx="40" cy="40" r="32" stroke="#DC4231" stroke-width="3.5" stroke-dasharray="33 168.06"></circle>
+      <circle cx="40" cy="40" r="32" stroke="#B8791A" stroke-width="3.5" stroke-dasharray="33 168.06" stroke-dashoffset="-40.21"></circle>
+      <circle cx="40" cy="40" r="32" stroke="#5C6B7C" stroke-width="3.5" stroke-dasharray="33 168.06" stroke-dashoffset="-80.42"></circle>
+      <circle cx="40" cy="40" r="32" stroke="#14926A" stroke-width="3.5" stroke-dasharray="33 168.06" stroke-dashoffset="-160.85"></circle>
+      <g filter="url(#f-lift)">
+        <circle cx="40" cy="40" r="32" stroke="#0E4CB0" stroke-width="12" stroke-dasharray="33 168.06" stroke-dashoffset="-120.64" opacity=".5" transform="translate(0 1.5)"></circle>
+        <circle cx="40" cy="40" r="32" stroke="url(#ga-thuy)" stroke-width="10" stroke-dasharray="33 168.06" stroke-dashoffset="-120.64"></circle>
+        <circle cx="40" cy="40" r="32" stroke="#fff" stroke-width="3" stroke-dasharray="33 168.06" stroke-dashoffset="-120.64" opacity=".42" transform="translate(0 -2.2)"></circle>
+      </g>
+    </g>
+  </symbol>
+  <symbol id="uc-ring-ok-moc" viewBox="0 0 80 80">
+    <g fill="none" transform="rotate(-90 40 40)" stroke-linecap="round">
+      <circle cx="40" cy="40" r="32" stroke="#DC4231" stroke-width="3.5" stroke-dasharray="33 168.06"></circle>
+      <circle cx="40" cy="40" r="32" stroke="#B8791A" stroke-width="3.5" stroke-dasharray="33 168.06" stroke-dashoffset="-40.21"></circle>
+      <circle cx="40" cy="40" r="32" stroke="#5C6B7C" stroke-width="3.5" stroke-dasharray="33 168.06" stroke-dashoffset="-80.42"></circle>
+      <circle cx="40" cy="40" r="32" stroke="#2E7BE8" stroke-width="3.5" stroke-dasharray="33 168.06" stroke-dashoffset="-120.64"></circle>
+      <g filter="url(#f-lift)">
+        <circle cx="40" cy="40" r="32" stroke="#0A5D40" stroke-width="12" stroke-dasharray="33 168.06" stroke-dashoffset="-160.85" opacity=".5" transform="translate(0 1.5)"></circle>
+        <circle cx="40" cy="40" r="32" stroke="url(#ga-moc)" stroke-width="10" stroke-dasharray="33 168.06" stroke-dashoffset="-160.85"></circle>
+        <circle cx="40" cy="40" r="32" stroke="#fff" stroke-width="3" stroke-dasharray="33 168.06" stroke-dashoffset="-160.85" opacity=".42" transform="translate(0 -2.2)"></circle>
+      </g>
+    </g>
+  </symbol>
+  <symbol id="uc-ring-undeclared" viewBox="0 0 80 80">
+    <circle cx="40" cy="40" r="32" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="3 4"></circle>
+  </symbol>
+  <symbol id="uc-ring-computing" viewBox="0 0 80 80">
+    <circle cx="40" cy="40" r="32" fill="none" stroke="currentColor" stroke-width="3"></circle>
+  </symbol>
+</defs></svg>
+    <div id="root"><div class="_root_w4x8a_8" data-app-shell="ucircle"><aside class="_rail_w4x8a_57" aria-label="primary"><div class="_railHead_w4x8a_321"><span class="_railLogo_w4x8a_240"><svg viewBox="0 0 1024 1024" width="40" height="40" aria-hidden="true"><defs><linearGradient id="ucg-rail" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2DD4BF"></stop><stop offset=".55" stop-color="#14B8A6"></stop><stop offset="1" stop-color="#0E8C82"></stop></linearGradient></defs><rect width="1024" height="1024" rx="232" fill="url(#ucg-rail)"></rect><path d="M722 309A292 292 0 1 1 302 309" fill="none" stroke="#fff" stroke-width="80" stroke-linecap="round"></path><circle cx="512" cy="220" r="52" fill="#fff"></circle></svg></span><span class="_railWordmark_w4x8a_326"><span class="_railWmU_w4x8a_333">U</span>Circle</span></div><button type="button" class="_railBtn_w4x8a_249" title="Trang chủ" data-nav="home"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10"></path></svg><span class="_railLabel_w4x8a_272">Trang chủ</span></button><button type="button" class="_railBtn_w4x8a_249" title="Me2" data-nav="map"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.6"></circle><circle cx="5" cy="6" r="1.7"></circle><circle cx="19" cy="6" r="1.7"></circle><circle cx="5" cy="18" r="1.7"></circle><circle cx="19" cy="18" r="1.7"></circle><path d="M10.2 10.4 6.3 7.1M13.8 10.4l3.9-3.3M10.2 13.6l-3.9 3.3M13.8 13.6l3.9 3.3"></path></svg><span class="_railLabel_w4x8a_272">Me2</span></button><button type="button" class="_railBtn_w4x8a_249" title="Chat" data-nav="inbox"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-11.7 7.7L3 21l1.8-6.3A8.5 8.5 0 1 1 21 11.5Z"></path></svg><span class="_railLabel_w4x8a_272">Chat</span></button><button type="button" class="_railBtn_w4x8a_249 _railDisc_w4x8a_279" title="Khám phá" data-nav="discovery"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M3 12h3M18 12h3M12 3v3M12 18v3M5.6 5.6l2 2M16.4 16.4l2 2M18.4 5.6l-2 2M7.6 16.4l-2 2"></path></svg><span class="_railLabel_w4x8a_272">Khám phá</span></button><button type="button" class="_railBtn_w4x8a_249" title="Circle" data-nav="circles"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="5"></circle><circle cx="15" cy="15" r="5"></circle></svg><span class="_railLabel_w4x8a_272">Circle</span></button><button type="button" class="_railBtn_w4x8a_249" title="Năng lượng" data-nav="energy"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"></circle><circle cx="12" cy="12" r="3"></circle></svg><span class="_railLabel_w4x8a_272">Năng lượng</span></button><button type="button" class="_railCompose_w4x8a_335" title="Đăng bài" data-rail-compose="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" class="_railComposeIcon_w4x8a_350"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"></path></svg><span class="_railComposeLabel_w4x8a_351">Đăng bài</span></button><span class="_railSpacer_w4x8a_282"></span><button type="button" class="_railAvatarBtn_w4x8a_285" aria-haspopup="menu" aria-expanded="false" aria-label="Tài khoản" title="Tài khoản" data-rail-acct-btn="true"><span class="_railAvatar_w4x8a_285"><span data-avatar-box="true" style="position: relative; display: block; width: 100%; height: 100%; aspect-ratio: 1 / 1; overflow: hidden; border-radius: inherit; flex: 0 0 auto;"><img src="https://535ecd3a54d0522641b91645895ed794.r2.cloudflarestorage.com/ucircle-media-prod/ucircle/prod/user-avatar/de28d31e-eb02-4b96-b01c-90dd82c8cf9b/df44c3c2-8096-4089-a24e-028ece99675b.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=027f7dd0e373330aa19a56177074cfe9%2F20260823%2Fauto%2Fs3%2Faws4_request&amp;X-Amz-Date=20260823T044921Z&amp;X-Amz-Expires=600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=1a71bebb934e0649b9e7757211d623e23c6ab1dd14c5652d903136a90f2d694f" alt="" data-avatar-img="true" style="position: absolute; inset: 0px; width: 100%; height: 100%; max-width: 100%; max-height: 100%; object-fit: cover; border-radius: inherit; display: block;"></span></span></button></aside><div class="_main_w4x8a_355"><header class="_topbar_w4x8a_68"><span class="_wordmark_w4x8a_169" data-brand-lockup="true"><svg viewBox="0 0 1024 1024" width="26" height="26" aria-hidden="true"><defs><linearGradient id="ucg-topbar" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2DD4BF"></stop><stop offset=".55" stop-color="#14B8A6"></stop><stop offset="1" stop-color="#0E8C82"></stop></linearGradient></defs><rect width="1024" height="1024" rx="232" fill="url(#ucg-topbar)"></rect><path d="M722 309A292 292 0 1 1 302 309" fill="none" stroke="#fff" stroke-width="80" stroke-linecap="round"></path><circle cx="512" cy="220" r="52" fill="#fff"></circle></svg><span data-brand-wordmark="true"><span class="_wmU_w4x8a_413">U</span>Circle</span></span><div class="_sectionSlot_w4x8a_206" data-section-header-slot="true"></div><div class="_search_w4x8a_172" role="search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3-3"></path></svg><input placeholder="Tìm Circle, địa điểm…" aria-label="Tìm Circle, địa điểm…" autocomplete="off" data-shell-search="true" value=""></div><span class="_topbarSpacer_w4x8a_216"></span><button type="button" class="_iconBtn_w4x8a_459 _mobileOnly_w4x8a_940" aria-label="Tìm Circle, địa điểm…" title="Tìm Circle, địa điểm…" data-mobile-search="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3-3"></path></svg></button><div class="_wrap_1rcx1_16" data-enta-orb-wrap="true"><button type="button" class="_orbBtn_1rcx1_24" aria-label="Quả cầu Enta — cấp 5" title="Quả cầu Enta — cấp 5" aria-haspopup="dialog" aria-expanded="false" data-enta-orb="true" data-enta-orb-status="ok" data-enta-orb-level="5"><span class="_orb_1rcx1_24" data-enta-orb-body="true"><svg class="_ring_1rcx1_63" viewBox="0 0 44 44" width="44" height="44" aria-hidden="true" focusable="false" data-orb-ring="drawn" data-wheel-order="hoa-tho-kim-thuy-moc"><circle class="_track_1rcx1_70" cx="22" cy="22" r="19.5" fill="none" stroke-width="2.4"></circle><circle cx="22" cy="22" r="19.5" fill="none" stroke="var(--el-hoa)" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="21.362387473167022 101.15972601683491" stroke-dashoffset="0" data-orb-arc="hoa" data-orb-arc-progress="0.9167" data-orb-arc-never-gates="no" style="visibility: visible;"></circle><circle cx="22" cy="22" r="19.5" fill="none" stroke="var(--el-tho)" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="20.391369860750338 102.13074362925158" stroke-dashoffset="-24.504422698000386" data-orb-arc="tho" data-orb-arc-progress="0.8750" data-orb-arc-never-gates="no" style="visibility: visible;"></circle><circle cx="22" cy="22" r="19.5" fill="none" stroke="var(--el-kim)" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="20.715042398222565 101.80707109177936" stroke-dashoffset="-49.00884539600077" data-orb-arc="kim" data-orb-arc-progress="0.8889" data-orb-arc-never-gates="no" style="visibility: visible;"></circle><circle cx="22" cy="22" r="19.5" fill="none" stroke="var(--el-thuy)" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="23.304422698000387 99.21769079200155" stroke-dashoffset="-73.51326809400116" data-orb-arc="thuy" data-orb-arc-progress="1.0000" data-orb-arc-never-gates="no" style="visibility: visible;"></circle><circle cx="22" cy="22" r="19.5" fill="none" stroke="var(--el-moc)" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="23.304422698000387 99.21769079200155" stroke-dashoffset="-98.01769079200155" data-orb-arc="moc" data-orb-arc-progress="1.0000" data-orb-arc-never-gates="no" style="visibility: visible;"></circle></svg><span class="_lvNum_1rcx1_74">5</span></span></button></div><div class="_notifWrap_w4x8a_196"><button type="button" class="_iconBtn_w4x8a_459" aria-label="Thông báo" title="Thông báo" aria-haspopup="menu" aria-expanded="false" data-connect-bell="true" data-notif-bell="true" style="position: relative;"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"></path></svg></button></div><div class="_acctWrap_w4x8a_518"><button type="button" class="_acctBtn_w4x8a_297" aria-haspopup="menu" aria-expanded="false" aria-label="Tài khoản" title="Tài khoản" data-acct-btn="true"><span class="_acctAvatar_w4x8a_285"><span data-avatar-box="true" style="position: relative; display: block; width: 100%; height: 100%; aspect-ratio: 1 / 1; overflow: hidden; border-radius: inherit; flex: 0 0 auto;"><img src="https://535ecd3a54d0522641b91645895ed794.r2.cloudflarestorage.com/ucircle-media-prod/ucircle/prod/user-avatar/de28d31e-eb02-4b96-b01c-90dd82c8cf9b/df44c3c2-8096-4089-a24e-028ece99675b.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=027f7dd0e373330aa19a56177074cfe9%2F20260823%2Fauto%2Fs3%2Faws4_request&amp;X-Amz-Date=20260823T044921Z&amp;X-Amz-Expires=600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=1a71bebb934e0649b9e7757211d623e23c6ab1dd14c5652d903136a90f2d694f" alt="" data-avatar-img="true" style="position: absolute; inset: 0px; width: 100%; height: 100%; max-width: 100%; max-height: 100%; object-fit: cover; border-radius: inherit; display: block;"></span></span></button></div></header><main class="_content_w4x8a_97"><div class="_stage_i4rcv_25" data-wavee-upload="pick"><div class="_capTitle_i4rcv_47" data-wavee-upload-title="true">Đăng Sóng</div><div class="_segWrap_i4rcv_96"><span class="_seg_i4rcv_3" role="tablist"><button type="button" role="tab" aria-selected="true" class="_segItem_i4rcv_112 _segOn_i4rcv_122" data-wavee-upload-tab="record">Quay</button><button type="button" role="tab" aria-selected="false" class="_segItem_i4rcv_112" data-wavee-upload-tab="file">Tải lên</button></span></div><button type="button" class="_closeCap_i4rcv_59" aria-label="Đóng">✕</button><video class="_camera_i4rcv_38" playsinline="" autoplay="" data-wavee-cam-facing="user" data-wavee-cam-settings=""></video><div class="_camNotice_i4rcv_164" data-wavee-upload-camera-error="UNAVAILABLE"><div class="_stateTitle_i4rcv_181">Chưa dùng được camera</div><div class="_stateBody_i4rcv_182">Không tìm thấy camera trên thiết bị này.</div><button type="button" class="_btnGhost_i4rcv_664">Chọn video có sẵn</button></div><div class="_shutterWrap_i4rcv_127"><button type="button" class="_shutter_i4rcv_127" disabled="" data-wavee-upload-shutter="true" aria-label="Quay"></button><div class="_shutterHint_i4rcv_156" data-wavee-upload-hint="true">Giữ để quay · tối đa 30:00</div></div></div></main></div><nav class="_botnav_w4x8a_69" aria-label="primary-mobile"><button type="button" class="_botBtn_w4x8a_1039" data-nav="home"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10"></path></svg><span>Trang chủ</span></button><button type="button" class="_botBtn_w4x8a_1039" data-nav="map"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.6"></circle><circle cx="5" cy="6" r="1.7"></circle><circle cx="19" cy="6" r="1.7"></circle><circle cx="5" cy="18" r="1.7"></circle><circle cx="19" cy="18" r="1.7"></circle><path d="M10.2 10.4 6.3 7.1M13.8 10.4l3.9-3.3M10.2 13.6l-3.9 3.3M13.8 13.6l3.9 3.3"></path></svg><span>Me2</span></button><button type="button" class="_botBtn_w4x8a_1039" data-nav="inbox"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-11.7 7.7L3 21l1.8-6.3A8.5 8.5 0 1 1 21 11.5Z"></path></svg><span>Chat</span></button><button type="button" class="_botBtn_w4x8a_1039 _botDisc_w4x8a_1117" data-nav="discovery"><span class="_botDwrap_w4x8a_1113"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M3 12h3M18 12h3M12 3v3M12 18v3M5.6 5.6l2 2M16.4 16.4l2 2M18.4 5.6l-2 2M7.6 16.4l-2 2"></path></svg></span><span>Khám phá</span></button><button type="button" class="_botBtn_w4x8a_1039" data-nav="circles"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="5"></circle><circle cx="15" cy="15" r="5"></circle></svg><span>Circle</span></button></nav><div class="_urail_w4x8a_25 _collapsed_w4x8a_31" data-urail="true" data-urail-open="false"><div class="_urailItems_w4x8a_31" data-urail-items="true" aria-hidden="true"><button type="button" class="_uitem_w4x8a_777" data-urail-item="aura" tabindex="-1"><span class="_ub_w4x8a_777"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></span><span class="_ucap_w4x8a_828">Aura</span></button><button type="button" class="_uitem_w4x8a_777" data-urail-item="create" tabindex="-1" aria-haspopup="menu" aria-expanded="false"><span class="_ub_w4x8a_777"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></span><span class="_ucap_w4x8a_828">Tạo nhanh</span></button></div><button type="button" class="_urailToggle_w4x8a_31" data-urail-toggle="true" aria-label="Tiện ích" aria-expanded="false"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button></div></div></div>
+  <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;aaedd85e77ec42019f6647191d096534&quot;}" crossorigin="anonymous"></script>
+
+
+</body></html>

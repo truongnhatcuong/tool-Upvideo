@@ -26,9 +26,12 @@ POSTED_HASH_DB_PATH = "data/posted.json"
 LOG_PATH = "data/log.txt"
 
 # ---- CHỌN TƯ CÁCH ĐĂNG (TRANG CÁ NHÂN HAY FANPAGE) ----
-# Gõ CHÍNH XÁC tên hiển thị trên web. 
-# Ví dụ: "Tôi" (nếu muốn đăng cá nhân) hoặc "xe hay" (nếu muốn đăng page)
-IDENTITY_NAME = "Gái Xinh"
+# Có thể điền 1 trong 3 dạng:
+#  - Tên hiển thị CHÍNH XÁC trên web, vd "Tôi" hoặc "xe hay"
+#  - ID (uuid) của fanpage, vd "6f41a4fc-4573-47bf-a27f-5420fe28f1de"
+#  - Nguyên link trang fanpage, vd "https://ucircle.net/app/c/6f41a4fc-4573-47bf-a27f-5420fe28f1de"
+#    (tool tự tách ID ra từ link)
+IDENTITY_NAME = ""  # Đã đổi sang UUID chuẩn xác nhất của page "Gái Xinh"
 
 # ---- SELECTOR trên trang upload (PHẢI SỬA cho đúng site thật) ----
 SELECTORS = {
@@ -42,8 +45,8 @@ SELECTORS = {
 }
 
 # ---- Cấu hình vòng lặp ----
-MIN_DELAY_SEC = 10     # delay tối thiểu giữa 2 lần đăng (10 giây)
-MAX_DELAY_SEC = 15     # delay tối đa (30 giây)
+MIN_DELAY_SEC = 2     # delay tối thiểu giữa 2 lần đăng (giảm xuống 2 giây để tăng tốc)
+MAX_DELAY_SEC = 5     # delay tối đa (5 giây)
 MAX_RETRIES_PER_VIDEO = 2
 
 # ---- Hashtag & caption ----
@@ -56,3 +59,27 @@ CAPTION_TEMPLATES = [
 
 # Chạy trình duyệt ẩn (True) hay hiện cửa sổ ra để bạn xem quá trình (False)
 HEADLESS = False
+
+# Làm chậm mỗi thao tác Playwright (mở trang, click, gõ...) bao nhiêu mili-giây
+# để mắt thường theo kịp trình tự thao tác trên UCircle. 0 = chạy nhanh hết cỡ.
+SLOW_MO_MS = 0
+
+# ---- File Excel lưu kết quả quét (link, caption, hashtag thật, chỉ số chất lượng) ----
+EXCEL_PATH = "data/export_data.xlsx"
+
+# ---- Số luồng xử lý song song (có thể chỉnh trong GUI) ----
+SCRAPE_THREADS_DEFAULT = 3   # số luồng lấy metadata (yt-dlp --dump-json) song song
+                              # để cao dễ bị TikTok chặn (lỗi "Unable to extract universal data") khi không có cookie
+UPLOAD_THREADS_DEFAULT = 3   # số luồng đăng video lên UCircle song song (mỗi luồng 1 browser riêng)
+
+# ---- Ngưỡng lọc chất lượng mặc định (chỉnh trong GUI được) ----
+MIN_VIEWS = 1000
+MIN_LIKES = 10
+MIN_RESOLUTION_HEIGHT = 720  # chiều cao video tối thiểu (px), vd 720 = HD
+
+# ---- AI sinh caption khi video không có nội dung chữ thật (chỉ có hashtag) ----
+# Cùng kiểu endpoint với lib/keyAI.ts (OpenAI-compatible chat completions).
+# Điền AI_API_KEY sau khi có key, hoặc set biến môi trường API_KEY_AI.
+AI_API_KEY = ""
+AI_API_URL = "https://gpt4.shupremium.com/v1/chat/completions"
+AI_MODEL = "gpt-4o-mini"

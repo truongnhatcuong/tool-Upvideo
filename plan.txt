@@ -1,0 +1,37 @@
+# KẾ HOẠCH XÂY DỰNG TOOL UCIRCLE-PY (PHIÊN BẢN CHẤT LƯỢNG CAO)
+
+## 1. Mục tiêu Cốt lõi (Core Objective: Quality Over Quantity)
+- **Thay đổi tư duy:** Chuyển đổi hoàn toàn từ việc "quét và up số lượng lớn" sang "Tuyển chọn và xây dựng thư viện nội dung chất lượng cao". 
+- **Giải quyết triệt để vấn đề:** Đảm bảo video vượt qua được hệ thống kiểm duyệt AI tự động của UCircle, không bắt buộc người quản lý phải duyệt tay. Đáp ứng yêu cầu khắt khe của sếp để tiếp tục dự án.
+
+## 2. Tiêu chuẩn Chất lượng (Quality Standards)
+- **Nội dung & Hình ảnh:** Video phải có độ phân giải chuẩn HD/FullHD (1080p trở lên), hình ảnh sắc nét, nội dung có giá trị cao, hình ảnh đẹp.
+- **Không Logo/Watermark:** Bắt buộc 100% video trích xuất không dính bất kỳ logo (watermark) nào từ nền tảng gốc.
+- **Lọc theo tương tác thực:** Chỉ chọn những video top đầu đã được chứng minh là có sức hút (Ví dụ: views cao, lượng thả tim và chia sẻ lớn) để đảm bảo nội dung thực sự tốt.
+
+## 3. Tính năng & Quy trình mới (New Workflow)
+Để đảm bảo "chất lượng", quy trình tự động hóa sẽ có các bước kiểm duyệt nghiêm ngặt:
+
+1. **Bước 1: Quét Chọn Lọc (Selective Scraping)**
+   - Quét từ khóa hoặc kênh nhưng **chỉ lưu lại** thông tin của những video đạt ngưỡng tương tác cực cao (KPI). Bỏ qua hoàn toàn các video rác, ít view.
+
+2. **Bước 2: Xử lý Video (No Watermark & HD)**
+   - Sử dụng API/thư viện chuyên sâu để lấy link gốc hoặc tải video với chất lượng cao nhất, loại bỏ hoàn toàn watermark.
+
+3. **Bước 3: Tiền Kiểm Duyệt Nội Dung (Pre-Moderation)**
+   - Dùng AI (như ChatGPT API) hoặc bộ lọc từ khóa để phân tích Caption, Hashtag nhằm loại bỏ nội dung rác, spam, phản cảm, từ ngữ vi phạm chính sách trước khi quyết định lưu.
+   - Có thể yêu cầu AI viết lại (rewrite) caption cho chuyên nghiệp và phù hợp với nền tảng hơn.
+
+4. **Bước 4: Quản lý Thư Viện & Curation (Duyệt tay trước khi Up)**
+   - Toàn bộ dữ liệu video siêu chất lượng được xuất ra Excel (`curated_content.xlsx`).
+   - **BƯỚC QUAN TRỌNG:** Cho phép nhân sự mở file Excel để lướt qua xem trước nội dung, đánh dấu "Duyệt" vào cột trạng thái. Tool chỉ tự động upload những video có chữ "Duyệt". Việc này chặn 100% video rác lên hệ thống.
+
+5. **Bước 5: Upload Thông Minh (Smart & Stable Upload)**
+   - Tool đọc file Excel, chỉ lấy các video "Đã Duyệt".
+   - Tự động hóa (Playwright) với tiến trình đa luồng nhưng kiểm soát tốc độ upload ổn định lên UCircle để đảm bảo video tải lên giữ nguyên chất lượng gốc, không bị nén lỗi.
+
+## 4. Công nghệ đề xuất (Tech Stack)
+- **Quét & Lấy Link HD:** API Tiktok chuyên dụng không logo, Playwright kết hợp `yt-dlp`.
+- **Tiền kiểm duyệt (AI):** Cân nhắc dùng OpenAI API để lọc nội dung text và viết lại Caption.
+- **Kiểm soát quy trình:** `pandas` xử lý file Excel cực nhanh để làm trạm trung chuyển cho việc Duyệt Tay.
+- **Auto UCircle:** Playwright giả lập thao tác upload ổn định.

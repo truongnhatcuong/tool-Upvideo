@@ -82,3 +82,221 @@
 [2026-08-20T23:24:59] ✅ Đăng thành công: D:\videos\temp_video.mp4
 [2026-08-20T23:25:20] Đang đăng: D:\videos\temp_video.mp4
 [2026-08-20T23:26:16] ✅ Đăng thành công: D:\videos\temp_video.mp4
+[2026-08-23T10:01:54] ⚠️ Không còn video 'pending' nào trong Excel để đăng.
+[2026-08-23T10:52:24] [+] Bắt đầu đăng 9 video lên UCircle với 2 luồng...
+[2026-08-23T10:52:26] ❌ Không tải được video: https://www.tiktok.com/@gaixinh09072/video/7593319201373195540
+[2026-08-23T10:52:27] ❌ Không tải được video: https://www.tiktok.com/@gaixinh09072/video/7575587511028796693
+[2026-08-23T10:52:28] ❌ Không tải được video: https://www.tiktok.com/@gaixinh09072/video/7591738169637260564
+[2026-08-23T10:52:29] ❌ Không tải được video: https://www.tiktok.com/@gaixinh09072/video/7592247711781391637
+[2026-08-23T10:52:30] ❌ Không tải được video: https://www.tiktok.com/@gaixinh09072/video/7592293167819394324
+[2026-08-23T10:52:31] ❌ Không tải được video: https://www.tiktok.com/@gaixinh09072/video/7592177063394594068
+[2026-08-23T10:52:32] ❌ Không tải được video: https://www.tiktok.com/@gaixinh09072/video/7591481636106013973
+[2026-08-23T10:52:32] ❌ Không tải được video: https://www.tiktok.com/@gaixinh09072/video/7591786135911746837
+[2026-08-23T10:52:33] ❌ Không tải được video: https://www.tiktok.com/@gaixinh09072/video/7591446007582297365
+[2026-08-23T10:52:33] [+] Hoàn tất: 0 thành công, 9 thất bại.
+[2026-08-23T11:01:38] [+] Bắt đầu đăng 1 video lên UCircle với 2 luồng...
+[2026-08-23T11:01:47] Đang đăng: D:\videos\tmp_1604743704108236965.mp4
+[2026-08-23T11:02:13] ✅ Đăng thành công: D:\videos\tmp_1604743704108236965.mp4
+[2026-08-23T11:02:14] [+] Hoàn tất: 1 thành công, 0 thất bại.
+[2026-08-23T11:07:28] ⚠️ Không còn video 'pending' nào trong Excel để tải & kiểm tra.
+[2026-08-23T11:18:32] ⚠️ Không còn video 'ready' nào trong Excel để đăng. Hãy chạy bước 'Tải & kiểm tra' trước.
+[2026-08-23T11:18:37] [+] Bắt đầu tải & kiểm tra 8 video với 3 luồng...
+[2026-08-23T11:18:40] ✅ Video hợp lệ, đã tải sẵn: https://www.tiktok.com/@gaixinh09072/video/7591738169637260564
+[2026-08-23T11:18:46] ✅ Video hợp lệ, đã tải sẵn: https://www.tiktok.com/@kathyanhtuan1/video/7675388459430792466
+[2026-08-23T11:18:51] ❌ Video không hợp lệ / không tải được: https://www.tiktok.com/@gaixinh09072/video/7593319201373195540
+[2026-08-23T11:18:56] ❌ Video không hợp lệ / không tải được: https://www.tiktok.com/@gaixinh09072/video/7592247711781391637
+[2026-08-23T11:19:26] ✅ Video hợp lệ, đã tải sẵn: https://www.tiktok.com/@gaixinh09072/video/7575587511028796693
+[2026-08-23T11:24:25] ⚠️ Không còn video 'ready' nào trong Excel để đăng. Hãy chạy bước 'Tải & kiểm tra' trước.
+[2026-08-23T11:24:34] [+] Bắt đầu tải & kiểm tra 13 video với 4 luồng...
+[2026-08-23T11:24:40] ✅ Video hợp lệ, đã tải sẵn: https://www.tiktok.com/@gaixinh09072/video/7591738169637260564
+[2026-08-23T11:24:45] ❌ Video không hợp lệ / không tải được: https://www.tiktok.com/@gaixinh09072/video/7593319201373195540
+[2026-08-23T11:24:47] ❌ Video không hợp lệ / không tải được: https://www.tiktok.com/@kathyanhtuan1/video/7675388459430792466
+[2026-08-23T11:24:48] ❌ Video không hợp lệ / không tải được: https://www.tiktok.com/@gaixinh09072/video/7575587511028796693
+[2026-08-23T11:24:52] ✅ Video hợp lệ, đã tải sẵn: https://www.tiktok.com/@gaixinh09072/video/7592247711781391637
+[2026-08-23T11:24:58] ❌ Video không hợp lệ / không tải được: https://www.tiktok.com/@gaixinh09072/video/7592177063394594068
+[2026-08-23T11:25:01] ✅ Video hợp lệ, đã tải sẵn: https://www.tiktok.com/@gaixinh09072/video/7591481636106013973
+[2026-08-23T11:25:12] ⚠️ Không còn video 'ready' nào trong Excel để đăng. Hãy chạy bước 'Tải & kiểm tra' trước.
+[2026-08-23T11:26:17] [+] Bắt đầu tải & kiểm tra 13 video với 4 luồng...
+[2026-08-23T11:26:22] ✅ Video hợp lệ, đã tải sẵn: https://www.tiktok.com/@gaixinh09072/video/7591738169637260564
+[2026-08-23T11:26:26] ✅ Video hợp lệ, đã tải sẵn: https://www.tiktok.com/@gaixinh09072/video/7593319201373195540
+[2026-08-23T11:26:27] ❌ Video không hợp lệ / không tải được: https://www.tiktok.com/@kathyanhtuan1/video/7675388459430792466
+[2026-08-23T11:26:29] ❌ Video không hợp lệ / không tải được: https://www.tiktok.com/@gaixinh09072/video/7575587511028796693
+[2026-08-23T11:26:34] ❌ Video không hợp lệ / không tải được: https://www.tiktok.com/@gaixinh09072/video/7592247711781391637
+[2026-08-23T11:26:37] ❌ Video không hợp lệ / không tải được: https://www.tiktok.com/@gaixinh09072/video/7592177063394594068
+[2026-08-23T11:26:43] ✅ Video hợp lệ, đã tải sẵn: https://www.tiktok.com/@gaixinh09072/video/7591481636106013973
+[2026-08-23T11:27:40] ⚠️ Không còn video 'ready' nào trong Excel để đăng. Hãy chạy bước 'Tải & kiểm tra' trước.
+[2026-08-23T11:38:42] [+] Bắt đầu đăng 13 video lên UCircle với 2 luồng...
+[2026-08-23T11:38:52] ❌ Không tải được video: https://www.tiktok.com/@kathyanhtuan1/video/7675388459430792466
+[2026-08-23T11:38:53] ❌ Không tải được video: https://www.tiktok.com/@gaixinh09072/video/7591738169637260564
+[2026-08-23T11:39:04] ❌ Không tải được video: https://www.tiktok.com/@gaixinh09072/video/7593319201373195540
+[2026-08-23T11:39:04] ❌ Không tải được video: https://www.tiktok.com/@gaixinh09072/video/7575587511028796693
+[2026-08-23T11:39:13] ❌ Không tải được video: https://www.tiktok.com/@gaixinh09072/video/7592177063394594068
+[2026-08-23T11:39:14] ❌ Không tải được video: https://www.tiktok.com/@gaixinh09072/video/7592247711781391637
+[2026-08-23T11:39:17] Đang đăng: D:\videos\tmp_8988439898828937077.mp4
+[2026-08-23T11:39:25] ❌ Không tải được video: https://www.tiktok.com/@gaixinh09072/video/7591446007582297365
+[2026-08-23T11:39:34] ❌ Lần 1: lỗi khi đăng https://www.tiktok.com/@gaixinh09072/video/7591481636106013973 -> Page.wait_for_selector: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("button[data-wavee-upload-again=\"true\"]") to be visible
+
+[2026-08-23T11:39:34] Đang đăng: D:\videos\tmp_8988439898828937077.mp4
+[2026-08-23T11:39:34] ❌ Lần 2: lỗi khi đăng https://www.tiktok.com/@gaixinh09072/video/7591481636106013973 -> Page.goto: Target page, context or browser has been closed
+[2026-08-23T11:39:36] ❌ Không tải được video: https://www.tiktok.com/@_juanito9x/video/7640685257678769415
+[2026-08-23T11:39:45] ❌ Không tải được video: https://www.tiktok.com/@_juanito9x/video/7639420129167543559
+[2026-08-23T11:46:17] [+] Bắt đầu đăng 18 video lên UCircle với 4 luồng...
+[2026-08-23T11:46:29] Đang đăng: D:\videos\tmp_7547457500861740112.mp4
+[2026-08-23T11:46:32] ❌ Không tải được video: https://www.tiktok.com/@gaixinh09072/video/7575587511028796693
+[2026-08-23T11:46:32] ❌ Không tải được video: https://www.tiktok.com/@gaixinh09072/video/7591738169637260564
+[2026-08-23T11:46:32] ❌ Không tải được video: https://www.tiktok.com/@gaixinh09072/video/7593319201373195540
+[2026-08-23T11:46:43] ❌ Không tải được video: https://www.tiktok.com/@gaixinh09072/video/7591481636106013973
+[2026-08-23T11:46:43] ❌ Không tải được video: https://www.tiktok.com/@gaixinh09072/video/7592247711781391637
+[2026-08-23T11:46:43] ❌ Không tải được video: https://www.tiktok.com/@gaixinh09072/video/7592177063394594068
+[2026-08-23T11:46:47] ⚠️ Không tìm thấy nút chọn tư cách đăng cho 'https://ucircle.net/app/c/6f41a4fc-4573-47bf-a27f-5420fe28f1de'.
+[2026-08-23T11:46:49] Đang đăng: D:\videos\tmp_7571953825245361670.mp4
+[2026-08-23T11:47:05] ⚠️ Không tìm thấy nút chọn tư cách đăng cho 'https://ucircle.net/app/c/6f41a4fc-4573-47bf-a27f-5420fe28f1de'.
+[2026-08-23T11:47:05] ❌ Lần 1: lỗi khi đăng https://www.tiktok.com/@_juanito9x/video/7640685257678769415 -> Page.fill: Target page, context or browser has been closed
+[2026-08-23T11:47:05] Đang đăng: D:\videos\tmp_7571953825245361670.mp4
+[2026-08-23T11:47:05] ❌ Lần 2: lỗi khi đăng https://www.tiktok.com/@_juanito9x/video/7640685257678769415 -> Page.goto: Target page, context or browser has been closed
+[2026-08-23T11:47:14] ❌ Lần 1: lỗi khi đăng https://www.tiktok.com/@kathyanhtuan1/video/7675388459430792466 -> Page.wait_for_selector: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("button[data-wavee-upload-again=\"true\"]") to be visible
+
+[2026-08-23T11:47:14] Đang đăng: D:\videos\tmp_7547457500861740112.mp4
+[2026-08-23T11:47:14] ❌ Lần 2: lỗi khi đăng https://www.tiktok.com/@kathyanhtuan1/video/7675388459430792466 -> Page.goto: Target page, context or browser has been closed
+[2026-08-23T11:47:16] ❌ Không tải được video: https://www.tiktok.com/@_juanito9x/video/7668489229441273095
+[2026-08-23T11:47:24] ❌ Không tải được video: https://www.tiktok.com/@_juanito9x/video/7639420129167543559
+[2026-08-23T11:47:28] ❌ Không tải được video: https://www.tiktok.com/@gaixinh09072/video/7591446007582297365
+[2026-08-23T11:51:26] [+] Bắt đầu đăng 18 video lên UCircle với 2 luồng...
+[2026-08-23T11:51:37] ❌ Không tải được video: https://www.tiktok.com/@kathyanhtuan1/video/7675388459430792466
+[2026-08-23T11:51:37] ❌ Không tải được video: https://www.tiktok.com/@gaixinh09072/video/7591738169637260564
+[2026-08-23T11:51:46] ❌ Không tải được video: https://www.tiktok.com/@gaixinh09072/video/7575587511028796693
+[2026-08-23T11:51:49] ❌ Không tải được video: https://www.tiktok.com/@gaixinh09072/video/7593319201373195540
+[2026-08-23T11:51:59] ❌ Không tải được video: https://www.tiktok.com/@gaixinh09072/video/7592247711781391637
+[2026-08-23T11:53:59] [+] Bắt đầu đăng 5 video lên UCircle với 4 luồng...
+[2026-08-23T11:54:09] ❌ Không tải được video: https://www.tiktok.com/@_juanito9x/video/7668489229441273095
+[2026-08-23T11:54:09] ❌ Không tải được video: https://www.tiktok.com/@_juanito9x/video/7676183039516462356
+[2026-08-23T11:54:10] ❌ Không tải được video: https://www.tiktok.com/@_juanito9x/video/7667351290128764180
+[2026-08-23T11:54:12] ❌ Không tải được video: https://www.tiktok.com/@_juanito9x/video/7639420129167543559
+[2026-08-23T11:54:17] Đang đăng: D:\videos\tmp_5760890793577790851.mp4
+[2026-08-23T11:55:04] ✅ Đăng thành công: D:\videos\tmp_5760890793577790851.mp4
+[2026-08-23T11:55:06] [+] Hoàn tất: 1 thành công, 4 thất bại.
+[2026-08-23T11:58:49] ⚠️ Không còn video 'pending' nào trong Excel để đăng.
+[2026-08-23T11:58:59] ⚠️ Không còn video 'pending' nào trong Excel để đăng.
+[2026-08-23T12:26:08] [+] Bắt đầu đăng 12 video lên UCircle với 2 luồng...
+[2026-08-23T12:26:16] Đang đăng: D:\videos\tmp_4157305753112194153.mp4
+[2026-08-23T12:26:56] Đang đăng: D:\videos\tmp_7801766177449957936.mp4
+[2026-08-23T12:27:05] ⚠️ Không tìm thấy nút chọn tư cách đăng cho 'dea448a6-b8e5-40e0-9cd7-68ea12abaac5'.
+[2026-08-23T12:27:05] ❌ Lần 1: lỗi khi đăng https://www.tiktok.com/@_juanito9x/video/7639420129167543559 -> Page.fill: Target page, context or browser has been closed
+[2026-08-23T12:27:05] Đang đăng: D:\videos\tmp_7801766177449957936.mp4
+[2026-08-23T12:27:05] ❌ Lần 2: lỗi khi đăng https://www.tiktok.com/@_juanito9x/video/7639420129167543559 -> Page.goto: Target page, context or browser has been closed
+[2026-08-23T12:27:06] ❌ Lần 1: lỗi khi đăng https://www.tiktok.com/@_juanito9x/video/7676183039516462356 -> Page.wait_for_selector: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("button[data-wavee-upload-again=\"true\"]") to be visible
+
+[2026-08-23T12:27:06] Đang đăng: D:\videos\tmp_4157305753112194153.mp4
+[2026-08-23T12:27:06] ❌ Lần 2: lỗi khi đăng https://www.tiktok.com/@_juanito9x/video/7676183039516462356 -> Page.goto: Target page, context or browser has been closed
+[2026-08-23T12:27:34] [+] Bắt đầu đăng 12 video lên UCircle với 4 luồng...
+[2026-08-23T12:27:44] ❌ Không tải được video: https://www.tiktok.com/@_juanito9x/video/7668489229441273095
+[2026-08-23T12:27:45] ❌ Không tải được video: https://www.tiktok.com/@_juanito9x/video/7676183039516462356
+[2026-08-23T12:27:47] ❌ Không tải được video: https://www.tiktok.com/@_juanito9x/video/7667351290128764180
+[2026-08-23T12:28:43] [+] Bắt đầu đăng 12 video lên UCircle với 2 luồng...
+[2026-08-23T12:28:51] Đang đăng: D:\videos\tmp_2119817302117422695.mp4
+[2026-08-23T12:28:52] ❌ Lần 1: lỗi khi đăng https://www.tiktok.com/@_juanito9x/video/7676183039516462356 -> Page.goto: Target page, context or browser has been closed
+Call log:
+  - navigating to "https://ucircle.net/app/wavee", waiting until "load"
+
+[2026-08-23T12:28:52] Đang đăng: D:\videos\tmp_2119817302117422695.mp4
+[2026-08-23T12:28:52] ❌ Lần 2: lỗi khi đăng https://www.tiktok.com/@_juanito9x/video/7676183039516462356 -> Page.goto: Target page, context or browser has been closed
+[2026-08-23T12:29:02] ❌ Không tải được video: https://www.tiktok.com/@_juanito9x/video/7668489229441273095
+[2026-08-23T12:29:10] ❌ Không tải được video: https://www.tiktok.com/@_juanito9x/video/7667351290128764180
+[2026-08-23T12:29:17] ❌ Không tải được video: https://www.tiktok.com/@caubatapchoigame/video/7346071642692455688
+[2026-08-23T12:29:21] [+] Bắt đầu đăng 12 video lên UCircle với 2 luồng...
+[2026-08-23T12:29:30] ❌ Không tải được video: https://www.tiktok.com/@_juanito9x/video/7676183039516462356
+[2026-08-23T12:29:33] ❌ Không tải được video: https://www.tiktok.com/@_juanito9x/video/7639420129167543559
+[2026-08-23T12:29:40] ❌ Không tải được video: https://www.tiktok.com/@_juanito9x/video/7668489229441273095
+[2026-08-23T12:29:42] ❌ Không tải được video: https://www.tiktok.com/@_juanito9x/video/7667351290128764180
+[2026-08-23T12:29:53] ❌ Không tải được video: https://www.tiktok.com/@caubatapchoigame/video/7346071642692455688
+[2026-08-23T12:29:55] ❌ Không tải được video: https://www.tiktok.com/@caubatapchoigame/video/7676706889610153236
+[2026-08-23T12:30:02] ❌ Không tải được video: https://www.tiktok.com/@caubatapchoigame/video/7676024514802715924
+[2026-08-23T12:30:11] Đang đăng: D:\videos\tmp_1615906780840928377.mp4
+[2026-08-23T12:30:12] ❌ Không tải được video: https://www.tiktok.com/@caubatapchoigame/video/7675588744572947732
+[2026-08-23T12:30:28] Đang đăng: D:\videos\tmp_7659177603421435710.mp4
+[2026-08-23T12:31:04] ✅ Đăng thành công: D:\videos\tmp_1615906780840928377.mp4
+[2026-08-23T12:31:19] ✅ Đăng thành công: D:\videos\tmp_7659177603421435710.mp4
+[2026-08-23T12:31:22] ❌ Không tải được video: https://www.tiktok.com/@caubatapchoigame/video/7548026356597099784
+[2026-08-23T12:31:30] ❌ Không tải được video: https://www.tiktok.com/@caubatapchoigame/video/7676435746219101461
+[2026-08-23T12:31:30] [+] Hoàn tất: 2 thành công, 10 thất bại.
+[2026-08-23T12:37:22] [+] Bắt đầu đăng 14 video lên UCircle với 5 luồng...
+[2026-08-23T12:37:30] ❌ Không tải được video: https://www.tiktok.com/@caubatapchoigame/video/7497925424194800914
+[2026-08-23T12:37:32] ❌ Không tải được video: https://www.tiktok.com/@caubatapchoigame/video/7346071642692455688
+[2026-08-23T12:37:36] ❌ Không tải được video: https://www.tiktok.com/@caubatapchoigame/video/7676024514802715924
+[2026-08-23T12:37:36] ❌ Không tải được video: https://www.tiktok.com/@caubatapchoigame/video/7548026356597099784
+[2026-08-23T12:37:41] ❌ Không tải được video: https://www.tiktok.com/@caubatapchoigame/video/7676706889610153236
+[2026-08-23T12:37:41] Đang đăng: D:\videos\tmp_2688588849958612846.mp4
+[2026-08-23T12:37:47] ❌ Không tải được video: https://www.tiktok.com/@caubatapchoigame/video/7675588744572947732
+[2026-08-23T12:37:48] ❌ Không tải được video: https://www.tiktok.com/@caubatapchoigame/video/7675227537332604181
+[2026-08-23T12:37:50] Đang đăng: D:\videos\tmp_2797655803275158728.mp4
+[2026-08-23T12:37:52] ❌ Không tải được video: https://www.tiktok.com/@caubatapchoigame/video/7675196866320977172
+[2026-08-23T12:37:59] ❌ Không tải được video: https://www.tiktok.com/@caubatapchoigame/video/7674924285743385876
+[2026-08-23T12:38:03] ❌ Không tải được video: https://www.tiktok.com/@caubatapchoigame/video/7674145682126654740
+[2026-08-23T12:38:04] ❌ Không tải được video: https://www.tiktok.com/@caubatapchoigame/video/7674821736168164629
+[2026-08-23T12:38:11] ❌ Không tải được video: https://www.tiktok.com/@caubatapchoigame/video/7675124683640982804
+[2026-08-23T12:38:12] ✅ Đăng thành công: D:\videos\tmp_2688588849958612846.mp4
+[2026-08-23T12:38:29] ✅ Đăng thành công: D:\videos\tmp_2797655803275158728.mp4
+[2026-08-23T12:38:30] [+] Hoàn tất: 2 thành công, 12 thất bại.
+[2026-08-23T12:43:50] [+] Bắt đầu đăng 12 video lên UCircle với 2 luồng...
+[2026-08-23T12:43:59] Đang đăng: D:\videos\tmp_7029721281395738494.mp4
+[2026-08-23T12:44:03] Đang đăng: D:\videos\tmp_4238182896546043484.mp4
+[2026-08-23T12:44:31] ✅ Đăng thành công: D:\videos\tmp_7029721281395738494.mp4
+[2026-08-23T12:44:44] Đang đăng: D:\videos\tmp_8072440581082686239.mp4
+[2026-08-23T12:44:46] ✅ Đăng thành công: D:\videos\tmp_4238182896546043484.mp4
+[2026-08-23T12:44:54] Đang đăng: D:\videos\tmp_6697948298994543261.mp4
+[2026-08-23T12:45:19] ✅ Đăng thành công: D:\videos\tmp_8072440581082686239.mp4
+[2026-08-23T12:45:27] ✅ Đăng thành công: D:\videos\tmp_6697948298994543261.mp4
+[2026-08-23T12:45:43] Đang đăng: D:\videos\tmp_4339868046348482512.mp4
+[2026-08-23T12:45:45] Đang đăng: D:\videos\tmp_9183665304954184326.mp4
+[2026-08-23T12:46:22] ✅ Đăng thành công: D:\videos\tmp_4339868046348482512.mp4
+[2026-08-23T12:46:23] ✅ Đăng thành công: D:\videos\tmp_9183665304954184326.mp4
+[2026-08-23T12:46:29] Đang đăng: D:\videos\tmp_7873971278825166117.mp4
+[2026-08-23T12:46:30] Đang đăng: D:\videos\tmp_4409242151674260631.mp4
+[2026-08-23T12:47:02] ❌ Lần 1: hết thời gian chờ xác nhận đăng cho https://www.tiktok.com/@caubatapchoigame/video/7675588744572947732
+[2026-08-23T12:47:02] ❌ Lần 1: hết thời gian chờ xác nhận đăng cho https://www.tiktok.com/@caubatapchoigame/video/7675196866320977172
+[2026-08-23T12:47:02] 🖼️ Đã lưu ảnh chụp màn hình lỗi: data/debug/4409242151674260631.png (URL hiện tại: https://ucircle.net/app)
+[2026-08-23T12:47:02] Đang đăng: D:\videos\tmp_4409242151674260631.mp4
+[2026-08-23T12:47:02] 🖼️ Đã lưu ảnh chụp màn hình lỗi: data/debug/7873971278825166117.png (URL hiện tại: chrome-error://chromewebdata/)
+[2026-08-23T12:47:02] Đang đăng: D:\videos\tmp_7873971278825166117.mp4
+[2026-08-23T12:47:02] ❌ Lần 2: lỗi khi đăng https://www.tiktok.com/@caubatapchoigame/video/7675196866320977172 -> Page.goto: net::ERR_FAILED at https://ucircle.net/app/wavee
+Call log:
+  - navigating to "https://ucircle.net/app/wavee", waiting until "load"
+
+[2026-08-23T12:47:02] 🖼️ Đã lưu ảnh chụp màn hình lỗi: data/debug/7873971278825166117.png (URL hiện tại: chrome-error://chromewebdata/)
+[2026-08-23T12:47:13] Đang đăng: D:\videos\tmp_5791262495717832205.mp4
+[2026-08-23T12:47:32] ❌ Lần 2: hết thời gian chờ xác nhận đăng cho https://www.tiktok.com/@caubatapchoigame/video/7675588744572947732
+[2026-08-23T12:47:32] 🖼️ Đã lưu ảnh chụp màn hình lỗi: data/debug/4409242151674260631.png (URL hiện tại: https://ucircle.net/app/wavee)
+[2026-08-23T12:47:47] ✅ Đăng thành công: D:\videos\tmp_5791262495717832205.mp4
+[2026-08-23T12:47:48] Đang đăng: D:\videos\tmp_9153588931647111704.mp4
+[2026-08-23T12:47:56] Đang đăng: D:\videos\tmp_6303975673864123479.mp4
+[2026-08-23T12:48:26] ✅ Đăng thành công: D:\videos\tmp_9153588931647111704.mp4
+[2026-08-23T12:48:32] Đang đăng: D:\videos\tmp_3174604670624061720.mp4
+[2026-08-23T12:48:34] ✅ Đăng thành công: D:\videos\tmp_6303975673864123479.mp4
+[2026-08-23T12:49:04] ✅ Đăng thành công: D:\videos\tmp_3174604670624061720.mp4
+[2026-08-23T12:49:05] [+] Hoàn tất: 10 thành công, 2 thất bại.
+[2026-08-23T15:36:50] [+] Bắt đầu đăng 8 video lên UCircle với 3 luồng...
+[2026-08-23T15:37:37] [+] Bắt đầu đăng 8 video lên UCircle với 3 luồng...
+[2026-08-23T15:38:19] [+] Bắt đầu đăng 8 video lên UCircle với 3 luồng...
+[2026-08-23T15:38:38] Đang đăng: D:\videos\tmp_3493160034560575698.mp4
+[2026-08-23T15:38:45] Đang đăng: D:\videos\tmp_8709190343456650015.mp4
+[2026-08-23T15:39:08] Đang đăng: D:\videos\tmp_5348215498958371327.mp4
+[2026-08-23T15:39:25] ✅ Đăng thành công: D:\videos\tmp_3493160034560575698.mp4
+[2026-08-23T15:39:36] ✅ Đăng thành công: D:\videos\tmp_8709190343456650015.mp4
+[2026-08-23T15:39:45] Đang đăng: D:\videos\tmp_8079994734109907905.mp4
+[2026-08-23T15:39:57] ✅ Đăng thành công: D:\videos\tmp_5348215498958371327.mp4
+[2026-08-23T15:39:59] Đang đăng: D:\videos\tmp_340942248835095652.mp4
+[2026-08-23T15:40:11] Đang đăng: D:\videos\tmp_6051948333757021655.mp4
+[2026-08-23T15:40:46] ✅ Đăng thành công: D:\videos\tmp_340942248835095652.mp4
+[2026-08-23T15:40:54] ✅ Đăng thành công: D:\videos\tmp_8079994734109907905.mp4
+[2026-08-23T15:40:55] ✅ Đăng thành công: D:\videos\tmp_6051948333757021655.mp4
+[2026-08-23T15:41:00] Đang đăng: D:\videos\tmp_2208507103409972551.mp4
+[2026-08-23T15:41:40] Đang đăng: D:\videos\tmp_6332393030939097447.mp4
+[2026-08-23T15:41:50] ✅ Đăng thành công: D:\videos\tmp_2208507103409972551.mp4
+[2026-08-23T15:42:31] ✅ Đăng thành công: D:\videos\tmp_6332393030939097447.mp4
+[2026-08-23T15:42:32] [+] Hoàn tất: 8 thành công, 0 thất bại.
