@@ -19,8 +19,11 @@ VIDEO_FOLDER = r"D:\videos"
 # Thư mục lưu video đã đăng thành công (tool tự move vào đây)
 POSTED_FOLDER = "videos/_posted"
 
-# File lưu danh sách hash video đã đăng (chống trùng)
+# File lưu danh sách hash/link video đã đăng (chống trùng đăng)
 POSTED_HASH_DB_PATH = "data/posted.json"
+
+# File lưu lịch sử tất cả video đã quét (chống quét lại video cũ khi quét cùng kênh)
+SCANNED_DB_PATH = "data/scanned.json"
 
 # File log
 LOG_PATH = "data/log.txt"
@@ -45,8 +48,8 @@ SELECTORS = {
 }
 
 # ---- Cấu hình vòng lặp ----
-MIN_DELAY_SEC = 2     # delay tối thiểu giữa 2 lần đăng (giảm xuống 2 giây để tăng tốc)
-MAX_DELAY_SEC = 5     # delay tối đa (5 giây)
+MIN_DELAY_SEC = 60     # delay tối thiểu giữa 2 lần đăng (giảm xuống 2 giây để tăng tốc)
+MAX_DELAY_SEC = 70     # delay tối đa (5 giây)
 MAX_RETRIES_PER_VIDEO = 2
 
 # ---- Hashtag & caption ----
@@ -70,7 +73,7 @@ EXCEL_PATH = "data/export_data.xlsx"
 # ---- Số luồng xử lý song song (có thể chỉnh trong GUI) ----
 SCRAPE_THREADS_DEFAULT = 3   # số luồng lấy metadata (yt-dlp --dump-json) song song
                               # để cao dễ bị TikTok chặn (lỗi "Unable to extract universal data") khi không có cookie
-UPLOAD_THREADS_DEFAULT = 3   # số luồng đăng video lên UCircle song song (mỗi luồng 1 browser riêng)
+UPLOAD_THREADS_DEFAULT = 1   # số luồng đăng video lên UCircle song song (mỗi luồng 1 browser riêng)
 
 # ---- Ngưỡng lọc chất lượng mặc định (chỉnh trong GUI được) ----
 MIN_VIEWS = 1000

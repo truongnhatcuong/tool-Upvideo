@@ -16,13 +16,25 @@ def build_search_url(keyword: str) -> str:
     from urllib.parse import quote
     return f"https://www.tiktok.com/search?q={quote(keyword)}"
 
-def scroll_and_collect(page, limit: int = 0) -> List[str]:
-    print(f"[+] Bắt đầu cuộn trang và quét TikTok...")
+def scroll_and_collect(page, limit: int = 0, exclude_links: set = None) -> List[str]:
+    exclude_links = exclude_links or set()
+    print("[+] Bắt đầu cuộn trang và quét video TikTok...")
+    if exclude_links:
+        print(f"[!] Đã nạp {len(exclude_links)} video từ lịch sử để tự động né trùng.")
+
     video_links = []
     seen = set()
+    skipped_old = 0
     no_change_rounds = 0
     
+    # Đặt con trỏ chuột vào giữa màn hình để sự kiện lăn chuột và phím hoạt động chuẩn xác
+    try:
+        page.mouse.move(600, 400)
+    except Exception:
+        pass
+
     while True:
+        # Thu thập toàn bộ link video hiện có trong trang
         raw_links = page.locator("a").evaluate_all("""
             elements => elements
                 .map(a => a.href)
@@ -36,21 +48,26 @@ def scroll_and_collect(page, limit: int = 0) -> List[str]:
         
         for link in raw_links:
             clean_link = normalize_url(link)
-            if clean_link not in seen:
-                seen.add(clean_link)
-                video_links.append(clean_link)
-                if limit > 0 and len(video_links) >= limit:
-                    break
+            if clean_link in seen:
+                continue
+            seen.add(clean_link)
+
+            # Bỏ qua nếu video này đã từng quét hoặc đã từng đăng trong lịch sử
+            if clean_link in exclude_links:
+                skipped_old += 1
+                continue
+
+            video_links.append(clean_link)
+            if limit > 0 and len(video_links) >= limit:
+                break
                 
         new_count = len(video_links)
-        if new_count > current_count or current_count == 0:
-            status_text = f"\r[SCAN] Đã tìm thấy: {new_count} video"
-            if limit > 0:
-                status_text += f"/{limit}"
-            print(status_text, end="", flush=True)
-            
+        limit_str = f"/{limit}" if limit > 0 else " (quét tất cả)"
+        skip_str = f" | Đã né {skipped_old} video cũ" if skipped_old > 0 else ""
+        print(f"[SCAN] Đã thu thập: {new_count}{limit_str} video MỚI{skip_str}...")
+
         if limit > 0 and len(video_links) >= limit:
-            print(f"\n[+] Đã đạt giới hạn LIMIT ({limit} video). Dừng cuộn!")
+            print(f"[+] Đã đạt đủ số lượng video MỚI ({limit} video). Dừng cuộn!")
             return video_links[:limit]
             
         if new_count > current_count:
@@ -58,18 +75,40 @@ def scroll_and_collect(page, limit: int = 0) -> List[str]:
         else:
             no_change_rounds += 1
             
-        if no_change_rounds >= 3:
-            print("\n[+] Không phát hiện thêm video mới. Đã cuộn hết danh sách.")
+        if no_change_rounds >= 8:
+            print(f"[+] Đã cuộn hết danh sách. Thu thập được {len(video_links)} video mới (đã né {skipped_old} video cũ).")
             break
-            
-        page.mouse.wheel(0, 800)
-        page.wait_for_timeout(int((1.5 + random.uniform(-0.5, 1.0)) * 1000))
+
+        # Thực hiện cuộn trang đa phương thức để kích hoạt lazy-loading của TikTok:
+        try:
+            # 1. Lăn chuột
+            page.mouse.wheel(0, 1500)
+            # 2. Cuộn qua JavaScript
+            page.evaluate("window.scrollBy(0, 1500)")
+            # 3. Giả lập bấm phím PageDown
+            page.keyboard.press("PageDown")
+
+            # Nếu 2 lần chưa thấy thêm video, thử nhấp nhả cuộn nhẹ lên rồi cuộn mạnh xuống để trigger observer
+            if no_change_rounds >= 2:
+                page.evaluate("window.scrollBy(0, -300)")
+                page.wait_for_timeout(300)
+                page.evaluate("window.scrollBy(0, 1800)")
+                page.keyboard.press("End")
+        except Exception:
+            pass
+
+        # Chờ mạng tải thêm video mới (1.8s - 2.5s)
+        wait_time = int((1.8 + random.uniform(0.2, 0.7)) * 1000)
+        page.wait_for_timeout(wait_time)
         
     return video_links if limit == 0 else video_links[:limit]
 
-def extract_tiktok_links(playwright, url: str, limit: int = 0) -> List[str]:
+def extract_tiktok_links(playwright, url: str, limit: int = 0, exclude_links: set = None) -> List[str]:
     if "/video/" in url:
-        return [normalize_url(url)]
+        clean = normalize_url(url)
+        if exclude_links and clean in exclude_links:
+            print(f"⚠️ Video này ({clean}) đã nằm trong lịch sử đã quét/đăng.")
+        return [clean]
         
     print("[+] Khởi động trình duyệt TikTok (hiển thị để xử lý Captcha nếu có)...")
     browser = playwright.chromium.launch(headless=False, args=[
@@ -108,7 +147,7 @@ def extract_tiktok_links(playwright, url: str, limit: int = 0) -> List[str]:
             
         page.wait_for_timeout(2000)
         
-    links = scroll_and_collect(page, limit)
+    links = scroll_and_collect(page, limit, exclude_links=exclude_links)
     browser.close()
     return links
 

@@ -11,6 +11,7 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 import config
 import uploader
 import scraper
+import dedupe
 from playwright.sync_api import sync_playwright
 
 ctk.set_appearance_mode("dark")
@@ -138,10 +139,25 @@ class UCirclePipelineApp(ctk.CTk):
         self.min_res_entry.insert(0, str(config.MIN_RESOLUTION_HEIGHT))
         self.min_res_entry.pack(side="left")
 
+        # Tuỳ chọn chống trùng lịch sử
+        dedupe_box = ctk.CTkFrame(form_frame, fg_color="transparent")
+        dedupe_box.grid(row=4, column=0, columnspan=2, padx=15, pady=3, sticky="ew")
+        self.dedupe_history_var = ctk.BooleanVar(value=True)
+        ctk.CTkCheckBox(
+            dedupe_box, text="🛡️ Tự động né (bỏ qua) video đã từng quét / đăng trong lịch sử",
+            variable=self.dedupe_history_var, font=ctk.CTkFont(size=12, weight="bold")
+        ).pack(side="left")
+
+        ctk.CTkButton(
+            dedupe_box, text="🧹 Xoá lịch sử quét", width=130, height=28,
+            fg_color="#475569", hover_color="#334155", font=ctk.CTkFont(size=11),
+            command=self._clear_scanned_history
+        ).pack(side="right")
+
         # Số luồng quét
         MAX_THREADS = 8
         scrape_slider_box = ctk.CTkFrame(form_frame, fg_color="transparent")
-        scrape_slider_box.grid(row=4, column=0, columnspan=2, padx=15, pady=(5, 15), sticky="ew")
+        scrape_slider_box.grid(row=5, column=0, columnspan=2, padx=15, pady=(5, 15), sticky="ew")
         scrape_slider_box.grid_columnconfigure(0, weight=1)
         scrape_label_row = ctk.CTkFrame(scrape_slider_box, fg_color="transparent")
         scrape_label_row.grid(row=0, column=0, sticky="ew")
@@ -192,10 +208,29 @@ class UCirclePipelineApp(ctk.CTk):
         ctk.CTkButton(cookie_box, text="📂 Chọn file cookie...", width=140, height=34,
                       command=lambda: self._browse_cookie_file(self.upload_cookie_entry)).pack(side="left")
 
+        # Delay giữa các lần đăng (Min - Max)
+        delay_box = ctk.CTkFrame(form_frame, fg_color="transparent")
+        delay_box.grid(row=2, column=0, columnspan=2, padx=15, pady=5, sticky="w")
+        ctk.CTkLabel(delay_box, text="Thời gian chờ (delay) giữa 2 lần đăng:", font=ctk.CTkFont(weight="bold")).pack(side="left", padx=(0, 10))
+
+        ctk.CTkLabel(delay_box, text="Tối thiểu:").pack(side="left", padx=(0, 5))
+        self.min_delay_entry = ctk.CTkEntry(delay_box, width=70, height=34)
+        self.min_delay_entry.insert(0, str(getattr(config, "MIN_DELAY_SEC", 60)))
+        self.min_delay_entry.pack(side="left", padx=(0, 5))
+        ctk.CTkLabel(delay_box, text="giây", text_color="#94A3B8").pack(side="left", padx=(0, 15))
+
+        ctk.CTkLabel(delay_box, text="Tối đa:").pack(side="left", padx=(0, 5))
+        self.max_delay_entry = ctk.CTkEntry(delay_box, width=70, height=34)
+        self.max_delay_entry.insert(0, str(getattr(config, "MAX_DELAY_SEC", 70)))
+        self.max_delay_entry.pack(side="left", padx=(0, 5))
+        ctk.CTkLabel(delay_box, text="giây", text_color="#94A3B8").pack(side="left", padx=(0, 10))
+
+        ctk.CTkLabel(delay_box, text="(Random khoảng để tránh spam)", text_color="#64748B").pack(side="left")
+
         # Số luồng đăng
         MAX_THREADS = 8
         upload_slider_box = ctk.CTkFrame(form_frame, fg_color="transparent")
-        upload_slider_box.grid(row=2, column=0, columnspan=2, padx=15, pady=(5, 15), sticky="ew")
+        upload_slider_box.grid(row=3, column=0, columnspan=2, padx=15, pady=(5, 15), sticky="ew")
         upload_slider_box.grid_columnconfigure(0, weight=1)
         upload_label_row = ctk.CTkFrame(upload_slider_box, fg_color="transparent")
         upload_label_row.grid(row=0, column=0, sticky="ew")
@@ -276,6 +311,12 @@ class UCirclePipelineApp(ctk.CTk):
         except Exception as e:
             messagebox.showerror("Lỗi", f"Không thể lưu file: {e}")
 
+    def _clear_scanned_history(self):
+        if messagebox.askyesno("Xác nhận", "Bạn có chắc muốn xoá toàn bộ lịch sử các video đã quét?\n(Sau khi xoá, tool có thể quét lại các video cũ từ đầu)."):
+            dedupe.save_scanned_set(set())
+            self.write_log("🧹 Đã làm sạch lịch sử video đã quét.")
+            messagebox.showinfo("Thành công", "Đã xoá bộ nhớ lịch sử quét!")
+
     def _login_ucircle(self):
         if self.is_running:
             return
@@ -322,6 +363,7 @@ class UCirclePipelineApp(ctk.CTk):
         browser_cookie = self.browser_menu.get()
         if browser_cookie == "Không dùng":
             browser_cookie = None
+        exclude_history = self.dedupe_history_var.get()
 
         self._set_busy(True, "🟡 Đang quét...", "#F59E0B")
         self.log_textbox.delete("1.0", tk.END)
@@ -341,6 +383,7 @@ class UCirclePipelineApp(ctk.CTk):
                         scrape_threads=scrape_threads, min_views=min_views,
                         min_likes=min_likes, min_resolution=min_res,
                         cookies_path=cookies_path, browser_cookie=browser_cookie,
+                        exclude_history=exclude_history,
                     )
                 print(f"\n[+] Xong: quét {result['scanned']}, đạt {result['passed']}, loại {result['rejected']}.")
             except Exception as e:
@@ -402,6 +445,11 @@ class UCirclePipelineApp(ctk.CTk):
     def _run_upload_from_excel(self, excel_path: str):
         upload_threads = int(self.upload_threads_slider.get())
         config.IDENTITY_NAME = self.identity_entry.get().strip()
+        config.MIN_DELAY_SEC = self._int_or(self.min_delay_entry, 60)
+        config.MAX_DELAY_SEC = self._int_or(self.max_delay_entry, 70)
+        if config.MIN_DELAY_SEC > config.MAX_DELAY_SEC:
+            config.MIN_DELAY_SEC, config.MAX_DELAY_SEC = config.MAX_DELAY_SEC, config.MIN_DELAY_SEC
+
         cookies_path = self.upload_cookie_entry.get().strip() or None
         browser_cookie = self.upload_browser_menu.get()
         if browser_cookie == "Không dùng":

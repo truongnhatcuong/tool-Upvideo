@@ -5,6 +5,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 import config
 import tiktok_extractor
 import excel_store
+import dedupe
 
 
 def _fetch_metadata_staggered(link, cookies_path, browser_cookie):
@@ -37,6 +38,7 @@ def scrape_and_filter(
     min_resolution: int = None,
     cookies_path: str = None,
     browser_cookie: str = None,
+    exclude_history: bool = True,
     on_progress=None,
 ) -> dict:
     """Quét link TikTok (Profile hoặc Từ khoá), lấy metadata song song, lọc chất lượng,
@@ -51,11 +53,15 @@ def scrape_and_filter(
         if on_progress:
             on_progress(msg)
 
+    exclude_links = dedupe.load_all_seen_links() if exclude_history else set()
     url = tiktok_extractor.build_search_url(source) if is_keyword else source
 
     log(f"[+] Đang quét link từ: {url}")
-    links = tiktok_extractor.extract_tiktok_links(playwright, url, limit)
-    log(f"[+] Tìm thấy {len(links)} link. Đang lấy metadata song song ({scrape_threads} luồng)...")
+    if exclude_links:
+        log(f"[!] Đã nạp {len(exclude_links)} video đã quét/đăng từ trước để tự động né trùng lặp.")
+
+    links = tiktok_extractor.extract_tiktok_links(playwright, url, limit, exclude_links=exclude_links)
+    log(f"[+] Tìm thấy {len(links)} link mới. Đang lấy metadata song song ({scrape_threads} luồng)...")
 
     passed_rows = []
     rejected = 0
@@ -88,6 +94,8 @@ def scrape_and_filter(
                 log(f"[{i}/{len(links)}] ⏭️ Loại (không đạt ngưỡng): {link}")
 
     added = excel_store.append_records(passed_rows)
+    if passed_rows:
+        dedupe.mark_as_scanned([r["link"] for r in passed_rows])
     log(f"[+] Đã lưu {added} video mới vào {config.EXCEL_PATH} (loại {rejected} video).")
 
     return {"scanned": len(links), "passed": added, "rejected": rejected}

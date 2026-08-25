@@ -28,7 +28,11 @@ def log(msg: str, on_progress=None):
 
 
 def random_delay_sec():
-    return random.randint(config.MIN_DELAY_SEC, config.MAX_DELAY_SEC)
+    min_d = getattr(config, "MIN_DELAY_SEC", 60)
+    max_d = getattr(config, "MAX_DELAY_SEC", 70)
+    if min_d > max_d:
+        min_d, max_d = max_d, min_d
+    return random.randint(min_d, max_d)
 
 
 def ensure_logged_in(playwright):
@@ -225,6 +229,11 @@ def run_uploads(threads: int = None, cookies_path: str = None, browser_cookie: s
                 mark_as_posted(record["link"], posted_set)
             else:
                 failed_count += 1
+
+        delay = random_delay_sec()
+        if delay > 0:
+            log(f"⏳ Nghỉ {delay}s (delay an toàn) trước video tiếp theo...", on_progress)
+            time.sleep(delay)
 
     with ThreadPoolExecutor(max_workers=threads) as pool:
         list(pool.map(wrapped, pending))
