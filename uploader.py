@@ -89,6 +89,36 @@ def _select_identity(page, identity_input: str):
     log(f"⚠️ Không tìm thấy nút chọn tư cách đăng cho '{identity_input}'.")
 
 
+def _set_crosspost(page, enable: bool = True):
+    """Bật hoặc tắt tùy chọn 'Lên bảng tin' (Crosspost to newsfeed)."""
+    sel_btn = config.SELECTORS.get("crosspost_button", 'button[data-wavee-upload-crosspost]')
+    try:
+        btn = page.query_selector(sel_btn)
+        if not btn:
+            btn = page.query_selector('button[role="switch"]:has-text("Lên bảng tin")')
+
+        if btn:
+            try:
+                btn.scroll_into_view_if_needed()
+            except Exception:
+                pass
+            crosspost_val = btn.get_attribute("data-wavee-upload-crosspost")
+            aria_checked = btn.get_attribute("aria-checked")
+            is_on = (crosspost_val == "on") or (aria_checked == "true")
+
+
+            if enable and not is_on:
+                btn.click()
+                log("📣 Đã BẬT nút 'Lên bảng tin'")
+                page.wait_for_timeout(300)
+            elif not enable and is_on:
+                btn.click()
+                log("🔕 Đã TẮT nút 'Lên bảng tin'")
+                page.wait_for_timeout(300)
+    except Exception as e:
+        log(f"⚠️ Thao tác nút 'Lên bảng tin': {e}")
+
+
 def upload_one_video(page, file_path: str, record: dict):
     description, hashtags = caption_from_record(record)
     sel = config.SELECTORS
@@ -123,7 +153,12 @@ def upload_one_video(page, file_path: str, record: dict):
             except Exception as e:
                 log(f"⚠️ Lỗi khi thêm hashtag {tag}: {e}")
 
+    # Xử lý nút Lên bảng tin
+    crosspost_flag = getattr(config, "CROSSPOST_TO_FEED", True)
+    _set_crosspost(page, crosspost_flag)
+
     page.click(sel["submit_button"])
+
     page.wait_for_selector(sel["success_indicator"], timeout=120_000)
     log(f"✅ Đăng thành công: {file_path}")
 

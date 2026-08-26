@@ -225,12 +225,19 @@ class UCirclePipelineApp(ctk.CTk):
         self.max_delay_entry.pack(side="left", padx=(0, 5))
         ctk.CTkLabel(delay_box, text="giây", text_color="#94A3B8").pack(side="left", padx=(0, 10))
 
-        ctk.CTkLabel(delay_box, text="(Random khoảng để tránh spam)", text_color="#64748B").pack(side="left")
+        # Tùy chọn Crosspost (Lên bảng tin)
+        crosspost_box = ctk.CTkFrame(form_frame, fg_color="transparent")
+        crosspost_box.grid(row=3, column=0, columnspan=2, padx=15, pady=5, sticky="w")
+        self.crosspost_var = ctk.BooleanVar(value=getattr(config, "CROSSPOST_TO_FEED", True))
+        ctk.CTkCheckBox(
+            crosspost_box, text="📣 Lên bảng tin (Bật/tắt nút đăng lên bảng tin)",
+            variable=self.crosspost_var, font=ctk.CTkFont(size=13, weight="bold")
+        ).pack(side="left")
 
         # Số luồng đăng
         MAX_THREADS = 8
         upload_slider_box = ctk.CTkFrame(form_frame, fg_color="transparent")
-        upload_slider_box.grid(row=3, column=0, columnspan=2, padx=15, pady=(5, 15), sticky="ew")
+        upload_slider_box.grid(row=4, column=0, columnspan=2, padx=15, pady=(5, 15), sticky="ew")
         upload_slider_box.grid_columnconfigure(0, weight=1)
         upload_label_row = ctk.CTkFrame(upload_slider_box, fg_color="transparent")
         upload_label_row.grid(row=0, column=0, sticky="ew")
@@ -244,6 +251,7 @@ class UCirclePipelineApp(ctk.CTk):
         )
         self.upload_threads_slider.set(config.UPLOAD_THREADS_DEFAULT)
         self.upload_threads_slider.grid(row=1, column=0, sticky="ew", pady=(4, 0))
+
 
         # ---- Action Buttons (tab đăng) ----
         action_frame = ctk.CTkFrame(parent, fg_color="transparent")
@@ -445,10 +453,12 @@ class UCirclePipelineApp(ctk.CTk):
     def _run_upload_from_excel(self, excel_path: str):
         upload_threads = int(self.upload_threads_slider.get())
         config.IDENTITY_NAME = self.identity_entry.get().strip()
+        config.CROSSPOST_TO_FEED = self.crosspost_var.get()
         config.MIN_DELAY_SEC = self._int_or(self.min_delay_entry, 60)
         config.MAX_DELAY_SEC = self._int_or(self.max_delay_entry, 70)
         if config.MIN_DELAY_SEC > config.MAX_DELAY_SEC:
             config.MIN_DELAY_SEC, config.MAX_DELAY_SEC = config.MAX_DELAY_SEC, config.MIN_DELAY_SEC
+
 
         cookies_path = self.upload_cookie_entry.get().strip() or None
         browser_cookie = self.upload_browser_menu.get()

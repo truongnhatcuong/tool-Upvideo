@@ -44,8 +44,12 @@ SELECTORS = {
     "description_box": 'textarea[data-wavee-upload-caption="true"]',
     "hashtag_add_button": 'button[data-wavee-upload-add-tag="true"]',
     "submit_button": 'button[data-wavee-upload-post="true"]', # Nút "Đăng" cuối cùng
+    "crosspost_button": 'button[data-wavee-upload-crosspost]', # Nút "Lên bảng tin"
     "success_indicator": 'button[data-wavee-upload-again="true"]', # Nút "Đăng video khác" làm dấu hiệu thành công
 }
+
+# Tùy chọn đăng lên Bảng tin (True = Bật, False = Tắt)
+CROSSPOST_TO_FEED = True
 
 # ---- Cấu hình vòng lặp ----
 MIN_DELAY_SEC = 60     # delay tối thiểu giữa 2 lần đăng (giảm xuống 2 giây để tăng tốc)

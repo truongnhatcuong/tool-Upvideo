@@ -1,0 +1,18 @@
+# Ignore environment variables files
+.env
+
+# Python caching
+__pycache__/
+*.pyc
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# Ignore session and cookies data
+data/session.json
+data/debug/
+
+# Keep data directory but ignore runtime changes if needed
+# (You can adjust this depending on if you want to push data files)
