@@ -59,30 +59,49 @@ _UUID_RE_STR = r"[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-
 
 
 def _select_identity(page, identity_input: str):
-    """Chọn tư cách đăng (fanpage/cá nhân). Chấp nhận: tên hiển thị (vd 'Tôi'),
-    ID (uuid) thẳng, hoặc nguyên link dạng https://ucircle.net/app/c/<id> (tự tách id ra)."""
+    """Chọn tư cách đăng (fanpage/cá nhân). Chấp nhận: tên hiển thị (vd 'Tôi', 'Gái Xinh', 'xe độ chiến'),
+    ID (uuid) thẳng, hoặc nguyên link dạng https://ucircle.net/app/c/<id>."""
     import re
+    import identity_manager
 
     identity_input = (identity_input or "").strip()
-    match = re.search(_UUID_RE_STR, identity_input)
-    identity_id = match.group(0) if match else None
+    if not identity_input:
+        return
 
-    if identity_id:
-        candidates = [
-            f'button[role="radio"][value="{identity_id}"]',
-            f'button[role="radio"][data-value="{identity_id}"]',
-            f'button[role="radio"][id="{identity_id}"]',
-            f'button[role="radio"]:has(a[href*="{identity_id}"])',
-            f'button[role="radio"][data-wavee-identity-id="{identity_id}"]',
-            f'button[role="radio"][data-wavee-identity-option="{identity_id}"]',
-        ]
-    else:
-        candidates = [f'button[role="radio"]:has-text("{identity_input}")']
+    info = identity_manager.resolve_identity_info(identity_input)
+    target_id = info.get("id") or identity_input
+    target_name = info.get("name") or identity_input
+
+    candidates = []
+    if str(target_id).lower() in ("me", "tôi", "toi"):
+        candidates.extend([
+            'button[role="radio"][data-wavee-identity-option="me"]',
+            'button[role="radio"]:has-text("Tôi")',
+        ])
+    elif re.search(_UUID_RE_STR, str(target_id)):
+        match_id = re.search(_UUID_RE_STR, str(target_id)).group(0)
+        candidates.extend([
+            f'button[role="radio"][data-wavee-identity-option="{match_id}"]',
+            f'button[role="radio"][value="{match_id}"]',
+            f'button[role="radio"][data-value="{match_id}"]',
+            f'button[role="radio"][id="{match_id}"]',
+            f'button[role="radio"]:has(a[href*="{match_id}"])',
+            f'button[role="radio"][data-wavee-identity-id="{match_id}"]',
+        ])
+
+    if target_name:
+        candidates.append(f'button[role="radio"]:has-text("{target_name}")')
+    if target_id and target_id != target_name:
+        candidates.append(f'button[role="radio"]:has-text("{target_id}")')
 
     for selector in candidates:
         try:
-            page.click(selector, timeout=2000)
-            return
+            btn = page.query_selector(selector)
+            if btn:
+                btn.scroll_into_view_if_needed()
+                btn.click()
+                log(f"✅ Đã chọn tư cách đăng: {target_name} [{target_id}]")
+                return
         except Exception:
             continue
 
@@ -119,11 +138,12 @@ def _set_crosspost(page, enable: bool = True):
         log(f"⚠️ Thao tác nút 'Lên bảng tin': {e}")
 
 
-def upload_one_video(page, file_path: str, record: dict):
+def upload_one_video(page, file_path: str, record: dict, identity: str = None):
     description, hashtags = caption_from_record(record)
     sel = config.SELECTORS
 
-    log(f"Đang đăng: {file_path}")
+    target_identity = identity or record.get("target_circle") or getattr(config, "IDENTITY_NAME", "me")
+    log(f"Đang đăng: {file_path} -> Kênh UCircle: [{target_identity}]")
     page.goto(config.UPLOAD_URL)
 
     if "create_button" in sel:
@@ -137,7 +157,7 @@ def upload_one_video(page, file_path: str, record: dict):
     page.set_input_files(sel["file_input"], file_path)
     page.wait_for_timeout(1000)
 
-    _select_identity(page, getattr(config, "IDENTITY_NAME", "Tôi"))
+    _select_identity(page, target_identity)
 
     page.fill(sel["description_box"], description)
 
@@ -180,9 +200,9 @@ def _dump_debug_screenshot(page, link: str, on_progress=None):
         pass
 
 
-def _upload_worker(record: dict, cookies_path: str, browser_cookie: str, on_progress=None):
+def _upload_worker(record: dict, target_identity: str, cookies_path: str, browser_cookie: str, on_progress=None):
     """Chạy trong 1 thread riêng: tự mở Playwright context riêng (không share page giữa các thread).
-    Tải video từ link về file tạm, đăng lên UCircle, rồi xoá file tạm ngay (không giữ lại gì trên máy)."""
+    Tải video từ link về file tạm, đăng lên UCircle với target_identity, rồi xoá file tạm ngay."""
     link = record["link"]
     os.makedirs(config.VIDEO_FOLDER, exist_ok=True)
     temp_path = os.path.join(config.VIDEO_FOLDER, f"tmp_{abs(hash(link))}.mp4")
@@ -205,18 +225,17 @@ def _upload_worker(record: dict, cookies_path: str, browser_cookie: str, on_prog
 
         for attempt in range(1, config.MAX_RETRIES_PER_VIDEO + 1):
             try:
-                upload_one_video(page, temp_path, record)
+                upload_one_video(page, temp_path, record, identity=target_identity)
                 success = True
                 break
             except PWTimeout:
-                log(f"❌ Lần {attempt}: hết thời gian chờ xác nhận đăng cho {link}", on_progress)
+                log(f"❌ Lần {attempt}: hết thời gian chờ xác nhận đăng cho {link} (kênh [{target_identity}])", on_progress)
                 _dump_debug_screenshot(page, link, on_progress)
             except Exception as e:
-                log(f"❌ Lần {attempt}: lỗi khi đăng {link} -> {e}", on_progress)
+                log(f"❌ Lần {attempt}: lỗi khi đăng {link} (kênh [{target_identity}]) -> {e}", on_progress)
                 _dump_debug_screenshot(page, link, on_progress)
 
         if not success:
-            # Giữ trình duyệt mở thêm vài giây để bạn kịp xem màn hình UCircle đang dừng ở bước nào.
             page.wait_for_timeout(4000)
 
         browser.close()
@@ -227,16 +246,30 @@ def _upload_worker(record: dict, cookies_path: str, browser_cookie: str, on_prog
     return success
 
 
-def run_uploads(threads: int = None, cookies_path: str = None, browser_cookie: str = None, on_progress=None, excel_path: str = None):
-    """Đọc các record 'pending' trong Excel, đăng lên UCircle song song bằng nhiều luồng:
+def run_uploads(
+    threads: int = None,
+    cookies_path: str = None,
+    browser_cookie: str = None,
+    on_progress=None,
+    excel_path: str = None,
+    identities: list = None,
+    distribution_mode: str = None,
+):
+    """Đọc các record 'pending' trong Excel, đăng lên 1 hoặc NHIỀU kênh UCircle song song bằng nhiều luồng:
     mỗi video được tải về file tạm, đăng lên, rồi xoá file tạm ngay (không giữ lại gì trên máy).
-    Mỗi luồng tự mở Playwright browser/context riêng (dùng chung storage_state đã login).
-
-    excel_path: nếu truyền vào (vd người dùng tự chọn file qua GUI), dùng file đó thay vì
-    config.EXCEL_PATH mặc định."""
+    
+    identities: danh sách ID/UUID kênh được chọn đăng.
+    distribution_mode: 'round_robin' (xoay vòng chia đều) hoặc 'all' (đăng mỗi video lên tất cả các kênh đã chọn).
+    excel_path: nếu truyền vào, dùng file đó thay vì config.EXCEL_PATH mặc định."""
     threads = threads or config.UPLOAD_THREADS_DEFAULT
     if excel_path:
         config.EXCEL_PATH = excel_path
+
+    target_identities = identities or getattr(config, "SELECTED_IDENTITIES", [getattr(config, "IDENTITY_NAME", "me")])
+    if not target_identities:
+        target_identities = ["me"]
+
+    mode = distribution_mode or getattr(config, "DISTRIBUTION_MODE", "round_robin")
 
     with sync_playwright() as p:
         ensure_logged_in(p)
@@ -248,30 +281,103 @@ def run_uploads(threads: int = None, cookies_path: str = None, browser_cookie: s
         log("⚠️ Không còn video 'pending' nào trong Excel để đăng.", on_progress)
         return {"total": 0, "success": 0, "failed": 0}
 
-    log(f"[+] Bắt đầu đăng {len(pending)} video lên UCircle với {threads} luồng...", on_progress)
+    # Kiểm tra xem các record có target_circle riêng không (Chế độ 1 TikTok -> 1 UCircle)
+    has_individual_targets = any(bool(str(r.get("target_circle", "")).strip()) for r in pending)
+
+    # Chia video theo từng Đợt (Round): trong mỗi đợt, tất cả các Circle đăng ĐỒNG THỜI
+    rounds = []
+
+    if has_individual_targets:
+        # Gom video theo từng Circle
+        from collections import defaultdict
+        circle_queues = defaultdict(list)
+        for r in pending:
+            custom_id = str(r.get("target_circle", "")).strip()
+            assigned_id = custom_id if custom_id else target_identities[0]
+            circle_queues[assigned_id].append(r)
+
+        max_queue_len = max(len(q) for q in circle_queues.values()) if circle_queues else 0
+        log(f"\n[+] 🎯 PHÁT HIỆN CẤU HÌNH: 1 TikTok -> 1 UCircle ({len(circle_queues)} Kênh có video cần đăng).", on_progress)
+
+        # Xếp các đợt: mỗi đợt lấy 1 video từ mỗi Circle để chạy đồng thời
+        for r_idx in range(max_queue_len):
+            round_batch = []
+            for cid, q in circle_queues.items():
+                if r_idx < len(q):
+                    round_batch.append((q[r_idx], cid))
+            if round_batch:
+                rounds.append(round_batch)
+
+    elif mode == "all":
+        # Mỗi video đăng lên toàn bộ các kênh đã chọn đồng thời
+        log(f"\n[+] Chế độ: ĐĂNG TẤT CẢ ({len(pending)} video x {len(target_identities)} kênh).", on_progress)
+        for r in pending:
+            round_batch = [(r, id_val) for id_val in target_identities]
+            rounds.append(round_batch)
+
+    else:  # round_robin
+        log(f"\n[+] Chế độ: XOAY VÒNG ({len(pending)} video chia đều cho {len(target_identities)} kênh).", on_progress)
+        step = len(target_identities)
+        for i in range(0, len(pending), step):
+            chunk = pending[i : i + step]
+            round_batch = []
+            for idx, r in enumerate(chunk):
+                assigned_id = target_identities[idx % len(target_identities)]
+                round_batch.append((r, assigned_id))
+            if round_batch:
+                rounds.append(round_batch)
+
+    total_tasks = sum(len(b) for b in rounds)
+    log(f"[+] Tổng cộng {total_tasks} lượt đăng được chia làm {len(rounds)} đợt chạy đồng thời.", on_progress)
 
     success_count = 0
     failed_count = 0
     lock = threading.Lock()
+    task_posted_tracker = {}
 
-    def wrapped(record):
+    def upload_task(task_item):
         nonlocal success_count, failed_count
-        time.sleep(random.uniform(0, 2))  # tránh mọi luồng cùng bấm cùng lúc
-        ok = _upload_worker(record, cookies_path, browser_cookie, on_progress)
+        record, id_val = task_item
+        time.sleep(random.uniform(0.1, 1.5))  # Tránh các luồng cùng bấm cùng một millisecond
+        ok = _upload_worker(record, id_val, cookies_path, browser_cookie, on_progress)
         with lock:
             if ok:
                 success_count += 1
-                mark_as_posted(record["link"], posted_set)
+                link = record["link"]
+                task_posted_tracker[link] = task_posted_tracker.get(link, 0) + 1
+                needed = 1 if (has_individual_targets or mode != "all") else len(target_identities)
+                if task_posted_tracker[link] >= needed:
+                    mark_as_posted(link, posted_set)
             else:
                 failed_count += 1
+        return ok
 
-        delay = random_delay_sec()
-        if delay > 0:
-            log(f"⏳ Nghỉ {delay}s (delay an toàn) trước video tiếp theo...", on_progress)
+    # THỰC THI TỪNG ĐỢT: CÁC CIRCLE CHẠY ĐỒNG THỜI TRONG ĐỢT
+    for round_idx, round_batch in enumerate(rounds, 1):
+        log("\n" + "=" * 75, on_progress)
+        log(f"🚀 [ĐỢT #{round_idx}/{len(rounds)}] BẮT ĐẦU ĐĂNG ĐỒNG THỜI {len(round_batch)} VIDEO CHO CÁC CIRCLE:", on_progress)
+        for rec, id_val in round_batch:
+            log(f"   • Kênh [{id_val}]: {rec.get('link')}", on_progress)
+        log("=" * 75, on_progress)
+
+        # Số luồng trong đợt = tối thiểu bằng số circle trong đợt để chạy đồng thời
+        concurrency = max(len(round_batch), threads)
+        with ThreadPoolExecutor(max_workers=concurrency) as pool:
+            list(pool.map(upload_task, round_batch))
+
+        # Sau khi cả đợt đã đăng xong: kiểm tra xem có còn đợt tiếp theo không
+        if round_idx < len(rounds):
+            delay = random_delay_sec()
+            remaining_rounds = len(rounds) - round_idx
+            log("\n" + "-" * 75, on_progress)
+            log(f"✅ [ĐỢT #{round_idx} HOÀN TẤT] Cả {len(round_batch)} Circle đã đăng xong video đợt này.", on_progress)
+            log(f"⏳ Còn {remaining_rounds} đợt nữa. Tạm dừng nghỉ {delay}s (thời gian delay bạn đã cài đặt) trước khi tiếp tục...", on_progress)
+            log("-" * 75 + "\n", on_progress)
             time.sleep(delay)
 
-    with ThreadPoolExecutor(max_workers=threads) as pool:
-        list(pool.map(wrapped, pending))
+    log("\n" + "=" * 75, on_progress)
+    log(f"🎉 TẤT CẢ CÁC ĐỢT ĐÃ HOÀN TẤT!", on_progress)
+    log(f"📊 Kết quả: {success_count}/{total_tasks} lượt đăng thành công, {failed_count} thất bại.", on_progress)
+    log("=" * 75 + "\n", on_progress)
 
-    log(f"[+] Hoàn tất: {success_count} thành công, {failed_count} thất bại.", on_progress)
-    return {"total": len(pending), "success": success_count, "failed": failed_count}
+    return {"total": total_tasks, "success": success_count, "failed": failed_count}

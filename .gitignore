@@ -13,6 +13,11 @@ env/
 # Ignore session and cookies data
 data/session.json
 data/debug/
+data/tiktok_profile/
+data/temp_videos/
 
-# Keep data directory but ignore runtime changes if needed
-# (You can adjust this depending on if you want to push data files)
+# Logs and OS junk
+*.log
+*.tmp
+.DS_Store
+

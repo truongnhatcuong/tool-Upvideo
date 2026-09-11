@@ -5,6 +5,7 @@ import random
 import subprocess
 from urllib.parse import urlsplit, urlunsplit
 from typing import List
+import config
 
 def normalize_url(url: str) -> str:
     parts = urlsplit(url)
@@ -16,7 +17,7 @@ def build_search_url(keyword: str) -> str:
     from urllib.parse import quote
     return f"https://www.tiktok.com/search?q={quote(keyword)}"
 
-def scroll_and_collect(page, limit: int = 0, exclude_links: set = None) -> List[str]:
+def scroll_and_collect_detailed(page, limit: int = 0, exclude_links: set = None) -> tuple[List[str], dict]:
     exclude_links = exclude_links or set()
     print("[+] Bắt đầu cuộn trang và quét video TikTok...")
     if exclude_links:
@@ -68,7 +69,8 @@ def scroll_and_collect(page, limit: int = 0, exclude_links: set = None) -> List[
 
         if limit > 0 and len(video_links) >= limit:
             print(f"[+] Đã đạt đủ số lượng video MỚI ({limit} video). Dừng cuộn!")
-            return video_links[:limit]
+            details = {"raw_found": len(seen), "skipped_old": skipped_old, "new_found": limit}
+            return video_links[:limit], details
             
         if new_count > current_count:
             no_change_rounds = 0
@@ -101,54 +103,262 @@ def scroll_and_collect(page, limit: int = 0, exclude_links: set = None) -> List[
         wait_time = int((1.8 + random.uniform(0.2, 0.7)) * 1000)
         page.wait_for_timeout(wait_time)
         
-    return video_links if limit == 0 else video_links[:limit]
+    final_links = video_links if limit == 0 else video_links[:limit]
+    details = {
+        "raw_found": len(seen),
+        "skipped_old": skipped_old,
+        "new_found": len(final_links),
+    }
+    return final_links, details
 
-def extract_tiktok_links(playwright, url: str, limit: int = 0, exclude_links: set = None) -> List[str]:
+def scroll_and_collect(page, limit: int = 0, exclude_links: set = None) -> List[str]:
+    links, _ = scroll_and_collect_detailed(page, limit, exclude_links=exclude_links)
+    return links
+
+def is_captcha_active(page) -> bool:
+    """Kiểm tra xem Captcha TikTok có thực sự ĐANG HIỂN THỊ (visible) trên màn hình hay không."""
+    try:
+        selectors = [
+            "#captcha-verify-container-main-page:visible",
+            "#captcha_slide_button:visible",
+            ".secsdk-captcha-drag-icon:visible",
+            ".captcha_verify_container:visible",
+            "[id*='captcha-verify']:visible",
+            "div[class*='captcha']:visible",
+            "div[class*='verify-img']:visible",
+            "div[class*='secsdk']:visible",
+            "div.verify-wrap:visible",
+        ]
+        for s in selectors:
+            try:
+                if page.locator(s).count() > 0:
+                    return True
+            except Exception:
+                pass
+
+        # Kiểm tra văn bản tiếng Việt & tiếng Anh đặc trưng của khung Captcha
+        captcha_texts = [
+            "text='Kéo thanh trượt để hoàn thành câu đố'",
+            "text='Drag the slider to fit the puzzle'",
+            "text='Chọn 2 đối tượng có hình dạng giống nhau'",
+            "text='Select 2 objects with the same shape'",
+            "text='Xác minh để tiếp tục'",
+            "text='Verify to continue'",
+        ]
+        for t in captcha_texts:
+            try:
+                loc = page.locator(t)
+                if loc.count() > 0 and loc.first.is_visible():
+                    return True
+            except Exception:
+                pass
+    except Exception:
+        pass
+    return False
+
+
+def extract_tiktok_links_detailed(playwright, url: str, limit: int = 0, exclude_links: set = None) -> tuple[List[str], dict]:
+    """Quét link video TikTok và trả về kèm thông tin chẩn đoán lỗi (status, reason, raw_found, skipped_old).
+    Hỗ trợ hồ sơ duyệt persistent và kiên nhẫn chờ người dùng giải Captcha xong mới bắt đầu quét."""
     if "/video/" in url:
         clean = normalize_url(url)
-        if exclude_links and clean in exclude_links:
+        is_dup = bool(exclude_links and clean in exclude_links)
+        if is_dup:
             print(f"⚠️ Video này ({clean}) đã nằm trong lịch sử đã quét/đăng.")
-        return [clean]
+            return [], {
+                "status": "all_duplicate",
+                "reason": "Video đơn này đã nằm trong lịch sử đã quét/đăng",
+                "raw_found": 1,
+                "skipped_old": 1,
+            }
+        return [clean], {"status": "success", "reason": "Video đơn hợp lệ", "raw_found": 1, "skipped_old": 0}
         
-    print("[+] Khởi động trình duyệt TikTok (hiển thị để xử lý Captcha nếu có)...")
-    browser = playwright.chromium.launch(headless=False, args=[
-        "--disable-blink-features=AutomationControlled",
-        "--no-sandbox"
-    ])
-    context = browser.new_context(
-        viewport={"width": 1280, "height": 900},
-        locale="vi-VN",
-        user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+    profile_dir = getattr(config, "TIKTOK_PROFILE_DIR", os.path.join(config.BASE_DIR, "data", "tiktok_profile"))
+    os.makedirs(profile_dir, exist_ok=True)
+
+    is_mac = sys.platform == "darwin"
+    ua = (
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+        if is_mac else
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
     )
-    page = context.new_page()
-    page.add_init_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+
+    print("[+] Mở trình duyệt TikTok (hồ sơ session data/tiktok_profile)...")
+    context = playwright.chromium.launch_persistent_context(
+        profile_dir,
+        headless=False,
+        args=[
+            "--disable-blink-features=AutomationControlled",
+            "--no-sandbox",
+            "--disable-infobars",
+        ],
+        viewport={"width": 1280, "height": 850},
+        user_agent=ua,
+        locale="vi-VN",
+    )
+    page = context.pages[0] if context.pages else context.new_page()
+    page.add_init_script("""
+        Object.defineProperty(navigator, 'webdriver', {get: () => undefined});
+        window.chrome = { runtime: {} };
+    """)
+    try:
+        from playwright_stealth import Stealth
+        Stealth().apply_stealth_sync(page)
+    except Exception:
+        pass
     
     print(f"[+] Đang truy cập TikTok: {url}")
-    page.goto(url, wait_until="domcontentloaded", timeout=60000)
-    page.wait_for_timeout(3000)
-    
-    # Kiểm tra captcha hoặc chờ tải video
-    print("[+] Đang chờ giao diện tải danh sách video (Nếu có Captcha, vui lòng giải)...")
-    for i in range(45): # Chờ tối đa 90 giây
-        error_btn = page.locator("button:has-text('Làm mới'), button:has-text('Refresh')")
-        if error_btn.count() > 0 or page.locator("text='Đã xảy ra lỗi'").count() > 0:
-            if i % 3 == 0:
-                print("[!] TikTok báo lỗi tải trang, đang thử tự động làm mới...")
-            try:
-                error_btn.first.click(timeout=1000)
-            except:
-                pass
-                
-        # Kiểm tra xem video đã hiện ra chưa
-        video_count = page.locator("a[href*='/video/']").count()
-        if video_count > 0:
-            print("[+] Đã tải xong giao diện, bắt đầu quét video!")
-            break
-            
-        page.wait_for_timeout(2000)
+    detected_issue = None
+    links = []
+    info = {"status": "unknown", "reason": "", "raw_found": 0, "skipped_old": 0}
+
+    try:
+        try:
+            page.goto(url, wait_until="domcontentloaded", timeout=60000)
+        except Exception as e_goto:
+            print(f"[!] Đang tải trang TikTok ({e_goto}), tiếp tục kiểm tra...")
+
+        page.wait_for_timeout(2500)
         
-    links = scroll_and_collect(page, limit, exclude_links=exclude_links)
-    browser.close()
+        saw_captcha = False
+        start_time = time.time()
+        last_log_time = 0
+        captcha_start_time = 0
+        max_captcha_wait = 300  # Cho tối đa 5 phút để người dùng giải captcha thoải mái
+
+        print("[+] Đang kiểm tra giao diện và nạp danh sách video...")
+        while True:
+            # 1. Kiểm tra tài khoản riêng tư
+            if page.locator("text='Tài khoản này là riêng tư', text='This account is private'").count() > 0:
+                print(f"❌ [LỖI KÊNH] Kênh TikTok này đang cài đặt Riêng Tư (Private) -> Không thể xem video: {url}")
+                detected_issue = "Tài khoản riêng tư (Private) - không thể truy cập video"
+                break
+
+            # 2. Kiểm tra tài khoản không tồn tại
+            if page.locator("text='Không thể tìm thấy tài khoản này', text='Couldn\\'t find this account'").count() > 0:
+                print(f"❌ [LỖI KÊNH] Không tìm thấy tài khoản TikTok này (Link sai hoặc tài khoản bị khoá): {url}")
+                detected_issue = "Không tìm thấy tài khoản (Link sai hoặc tài khoản bị khoá)"
+                break
+
+            # 3. Kiểm tra xem Captcha có đang hiển thị trên màn hình không
+            if is_captcha_active(page):
+                now = time.time()
+                if not saw_captcha:
+                    saw_captcha = True
+                    captcha_start_time = now
+                    last_log_time = now
+                    print("\n" + "=" * 72)
+                    print("⚠️ [PHÁT HIỆN CAPTCHA TIKTOK]: Trình duyệt đang yêu cầu giải câu đố!")
+                    print("👉 Cửa sổ trình duyệt TikTok đã hiển thị trên màn hình.")
+                    print("👉 Bạn hãy kéo thanh trượt / chọn hình để hoàn thành Captcha.")
+                    print("⏳ Tool SẼ KIÊN NHẪN CHỜ BẠN GIẢI XONG (KHÔNG TỰ TẮT).")
+                    print("   Sau khi bạn giải xong, tool mới bắt đầu quét video!")
+                    print("=" * 72 + "\n")
+                    try:
+                        page.bring_to_front()
+                        if is_mac:
+                            subprocess.run(["osascript", "-e", 'tell application "Google Chrome" to activate'], capture_output=True)
+                            subprocess.run(["osascript", "-e", 'tell application "Chromium" to activate'], capture_output=True)
+                    except Exception:
+                        pass
+                else:
+                    if now - last_log_time >= 8:
+                        last_log_time = now
+                        elapsed = int(now - captcha_start_time)
+                        print(f"⏳ Đang chờ bạn kéo thanh trượt giải Captcha trên trình duyệt ({elapsed}s)...")
+
+                if time.time() - captcha_start_time > max_captcha_wait:
+                    print("❌ Đã quá thời gian chờ giải Captcha (5 phút).")
+                    detected_issue = "Vướng Captcha TikTok chưa giải kịp trên trình duyệt (quá 5 phút)"
+                    break
+
+                page.wait_for_timeout(2000)
+                continue
+
+            # Nếu trước đó có Captcha và giờ Captcha đã biến mất -> Người dùng vừa giải xong!
+            if saw_captcha:
+                print("\n🎉 BẠN ĐÃ GIẢI CAPTCHA THÀNH CÔNG! Đang nạp danh sách video...")
+                page.wait_for_timeout(4000)
+                saw_captcha = False
+                start_time = time.time() # Reset đồng hồ tính giờ quét sau khi giải Captcha
+                
+                # Nếu video chưa hiện ra, reload lại 1 lần để TikTok nạp video với cookie đã giải Captcha
+                if page.locator("a[href*='/video/']").count() == 0:
+                    print("[+] Tải lại trang nhẹ để TikTok cập nhật danh sách video...")
+                    try:
+                        page.reload(wait_until="domcontentloaded", timeout=20000)
+                        page.wait_for_timeout(3500)
+                    except Exception:
+                        pass
+
+            # 4. Kiểm tra nút 'Làm mới' nếu có lỗi mạng
+            error_btn = page.locator("button:has-text('Làm mới'), button:has-text('Refresh')")
+            if error_btn.count() > 0 or page.locator("text='Đã xảy ra lỗi'").count() > 0:
+                try:
+                    error_btn.first.click(timeout=1000)
+                except Exception:
+                    pass
+
+            # 5. Kiểm tra xem video đã hiện ra chưa
+            video_count = page.locator("a[href*='/video/']").count()
+            if video_count > 0:
+                print(f"[+] Đã tải xong giao diện ({video_count} video hiển thị), bắt đầu quét từ {url}!")
+                break
+
+            # Kiểm tra thời gian chờ tải trang bình thường (45s nếu không có Captcha)
+            elapsed_load = time.time() - start_time
+            if elapsed_load > 45:
+                if is_captcha_active(page):
+                    continue
+                if page.locator("a[href*='/video/']").count() == 0:
+                    detected_issue = "Không tìm thấy thẻ video nào hiển thị trên trang (Kênh trống hoặc bị chặn hiển thị)"
+                break
+
+            page.wait_for_timeout(2000)
+
+        # Chẩn đoán nếu sau vòng lặp vẫn chưa tìm thấy video
+        if not detected_issue:
+            if is_captcha_active(page):
+                detected_issue = "Vướng Captcha TikTok chưa giải kịp trên trình duyệt (quá 5 phút)"
+            elif page.locator("a[href*='/video/']").count() == 0:
+                detected_issue = "Không tìm thấy thẻ video nào hiển thị trên trang (Kênh trống hoặc bị chặn hiển thị)"
+
+        if detected_issue:
+            info = {"status": "error", "reason": detected_issue, "raw_found": 0, "skipped_old": 0}
+        else:
+            links, scroll_info = scroll_and_collect_detailed(page, limit, exclude_links=exclude_links)
+            if len(links) == 0:
+                if scroll_info["skipped_old"] > 0 and scroll_info["raw_found"] == scroll_info["skipped_old"]:
+                    info = {
+                        "status": "all_duplicate",
+                        "reason": f"Toàn bộ {scroll_info['skipped_old']} video trên kênh đã có trong lịch sử quét/đăng",
+                        "raw_found": scroll_info["raw_found"],
+                        "skipped_old": scroll_info["skipped_old"],
+                    }
+                else:
+                    info = {
+                        "status": "empty",
+                        "reason": "Không thu thập được video nào từ trang này",
+                        "raw_found": scroll_info.get("raw_found", 0),
+                        "skipped_old": scroll_info.get("skipped_old", 0),
+                    }
+            else:
+                info = {
+                    "status": "success",
+                    "reason": f"Thu thập thành công {len(links)} video mới",
+                    "raw_found": scroll_info.get("raw_found", len(links)),
+                    "skipped_old": scroll_info.get("skipped_old", 0),
+                }
+    finally:
+        try:
+            context.close()
+        except Exception:
+            pass
+
+    return links, info
+
+def extract_tiktok_links(playwright, url: str, limit: int = 0, exclude_links: set = None) -> List[str]:
+    links, _ = extract_tiktok_links_detailed(playwright, url, limit, exclude_links=exclude_links)
     return links
 
 def _impersonate_target():
@@ -172,7 +382,7 @@ def download_single_video(link: str, output_path: str, cookies_path: str = None,
         'outtmpl': output_path,
         'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best',
         'merge_output_format': 'mp4',
-        'windowsfilenames': True,
+        'windowsfilenames': sys.platform.startswith('win'),
         'quiet': True,
         'no_warnings': True,
         'ignoreerrors': True,
@@ -419,3 +629,72 @@ def fetch_metadata(link: str, cookies_path: str = None, browser_cookie: str = No
     print("        -> Nếu lỗi 'Unable to extract universal data', hãy giảm số luồng quét "
           "và/hoặc chọn Cookie TikTok (đăng nhập trình duyệt) trong GUI để giảm tỉ lệ bị chặn.")
     return {}
+
+
+def open_tiktok_interactive_session():
+    """Mở trình duyệt TikTok tương tác với profile persistent (data/tiktok_profile)
+    để người dùng đăng nhập tài khoản hoặc giải trước Captcha mà không lo bị timeout."""
+    import config
+    from playwright.sync_api import sync_playwright
+
+    profile_dir = getattr(config, "TIKTOK_PROFILE_DIR", os.path.join(config.BASE_DIR, "data", "tiktok_profile"))
+    os.makedirs(profile_dir, exist_ok=True)
+    is_mac = sys.platform == "darwin"
+    ua = (
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+        if is_mac else
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+    )
+
+    print("\n" + "=" * 75)
+    print("🌐 ĐANG MỞ TRÌNH DUYỆT TIKTOK ĐỂ ĐĂNG NHẬP / GIẢI TRƯỚC CAPTCHA...")
+    print("👉 Bạn có thể đăng nhập tài khoản TikTok hoặc lướt kênh bình thường.")
+    print("👉 Khi hoàn tất, bạn chỉ cần ĐÓNG CỬA SỔ TRÌNH DUYỆT.")
+    print("💾 Mọi cookie và phiên xác minh sẽ được lưu tự động cho các lần quét sau!")
+    print("=" * 75 + "\n")
+
+    with sync_playwright() as p:
+        context = p.chromium.launch_persistent_context(
+            profile_dir,
+            headless=False,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--no-sandbox",
+                "--disable-infobars",
+            ],
+            viewport={"width": 1280, "height": 850},
+            user_agent=ua,
+            locale="vi-VN",
+        )
+        page = context.pages[0] if context.pages else context.new_page()
+        try:
+            from playwright_stealth import Stealth
+            Stealth().apply_stealth_sync(page)
+        except Exception:
+            pass
+
+        try:
+            page.bring_to_front()
+            if is_mac:
+                subprocess.run(["osascript", "-e", 'tell application "Google Chrome" to activate'], capture_output=True)
+                subprocess.run(["osascript", "-e", 'tell application "Chromium" to activate'], capture_output=True)
+        except Exception:
+            pass
+
+        try:
+            page.goto("https://www.tiktok.com", wait_until="domcontentloaded")
+        except Exception as e:
+            print(f"[!] Đang tải TikTok ({e})...")
+
+        # Giữ trình duyệt mở cho tới khi người dùng chủ động đóng cửa sổ
+        try:
+            page.wait_for_close(timeout=0)
+        except Exception:
+            pass
+        try:
+            context.close()
+        except Exception:
+            pass
+
+    print("\n✅ Đã lưu hồ sơ phiên TikTok thành công vào data/tiktok_profile!")
+

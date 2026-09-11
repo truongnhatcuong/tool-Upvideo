@@ -4,37 +4,51 @@
 # đúng selector (id / name / class) của từng phần tử.
 # ==========================================================
 
+import os
+import platform
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 # URL đăng nhập và URL trang đăng video
 LOGIN_URL = "https://ucircle.net/app/login"
 UPLOAD_URL = "https://ucircle.net/app/wavee"  # URL mới user cung cấp
 
 # Nơi lưu phiên đăng nhập (cookies) để không phải login lại mỗi lần chạy
-STORAGE_STATE_PATH = "data/session.json"
+STORAGE_STATE_PATH = os.path.join(BASE_DIR, "data", "session.json")
 
-# Thư mục chứa video cần đăng — có thể đổi thành đường dẫn tuyệt đối,
-# ví dụ Windows: r"C:\Users\TenBan\Videos\MyContent"
-# macOS/Linux:  "/Users/tenban/Movies/MyContent"
-VIDEO_FOLDER = r"D:\videos"
+# Thư mục chứa video tạm cần đăng (chuẩn hoá cho cả Windows và macOS)
+DEFAULT_VIDEO_DIR = os.path.join(BASE_DIR, "data", "temp_videos")
+VIDEO_FOLDER = os.environ.get("UCIRCLE_VIDEO_FOLDER", DEFAULT_VIDEO_DIR)
 
-# Thư mục lưu video đã đăng thành công (tool tự move vào đây)
-POSTED_FOLDER = "videos/_posted"
+# Thư mục lưu video đã đăng thành công
+POSTED_FOLDER = os.path.join(BASE_DIR, "videos", "_posted")
 
 # File lưu danh sách hash/link video đã đăng (chống trùng đăng)
-POSTED_HASH_DB_PATH = "data/posted.json"
+POSTED_HASH_DB_PATH = os.path.join(BASE_DIR, "data", "posted.json")
 
 # File lưu lịch sử tất cả video đã quét (chống quét lại video cũ khi quét cùng kênh)
-SCANNED_DB_PATH = "data/scanned.json"
+SCANNED_DB_PATH = os.path.join(BASE_DIR, "data", "scanned.json")
+
+# File lưu danh sách các Kênh/Fanpage UCircle đã lưu (Tên + ID)
+IDENTITIES_PATH = os.path.join(BASE_DIR, "data", "identities.json")
+
+# Thư mục lưu hồ sơ trình duyệt TikTok (cookies, thiết bị để không bị hỏi Captcha liên tục)
+TIKTOK_PROFILE_DIR = os.path.join(BASE_DIR, "data", "tiktok_profile")
 
 # File log
-LOG_PATH = "data/log.txt"
+LOG_PATH = os.path.join(BASE_DIR, "data", "log.txt")
 
-# ---- CHỌN TƯ CÁCH ĐĂNG (TRANG CÁ NHÂN HAY FANPAGE) ----
-# Có thể điền 1 trong 3 dạng:
-#  - Tên hiển thị CHÍNH XÁC trên web, vd "Tôi" hoặc "xe hay"
-#  - ID (uuid) của fanpage, vd "6f41a4fc-4573-47bf-a27f-5420fe28f1de"
-#  - Nguyên link trang fanpage, vd "https://ucircle.net/app/c/6f41a4fc-4573-47bf-a27f-5420fe28f1de"
-#    (tool tự tách ID ra từ link)
-IDENTITY_NAME = ""  # Đã đổi sang UUID chuẩn xác nhất của page "Gái Xinh"
+# ---- CẤU HÌNH ĐĂNG NHIỀU KÊNH UCIRCLE ----
+# Danh sách ID các kênh được chọn để đăng (có thể chọn 1 hoặc nhiều)
+SELECTED_IDENTITIES = ["me"]
+
+# Chế độ phân phối khi chọn nhiều kênh:
+#  - "round_robin": xoay vòng (chia đều video cho các kênh)
+#  - "all": đăng mỗi video lên TẤT CẢ các kênh đã chọn
+DISTRIBUTION_MODE = "round_robin"
+
+# Tư cách đăng mặc định đơn lẻ (nếu chỉ dùng 1 kênh)
+IDENTITY_NAME = "me"
 
 # ---- SELECTOR trên trang upload (PHẢI SỬA cho đúng site thật) ----
 SELECTORS = {
@@ -72,7 +86,7 @@ HEADLESS = False
 SLOW_MO_MS = 0
 
 # ---- File Excel lưu kết quả quét (link, caption, hashtag thật, chỉ số chất lượng) ----
-EXCEL_PATH = "data/export_data.xlsx"
+EXCEL_PATH = os.path.join(BASE_DIR, "data", "export_data.xlsx")
 
 # ---- Số luồng xử lý song song (có thể chỉnh trong GUI) ----
 SCRAPE_THREADS_DEFAULT = 3   # số luồng lấy metadata (yt-dlp --dump-json) song song
