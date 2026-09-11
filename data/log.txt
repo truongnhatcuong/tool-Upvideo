@@ -1219,3 +1219,416 @@ Call log:
 [2026-09-10T16:15:44] ⏳ Còn 7 đợt nữa. Tạm dừng nghỉ 64s (thời gian delay bạn đã cài đặt) trước khi tiếp tục...
 [2026-09-10T16:15:44] ---------------------------------------------------------------------------
 
+[2026-09-11T11:05:15] 
+[+] 🎯 PHÁT HIỆN CẤU HÌNH: 1 TikTok -> 1 UCircle (8 Kênh có video cần đăng).
+[2026-09-11T11:05:15] [+] Tổng cộng 173 lượt đăng được chia làm 33 đợt chạy đồng thời.
+[2026-09-11T11:05:15] 
+===========================================================================
+[2026-09-11T11:05:15] 🚀 [ĐỢT #1/33] ĐĂNG 8 VIDEO CHO CÁC CIRCLE (Số luồng: 1):
+[2026-09-11T11:05:15]    • Kênh [Góc Nhỏ Podcast]: https://www.tiktok.com/@heu.56mm/video/7683857316860398855
+[2026-09-11T11:05:15]    • Kênh [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]: https://www.tiktok.com/@rinmediamusic/video/7682406297089723669
+[2026-09-11T11:05:15]    • Kênh [Học Tiếng Anh Cùng Tôi]: https://www.tiktok.com/@gc.nh.ca.tuyt/video/7681320873550286100
+[2026-09-11T11:05:15]    • Kênh [Tập Nấu Ăn]: https://www.tiktok.com/@taplamdau04/video/7673858355735268626
+[2026-09-11T11:05:15]    • Kênh [LION championship]: https://www.tiktok.com/@lionchampionshipvietnam/video/7684119677286501639
+[2026-09-11T11:05:15]    • Kênh [Cường Mê Game]: https://www.tiktok.com/@theshy2004/video/7683940538407570708
+[2026-09-11T11:05:15]    • Kênh [xe độ chiến]: https://www.tiktok.com/@dip.lm.huy.dlk.te/video/7538409795590704391
+[2026-09-11T11:05:15]    • Kênh [Gái Xinh]: https://www.tiktok.com/@_uocxuhuongtiktok_/video/7203314854118034734
+[2026-09-11T11:05:15] ===========================================================================
+[2026-09-11T11:05:22] Đang đăng: /Users/truongnhatcuong/projectcuong/tool-Upvideo/data/temp_videos/tmp_4402595568629410399.mp4 -> Kênh UCircle: [Góc Nhỏ Podcast]
+[2026-09-11T11:05:30] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Góc Nhỏ Podcast [ID: cd8b9cce-da5b-4200-bd00-fc5c793ace8d]
+[2026-09-11T11:05:40] 🚀 Bắt đầu bấm Đăng video...
+[2026-09-11T11:05:48] ✅ Đăng thành công: /Users/truongnhatcuong/projectcuong/tool-Upvideo/data/temp_videos/tmp_4402595568629410399.mp4
+[2026-09-11T11:05:49] 🛑 [DỪNG TIẾN TRÌNH] Bỏ qua tác vụ đăng do đã nhận lệnh dừng.
+[2026-09-11T11:05:49] 🛑 [DỪNG TIẾN TRÌNH] Bỏ qua tác vụ đăng do đã nhận lệnh dừng.
+[2026-09-11T11:05:49] 🛑 [DỪNG TIẾN TRÌNH] Bỏ qua tác vụ đăng do đã nhận lệnh dừng.
+[2026-09-11T11:05:49] 🛑 [DỪNG TIẾN TRÌNH] Bỏ qua tác vụ đăng do đã nhận lệnh dừng.
+[2026-09-11T11:05:49] 🛑 [DỪNG TIẾN TRÌNH] Bỏ qua tác vụ đăng do đã nhận lệnh dừng.
+[2026-09-11T11:05:49] 🛑 [DỪNG TIẾN TRÌNH] Bỏ qua tác vụ đăng do đã nhận lệnh dừng.
+[2026-09-11T11:05:49] 🛑 [DỪNG TIẾN TRÌNH] Bỏ qua tác vụ đăng do đã nhận lệnh dừng.
+[2026-09-11T11:05:49] 
+🛑 [DỪNG TIẾN TRÌNH] Đã nhận lệnh dừng. Không chạy đợt tiếp theo!
+[2026-09-11T11:05:49] 
+===========================================================================
+[2026-09-11T11:05:49] 🎉 TẤT CẢ CÁC ĐỢT ĐÃ HOÀN TẤT!
+[2026-09-11T11:05:49] 📊 Kết quả: 1/173 lượt đăng thành công, 0 thất bại.
+[2026-09-11T11:05:49] ===========================================================================
+
+[2026-09-11T11:11:56] 
+[+] 🎯 PHÁT HIỆN CẤU HÌNH: 1 TikTok -> 1 UCircle (8 Kênh có video cần đăng).
+[2026-09-11T11:11:56] [+] Tổng cộng 172 lượt đăng được chia làm 33 đợt chạy đồng thời.
+[2026-09-11T11:11:56] 
+===========================================================================
+[2026-09-11T11:11:56] 🚀 [ĐỢT #1/33] ĐĂNG 8 VIDEO CHO CÁC CIRCLE (Số luồng: 1):
+[2026-09-11T11:11:56]    • Kênh [Góc Nhỏ Podcast]: https://www.tiktok.com/@heu.56mm/video/7682024069226630408
+[2026-09-11T11:11:56]    • Kênh [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]: https://www.tiktok.com/@rinmediamusic/video/7682406297089723669
+[2026-09-11T11:11:56]    • Kênh [Học Tiếng Anh Cùng Tôi]: https://www.tiktok.com/@gc.nh.ca.tuyt/video/7681320873550286100
+[2026-09-11T11:11:56]    • Kênh [Tập Nấu Ăn]: https://www.tiktok.com/@taplamdau04/video/7673858355735268626
+[2026-09-11T11:11:56]    • Kênh [LION championship]: https://www.tiktok.com/@lionchampionshipvietnam/video/7684119677286501639
+[2026-09-11T11:11:56]    • Kênh [Cường Mê Game]: https://www.tiktok.com/@theshy2004/video/7683940538407570708
+[2026-09-11T11:11:56]    • Kênh [xe độ chiến]: https://www.tiktok.com/@dip.lm.huy.dlk.te/video/7538409795590704391
+[2026-09-11T11:11:56]    • Kênh [Gái Xinh]: https://www.tiktok.com/@_uocxuhuongtiktok_/video/7203314854118034734
+[2026-09-11T11:11:56] ===========================================================================
+[2026-09-11T11:12:10] Đang đăng: /Users/truongnhatcuong/projectcuong/tool-Upvideo/data/temp_videos/tmp_6788262695024888889.mp4 -> Kênh UCircle: [Góc Nhỏ Podcast]
+[2026-09-11T11:12:17] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Góc Nhỏ Podcast [ID: cd8b9cce-da5b-4200-bd00-fc5c793ace8d]
+[2026-09-11T11:12:28] 🚀 Bắt đầu bấm Đăng video...
+[2026-09-11T11:12:34] ✅ Đăng thành công: /Users/truongnhatcuong/projectcuong/tool-Upvideo/data/temp_videos/tmp_6788262695024888889.mp4
+[2026-09-11T11:13:15] Đang đăng: /Users/truongnhatcuong/projectcuong/tool-Upvideo/data/temp_videos/tmp_2160583214950431795.mp4 -> Kênh UCircle: [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]
+[2026-09-11T11:13:36] ⚠️ Đang chờ hiển thị danh sách tư cách đăng...
+[2026-09-11T11:13:36] ❌ KHÔNG TÌM THẤY Kênh UCircle: '𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘' [ID: 58830551-136b-4a08-9cc2-540c74645958].
+[2026-09-11T11:13:52] ⚠️ Đang chờ hiển thị danh sách tư cách đăng...
+[2026-09-11T11:13:52] ❌ KHÔNG TÌM THẤY Kênh UCircle: '𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘' [ID: 58830551-136b-4a08-9cc2-540c74645958].
+[2026-09-11T11:14:23] ❌ Lần 1: hết thời gian chờ xác nhận đăng cho https://www.tiktok.com/@rinmediamusic/video/7682406297089723669 (kênh [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘])
+[2026-09-11T11:14:23] 🖼️ Đã lưu ảnh chụp màn hình lỗi: data/debug/2160583214950431795.png (URL hiện tại: https://ucircle.net/app/wavee/new)
+[2026-09-11T11:14:23] Đang đăng: /Users/truongnhatcuong/projectcuong/tool-Upvideo/data/temp_videos/tmp_2160583214950431795.mp4 -> Kênh UCircle: [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]
+[2026-09-11T11:14:44] ⚠️ Đang chờ hiển thị danh sách tư cách đăng...
+[2026-09-11T11:14:44] ❌ KHÔNG TÌM THẤY Kênh UCircle: '𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘' [ID: 58830551-136b-4a08-9cc2-540c74645958].
+[2026-09-11T11:15:00] ⚠️ Đang chờ hiển thị danh sách tư cách đăng...
+[2026-09-11T11:15:00] ❌ KHÔNG TÌM THẤY Kênh UCircle: '𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘' [ID: 58830551-136b-4a08-9cc2-540c74645958].
+[2026-09-11T11:15:31] ❌ Lần 2: hết thời gian chờ xác nhận đăng cho https://www.tiktok.com/@rinmediamusic/video/7682406297089723669 (kênh [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘])
+[2026-09-11T11:15:31] 🖼️ Đã lưu ảnh chụp màn hình lỗi: data/debug/2160583214950431795.png (URL hiện tại: https://ucircle.net/app/wavee/new)
+[2026-09-11T11:15:35] 🛑 [DỪNG TIẾN TRÌNH] Bỏ qua tác vụ đăng do đã nhận lệnh dừng.
+[2026-09-11T11:15:35] 🛑 [DỪNG TIẾN TRÌNH] Bỏ qua tác vụ đăng do đã nhận lệnh dừng.
+[2026-09-11T11:15:35] 🛑 [DỪNG TIẾN TRÌNH] Bỏ qua tác vụ đăng do đã nhận lệnh dừng.
+[2026-09-11T11:15:35] 🛑 [DỪNG TIẾN TRÌNH] Bỏ qua tác vụ đăng do đã nhận lệnh dừng.
+[2026-09-11T11:15:35] 🛑 [DỪNG TIẾN TRÌNH] Bỏ qua tác vụ đăng do đã nhận lệnh dừng.
+[2026-09-11T11:15:35] 🛑 [DỪNG TIẾN TRÌNH] Bỏ qua tác vụ đăng do đã nhận lệnh dừng.
+[2026-09-11T11:15:35] 
+🛑 [DỪNG TIẾN TRÌNH] Đã nhận lệnh dừng. Không chạy đợt tiếp theo!
+[2026-09-11T11:15:35] 
+===========================================================================
+[2026-09-11T11:15:35] 🎉 TẤT CẢ CÁC ĐỢT ĐÃ HOÀN TẤT!
+[2026-09-11T11:15:35] 📊 Kết quả: 1/172 lượt đăng thành công, 1 thất bại.
+[2026-09-11T11:15:35] ===========================================================================
+
+[2026-09-11T11:26:03] 
+[+] 📢 Chế độ: ĐĂNG TẤT CẢ (194 video x 8 kênh đã chọn).
+[2026-09-11T11:26:03] [+] Tổng cộng 1552 lượt đăng được chia làm 194 đợt chạy đồng thời.
+[2026-09-11T11:26:03] 
+===========================================================================
+[2026-09-11T11:26:03] 🚀 [ĐỢT #1/194] ĐĂNG 8 VIDEO CHO CÁC CIRCLE (Số luồng: 1):
+[2026-09-11T11:26:03]    • Circle 🏷️ [Góc Nhỏ Podcast]: https://www.tiktok.com/@alominhngheday/video/74887
+[2026-09-11T11:26:03]    • Circle 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]: https://www.tiktok.com/@alominhngheday/video/74887
+[2026-09-11T11:26:03]    • Circle 🏷️ [Học Tiếng Anh Cùng Tôi]: https://www.tiktok.com/@alominhngheday/video/74887
+[2026-09-11T11:26:03]    • Circle 🏷️ [Tập Nấu Ăn]: https://www.tiktok.com/@alominhngheday/video/74887
+[2026-09-11T11:26:03]    • Circle 🏷️ [LION championship]: https://www.tiktok.com/@alominhngheday/video/74887
+[2026-09-11T11:26:03]    • Circle 🏷️ [Cường Mê Game]: https://www.tiktok.com/@alominhngheday/video/74887
+[2026-09-11T11:26:03]    • Circle 🏷️ [xe độ chiến]: https://www.tiktok.com/@alominhngheday/video/74887
+[2026-09-11T11:26:03]    • Circle 🏷️ [Gái Xinh]: https://www.tiktok.com/@alominhngheday/video/74887
+[2026-09-11T11:26:03] ===========================================================================
+[2026-09-11T11:26:15] 📤 Đang đăng: "https://www.tiktok.com/@alominhngheday/video/748870353563954" -> Circle: 🏷️ [Góc Nhỏ Podcast]
+[2026-09-11T11:26:23] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Góc Nhỏ Podcast [ID: cd8b9cce-da5b-4200-bd00-fc5c793ace8d]
+[2026-09-11T11:26:37] 🚀 Bấm Đăng lên Circle 🏷️ [Góc Nhỏ Podcast]...
+[2026-09-11T11:26:45] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Góc Nhỏ Podcast]: "https://www.tiktok.com/@alominhngheday/video/748870353563954"
+[2026-09-11T11:26:46]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Góc Nhỏ Podcast]: "https://www.tiktok.com/@alominhngheday/video/" (1/194 video)
+[2026-09-11T11:26:52] 📤 Đang đăng: "https://www.tiktok.com/@alominhngheday/video/748870353563954" -> Circle: 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]
+[2026-09-11T11:27:01] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: 𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘 [ID: 58830551-136b-4a08-9cc2-540c74645958]
+[2026-09-11T11:27:14] 🚀 Bấm Đăng lên Circle 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]...
+[2026-09-11T11:27:19] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]: "https://www.tiktok.com/@alominhngheday/video/748870353563954"
+[2026-09-11T11:27:20]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]: "https://www.tiktok.com/@alominhngheday/video/" (1/194 video)
+[2026-09-11T11:27:37] 📤 Đang đăng: "https://www.tiktok.com/@alominhngheday/video/748870353563954" -> Circle: 🏷️ [Học Tiếng Anh Cùng Tôi]
+[2026-09-11T11:27:45] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Học Tiếng Anh Cùng Tôi [ID: 99dc84b2-f324-4f1c-a73b-d5901fb0e2ec]
+[2026-09-11T11:27:58] 🚀 Bấm Đăng lên Circle 🏷️ [Học Tiếng Anh Cùng Tôi]...
+[2026-09-11T11:28:03] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Học Tiếng Anh Cùng Tôi]: "https://www.tiktok.com/@alominhngheday/video/748870353563954"
+[2026-09-11T11:28:05]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Học Tiếng Anh Cùng Tôi]: "https://www.tiktok.com/@alominhngheday/video/" (1/194 video)
+[2026-09-11T11:28:14] 📤 Đang đăng: "https://www.tiktok.com/@alominhngheday/video/748870353563954" -> Circle: 🏷️ [Tập Nấu Ăn]
+[2026-09-11T11:28:22] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Tập Nấu Ăn [ID: bb16ea11-6f7c-46da-9add-13e4fca94ee2]
+[2026-09-11T11:28:36] 🚀 Bấm Đăng lên Circle 🏷️ [Tập Nấu Ăn]...
+[2026-09-11T11:28:41] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Tập Nấu Ăn]: "https://www.tiktok.com/@alominhngheday/video/748870353563954"
+[2026-09-11T11:28:42]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Tập Nấu Ăn]: "https://www.tiktok.com/@alominhngheday/video/" (1/194 video)
+[2026-09-11T11:28:48] 📤 Đang đăng: "https://www.tiktok.com/@alominhngheday/video/748870353563954" -> Circle: 🏷️ [LION championship]
+[2026-09-11T11:28:56] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: LION championship [ID: 29a99f38-43f5-42c9-accf-f91c1cb85e6a]
+[2026-09-11T11:43:40] 
+[+] 🎯 Chế độ: 1 TIKTOK -> 1 UCIRCLE (8 Kênh có video cần đăng).
+[2026-09-11T11:43:40] [+] Tổng cộng 198 lượt đăng được chia làm 30 đợt chạy đồng thời.
+[2026-09-11T11:43:40] 
+===========================================================================
+[2026-09-11T11:43:40] 🚀 [ĐỢT #1/30] ĐĂNG 8 VIDEO CHO CÁC CIRCLE (Số luồng: 8):
+[2026-09-11T11:43:40]    • Circle 🏷️ [Góc Nhỏ Podcast]: https://www.tiktok.com/@alominhngheday/video/74887
+[2026-09-11T11:43:40]    • Circle 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]: https://www.tiktok.com/@ilovelyrics08/video/768347
+[2026-09-11T11:43:40]    • Circle 🏷️ [Học Tiếng Anh Cùng Tôi]: https://www.tiktok.com/@englishforeveryone72/video
+[2026-09-11T11:43:40]    • Circle 🏷️ [Tập Nấu Ăn]: https://www.tiktok.com/@taplamdau04/video/76690276
+[2026-09-11T11:43:40]    • Circle 🏷️ [LION championship]: https://www.tiktok.com/@lionchampionshipvietnam/vi
+[2026-09-11T11:43:40]    • Circle 🏷️ [Cường Mê Game]: https://www.tiktok.com/@theshy2004/video/768378912
+[2026-09-11T11:43:40]    • Circle 🏷️ [xe độ chiến]: https://www.tiktok.com/@dip.lm.huy.dlk.te/video/75
+[2026-09-11T11:43:40]    • Circle 🏷️ [Gái Xinh]: https://www.tiktok.com/@_uocxuhuongtiktok_/video/7
+[2026-09-11T11:43:40] ===========================================================================
+[2026-09-11T11:43:46] 📤 Đang đăng: "https://www.tiktok.com/@lionchampionshipvietnam/video/768412" -> Circle: 🏷️ [LION championship]
+[2026-09-11T11:43:47] ❌ Không tải được video: https://www.tiktok.com/@taplamdau04/video/7669027604132941064
+[2026-09-11T11:43:47]    ❌ [THẤT BẠI] Lỗi khi đăng vào Circle 🏷️ [Tập Nấu Ăn]: https://www.tiktok.com/@taplamdau04/video/7669027604132941064
+[2026-09-11T11:43:47] 📤 Đang đăng: "https://www.tiktok.com/@alominhngheday/video/748870353563954" -> Circle: 🏷️ [Góc Nhỏ Podcast]
+[2026-09-11T11:43:51] 📤 Đang đăng: "https://www.tiktok.com/@ilovelyrics08/video/7683472325131439" -> Circle: 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]
+[2026-09-11T11:43:52] 📤 Đang đăng: "https://www.tiktok.com/@dip.lm.huy.dlk.te/video/753840979559" -> Circle: 🏷️ [xe độ chiến]
+[2026-09-11T11:43:53] 📤 Đang đăng: "https://www.tiktok.com/@_uocxuhuongtiktok_/video/72875337985" -> Circle: 🏷️ [Gái Xinh]
+[2026-09-11T11:43:54] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: LION championship [ID: 29a99f38-43f5-42c9-accf-f91c1cb85e6a]
+[2026-09-11T11:43:55] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Góc Nhỏ Podcast [ID: cd8b9cce-da5b-4200-bd00-fc5c793ace8d]
+[2026-09-11T11:43:55] 📤 Đang đăng: "https://www.tiktok.com/@englishforeveryone72/video/747683203" -> Circle: 🏷️ [Học Tiếng Anh Cùng Tôi]
+[2026-09-11T11:43:58] 📤 Đang đăng: "https://www.tiktok.com/@theshy2004/video/7683789121969507604" -> Circle: 🏷️ [Cường Mê Game]
+[2026-09-11T11:44:01] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: 𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘 [ID: 58830551-136b-4a08-9cc2-540c74645958]
+[2026-09-11T11:44:01] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: xe độ chiến [ID: 7b944633-043c-445b-b516-aeeddb7bb7f9]
+[2026-09-11T11:44:04] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Gái Xinh [ID: dea448a6-b8e5-40e0-9cd7-68ea12abaac5]
+[2026-09-11T11:44:05] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Học Tiếng Anh Cùng Tôi [ID: 99dc84b2-f324-4f1c-a73b-d5901fb0e2ec]
+[2026-09-11T11:44:06] 🚀 Bấm Đăng lên Circle 🏷️ [LION championship]...
+[2026-09-11T11:44:07] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Cường Mê Game [ID: d58c2b39-feb1-4bfc-9d5d-5e9984c86e96]
+[2026-09-11T11:44:10] 🚀 Bấm Đăng lên Circle 🏷️ [Góc Nhỏ Podcast]...
+[2026-09-11T11:44:10] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [LION championship]: "https://www.tiktok.com/@lionchampionshipvietnam/video/768412"
+[2026-09-11T11:44:11] 🚀 Bấm Đăng lên Circle 🏷️ [xe độ chiến]...
+[2026-09-11T11:44:11]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [LION championship]: "https://www.tiktok.com/@lionchampionshipvietn" (1/24 video)
+[2026-09-11T11:44:11] 🚀 Bấm Đăng lên Circle 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]...
+[2026-09-11T11:44:11] 🚀 Bấm Đăng lên Circle 🏷️ [Gái Xinh]...
+[2026-09-11T11:44:14] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [xe độ chiến]: "https://www.tiktok.com/@dip.lm.huy.dlk.te/video/753840979559"
+[2026-09-11T11:44:14] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Góc Nhỏ Podcast]: "https://www.tiktok.com/@alominhngheday/video/748870353563954"
+[2026-09-11T11:44:15]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [xe độ chiến]: "https://www.tiktok.com/@dip.lm.huy.dlk.te/vid" (1/30 video)
+[2026-09-11T11:44:15]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Góc Nhỏ Podcast]: "https://www.tiktok.com/@alominhngheday/video/" (1/25 video)
+[2026-09-11T11:44:16] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Gái Xinh]: "https://www.tiktok.com/@_uocxuhuongtiktok_/video/72875337985"
+[2026-09-11T11:44:16] 🚀 Bấm Đăng lên Circle 🏷️ [Cường Mê Game]...
+[2026-09-11T11:44:17]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Gái Xinh]: "https://www.tiktok.com/@_uocxuhuongtiktok_/vi" (1/26 video)
+[2026-09-11T11:44:17] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]: "https://www.tiktok.com/@ilovelyrics08/video/7683472325131439"
+[2026-09-11T11:44:18] 🚀 Bấm Đăng lên Circle 🏷️ [Học Tiếng Anh Cùng Tôi]...
+[2026-09-11T11:44:18]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]: "https://www.tiktok.com/@ilovelyrics08/video/7" (1/18 video)
+[2026-09-11T11:44:22] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Cường Mê Game]: "https://www.tiktok.com/@theshy2004/video/7683789121969507604"
+[2026-09-11T11:44:23] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Học Tiếng Anh Cùng Tôi]: "https://www.tiktok.com/@englishforeveryone72/video/747683203"
+[2026-09-11T11:44:24]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Cường Mê Game]: "https://www.tiktok.com/@theshy2004/video/7683" (1/29 video)
+[2026-09-11T11:44:24]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Học Tiếng Anh Cùng Tôi]: "https://www.tiktok.com/@englishforeveryone72/" (1/27 video)
+[2026-09-11T11:44:24] 
+---------------------------------------------------------------------------
+[2026-09-11T11:44:24] ✅ [ĐỢT #1 HOÀN TẤT] Cả 8 Circle đã đăng xong video đợt này.
+[2026-09-11T11:44:24] ⏳ Còn 29 đợt nữa. Tạm dừng nghỉ 2133s (thời gian delay bạn đã cài đặt) trước khi tiếp tục...
+[2026-09-11T11:44:24] ---------------------------------------------------------------------------
+
+[2026-09-11T11:44:44] 🛑 [DỪNG TIẾN TRÌNH] Đã dừng ngay trong lúc chờ delay!
+[2026-09-11T11:44:44] 
+===========================================================================
+[2026-09-11T11:44:44] 🛑 [TIẾN TRÌNH ĐÃ DỪNG LẠI THEO YÊU CẦU CỦA BẠN]
+[2026-09-11T11:44:44] 📊 BẢNG TỔNG KẾT THEO TỪNG CIRCLE KHI DỪNG:
+[2026-09-11T11:44:44]    • 🏷️ [Góc Nhỏ Podcast]: ✅ Đã đăng 1/25 video  |  ⏳ Còn lại 24 video
+[2026-09-11T11:44:44]    • 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]: ✅ Đã đăng 1/18 video  |  ⏳ Còn lại 17 video
+[2026-09-11T11:44:44]    • 🏷️ [Học Tiếng Anh Cùng Tôi]: ✅ Đã đăng 1/27 video  |  ⏳ Còn lại 26 video
+[2026-09-11T11:44:44]    • 🏷️ [Tập Nấu Ăn]: ✅ Đã đăng 0/19 video  |  ⏳ Còn lại 18 video  |  ❌ 1 lỗi
+[2026-09-11T11:44:44]    • 🏷️ [LION championship]: ✅ Đã đăng 1/24 video  |  ⏳ Còn lại 23 video
+[2026-09-11T11:44:44]    • 🏷️ [Cường Mê Game]: ✅ Đã đăng 1/29 video  |  ⏳ Còn lại 28 video
+[2026-09-11T11:44:44]    • 🏷️ [xe độ chiến]: ✅ Đã đăng 1/30 video  |  ⏳ Còn lại 29 video
+[2026-09-11T11:44:44]    • 🏷️ [Gái Xinh]: ✅ Đã đăng 1/26 video  |  ⏳ Còn lại 25 video
+[2026-09-11T11:44:44] ---------------------------------------------------------------------------
+[2026-09-11T11:44:44] 📈 Kết quả tổng: 7/198 lượt đăng thành công, 1 thất bại.
+[2026-09-11T11:44:44] 💾 Còn 190 lượt đăng chưa chạy vẫn được lưu nguyên vẹn trong Excel.
+[2026-09-11T11:44:44] 👉 Lần sau khi bấm 'Bắt đầu đăng', tool sẽ tiếp tục đăng các video còn lại!
+[2026-09-11T11:44:44] ===========================================================================
+
+[2026-09-11T12:31:31] 
+[+] 🎯 Chế độ: 1 TIKTOK -> 1 UCIRCLE (8 Kênh có video cần đăng).
+[2026-09-11T12:31:31] [+] Tổng cộng 196 lượt đăng được chia làm 30 đợt chạy đồng thời.
+[2026-09-11T12:31:31] 
+===========================================================================
+[2026-09-11T12:31:31] 🚀 [ĐỢT #1/30] ĐĂNG 8 VIDEO CHO CÁC CIRCLE (Số luồng: 8):
+[2026-09-11T12:31:31]    • Circle 🏷️ [Góc Nhỏ Podcast]: https://www.tiktok.com/@alominhngheday/video/74875
+[2026-09-11T12:31:31]    • Circle 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]: https://www.tiktok.com/@ilovelyrics08/video/768316
+[2026-09-11T12:31:31]    • Circle 🏷️ [Học Tiếng Anh Cùng Tôi]: https://www.tiktok.com/@englishforeveryone72/video
+[2026-09-11T12:31:31]    • Circle 🏷️ [Tập Nấu Ăn]: https://www.tiktok.com/@thuquynh_95/video/76834538
+[2026-09-11T12:31:31]    • Circle 🏷️ [LION championship]: https://www.tiktok.com/@lionchampionshipvietnam/vi
+[2026-09-11T12:31:31]    • Circle 🏷️ [Cường Mê Game]: https://www.tiktok.com/@theshy2004/video/768394053
+[2026-09-11T12:31:31]    • Circle 🏷️ [xe độ chiến]: https://www.tiktok.com/@dip.lm.huy.dlk.te/video/75
+[2026-09-11T12:31:31]    • Circle 🏷️ [Gái Xinh]: https://www.tiktok.com/@_uocxuhuongtiktok_/video/7
+[2026-09-11T12:31:31] ===========================================================================
+[2026-09-11T12:31:37] 📤 Đang đăng: "https://www.tiktok.com/@dip.lm.huy.dlk.te/video/752905164678" -> Circle: 🏷️ [xe độ chiến]
+[2026-09-11T12:31:37] 📤 Đang đăng: "https://www.tiktok.com/@theshy2004/video/7683940538407570708" -> Circle: 🏷️ [Cường Mê Game]
+[2026-09-11T12:31:39] 📤 Đang đăng: "https://www.tiktok.com/@englishforeveryone72/video/768394637" -> Circle: 🏷️ [Học Tiếng Anh Cùng Tôi]
+[2026-09-11T12:31:39] 📤 Đang đăng: "https://www.tiktok.com/@lionchampionshipvietnam/video/768412" -> Circle: 🏷️ [LION championship]
+[2026-09-11T12:31:41] 📤 Đang đăng: "https://www.tiktok.com/@ilovelyrics08/video/7683166106076351" -> Circle: 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]
+[2026-09-11T12:31:42] 📤 Đang đăng: "https://www.tiktok.com/@_uocxuhuongtiktok_/video/72040574389" -> Circle: 🏷️ [Gái Xinh]
+[2026-09-11T12:31:45] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Cường Mê Game [ID: d58c2b39-feb1-4bfc-9d5d-5e9984c86e96]
+[2026-09-11T12:31:45] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: xe độ chiến [ID: 7b944633-043c-445b-b516-aeeddb7bb7f9]
+[2026-09-11T12:31:46] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Học Tiếng Anh Cùng Tôi [ID: 99dc84b2-f324-4f1c-a73b-d5901fb0e2ec]
+[2026-09-11T12:31:47] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: LION championship [ID: 29a99f38-43f5-42c9-accf-f91c1cb85e6a]
+[2026-09-11T12:31:50] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Gái Xinh [ID: dea448a6-b8e5-40e0-9cd7-68ea12abaac5]
+[2026-09-11T12:31:50] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: 𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘 [ID: 58830551-136b-4a08-9cc2-540c74645958]
+[2026-09-11T12:31:51] 📤 Đang đăng: "https://www.tiktok.com/@alominhngheday/video/748758401877129" -> Circle: 🏷️ [Góc Nhỏ Podcast]
+[2026-09-11T12:31:55] 🚀 Bấm Đăng lên Circle 🏷️ [Cường Mê Game]...
+[2026-09-11T12:31:55] 🚀 Bấm Đăng lên Circle 🏷️ [xe độ chiến]...
+[2026-09-11T12:31:58] 🚀 Bấm Đăng lên Circle 🏷️ [LION championship]...
+[2026-09-11T12:31:58] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Cường Mê Game]: "https://www.tiktok.com/@theshy2004/video/7683940538407570708"
+[2026-09-11T12:31:59] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Góc Nhỏ Podcast [ID: cd8b9cce-da5b-4200-bd00-fc5c793ace8d]
+[2026-09-11T12:31:59] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [xe độ chiến]: "https://www.tiktok.com/@dip.lm.huy.dlk.te/video/752905164678"
+[2026-09-11T12:31:59] 🚀 Bấm Đăng lên Circle 🏷️ [Gái Xinh]...
+[2026-09-11T12:32:00]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Cường Mê Game]: "https://www.tiktok.com/@theshy2004/video/7683" (1/30 video)
+[2026-09-11T12:32:00]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [xe độ chiến]: "https://www.tiktok.com/@dip.lm.huy.dlk.te/vid" (1/30 video)
+[2026-09-11T12:32:00] 🚀 Bấm Đăng lên Circle 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]...
+[2026-09-11T12:32:02] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Gái Xinh]: "https://www.tiktok.com/@_uocxuhuongtiktok_/video/72040574389"
+[2026-09-11T12:32:02] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [LION championship]: "https://www.tiktok.com/@lionchampionshipvietnam/video/768412"
+[2026-09-11T12:32:03]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Gái Xinh]: "https://www.tiktok.com/@_uocxuhuongtiktok_/vi" (1/26 video)
+[2026-09-11T12:32:04]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [LION championship]: "https://www.tiktok.com/@lionchampionshipvietn" (1/24 video)
+[2026-09-11T12:32:04] 📤 Đang đăng: "https://www.tiktok.com/@thuquynh_95/video/768345384516649294" -> Circle: 🏷️ [Tập Nấu Ăn]
+[2026-09-11T12:32:05] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]: "https://www.tiktok.com/@ilovelyrics08/video/7683166106076351"
+[2026-09-11T12:32:06]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]: "https://www.tiktok.com/@ilovelyrics08/video/7" (1/16 video)
+[2026-09-11T12:32:11] 🚀 Bấm Đăng lên Circle 🏷️ [Học Tiếng Anh Cùng Tôi]...
+[2026-09-11T12:32:12] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Tập Nấu Ăn [ID: bb16ea11-6f7c-46da-9add-13e4fca94ee2]
+[2026-09-11T12:32:13] 🚀 Bấm Đăng lên Circle 🏷️ [Góc Nhỏ Podcast]...
+[2026-09-11T12:32:17] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Học Tiếng Anh Cùng Tôi]: "https://www.tiktok.com/@englishforeveryone72/video/768394637"
+[2026-09-11T12:32:19]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Học Tiếng Anh Cùng Tôi]: "https://www.tiktok.com/@englishforeveryone72/" (1/26 video)
+[2026-09-11T12:32:19] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Góc Nhỏ Podcast]: "https://www.tiktok.com/@alominhngheday/video/748758401877129"
+[2026-09-11T12:32:20]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Góc Nhỏ Podcast]: "https://www.tiktok.com/@alominhngheday/video/" (1/28 video)
+[2026-09-11T12:32:24] 🚀 Bấm Đăng lên Circle 🏷️ [Tập Nấu Ăn]...
+[2026-09-11T12:32:28] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Tập Nấu Ăn]: "https://www.tiktok.com/@thuquynh_95/video/768345384516649294"
+[2026-09-11T12:32:30]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Tập Nấu Ăn]: "https://www.tiktok.com/@thuquynh_95/video/768" (1/16 video)
+[2026-09-11T12:32:30] 
+---------------------------------------------------------------------------
+[2026-09-11T12:32:30] ✅ [ĐỢT #1 HOÀN TẤT] Cả 8 Circle đã đăng xong video đợt này.
+[2026-09-11T12:32:30] ⏳ Còn 29 đợt nữa. Tạm dừng nghỉ 1921s (thời gian delay bạn đã cài đặt) trước khi tiếp tục...
+[2026-09-11T12:32:30] ---------------------------------------------------------------------------
+
+[2026-09-11T13:35:44] 🛑 [DỪNG TIẾN TRÌNH] Đã dừng ngay trong lúc chờ delay!
+[2026-09-11T13:35:44] 
+===========================================================================
+[2026-09-11T13:35:44] 🛑 [TIẾN TRÌNH ĐÃ DỪNG LẠI THEO YÊU CẦU CỦA BẠN]
+[2026-09-11T13:35:44] 📊 BẢNG TỔNG KẾT THEO TỪNG CIRCLE KHI DỪNG:
+[2026-09-11T13:35:44]    • 🏷️ [Góc Nhỏ Podcast]: ✅ Đã đăng 1/28 video  |  ⏳ Còn lại 27 video
+[2026-09-11T13:35:44]    • 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]: ✅ Đã đăng 1/16 video  |  ⏳ Còn lại 15 video
+[2026-09-11T13:35:44]    • 🏷️ [Học Tiếng Anh Cùng Tôi]: ✅ Đã đăng 1/26 video  |  ⏳ Còn lại 25 video
+[2026-09-11T13:35:44]    • 🏷️ [Tập Nấu Ăn]: ✅ Đã đăng 1/16 video  |  ⏳ Còn lại 15 video
+[2026-09-11T13:35:44]    • 🏷️ [LION championship]: ✅ Đã đăng 1/24 video  |  ⏳ Còn lại 23 video
+[2026-09-11T13:35:44]    • 🏷️ [Cường Mê Game]: ✅ Đã đăng 1/30 video  |  ⏳ Còn lại 29 video
+[2026-09-11T13:35:44]    • 🏷️ [xe độ chiến]: ✅ Đã đăng 1/30 video  |  ⏳ Còn lại 29 video
+[2026-09-11T13:35:44]    • 🏷️ [Gái Xinh]: ✅ Đã đăng 1/26 video  |  ⏳ Còn lại 25 video
+[2026-09-11T13:35:44] ---------------------------------------------------------------------------
+[2026-09-11T13:35:44] 📈 Kết quả tổng: 8/196 lượt đăng thành công, 0 thất bại.
+[2026-09-11T13:35:44] 💾 Còn 188 lượt đăng chưa chạy vẫn được lưu nguyên vẹn trong Excel.
+[2026-09-11T13:35:44] 👉 Lần sau khi bấm 'Bắt đầu đăng', tool sẽ tiếp tục đăng các video còn lại!
+[2026-09-11T13:35:44] ===========================================================================
+
+[2026-09-11T13:35:53] 
+[+] 🎯 Chế độ: 1 TIKTOK -> 1 UCIRCLE (8 Kênh có video cần đăng).
+[2026-09-11T13:35:53] [+] Tổng cộng 188 lượt đăng được chia làm 29 đợt chạy đồng thời.
+[2026-09-11T13:35:53] 
+===========================================================================
+[2026-09-11T13:35:53] 🚀 [ĐỢT #1/29] ĐĂNG 8 VIDEO CHO CÁC CIRCLE (Số luồng: 8):
+[2026-09-11T13:35:53]    • Circle 🏷️ [Góc Nhỏ Podcast]: https://www.tiktok.com/@alominhngheday/video/74544
+[2026-09-11T13:35:53]    • Circle 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]: https://www.tiktok.com/@ilovelyrics08/video/768372
+[2026-09-11T13:35:53]    • Circle 🏷️ [Học Tiếng Anh Cùng Tôi]: https://www.tiktok.com/@englishforeveryone72/video
+[2026-09-11T13:35:53]    • Circle 🏷️ [Tập Nấu Ăn]: https://www.tiktok.com/@thuquynh_95/video/76819713
+[2026-09-11T13:35:53]    • Circle 🏷️ [LION championship]: https://www.tiktok.com/@lionchampionshipvietnam/vi
+[2026-09-11T13:35:53]    • Circle 🏷️ [Cường Mê Game]: https://www.tiktok.com/@theshy2004/video/768320916
+[2026-09-11T13:35:53]    • Circle 🏷️ [xe độ chiến]: https://www.tiktok.com/@dip.lm.huy.dlk.te/video/75
+[2026-09-11T13:35:53]    • Circle 🏷️ [Gái Xinh]: https://www.tiktok.com/@_uocxuhuongtiktok_/video/7
+[2026-09-11T13:35:53] ===========================================================================
+[2026-09-11T13:36:01] 📤 Đang đăng: "https://www.tiktok.com/@_uocxuhuongtiktok_/video/71996054487" -> Circle: 🏷️ [Gái Xinh]
+[2026-09-11T13:36:04] 📤 Đang đăng: "https://www.tiktok.com/@alominhngheday/video/745449792311671" -> Circle: 🏷️ [Góc Nhỏ Podcast]
+[2026-09-11T13:36:05] 📤 Đang đăng: "https://www.tiktok.com/@dip.lm.huy.dlk.te/video/752946375520" -> Circle: 🏷️ [xe độ chiến]
+[2026-09-11T13:36:12] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Gái Xinh [ID: dea448a6-b8e5-40e0-9cd7-68ea12abaac5]
+[2026-09-11T13:36:15] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: xe độ chiến [ID: 7b944633-043c-445b-b516-aeeddb7bb7f9]
+[2026-09-11T13:36:15] 📤 Đang đăng: "https://www.tiktok.com/@englishforeveryone72/video/768385457" -> Circle: 🏷️ [Học Tiếng Anh Cùng Tôi]
+[2026-09-11T13:36:15] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Góc Nhỏ Podcast [ID: cd8b9cce-da5b-4200-bd00-fc5c793ace8d]
+[2026-09-11T13:36:16] 📤 Đang đăng: "https://www.tiktok.com/@theshy2004/video/7683209160984415508" -> Circle: 🏷️ [Cường Mê Game]
+[2026-09-11T13:36:20] 🚀 Bấm Đăng lên Circle 🏷️ [Gái Xinh]...
+[2026-09-11T13:36:24] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Gái Xinh]: "https://www.tiktok.com/@_uocxuhuongtiktok_/video/71996054487"
+[2026-09-11T13:36:25] 🚀 Bấm Đăng lên Circle 🏷️ [xe độ chiến]...
+[2026-09-11T13:36:26]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Gái Xinh]: "https://www.tiktok.com/@_uocxuhuongtiktok_/vi" (1/25 video)
+[2026-09-11T13:36:26] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Cường Mê Game [ID: d58c2b39-feb1-4bfc-9d5d-5e9984c86e96]
+[2026-09-11T13:36:29] 🚀 Bấm Đăng lên Circle 🏷️ [Góc Nhỏ Podcast]...
+[2026-09-11T13:36:31] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [xe độ chiến]: "https://www.tiktok.com/@dip.lm.huy.dlk.te/video/752946375520"
+[2026-09-11T13:36:32]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [xe độ chiến]: "https://www.tiktok.com/@dip.lm.huy.dlk.te/vid" (1/29 video)
+[2026-09-11T13:36:32] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Học Tiếng Anh Cùng Tôi [ID: 99dc84b2-f324-4f1c-a73b-d5901fb0e2ec]
+[2026-09-11T13:36:36] 🚀 Bấm Đăng lên Circle 🏷️ [Cường Mê Game]...
+[2026-09-11T13:36:37] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Góc Nhỏ Podcast]: "https://www.tiktok.com/@alominhngheday/video/745449792311671"
+[2026-09-11T13:36:38]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Góc Nhỏ Podcast]: "https://www.tiktok.com/@alominhngheday/video/" (1/27 video)
+[2026-09-11T13:36:38] 📤 Đang đăng: "https://www.tiktok.com/@thuquynh_95/video/768197131017553845" -> Circle: 🏷️ [Tập Nấu Ăn]
+[2026-09-11T13:36:43] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Cường Mê Game]: "https://www.tiktok.com/@theshy2004/video/7683209160984415508"
+[2026-09-11T13:36:44]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Cường Mê Game]: "https://www.tiktok.com/@theshy2004/video/7683" (1/29 video)
+[2026-09-11T13:36:50] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Tập Nấu Ăn [ID: bb16ea11-6f7c-46da-9add-13e4fca94ee2]
+[2026-09-11T13:37:02] 🚀 Bấm Đăng lên Circle 🏷️ [Tập Nấu Ăn]...
+[2026-09-11T13:37:05] 🚀 Bấm Đăng lên Circle 🏷️ [Học Tiếng Anh Cùng Tôi]...
+[2026-09-11T13:39:02] ❌ Lần 1: hết thời gian chờ xác nhận đăng cho https://www.tiktok.com/@thuquynh_95/video/7681971310175538450 (kênh [Tập Nấu Ăn])
+[2026-09-11T13:39:02] 🖼️ Đã lưu ảnh chụp màn hình lỗi: data/debug/945944546002752385.png (URL hiện tại: https://ucircle.net/app/wavee/new)
+[2026-09-11T13:39:02] 📤 Đang đăng: "https://www.tiktok.com/@thuquynh_95/video/768197131017553845" -> Circle: 🏷️ [Tập Nấu Ăn]
+[2026-09-11T13:39:05] ❌ Lần 1: hết thời gian chờ xác nhận đăng cho https://www.tiktok.com/@englishforeveryone72/video/7683854575320698130 (kênh [Học Tiếng Anh Cùng Tôi])
+[2026-09-11T13:39:05] 🖼️ Đã lưu ảnh chụp màn hình lỗi: data/debug/2212992198809323765.png (URL hiện tại: https://ucircle.net/app/wavee/new)
+[2026-09-11T13:39:05] 📤 Đang đăng: "https://www.tiktok.com/@englishforeveryone72/video/768385457" -> Circle: 🏷️ [Học Tiếng Anh Cùng Tôi]
+[2026-09-11T13:39:10] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Tập Nấu Ăn [ID: bb16ea11-6f7c-46da-9add-13e4fca94ee2]
+[2026-09-11T13:39:15] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Học Tiếng Anh Cùng Tôi [ID: 99dc84b2-f324-4f1c-a73b-d5901fb0e2ec]
+[2026-09-11T13:39:22] 🚀 Bấm Đăng lên Circle 🏷️ [Tập Nấu Ăn]...
+[2026-09-11T13:39:28] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Tập Nấu Ăn]: "https://www.tiktok.com/@thuquynh_95/video/768197131017553845"
+[2026-09-11T13:39:29]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Tập Nấu Ăn]: "https://www.tiktok.com/@thuquynh_95/video/768" (1/15 video)
+[2026-09-11T13:39:47] 🚀 Bấm Đăng lên Circle 🏷️ [Học Tiếng Anh Cùng Tôi]...
+[2026-09-11T13:39:50] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Học Tiếng Anh Cùng Tôi]: "https://www.tiktok.com/@englishforeveryone72/video/768385457"
+[2026-09-11T13:39:51]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Học Tiếng Anh Cùng Tôi]: "https://www.tiktok.com/@englishforeveryone72/" (1/25 video)
+[2026-09-11T13:40:36] 📤 Đang đăng: "https://www.tiktok.com/@lionchampionshipvietnam/video/768382" -> Circle: 🏷️ [LION championship]
+[2026-09-11T13:41:06] ❌ Lần 1: hết thời gian chờ xác nhận đăng cho https://www.tiktok.com/@lionchampionshipvietnam/video/7683825544185531656 (kênh [LION championship])
+[2026-09-11T13:41:36] 📤 Đang đăng: "https://www.tiktok.com/@lionchampionshipvietnam/video/768382" -> Circle: 🏷️ [LION championship]
+[2026-09-11T13:41:55] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: LION championship [ID: 29a99f38-43f5-42c9-accf-f91c1cb85e6a]
+[2026-09-11T13:42:03] 🚀 Bấm Đăng lên Circle 🏷️ [LION championship]...
+[2026-09-11T13:42:07] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [LION championship]: "https://www.tiktok.com/@lionchampionshipvietnam/video/768382"
+[2026-09-11T13:42:08]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [LION championship]: "https://www.tiktok.com/@lionchampionshipvietn" (1/23 video)
+[2026-09-11T13:51:13] 
+[+] 🎯 Chế độ: 1 TIKTOK -> 1 UCIRCLE (Mỗi video thuộc đúng Circle đã chọn).
+[2026-09-11T13:51:13] [+] Tổng cộng 181 video được phân bổ cho 8 Kênh UCircle.
+[2026-09-11T13:51:13] 
+===========================================================================
+[2026-09-11T13:51:13] 🚀 [ĐỢT #1] ĐĂNG ĐỒNG THỜI CHO 8 CIRCLE (Số luồng: 8):
+[2026-09-11T13:51:13]    • Circle 🏷️ [Góc Nhỏ Podcast] (còn 26 video): https://www.tiktok.com/@alominhngheday/video/
+[2026-09-11T13:51:13]    • Circle 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘] (còn 15 video): https://www.tiktok.com/@ilovelyrics08/video/7
+[2026-09-11T13:51:13]    • Circle 🏷️ [Học Tiếng Anh Cùng Tôi] (còn 24 video): https://www.tiktok.com/@englishforeveryone72/
+[2026-09-11T13:51:13]    • Circle 🏷️ [Tập Nấu Ăn] (còn 14 video): https://www.tiktok.com/@thuquynh_95/video/768
+[2026-09-11T13:51:13]    • Circle 🏷️ [LION championship] (còn 22 video): https://www.tiktok.com/@lionchampionshipvietn
+[2026-09-11T13:51:13]    • Circle 🏷️ [Cường Mê Game] (còn 28 video): https://www.tiktok.com/@theshy2004/video/7683
+[2026-09-11T13:51:13]    • Circle 🏷️ [xe độ chiến] (còn 28 video): https://www.tiktok.com/@dip.lm.huy.dlk.te/vid
+[2026-09-11T13:51:13]    • Circle 🏷️ [Gái Xinh] (còn 24 video): https://www.tiktok.com/@_uocxuhuongtiktok_/vi
+[2026-09-11T13:51:13] ===========================================================================
+[2026-09-11T13:51:23] 📤 Đang đăng: "https://www.tiktok.com/@dip.lm.huy.dlk.te/video/768377219374" -> Circle: 🏷️ [xe độ chiến]
+[2026-09-11T13:51:27] 📤 Đang đăng: "https://www.tiktok.com/@lionchampionshipvietnam/video/768411" -> Circle: 🏷️ [LION championship]
+[2026-09-11T13:51:37] 📤 Đang đăng: "https://www.tiktok.com/@_uocxuhuongtiktok_/video/71970063166" -> Circle: 🏷️ [Gái Xinh]
+[2026-09-11T13:51:46] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Gái Xinh [ID: dea448a6-b8e5-40e0-9cd7-68ea12abaac5]
+[2026-09-11T13:51:51] 📤 Đang đăng: "https://www.tiktok.com/@englishforeveryone72/video/768350199" -> Circle: 🏷️ [Học Tiếng Anh Cùng Tôi]
+[2026-09-11T13:51:53] ❌ Lần 1: hết thời gian chờ xác nhận đăng cho https://www.tiktok.com/@dip.lm.huy.dlk.te/video/7683772193741868309 (kênh [xe độ chiến])
+[2026-09-11T13:51:54] 🚀 Bấm Đăng lên Circle 🏷️ [Gái Xinh]...
+[2026-09-11T13:51:57] ❌ Lần 1: hết thời gian chờ xác nhận đăng cho https://www.tiktok.com/@lionchampionshipvietnam/video/7684119677286501639 (kênh [LION championship])
+[2026-09-11T13:51:58] 🖼️ Đã lưu ảnh chụp màn hình lỗi: data/debug/7796749762201815919.png (URL hiện tại: chrome-error://chromewebdata/)
+[2026-09-11T13:51:58] 📤 Đang đăng: "https://www.tiktok.com/@lionchampionshipvietnam/video/768411" -> Circle: 🏷️ [LION championship]
+[2026-09-11T13:52:00] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Gái Xinh]: "https://www.tiktok.com/@_uocxuhuongtiktok_/video/71970063166"
+[2026-09-11T13:52:01]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Gái Xinh]: "💃" (1/24 video)
+[2026-09-11T13:52:07] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Học Tiếng Anh Cùng Tôi [ID: 99dc84b2-f324-4f1c-a73b-d5901fb0e2ec]
+[2026-09-11T13:52:19] 📤 Đang đăng: "https://www.tiktok.com/@thuquynh_95/video/768124085528961357" -> Circle: 🏷️ [Tập Nấu Ăn]
+[2026-09-11T13:52:23] 📤 Đang đăng: "https://www.tiktok.com/@theshy2004/video/7683598489707760916" -> Circle: 🏷️ [Cường Mê Game]
+[2026-09-11T13:52:23] 📤 Đang đăng: "https://www.tiktok.com/@dip.lm.huy.dlk.te/video/768377219374" -> Circle: 🏷️ [xe độ chiến]
+[2026-09-11T13:52:30] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Tập Nấu Ăn [ID: bb16ea11-6f7c-46da-9add-13e4fca94ee2]
+[2026-09-11T13:52:31] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Cường Mê Game [ID: d58c2b39-feb1-4bfc-9d5d-5e9984c86e96]
+[2026-09-11T13:52:31] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: LION championship [ID: 29a99f38-43f5-42c9-accf-f91c1cb85e6a]
+[2026-09-11T13:52:32] 🚀 Bấm Đăng lên Circle 🏷️ [Học Tiếng Anh Cùng Tôi]...
+[2026-09-11T13:52:36] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Học Tiếng Anh Cùng Tôi]: "https://www.tiktok.com/@englishforeveryone72/video/768350199"
+[2026-09-11T13:52:37]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Học Tiếng Anh Cùng Tôi]: "🔤 Âm /aɪ/ đọc thế nào? 🤔 👉 I → /aɪ/ 👉 my → /m" (1/24 video)
+[2026-09-11T13:52:40] 🚀 Bấm Đăng lên Circle 🏷️ [Cường Mê Game]...
+[2026-09-11T13:52:41] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: xe độ chiến [ID: 7b944633-043c-445b-b516-aeeddb7bb7f9]
+[2026-09-11T13:52:42] 🚀 Bấm Đăng lên Circle 🏷️ [Tập Nấu Ăn]...
+[2026-09-11T13:52:42] 🚀 Bấm Đăng lên Circle 🏷️ [LION championship]...
+[2026-09-11T13:52:51] 🚀 Bấm Đăng lên Circle 🏷️ [xe độ chiến]...
+[2026-09-11T13:53:01] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [xe độ chiến]: "https://www.tiktok.com/@dip.lm.huy.dlk.te/video/768377219374"
+[2026-09-11T13:53:02]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [xe độ chiến]: "🛞Form lùn gần đụng đất cho anh em thích trưng" (1/28 video)
+[2026-09-11T13:53:07] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Tập Nấu Ăn]: "https://www.tiktok.com/@thuquynh_95/video/768124085528961357"
+[2026-09-11T13:53:08] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Cường Mê Game]: "https://www.tiktok.com/@theshy2004/video/7683598489707760916"
+[2026-09-11T13:53:08]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Tập Nấu Ăn]: "Vừa đẹp vừa ngon luôn ạ" (1/14 video)
+[2026-09-11T13:53:09]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Cường Mê Game]: "Ngựa OB55 lại bá rồi" (1/28 video)
+[2026-09-11T13:53:47] 📤 Đang đăng: "https://www.tiktok.com/@alominhngheday/video/729113141484886" -> Circle: 🏷️ [Góc Nhỏ Podcast]
+[2026-09-11T13:53:59] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Góc Nhỏ Podcast [ID: cd8b9cce-da5b-4200-bd00-fc5c793ace8d]
+[2026-09-11T13:54:14] 🚀 Bấm Đăng lên Circle 🏷️ [Góc Nhỏ Podcast]...
+[2026-09-11T13:54:25] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Góc Nhỏ Podcast]: "https://www.tiktok.com/@alominhngheday/video/729113141484886"
+[2026-09-11T13:54:26]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Góc Nhỏ Podcast]: "Một chút động lực cho mỗi chúng ta Nếu có thấ" (1/26 video)
+[2026-09-11T13:54:42] ❌ Lần 2: hết thời gian chờ xác nhận đăng cho https://www.tiktok.com/@lionchampionshipvietnam/video/7684119677286501639 (kênh [LION championship])
+[2026-09-11T13:54:42] 🖼️ Đã lưu ảnh chụp màn hình lỗi: data/debug/7796749762201815919.png (URL hiện tại: https://ucircle.net/app/wavee/new)
+[2026-09-11T13:54:47]    ⚠️ [THỬ LẠI LẦN 2] Gặp lỗi khi đăng. Đang thử đăng lại video cho Circle 🏷️ [LION championship]: "Lê Công Nghị và Nguyễn Phú Thịnh đứng trước c"...
+[2026-09-11T13:54:59] 📤 Đang đăng: "https://www.tiktok.com/@lionchampionshipvietnam/video/768411" -> Circle: 🏷️ [LION championship]
+[2026-09-11T13:55:29] ❌ Lần 1: hết thời gian chờ xác nhận đăng cho https://www.tiktok.com/@lionchampionshipvietnam/video/7684119677286501639 (kênh [LION championship])
+[2026-09-11T13:55:59] 📤 Đang đăng: "https://www.tiktok.com/@lionchampionshipvietnam/video/768411" -> Circle: 🏷️ [LION championship]
+[2026-09-11T13:56:22] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: LION championship [ID: 29a99f38-43f5-42c9-accf-f91c1cb85e6a]
+[2026-09-11T13:56:33] 🚀 Bấm Đăng lên Circle 🏷️ [LION championship]...
+[2026-09-11T13:56:42] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [LION championship]: "https://www.tiktok.com/@lionchampionshipvietnam/video/768411"
+[2026-09-11T13:56:44]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [LION championship]: "Lê Công Nghị và Nguyễn Phú Thịnh đứng trước c" (1/22 video)
+[2026-09-11T14:01:39] 📤 Đang đăng: "https://www.tiktok.com/@ilovelyrics08/video/7683726407200935" -> Circle: 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]
+[2026-09-11T14:02:10] ❌ Lần 1: hết thời gian chờ xác nhận đăng cho https://www.tiktok.com/@ilovelyrics08/video/7683726407200935186 (kênh [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘])
+[2026-09-11T14:02:40] 📤 Đang đăng: "https://www.tiktok.com/@ilovelyrics08/video/7683726407200935" -> Circle: 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]
+[2026-09-11T14:02:59] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: 𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘 [ID: 58830551-136b-4a08-9cc2-540c74645958]
+[2026-09-11T14:03:06] 🚀 Bấm Đăng lên Circle 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]...
+[2026-09-11T14:03:38] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]: "https://www.tiktok.com/@ilovelyrics08/video/7683726407200935"
+[2026-09-11T14:03:39]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]: "Xoá Tên Em Đi" (1/15 video)
+[2026-09-11T14:03:39] 
+---------------------------------------------------------------------------
+[2026-09-11T14:03:39] ✅ [ĐỢT #1 HOÀN TẤT] Tất cả các Circle đã hoàn thành video đợt này.
+[2026-09-11T14:03:39] ⏳ Còn 8 Circle có video cho đợt tiếp theo. Tạm dừng nghỉ 2559s (thời gian delay bạn đã cài đặt) trước khi tiếp tục...
+[2026-09-11T14:03:39] ---------------------------------------------------------------------------
+

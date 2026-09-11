@@ -37,19 +37,36 @@ class UCirclePipelineApp(ctk.CTk):
     def __init__(self):
         super().__init__()
         self.title("TikTok -> UCircle Auto Pipeline (1 TikTok = 1 UCircle)")
-        self.geometry("1020x950")
-        self.minsize(920, 820)
+        self.geometry("1220x960")
+        self.minsize(1050, 850)
         self.is_running = False
         self.log_queue = queue.Queue()
+        self.headless_var = ctk.BooleanVar(value=getattr(config, "HEADLESS", False))
         self.identity_checkbox_vars = {}
         self.source_rows = []
 
         self._build_ui()
+        self.protocol("WM_DELETE_WINDOW", self._on_closing)
+        self._load_settings()
+        self._prevent_mac_sleep()
+
         self.after(100, self._process_log_queue)
         self.lift()
         self.attributes("-topmost", True)
         self.after(200, lambda: self.attributes("-topmost", False))
         self.focus_force()
+
+    def _prevent_mac_sleep(self):
+        """Trên macOS: Ngăn máy vào chế độ ngủ (System Sleep) khi màn hình tắt để tool chạy liên tục."""
+        if sys.platform == "darwin":
+            try:
+                import subprocess
+                subprocess.Popen(
+                    ["caffeinate", "-i", "-s", "-w", str(os.getpid())],
+                    stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL
+                )
+            except Exception:
+                pass
 
     def _build_ui(self):
         self.grid_columnconfigure(0, weight=1)
@@ -59,14 +76,35 @@ class UCirclePipelineApp(ctk.CTk):
         header_frame = ctk.CTkFrame(self, corner_radius=10, fg_color="#1E1E2E")
         header_frame.grid(row=0, column=0, padx=15, pady=(15, 10), sticky="ew")
         header_frame.grid_columnconfigure(0, weight=1)
+
+        header_left = ctk.CTkFrame(header_frame, fg_color="transparent")
+        header_left.grid(row=0, column=0, padx=15, pady=10, sticky="w")
+
         ctk.CTkLabel(
-            header_frame, text="🚀 TikTok -> UCircle Auto Pipeline (1 TikTok = 1 UCircle)",
-            font=ctk.CTkFont(size=22, weight="bold"), text_color="#38BDF8"
-        ).grid(row=0, column=0, padx=15, pady=(12, 2), sticky="w")
+            header_left, text="🚀 TikTok -> UCircle Auto Pipeline (1 TikTok = 1 UCircle)",
+            font=ctk.CTkFont(size=20, weight="bold"), text_color="#38BDF8"
+        ).pack(anchor="w")
         ctk.CTkLabel(
-            header_frame, text="Mỗi kênh TikTok có ô input riêng và chọn đúng Kênh UCircle tương ứng -> Không bị nhầm lẫn chủ đề.",
-            font=ctk.CTkFont(size=13), text_color="#94A3B8"
-        ).grid(row=1, column=0, padx=15, pady=(0, 12), sticky="w")
+            header_left, text="Mỗi kênh TikTok có ô input riêng và gán đúng Kênh UCircle • Tự động ghi nhớ cấu hình & kênh.",
+            font=ctk.CTkFont(size=12), text_color="#94A3B8"
+        ).pack(anchor="w", pady=(2, 0))
+
+        header_right = ctk.CTkFrame(header_frame, fg_color="transparent")
+        header_right.grid(row=0, column=1, padx=15, pady=10, sticky="e")
+
+        self.headless_checkbox = ctk.CTkCheckBox(
+            header_right, text="👁️ Ẩn màn hình (Headless)",
+            variable=self.headless_var, font=ctk.CTkFont(size=12, weight="bold"),
+            command=self._on_headless_toggle
+        )
+        self.headless_checkbox.pack(side="left", padx=(0, 12))
+
+        self.save_cfg_btn = ctk.CTkButton(
+            header_right, text="💾 Lưu Cài Đặt", width=110, height=32,
+            fg_color="#3B82F6", hover_color="#2563EB", font=ctk.CTkFont(size=12, weight="bold"),
+            command=lambda: self._save_settings(verbose=True)
+        )
+        self.save_cfg_btn.pack(side="left")
 
         # Tabview
         self.tabview = ctk.CTkTabview(self, corner_radius=10, command=self._on_tab_changed)
@@ -134,7 +172,7 @@ class UCirclePipelineApp(ctk.CTk):
         ).pack(side="left", padx=3)
 
         # Khung cuộn chứa từng ô input riêng biệt cho mỗi kênh TikTok
-        self.sources_scroll_frame = ctk.CTkScrollableFrame(form_frame, height=150, corner_radius=8, fg_color="#181825")
+        self.sources_scroll_frame = ctk.CTkScrollableFrame(form_frame, height=240, corner_radius=8, fg_color="#181825")
         self.sources_scroll_frame.grid(row=2, column=0, columnspan=2, padx=15, pady=(2, 8), sticky="ew")
         self.sources_scroll_frame.grid_columnconfigure(0, weight=1)
 
@@ -161,7 +199,7 @@ class UCirclePipelineApp(ctk.CTk):
         self.browser_menu = ctk.CTkOptionMenu(cookie_box, values=["chrome", "edge", "firefox", "brave", "Không dùng"], width=100, height=34)
         self.browser_menu.set("Không dùng")
         self.browser_menu.pack(side="left", padx=(0, 5))
-        self.cookie_entry = ctk.CTkEntry(cookie_box, width=160, height=34, placeholder_text="Chưa chọn file cookie")
+        self.cookie_entry = ctk.CTkEntry(cookie_box, width=220, height=34, placeholder_text="Chưa chọn file cookie")
         self.cookie_entry.pack(side="left", padx=(0, 5))
         ctk.CTkButton(cookie_box, text="📂 Chọn file...", width=110, height=34,
                       command=lambda: self._browse_cookie_file(self.cookie_entry)).pack(side="left")
@@ -180,9 +218,15 @@ class UCirclePipelineApp(ctk.CTk):
         self.min_likes_entry.pack(side="left", padx=(0, 15))
 
         ctk.CTkLabel(quality_box, text="Độ phân giải tối thiểu (px):", font=ctk.CTkFont(weight="bold")).pack(side="left", padx=(0, 8))
-        self.min_res_entry = ctk.CTkEntry(quality_box, width=90, height=34)
+        self.min_res_entry = ctk.CTkEntry(quality_box, width=70, height=34)
         self.min_res_entry.insert(0, str(config.MIN_RESOLUTION_HEIGHT))
-        self.min_res_entry.pack(side="left")
+        self.min_res_entry.pack(side="left", padx=(0, 15))
+
+        ctk.CTkLabel(quality_box, text="Thời lượng tối đa:", font=ctk.CTkFont(weight="bold")).pack(side="left", padx=(0, 8))
+        self.max_duration_entry = ctk.CTkEntry(quality_box, width=65, height=34)
+        self.max_duration_entry.insert(0, str(getattr(config, "MAX_DURATION_SEC", 180)))
+        self.max_duration_entry.pack(side="left", padx=(0, 4))
+        ctk.CTkLabel(quality_box, text="giây (<3p)", text_color="#94A3B8").pack(side="left")
 
         # Tuỳ chọn chống trùng lịch sử & Công cụ phiên TikTok
         dedupe_box = ctk.CTkFrame(form_frame, fg_color="transparent")
@@ -226,53 +270,101 @@ class UCirclePipelineApp(ctk.CTk):
         # Action Buttons (tab quét)
         action_frame = ctk.CTkFrame(parent, fg_color="transparent")
         action_frame.grid(row=1, column=0, padx=5, pady=5, sticky="ew")
-        action_frame.grid_columnconfigure((0, 1), weight=1)
+        action_frame.grid_columnconfigure((0, 1, 2), weight=1)
 
         self.scan_btn = ctk.CTkButton(
             action_frame, text="🔍 QUÉT & LỌC -> EXCEL", font=ctk.CTkFont(size=14, weight="bold"),
             height=42, fg_color="#0EA5E9", hover_color="#0284C7", command=self._start_scan
         )
-        self.scan_btn.grid(row=0, column=0, padx=5, sticky="ew")
+        self.scan_btn.grid(row=0, column=0, padx=4, sticky="ew")
+
+        self.stop_scan_btn = ctk.CTkButton(
+            action_frame, text="🛑 DỪNG QUÉT", font=ctk.CTkFont(size=13, weight="bold"),
+            height=42, fg_color="#475569", hover_color="#DC2626", state="disabled", command=self._stop_process
+        )
+        self.stop_scan_btn.grid(row=0, column=1, padx=4, sticky="ew")
 
         self.download_excel_btn = ctk.CTkButton(
             action_frame, text="📥 Tải file Excel", font=ctk.CTkFont(size=13),
             height=42, fg_color="#F59E0B", hover_color="#D97706", command=self._download_excel
         )
-        self.download_excel_btn.grid(row=0, column=1, padx=5, sticky="ew")
+        self.download_excel_btn.grid(row=0, column=2, padx=4, sticky="ew")
 
-    def _add_source_row(self, initial_url: str = "", initial_circle: str = None):
-        """Thêm 1 hàng ô input TikTok riêng biệt kèm dropdown chọn UCircle, nhãn trạng thái và nút quét lại."""
+    def _update_all_dropdown_options(self):
+        """Cập nhật lại danh sách lựa chọn trong dropdown của tất cả các ô TikTok:
+        - Circle đã được chọn ở ô khác sẽ tự động bị ẨN ĐI để tránh chọn trùng lặp.
+        - Mỗi ô chỉ hiển thị Circle hiện tại của chính nó + các Circle chưa bị ô nào khác gán."""
         identities = identity_manager.load_identities()
         channel_names = [item["name"] for item in identities] or ["Tôi (Trang cá nhân)"]
+
+        if not hasattr(self, "source_rows") or not self.source_rows:
+            return
+
+        for r in self.source_rows:
+            my_circle = r["dropdown"].get().strip()
+            # Danh sách các Circle đã bị những ô KHÁC chọn
+            other_chosen = {
+                other_r["dropdown"].get().strip()
+                for other_r in self.source_rows
+                if other_r is not r and other_r["dropdown"].get().strip()
+            }
+            # Lựa chọn cho ô này: Circle hiện tại của chính nó + các Circle chưa có ai chọn
+            available = [c for c in channel_names if c == my_circle or c not in other_chosen]
+            if not available:
+                available = channel_names
+
+            r["dropdown"].configure(values=available)
+            if my_circle not in available and available:
+                r["dropdown"].set(available[0])
+
+    def _add_source_row(self, initial_url: str = "", initial_circle: str = None):
+        """Thêm 1 hàng ô input TikTok riêng biệt.
+        Nếu Circle đầu tiên đã có ô chọn thì ô mới sẽ tự động chọn Circle tiếp theo và ẩn Circle đã chọn."""
+        identities = identity_manager.load_identities()
+        channel_names = [item["name"] for item in identities] or ["Tôi (Trang cá nhân)"]
+
+        # Các Circle đã được chọn ở các hàng hiện có
+        chosen_so_far = {r["dropdown"].get().strip() for r in getattr(self, "source_rows", []) if r.get("dropdown")}
+        available_for_new = [c for c in channel_names if c not in chosen_so_far]
+        if not available_for_new:
+            available_for_new = channel_names
+
+        if initial_circle and initial_circle in channel_names:
+            selected_circle = initial_circle
+        else:
+            selected_circle = available_for_new[0]
 
         row_frame = ctk.CTkFrame(self.sources_scroll_frame, fg_color="#1E1E2E", corner_radius=6)
         row_frame.pack(fill="x", padx=4, pady=3)
         row_frame.grid_columnconfigure(1, weight=1)
 
-        idx_label = ctk.CTkLabel(row_frame, text=f"#{len(self.source_rows) + 1}", width=32,
-                                 font=ctk.CTkFont(weight="bold"), text_color="#38BDF8")
-        idx_label.grid(row=0, column=0, padx=(8, 4), pady=4)
+        idx_label = ctk.CTkLabel(row_frame, text=f"#{len(self.source_rows) + 1}", width=36,
+                                 font=ctk.CTkFont(size=13, weight="bold"), text_color="#38BDF8")
+        idx_label.grid(row=0, column=0, padx=(8, 4), pady=5)
 
-        entry = ctk.CTkEntry(row_frame, placeholder_text="Nhập link kênh TikTok (@username, URL, hoặc từ khoá)...", height=32)
+        entry = ctk.CTkEntry(row_frame, placeholder_text="Nhập link kênh TikTok (@username, URL, hoặc từ khoá)...", height=36)
         if initial_url:
             entry.insert(0, initial_url)
-        entry.grid(row=0, column=1, padx=4, pady=4, sticky="ew")
+        entry.grid(row=0, column=1, padx=4, pady=5, sticky="ew")
+        entry.bind("<FocusOut>", lambda _: self._save_settings(verbose=False))
 
         arrow_lbl = ctk.CTkLabel(row_frame, text="➡️ Đăng vào:", font=ctk.CTkFont(size=12, weight="bold"), text_color="#10B981")
-        arrow_lbl.grid(row=0, column=2, padx=(8, 4), pady=4)
+        arrow_lbl.grid(row=0, column=2, padx=(8, 4), pady=5)
+
+        def on_dropdown_changed(_):
+            self._update_all_dropdown_options()
+            self._sync_tab1_to_tab2_checkboxes()
+            self._save_settings(verbose=False)
 
         dropdown = ctk.CTkOptionMenu(
-            row_frame, values=channel_names, width=175, height=32,
-            command=lambda _: self._sync_tab1_to_tab2_checkboxes()
+            row_frame, values=channel_names, width=205, height=36,
+            command=on_dropdown_changed
         )
-        if initial_circle and initial_circle in channel_names:
-            dropdown.set(initial_circle)
-        elif channel_names:
-            dropdown.set(channel_names[min(len(self.source_rows), len(channel_names) - 1)])
-        dropdown.grid(row=0, column=3, padx=4, pady=4)
+        dropdown.set(selected_circle)
+        dropdown.grid(row=0, column=3, padx=4, pady=5)
 
-        status_lbl = ctk.CTkLabel(row_frame, text="⚪ Chờ", width=90, font=ctk.CTkFont(size=12, weight="bold"), text_color="#94A3B8")
-        status_lbl.grid(row=0, column=4, padx=4, pady=4)
+        status_lbl = ctk.CTkLabel(row_frame, text="⚪ Chờ", width=100, font=ctk.CTkFont(size=12, weight="bold"), text_color="#94A3B8")
+        status_lbl.grid(row=0, column=4, padx=4, pady=5)
 
         row_data = {
             "frame": row_frame,
@@ -283,29 +375,34 @@ class UCirclePipelineApp(ctk.CTk):
         }
 
         rescan_btn = ctk.CTkButton(
-            row_frame, text="🔄 Quét lại", width=80, height=30,
-            fg_color="#3B82F6", hover_color="#2563EB", font=ctk.CTkFont(size=11, weight="bold"),
+            row_frame, text="🔄 Quét lại", width=90, height=34,
+            fg_color="#3B82F6", hover_color="#2563EB", font=ctk.CTkFont(size=12, weight="bold"),
             command=lambda: self._rescan_single_row(row_data)
         )
-        rescan_btn.grid(row=0, column=5, padx=4, pady=4)
+        rescan_btn.grid(row=0, column=5, padx=4, pady=5)
         row_data["rescan_btn"] = rescan_btn
 
         def delete_row():
             if len(self.source_rows) <= 1:
                 entry.delete(0, tk.END)
                 status_lbl.configure(text="⚪ Chờ", text_color="#94A3B8")
+                self._update_all_dropdown_options()
                 self._sync_tab1_to_tab2_checkboxes()
+                self._save_settings(verbose=False)
                 return
             row_frame.destroy()
             if row_data in self.source_rows:
                 self.source_rows.remove(row_data)
             self._renumber_source_rows()
+            self._update_all_dropdown_options()
             self._sync_tab1_to_tab2_checkboxes()
+            self._save_settings(verbose=False)
 
-        del_btn = ctk.CTkButton(row_frame, text="✕", width=30, height=30, fg_color="#EF4444", hover_color="#DC2626", command=delete_row)
-        del_btn.grid(row=0, column=6, padx=(4, 8), pady=4)
+        del_btn = ctk.CTkButton(row_frame, text="✕", width=34, height=34, fg_color="#EF4444", hover_color="#DC2626", font=ctk.CTkFont(size=13, weight="bold"), command=delete_row)
+        del_btn.grid(row=0, column=6, padx=(4, 8), pady=5)
 
         self.source_rows.append(row_data)
+        self._update_all_dropdown_options()
         self._sync_tab1_to_tab2_checkboxes()
 
     def _renumber_source_rows(self):
@@ -319,7 +416,9 @@ class UCirclePipelineApp(ctk.CTk):
             r["frame"].destroy()
         self.source_rows.clear()
         self._add_source_row()
+        self._update_all_dropdown_options()
         self._sync_tab1_to_tab2_checkboxes()
+        self._save_settings(verbose=False)
 
     def _rescan_single_row(self, row_data):
         """Quét lại riêng duy nhất 1 hàng TikTok đã chọn và lưu nối tiếp vào Excel."""
@@ -333,12 +432,17 @@ class UCirclePipelineApp(ctk.CTk):
             messagebox.showwarning("Chưa nhập link", "Vui lòng nhập link kênh TikTok vào ô input trước khi quét lại!")
             return
 
+        self._save_settings(verbose=False)
+        config.STOP_REQUESTED = False
+        config.HEADLESS = self.headless_var.get()
+
         is_keyword = self.mode_var.get() == "keyword"
         limit = self._int_or(self.limit_entry, 0)
         scrape_threads = int(self.scrape_threads_slider.get())
         min_views = self._int_or(self.min_views_entry, config.MIN_VIEWS)
         min_likes = self._int_or(self.min_likes_entry, config.MIN_LIKES)
         min_res = self._int_or(self.min_res_entry, config.MIN_RESOLUTION_HEIGHT)
+        max_dur = self._int_or(self.max_duration_entry, getattr(config, "MAX_DURATION_SEC", 180))
         cookies_path = self.cookie_entry.get().strip() or None
         browser_cookie = self.browser_menu.get()
         if browser_cookie == "Không dùng":
@@ -357,6 +461,7 @@ class UCirclePipelineApp(ctk.CTk):
                         p, url, target_circle=target_circle, is_keyword=is_keyword,
                         limit=limit, scrape_threads=scrape_threads,
                         min_views=min_views, min_likes=min_likes, min_resolution=min_res,
+                        max_duration=max_dur,
                         cookies_path=cookies_path, browser_cookie=browser_cookie,
                         exclude_history=exclude_history,
                     )
@@ -430,22 +535,22 @@ class UCirclePipelineApp(ctk.CTk):
                       command=self._delete_selected_identities).pack(side="left", padx=3)
 
         # Scrollable Frame chứa danh sách Checkbox Kênh
-        self.identities_frame = ctk.CTkScrollableFrame(form_frame, height=130, corner_radius=8, fg_color="#181825")
+        self.identities_frame = ctk.CTkScrollableFrame(form_frame, height=200, corner_radius=8, fg_color="#181825")
         self.identities_frame.grid(row=1, column=0, columnspan=2, padx=15, pady=(2, 6), sticky="ew")
         self.identities_frame.grid_columnconfigure(0, weight=1)
         self._reload_identity_checkboxes()
 
-        # Chế độ phân phối dự phòng khi Excel không ghi kênh riêng
+        # Chế độ đăng lên UCircle
         dist_box = ctk.CTkFrame(form_frame, fg_color="transparent")
         dist_box.grid(row=2, column=0, columnspan=2, padx=15, pady=4, sticky="w")
-        ctk.CTkLabel(dist_box, text="Chế độ phân phối dự phòng:", font=ctk.CTkFont(weight="bold")).pack(side="left", padx=(0, 15))
+        ctk.CTkLabel(dist_box, text="Chế độ đăng:", font=ctk.CTkFont(weight="bold")).pack(side="left", padx=(0, 15))
         self.dist_mode_var = tk.StringVar(value=getattr(config, "DISTRIBUTION_MODE", "round_robin"))
         ctk.CTkRadioButton(
-            dist_box, text="🔄 Xoay vòng (Round-Robin: chia đều video cho các kênh)",
+            dist_box, text="🎯 Đúng Circle đã chọn (Video kênh nào CHỈ đăng vào Circle đó - Khuyên dùng)",
             variable=self.dist_mode_var, value="round_robin"
         ).pack(side="left", padx=(0, 20))
         ctk.CTkRadioButton(
-            dist_box, text="📢 Đăng tất cả (Mỗi video đăng lên TOÀN BỘ các kênh đã chọn)",
+            dist_box, text="📢 Đăng chéo (1 video đăng lên TẤT CẢ các Circle đang tích)",
             variable=self.dist_mode_var, value="all"
         ).pack(side="left")
 
@@ -456,7 +561,7 @@ class UCirclePipelineApp(ctk.CTk):
         self.upload_browser_menu = ctk.CTkOptionMenu(cookie_box, values=["chrome", "edge", "firefox", "brave", "Không dùng"], width=100, height=34)
         self.upload_browser_menu.set("Không dùng")
         self.upload_browser_menu.pack(side="left", padx=(0, 5))
-        self.upload_cookie_entry = ctk.CTkEntry(cookie_box, width=160, height=34, placeholder_text="Chưa chọn file cookie")
+        self.upload_cookie_entry = ctk.CTkEntry(cookie_box, width=220, height=34, placeholder_text="Chưa chọn file cookie")
         self.upload_cookie_entry.pack(side="left", padx=(0, 5))
         ctk.CTkButton(cookie_box, text="📂 Chọn file...", width=110, height=34,
                       command=lambda: self._browse_cookie_file(self.upload_cookie_entry)).pack(side="left")
@@ -508,19 +613,25 @@ class UCirclePipelineApp(ctk.CTk):
         # Action Buttons (tab đăng)
         action_frame = ctk.CTkFrame(parent, fg_color="transparent")
         action_frame.grid(row=1, column=0, padx=5, pady=5, sticky="ew")
-        action_frame.grid_columnconfigure((0, 1), weight=1)
+        action_frame.grid_columnconfigure((0, 1, 2), weight=1)
 
         self.upload_btn = ctk.CTkButton(
             action_frame, text="📤 ĐĂNG EXCEL LÊN UCIRCLE", font=ctk.CTkFont(size=14, weight="bold"),
             height=42, fg_color="#10B981", hover_color="#059669", command=self._start_upload
         )
-        self.upload_btn.grid(row=0, column=0, padx=5, sticky="ew")
+        self.upload_btn.grid(row=0, column=0, padx=4, sticky="ew")
+
+        self.stop_upload_btn = ctk.CTkButton(
+            action_frame, text="🛑 DỪNG ĐĂNG", font=ctk.CTkFont(size=13, weight="bold"),
+            height=42, fg_color="#475569", hover_color="#DC2626", state="disabled", command=self._stop_process
+        )
+        self.stop_upload_btn.grid(row=0, column=1, padx=4, sticky="ew")
 
         self.login_btn = ctk.CTkButton(
-            action_frame, text="🔐 Đăng Nhập UCircle (Lần đầu)", font=ctk.CTkFont(size=13),
+            action_frame, text="🔐 Đăng Nhập UCircle", font=ctk.CTkFont(size=13),
             height=42, fg_color="#6366F1", hover_color="#4F46E5", command=self._login_ucircle
         )
-        self.login_btn.grid(row=0, column=1, padx=5, sticky="ew")
+        self.login_btn.grid(row=0, column=2, padx=4, sticky="ew")
         self._sync_tab1_to_tab2_checkboxes()
 
     def _reload_identity_checkboxes(self):
@@ -552,13 +663,8 @@ class UCirclePipelineApp(ctk.CTk):
             )
             cb.pack(anchor="w", padx=10, pady=3)
 
-        # Cập nhật lại dropdown trong các ô input TikTok ở Tab 1
-        channel_names = [item["name"] for item in identities] or ["Tôi (Trang cá nhân)"]
-        for r in getattr(self, "source_rows", []):
-            cur = r["dropdown"].get()
-            r["dropdown"].configure(values=channel_names)
-            if cur not in channel_names and channel_names:
-                r["dropdown"].set(channel_names[0])
+        # Cập nhật lại dropdown trong các ô input TikTok ở Tab 1 (ẩn các circle đã bị ô khác chọn)
+        self._update_all_dropdown_options()
 
         # Tự động tích chọn theo các Circle đã chọn ở Tab 1
         self._sync_tab1_to_tab2_checkboxes()
@@ -621,7 +727,7 @@ class UCirclePipelineApp(ctk.CTk):
     def _show_add_identity_dialog(self):
         dialog = ctk.CTkToplevel(self)
         dialog.title("Thêm Kênh / Fanpage UCircle")
-        dialog.geometry("520x240")
+        dialog.geometry("600x260")
         dialog.grab_set()
         dialog.grid_columnconfigure(1, weight=1)
 
@@ -733,6 +839,24 @@ class UCirclePipelineApp(ctk.CTk):
         except ValueError:
             return default
 
+    def _on_headless_toggle(self):
+        val = self.headless_var.get()
+        config.HEADLESS = val
+        mode_str = "ẩn màn hình (chạy ngầm)" if val else "hiện màn hình trình duyệt"
+        self.write_log(f"⚙️ [CHẾ ĐỘ TRÌNH DUYỆT] Đã chuyển sang: {mode_str}")
+        self._save_settings(verbose=False)
+
+    def _stop_process(self):
+        if not self.is_running:
+            return
+        config.STOP_REQUESTED = True
+        self.write_log("\n🛑 [DỪNG TIẾN TRÌNH] Đang gửi yêu cầu dừng... Vui lòng đợi trong giây lát để hệ thống thoát an toàn!")
+        self.status_badge.configure(text="🛑 Đang dừng...", text_color="#EF4444")
+        if hasattr(self, "stop_scan_btn"):
+            self.stop_scan_btn.configure(state="disabled", fg_color="#991B1B")
+        if hasattr(self, "stop_upload_btn"):
+            self.stop_upload_btn.configure(state="disabled", fg_color="#991B1B")
+
     def _set_busy(self, busy: bool, status_text: str, status_color: str):
         self.is_running = busy
         state = "disabled" if busy else "normal"
@@ -741,6 +865,169 @@ class UCirclePipelineApp(ctk.CTk):
         self.login_btn.configure(state=state)
         self.download_excel_btn.configure(state=state)
         self.status_badge.configure(text=status_text, text_color=status_color)
+
+        if busy:
+            if hasattr(self, "stop_scan_btn"):
+                self.stop_scan_btn.configure(state="normal", fg_color="#DC2626")
+            if hasattr(self, "stop_upload_btn"):
+                self.stop_upload_btn.configure(state="normal", fg_color="#DC2626")
+        else:
+            config.STOP_REQUESTED = False
+            if hasattr(self, "stop_scan_btn"):
+                self.stop_scan_btn.configure(state="disabled", fg_color="#475569")
+            if hasattr(self, "stop_upload_btn"):
+                self.stop_upload_btn.configure(state="disabled", fg_color="#475569")
+
+    def _on_closing(self):
+        try:
+            self._save_settings(verbose=False)
+        except Exception:
+            pass
+        self.destroy()
+
+    def _save_settings(self, verbose: bool = False):
+        """Lưu toàn bộ cấu hình form và danh sách kênh TikTok vào file data/gui_settings.json."""
+        try:
+            os.makedirs(os.path.dirname(config.GUI_SETTINGS_PATH), exist_ok=True)
+            sources_data = []
+            for r in getattr(self, "source_rows", []):
+                u = r["entry"].get().strip()
+                c = r["dropdown"].get().strip()
+                sources_data.append({"url": u, "circle": c})
+
+            import json
+            settings = {
+                "headless": bool(self.headless_var.get()),
+                "mode": self.mode_var.get(),
+                "sources": sources_data,
+                "limit": self.limit_entry.get().strip(),
+                "browser_cookie": self.browser_menu.get(),
+                "cookie_path": self.cookie_entry.get().strip(),
+                "min_views": self.min_views_entry.get().strip(),
+                "min_likes": self.min_likes_entry.get().strip(),
+                "min_res": self.min_res_entry.get().strip(),
+                "max_duration": self.max_duration_entry.get().strip(),
+                "dedupe_history": bool(self.dedupe_history_var.get()),
+                "scrape_threads": int(self.scrape_threads_slider.get()),
+                "dist_mode": self.dist_mode_var.get(),
+                "upload_browser_cookie": self.upload_browser_menu.get(),
+                "upload_cookie_path": self.upload_cookie_entry.get().strip(),
+                "min_delay": self.min_delay_entry.get().strip(),
+                "max_delay": self.max_delay_entry.get().strip(),
+                "crosspost": bool(self.crosspost_var.get()),
+                "upload_threads": int(self.upload_threads_slider.get()),
+            }
+
+            with open(config.GUI_SETTINGS_PATH, "w", encoding="utf-8") as f:
+                json.dump(settings, f, ensure_ascii=False, indent=2)
+
+            if verbose:
+                self.write_log("💾 [CẤU HÌNH] Đã lưu thành công toàn bộ cài đặt & danh sách kênh TikTok!")
+                messagebox.showinfo("Đã lưu cài đặt", "✅ Toàn bộ cấu hình và danh sách kênh đã được ghi nhớ!\nLần sau mở app sẽ tự động nạp lại.")
+        except Exception as e:
+            if verbose:
+                self.write_log(f"❌ [LỖI] Không thể lưu cấu hình: {e}")
+
+    def _load_settings(self):
+        """Nạp lại cấu hình đã lưu từ file data/gui_settings.json."""
+        if not os.path.exists(config.GUI_SETTINGS_PATH):
+            return
+
+        import json
+        try:
+            with open(config.GUI_SETTINGS_PATH, "r", encoding="utf-8") as f:
+                data = json.load(f)
+        except Exception as e:
+            print(f"[!] Không thể đọc gui_settings.json: {e}")
+            return
+
+        try:
+            # 1. Headless
+            if "headless" in data:
+                h_val = bool(data["headless"])
+                self.headless_var.set(h_val)
+                config.HEADLESS = h_val
+
+            # 2. Mode
+            if "mode" in data and data["mode"] in ["profile", "keyword"]:
+                self.mode_var.set(data["mode"])
+
+            # 3. Sources (Kênh TikTok & Circle)
+            saved_sources = data.get("sources", [])
+            if saved_sources and isinstance(saved_sources, list):
+                for r in list(self.source_rows):
+                    r["frame"].destroy()
+                self.source_rows.clear()
+                for item in saved_sources:
+                    u = item.get("url", "")
+                    c = item.get("circle", "")
+                    self._add_source_row(initial_url=u, initial_circle=c)
+
+            # 4. Limit & Cookies
+            if "limit" in data:
+                self.limit_entry.delete(0, tk.END)
+                self.limit_entry.insert(0, str(data["limit"]))
+            if "browser_cookie" in data:
+                self.browser_menu.set(data["browser_cookie"])
+            if "cookie_path" in data and data["cookie_path"]:
+                self.cookie_entry.delete(0, tk.END)
+                self.cookie_entry.insert(0, data["cookie_path"])
+
+            # 5. Quality filters
+            if "min_views" in data:
+                self.min_views_entry.delete(0, tk.END)
+                self.min_views_entry.insert(0, str(data["min_views"]))
+            if "min_likes" in data:
+                self.min_likes_entry.delete(0, tk.END)
+                self.min_likes_entry.insert(0, str(data["min_likes"]))
+            if "min_res" in data:
+                self.min_res_entry.delete(0, tk.END)
+                self.min_res_entry.insert(0, str(data["min_res"]))
+            if "max_duration" in data:
+                self.max_duration_entry.delete(0, tk.END)
+                self.max_duration_entry.insert(0, str(data["max_duration"]))
+
+            # 6. Dedupe & Scrape Threads
+            if "dedupe_history" in data:
+                self.dedupe_history_var.set(bool(data["dedupe_history"]))
+            if "scrape_threads" in data:
+                val = int(data["scrape_threads"])
+                self.scrape_threads_slider.set(val)
+                self.scrape_threads_value_label.configure(text=str(val))
+
+            # 7. Distribution Mode
+            if "dist_mode" in data and data["dist_mode"] in ["round_robin", "all"]:
+                self.dist_mode_var.set(data["dist_mode"])
+
+            # 8. Upload Cookie
+            if "upload_browser_cookie" in data:
+                self.upload_browser_menu.set(data["upload_browser_cookie"])
+            if "upload_cookie_path" in data and data["upload_cookie_path"]:
+                self.upload_cookie_entry.delete(0, tk.END)
+                self.upload_cookie_entry.insert(0, data["upload_cookie_path"])
+
+            # 9. Delay Min / Max
+            if "min_delay" in data:
+                self.min_delay_entry.delete(0, tk.END)
+                self.min_delay_entry.insert(0, str(data["min_delay"]))
+            if "max_delay" in data:
+                self.max_delay_entry.delete(0, tk.END)
+                self.max_delay_entry.insert(0, str(data["max_delay"]))
+
+            # 10. Crosspost & Upload Threads
+            if "crosspost" in data:
+                self.crosspost_var.set(bool(data["crosspost"]))
+            if "upload_threads" in data:
+                val = int(data["upload_threads"])
+                self.upload_threads_slider.set(val)
+                self.upload_threads_value_label.configure(text=str(val))
+
+            # Đồng bộ lại dropdown (ẩn các circle đã chọn) và checkbox Tab 2
+            self._update_all_dropdown_options()
+            self._sync_tab1_to_tab2_checkboxes()
+        except Exception as e:
+            print(f"[!] Lỗi khi khôi phục cấu hình: {e}")
+
 
     def _browse_cookie_file(self, target_entry):
         chosen = filedialog.askopenfilename(
@@ -868,12 +1155,17 @@ class UCirclePipelineApp(ctk.CTk):
             messagebox.showwarning("Lỗi", "Vui lòng nhập ít nhất một link kênh TikTok vào ô input!")
             return
 
+        self._save_settings(verbose=False)
+        config.STOP_REQUESTED = False
+        config.HEADLESS = self.headless_var.get()
+
         is_keyword = self.mode_var.get() == "keyword"
         limit = self._int_or(self.limit_entry, 0)
         scrape_threads = int(self.scrape_threads_slider.get())
         min_views = self._int_or(self.min_views_entry, config.MIN_VIEWS)
         min_likes = self._int_or(self.min_likes_entry, config.MIN_LIKES)
         min_res = self._int_or(self.min_res_entry, config.MIN_RESOLUTION_HEIGHT)
+        max_dur = self._int_or(self.max_duration_entry, getattr(config, "MAX_DURATION_SEC", 180))
         cookies_path = self.cookie_entry.get().strip() or None
         browser_cookie = self.browser_menu.get()
         if browser_cookie == "Không dùng":
@@ -917,6 +1209,7 @@ class UCirclePipelineApp(ctk.CTk):
                         p, sources, is_keyword=is_keyword, limit=limit,
                         scrape_threads=scrape_threads, min_views=min_views,
                         min_likes=min_likes, min_resolution=min_res,
+                        max_duration=max_dur,
                         cookies_path=cookies_path, browser_cookie=browser_cookie,
                         exclude_history=exclude_history,
                         on_source_start=on_source_start,
@@ -929,8 +1222,17 @@ class UCirclePipelineApp(ctk.CTk):
 
                 print(f"\n[+] Hoàn tất: Đã quét {scanned_total} video từ {len(sources)} nguồn. Đạt chuẩn {passed_total} video.")
 
+                is_stopped = getattr(config, "STOP_REQUESTED", False)
+
                 def notify_result():
-                    if failed_sources:
+                    if is_stopped:
+                        self._set_busy(False, "🛑 Đã dừng quét", "#EF4444")
+                        messagebox.showinfo(
+                            "Đã dừng tiến trình",
+                            f"🛑 Tiến trình quét video đã dừng theo yêu cầu của bạn!\n\n"
+                            f"📊 Đã thu thập được {passed_total} video đạt chuẩn trước khi dừng."
+                        )
+                    elif failed_sources:
                         lines = []
                         for f in failed_sources:
                             lines.append(f"• [Hàng #{f['idx']}] {f['source']}\n  ➡️ UCircle: [{f['target_circle']}]\n  ⚠️ Lý do: {f['reason']}")
@@ -956,7 +1258,8 @@ class UCirclePipelineApp(ctk.CTk):
                 print(f"[ERROR] Lỗi nghiêm trọng khi quét: {e}")
             finally:
                 sys.stdout = old_stdout
-                self.after(0, lambda: self._set_busy(False, "🟢 Sẵn sàng", "#10B981"))
+                if not getattr(config, "STOP_REQUESTED", False):
+                    self.after(0, lambda: self._set_busy(False, "🟢 Sẵn sàng", "#10B981"))
 
         threading.Thread(target=task, daemon=True).start()
 
@@ -976,7 +1279,7 @@ class UCirclePipelineApp(ctk.CTk):
 
         dialog = ctk.CTkToplevel(self)
         dialog.title("Đăng lên UCircle từ Excel")
-        dialog.geometry("600x230")
+        dialog.geometry("700x260")
         dialog.grab_set()
         dialog.grid_columnconfigure(0, weight=1)
 
@@ -1042,6 +1345,10 @@ class UCirclePipelineApp(ctk.CTk):
         ).grid(row=4, column=0, columnspan=2, padx=15, pady=(5, 15), sticky="ew")
 
     def _run_upload_from_excel(self, excel_path: str):
+        self._save_settings(verbose=False)
+        config.STOP_REQUESTED = False
+        config.HEADLESS = self.headless_var.get()
+
         upload_threads = int(self.upload_threads_slider.get())
         selected_ids = self._get_selected_identity_ids()
         dist_mode = self.dist_mode_var.get()
@@ -1065,6 +1372,7 @@ class UCirclePipelineApp(ctk.CTk):
         def task():
             old_stdout = sys.stdout
             sys.stdout = TextRedirector(self.log_queue)
+            result = None
             try:
                 result = uploader.run_uploads(
                     threads=upload_threads,
@@ -1074,13 +1382,46 @@ class UCirclePipelineApp(ctk.CTk):
                     identities=selected_ids,
                     distribution_mode=dist_mode,
                 )
-                print(f"\n[+] Hoàn tất: {result['success']}/{result['total']} lượt đăng thành công, {result['failed']} thất bại.")
             except Exception as e:
                 print(f"[ERROR] Lỗi nghiêm trọng khi đăng: {e}")
             finally:
                 sys.stdout = old_stdout
-                self.after(0, lambda: self._set_busy(False, "🟢 Hoàn tất đăng!", "#10B981"))
-                self.after(0, lambda: messagebox.showinfo("Thành công", "Đã hoàn thành lượt đăng lên UCircle!"))
+
+                def show_completion():
+                    if not result:
+                        self._set_busy(False, "❌ Lỗi đăng", "#EF4444")
+                        return
+
+                    is_stopped = result.get("stopped") or getattr(config, "STOP_REQUESTED", False)
+                    if is_stopped:
+                        self._set_busy(False, "🛑 Đã dừng đăng", "#EF4444")
+                        c_lines = []
+                        for cid, st in result.get("circle_stats", {}).items():
+                            c_name = st["name"]
+                            c_succ = st["success"]
+                            c_tot = st["total"]
+                            c_rem = c_tot - c_succ - st.get("failed", 0)
+                            c_lines.append(f"• 🏷️ [{c_name}]: Đã đăng {c_succ}/{c_tot} video (còn lại {c_rem})")
+
+                        detail_str = "\n".join(c_lines) if c_lines else ""
+                        msg = (
+                            f"🛑 Tiến trình đăng đã DỪNG THEO YÊU CẦU CỦA BẠN!\n\n"
+                            f"📊 Tổng kết trước khi dừng: {result['success']}/{result['total']} video đã đăng thành công.\n\n"
+                            f"📋 Tình trạng từng Circle:\n{detail_str}\n\n"
+                            f"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+                            f"💡 Các video còn lại vẫn được lưu đầy đủ trong Excel.\n"
+                            f"Lần sau bạn bấm 'Bắt đầu đăng', tool sẽ tiếp tục đăng nối tiếp!"
+                        )
+                        messagebox.showinfo("Đã dừng tiến trình", msg)
+                    else:
+                        self._set_busy(False, "🟢 Hoàn tất đăng!", "#10B981")
+                        messagebox.showinfo(
+                            "Đăng hoàn tất",
+                            f"🎉 Đã hoàn thành tất cả các lượt đăng lên UCircle!\n\n"
+                            f"📊 Kết quả: {result['success']}/{result['total']} lượt đăng thành công."
+                        )
+
+                self.after(0, show_completion)
 
         threading.Thread(target=task, daemon=True).start()
 

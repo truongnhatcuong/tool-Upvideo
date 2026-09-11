@@ -15,7 +15,7 @@ def _fetch_metadata_staggered(link, cookies_path, browser_cookie):
     return tiktok_extractor.fetch_metadata(link, cookies_path, browser_cookie)
 
 
-def quality_filter(meta: dict, min_views: int, min_likes: int, min_resolution: int) -> bool:
+def quality_filter(meta: dict, min_views: int, min_likes: int, min_resolution: int, max_duration: int = None) -> bool:
     if not meta:
         return False
     if meta.get("views", 0) < min_views:
@@ -23,6 +23,10 @@ def quality_filter(meta: dict, min_views: int, min_likes: int, min_resolution: i
     if meta.get("likes", 0) < min_likes:
         return False
     if meta.get("height", 0) < min_resolution:
+        return False
+    max_duration = getattr(config, "MAX_DURATION_SEC", 180) if max_duration is None else max_duration
+    dur = meta.get("duration", 0)
+    if max_duration and dur and dur > max_duration:
         return False
     return True
 
@@ -71,6 +75,7 @@ def scrape_single_source(
     min_views: int = None,
     min_likes: int = None,
     min_resolution: int = None,
+    max_duration: int = None,
     cookies_path: str = None,
     browser_cookie: str = None,
     exclude_history: bool = True,
@@ -81,6 +86,7 @@ def scrape_single_source(
     min_views = config.MIN_VIEWS if min_views is None else min_views
     min_likes = config.MIN_LIKES if min_likes is None else min_likes
     min_resolution = config.MIN_RESOLUTION_HEIGHT if min_resolution is None else min_resolution
+    max_duration = getattr(config, "MAX_DURATION_SEC", 180) if max_duration is None else max_duration
 
     def log(msg):
         print(msg)
@@ -151,6 +157,9 @@ def scrape_single_source(
             for link in links
         }
         for i, future in enumerate(as_completed(futures), 1):
+            if getattr(config, "STOP_REQUESTED", False):
+                log("🛑 [DỪNG TIẾN TRÌNH] Đã nhận lệnh dừng từ người dùng.")
+                break
             link = futures[future]
             try:
                 meta = future.result()
@@ -158,7 +167,7 @@ def scrape_single_source(
                 log(f"[ERROR] {link}: {e}")
                 meta = {}
 
-            if quality_filter(meta, min_views, min_likes, min_resolution):
+            if quality_filter(meta, min_views, min_likes, min_resolution, max_duration):
                 passed_rows.append({
                     "link": meta["link"],
                     "caption": meta["caption"],
@@ -167,11 +176,17 @@ def scrape_single_source(
                     "likes": meta["likes"],
                     "resolution": f"{meta['width']}x{meta['height']}",
                     "target_circle": target_circle,
+                    "duration": meta.get("duration", 0),
                 })
                 log(f"[{i}/{len(links)}] ✅ Đạt chất lượng [-> {target_label}]: {link}")
             else:
                 rejected += 1
                 log(f"[{i}/{len(links)}] ⏭️ Loại (không đạt ngưỡng): {link}")
+
+    if passed_rows and target_label:
+        removed = excel_store.remove_records_by_target(target_label)
+        if removed > 0:
+            log(f"🧹 Đã dọn {removed} video cũ của Circle [{target_label}] trong Excel để nạp video mới.")
 
     added = excel_store.append_records(passed_rows)
     if passed_rows:
@@ -210,6 +225,7 @@ def scrape_and_filter(
     min_views: int = None,
     min_likes: int = None,
     min_resolution: int = None,
+    max_duration: int = None,
     cookies_path: str = None,
     browser_cookie: str = None,
     exclude_history: bool = True,
@@ -224,6 +240,7 @@ def scrape_and_filter(
     min_views = config.MIN_VIEWS if min_views is None else min_views
     min_likes = config.MIN_LIKES if min_likes is None else min_likes
     min_resolution = config.MIN_RESOLUTION_HEIGHT if min_resolution is None else min_resolution
+    max_duration = getattr(config, "MAX_DURATION_SEC", 180) if max_duration is None else max_duration
 
     def log(msg):
         print(msg)
@@ -248,6 +265,10 @@ def scrape_and_filter(
     source_stats = {}
 
     for idx, (raw_src, is_kw, target_circle) in enumerate(sources_list, 1):
+        if getattr(config, "STOP_REQUESTED", False):
+            log("\n🛑 [DỪNG TIẾN TRÌNH] Nhận lệnh dừng từ người dùng. Ngừng quét các kênh tiếp theo!")
+            break
+
         target_url = tiktok_extractor.build_search_url(raw_src) if is_kw else raw_src
         target_label = target_circle if target_circle else "(Dùng kênh mặc định)"
         source_stats[raw_src] = {
@@ -347,6 +368,9 @@ def scrape_and_filter(
             for link in all_links
         }
         for i, future in enumerate(as_completed(futures), 1):
+            if getattr(config, "STOP_REQUESTED", False):
+                log("\n🛑 [DỪNG TIẾN TRÌNH] Nhận lệnh dừng từ người dùng. Hủy xử lý các video còn lại!")
+                break
             link = futures[future]
             src = link_to_source.get(link, "")
             try:
@@ -355,7 +379,7 @@ def scrape_and_filter(
                 log(f"[ERROR] {link}: {e}")
                 meta = {}
 
-            if quality_filter(meta, min_views, min_likes, min_resolution):
+            if quality_filter(meta, min_views, min_likes, min_resolution, max_duration):
                 target_circle = link_to_circle.get(link, "")
                 if src in source_stats:
                     source_stats[src]["passed"] += 1
@@ -368,6 +392,7 @@ def scrape_and_filter(
                     "likes": meta["likes"],
                     "resolution": f"{meta['width']}x{meta['height']}",
                     "target_circle": target_circle,
+                    "duration": meta.get("duration", 0),
                 })
                 circle_hint = f" [-> {target_circle}]" if target_circle else ""
                 log(f"[{i}/{len(all_links)}] ✅ Đạt chất lượng{circle_hint}: {link}")

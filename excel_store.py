@@ -7,7 +7,7 @@ import pandas as pd
 import config
 
 COLUMNS = [
-    "link", "caption", "hashtags", "target_circle"
+    "link", "caption", "hashtags", "target_circle", "duration"
 ]
 
 _lock = threading.Lock()
@@ -24,11 +24,13 @@ def _read_df() -> pd.DataFrame:
     df = pd.read_excel(config.EXCEL_PATH, dtype={"link": str, "target_circle": str})
     if "target_circle" not in df.columns:
         df["target_circle"] = ""
+    if "duration" not in df.columns:
+        df["duration"] = 0
     return df.fillna("")
 
 
 def append_records(rows: list):
-    """rows: list of dict {link, caption, hashtags, views, likes, resolution, target_circle}.
+    """rows: list of dict {link, caption, hashtags, views, likes, resolution, target_circle, duration}.
     Bỏ qua các link đã có sẵn trong file (tránh trùng khi quét lại)."""
     if not rows:
         return 0
@@ -46,6 +48,7 @@ def append_records(rows: list):
                 "caption": r.get("caption", ""),
                 "hashtags": r.get("hashtags", ""),
                 "target_circle": str(r.get("target_circle", "") or "").strip(),
+                "duration": int(r.get("duration", 0) or 0),
             })
 
         if not new_rows:
@@ -68,3 +71,22 @@ def load_all() -> list:
         else:
             r["target_circle"] = str(r["target_circle"]).strip()
     return records
+
+
+def remove_records_by_target(target_circle: str) -> int:
+    """Xoá toàn bộ các dòng thuộc target_circle trong file Excel để nạp video mới."""
+    if not target_circle:
+        return 0
+    with _lock:
+        if not os.path.exists(config.EXCEL_PATH):
+            return 0
+        df = _read_df()
+        if df.empty or "target_circle" not in df.columns:
+            return 0
+        initial_len = len(df)
+        df = df[df["target_circle"].astype(str).str.strip() != str(target_circle).strip()]
+        removed = initial_len - len(df)
+        if removed > 0:
+            df.to_excel(config.EXCEL_PATH, index=False)
+        return removed
+

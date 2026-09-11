@@ -183,10 +183,12 @@ def extract_tiktok_links_detailed(playwright, url: str, limit: int = 0, exclude_
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
     )
 
-    print("[+] Mở trình duyệt TikTok (hồ sơ session data/tiktok_profile)...")
+    is_headless = getattr(config, "HEADLESS", False)
+    mode_str = "chạy ngầm (ẩn màn hình)" if is_headless else "hiện màn hình"
+    print(f"[+] Mở trình duyệt TikTok ({mode_str}, hồ sơ session data/tiktok_profile)...")
     context = playwright.chromium.launch_persistent_context(
         profile_dir,
-        headless=False,
+        headless=is_headless,
         args=[
             "--disable-blink-features=AutomationControlled",
             "--no-sandbox",
@@ -196,7 +198,21 @@ def extract_tiktok_links_detailed(playwright, url: str, limit: int = 0, exclude_
         user_agent=ua,
         locale="vi-VN",
     )
+    # Đóng toàn bộ các tab cũ dư thừa do session restore lưu lại, chỉ giữ đúng 1 tab duy nhất
+    while len(context.pages) > 1:
+        try:
+            context.pages[-1].close()
+        except Exception:
+            break
     page = context.pages[0] if context.pages else context.new_page()
+
+    def _on_popup(popup):
+        try:
+            page.bring_to_front()
+        except Exception:
+            pass
+    page.on("popup", _on_popup)
+
     page.add_init_script("""
         Object.defineProperty(navigator, 'webdriver', {get: () => undefined});
         window.chrome = { runtime: {} };
@@ -228,6 +244,10 @@ def extract_tiktok_links_detailed(playwright, url: str, limit: int = 0, exclude_
 
         print("[+] Đang kiểm tra giao diện và nạp danh sách video...")
         while True:
+            if getattr(config, "STOP_REQUESTED", False):
+                print("\n🛑 [DỪNG TIẾN TRÌNH] Nhận lệnh dừng từ người dùng. Ngừng cuộn trang TikTok!")
+                break
+
             # 1. Kiểm tra tài khoản riêng tư
             if page.locator("text='Tài khoản này là riêng tư', text='This account is private'").count() > 0:
                 print(f"❌ [LỖI KÊNH] Kênh TikTok này đang cài đặt Riêng Tư (Private) -> Không thể xem video: {url}")
@@ -257,8 +277,7 @@ def extract_tiktok_links_detailed(playwright, url: str, limit: int = 0, exclude_
                     try:
                         page.bring_to_front()
                         if is_mac:
-                            subprocess.run(["osascript", "-e", 'tell application "Google Chrome" to activate'], capture_output=True)
-                            subprocess.run(["osascript", "-e", 'tell application "Chromium" to activate'], capture_output=True)
+                            subprocess.run(["osascript", "-e", 'tell application "Google Chrome for Testing" to activate'], capture_output=True)
                     except Exception:
                         pass
                 else:
@@ -373,85 +392,104 @@ def _impersonate_target():
         return None
 
 
-def download_single_video(link: str, output_path: str, cookies_path: str = None, browser_cookie: str = None, max_retries: int = 3) -> bool:
+def download_single_video(link: str, output_path: str, cookies_path: str = None, browser_cookie: str = None, max_retries: int = 2) -> bool:
+    from concurrent.futures import ThreadPoolExecutor, TimeoutError as FutureTimeout
     import time
+    import requests
     import yt_dlp
 
-    # Cấu hình yt-dlp
-    ydl_opts = {
-        'outtmpl': output_path,
-        'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best',
-        'merge_output_format': 'mp4',
-        'windowsfilenames': sys.platform.startswith('win'),
-        'quiet': True,
-        'no_warnings': True,
-        'ignoreerrors': True,
-        'http_headers': {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
-            'Accept-Language': 'vi-VN,vi;q=0.9,fr-FR;q=0.8,fr;q=0.7,en-US;q=0.6,en;q=0.5',
-        }
-    }
-    impersonate_target = _impersonate_target()
-    if impersonate_target:
-        ydl_opts['impersonate'] = impersonate_target
-
-    if cookies_path and os.path.exists(cookies_path):
-        ydl_opts['cookiefile'] = cookies_path
-    elif browser_cookie:
-        ydl_opts['cookiesfrombrowser'] = (browser_cookie,)
-
-    # HÀM DỰ PHÒNG TIKWM (API bên thứ 3)
-    def download_via_api(url, dest):
+    def _execute_download():
+        # 1. Thử tải siêu tốc qua API TikWM trước (Không bị TikTok bóp băng thông, tải trong 2-3s)
         try:
-            import requests
-            resp = requests.post("https://www.tikwm.com/api/", data={"url": url}, timeout=15)
+            headers = {
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
+            }
+            resp = requests.post("https://www.tikwm.com/api/", data={"url": link}, headers=headers, timeout=8)
             data = resp.json()
             if data.get("code") == 0:
                 play_url = data["data"].get("hdplay") or data["data"].get("play")
                 if play_url:
-                    vid_resp = requests.get(play_url, stream=True, timeout=30)
+                    if play_url.startswith("/"):
+                        play_url = "https://www.tikwm.com" + play_url
+                    vid_resp = requests.get(play_url, headers=headers, stream=True, timeout=20)
                     vid_resp.raise_for_status()
-                    with open(dest, "wb") as f:
-                        for chunk in vid_resp.iter_content(chunk_size=8192):
+                    with open(output_path, "wb") as f:
+                        for chunk in vid_resp.iter_content(chunk_size=65536):
                             if chunk:
                                 f.write(chunk)
-                    return True
+                    if os.path.exists(output_path) and os.path.getsize(output_path) > 10000:
+                        return True
         except Exception:
             pass
-        return False
 
-    for attempt in range(1, max_retries + 1):
-        if os.path.exists(output_path):
-            os.remove(output_path)
+        # 2. Cấu hình yt-dlp dự phòng (Có cơ chế chống bóp băng thông throttled_rate)
+        ydl_opts = {
+            'outtmpl': output_path,
+            'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best',
+            'merge_output_format': 'mp4',
+            'windowsfilenames': sys.platform.startswith('win'),
+            'quiet': True,
+            'no_warnings': True,
+            'ignoreerrors': True,
+            'socket_timeout': 10,
+            'throttled_rate': 100000,  # Ngưỡng tối thiểu 100KB/s: Nếu bị bóp < 100KB/s -> tự động ngắt kết nối
+            'retries': 2,
+            'fragment_retries': 2,
+            'http_headers': {
+                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36',
+                'Accept-Language': 'vi-VN,vi;q=0.9,en-US;q=0.8,en;q=0.7',
+            }
+        }
+        impersonate_target = _impersonate_target()
+        if impersonate_target:
+            ydl_opts['impersonate'] = impersonate_target
+
+        if cookies_path and os.path.exists(cookies_path):
+            ydl_opts['cookiefile'] = cookies_path
+        elif browser_cookie:
+            ydl_opts['cookiesfrombrowser'] = (browser_cookie,)
 
         try:
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                 info = ydl.extract_info(link, download=False)
                 if not info:
-                    raise RuntimeError("extract_info trả về None")
+                    return False
 
                 formats = info.get('formats') or [info]
-                has_video = any(f.get('vcodec') not in (None, 'none') for f in formats)
-                if not has_video:
+                if not any(f.get('vcodec') not in (None, 'none') for f in formats):
                     print(f"[SKIP] Bỏ qua vì là ảnh/slideshow (không có video): {link}")
                     return False
 
                 print(f"[+] Đang tải: {link}")
                 ydl.download([link])
-                if os.path.exists(output_path):
-                    return True
+                return os.path.exists(output_path) and os.path.getsize(output_path) > 10000
         except Exception as e:
-            print(f"[ERROR] Lỗi yt-dlp (lần {attempt}/{max_retries}): {e}")
-            print(f"[+] Thử chuyển sang hệ thống API dự phòng (TikWM)...")
-            if download_via_api(link, output_path):
-                print(f"[+] Tải thành công bằng API dự phòng!")
-                return True
+            print(f"[ERROR] Lỗi yt-dlp: {e}")
+            return False
 
-        if attempt < max_retries:
-            wait = attempt * 2 + random.uniform(0, 1.5)
-            time.sleep(wait)
+    # Giới hạn thời gian tải tối đa 35 GIÂY: Tuyệt đối không để treo quá 35s!
+    if os.path.exists(output_path):
+        try:
+            os.remove(output_path)
+        except Exception:
+            pass
 
-    return False
+    with ThreadPoolExecutor(max_workers=1) as executor:
+        future = executor.submit(_execute_download)
+        try:
+            ok = future.result(timeout=35)
+            return bool(ok)
+        except FutureTimeout:
+            print(f"⚠️ [TIMEOUT TẢI 35s] Video {link} bị nghẽn mạng quá 35s -> Tự động huỷ bỏ để đổi video khác!")
+            if os.path.exists(output_path):
+                try:
+                    os.remove(output_path)
+                except Exception:
+                    pass
+            return False
+        except Exception as e:
+            print(f"⚠️ Lỗi khi tải video: {e}")
+            return False
 
 
 def _extract_hashtags(text: str):
@@ -542,6 +580,7 @@ def fetch_metadata(link: str, cookies_path: str = None, browser_cookie: str = No
                     'view_count': vid.get('play_count'),
                     'like_count': vid.get('digg_count'),
                     'uploader': vid.get('author', {}).get('unique_id'),
+                    'duration': int(vid.get('duration') or 0),
                     'width': 1080, # mặc định HD
                     'height': 1920
                 }
@@ -617,6 +656,7 @@ def fetch_metadata(link: str, cookies_path: str = None, browser_cookie: str = No
                     "likes": int(info.get('like_count') or 0),
                     "width": int(info.get('width') or 0),
                     "height": int(info.get('height') or 0),
+                    "duration": int(info.get('duration') or 0),
                 }
         except Exception as e:
             last_error = e
@@ -666,6 +706,11 @@ def open_tiktok_interactive_session():
             user_agent=ua,
             locale="vi-VN",
         )
+        while len(context.pages) > 1:
+            try:
+                context.pages[-1].close()
+            except Exception:
+                break
         page = context.pages[0] if context.pages else context.new_page()
         try:
             from playwright_stealth import Stealth
@@ -676,8 +721,7 @@ def open_tiktok_interactive_session():
         try:
             page.bring_to_front()
             if is_mac:
-                subprocess.run(["osascript", "-e", 'tell application "Google Chrome" to activate'], capture_output=True)
-                subprocess.run(["osascript", "-e", 'tell application "Chromium" to activate'], capture_output=True)
+                subprocess.run(["osascript", "-e", 'tell application "Google Chrome for Testing" to activate'], capture_output=True)
         except Exception:
             pass
 

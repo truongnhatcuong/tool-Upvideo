@@ -35,8 +35,15 @@ IDENTITIES_PATH = os.path.join(BASE_DIR, "data", "identities.json")
 # Thư mục lưu hồ sơ trình duyệt TikTok (cookies, thiết bị để không bị hỏi Captcha liên tục)
 TIKTOK_PROFILE_DIR = os.path.join(BASE_DIR, "data", "tiktok_profile")
 
+# File lưu cấu hình giao diện GUI (tự động nạp lại khi mở app)
+GUI_SETTINGS_PATH = os.path.join(BASE_DIR, "data", "gui_settings.json")
+
+# Cờ dừng khẩn cấp / Dừng tiến trình theo yêu cầu của người dùng
+STOP_REQUESTED = False
+
 # File log
 LOG_PATH = os.path.join(BASE_DIR, "data", "log.txt")
+
 
 # ---- CẤU HÌNH ĐĂNG NHIỀU KÊNH UCIRCLE ----
 # Danh sách ID các kênh được chọn để đăng (có thể chọn 1 hoặc nhiều)
@@ -66,8 +73,8 @@ SELECTORS = {
 CROSSPOST_TO_FEED = True
 
 # ---- Cấu hình vòng lặp ----
-MIN_DELAY_SEC = 60     # delay tối thiểu giữa 2 lần đăng (giảm xuống 2 giây để tăng tốc)
-MAX_DELAY_SEC = 70     # delay tối đa (5 giây)
+MIN_DELAY_SEC = 1800        # delay tối thiểu giữa 2 lần đăng (giảm xuống 2 giây để tăng tốc)
+MAX_DELAY_SEC = 3600     # delay tối đa (5 giây)
 MAX_RETRIES_PER_VIDEO = 2
 
 # ---- Hashtag & caption ----
@@ -81,22 +88,24 @@ CAPTION_TEMPLATES = [
 # Chạy trình duyệt ẩn (True) hay hiện cửa sổ ra để bạn xem quá trình (False)
 HEADLESS = False
 
-# Làm chậm mỗi thao tác Playwright (mở trang, click, gõ...) bao nhiêu mili-giây
-# để mắt thường theo kịp trình tự thao tác trên UCircle. 0 = chạy nhanh hết cỡ.
-SLOW_MO_MS = 0
+# Làm chậm mỗi thao tác Playwright (mở trang, click, gõ...) 100ms
+# để web UCircle nhận diện chính xác từng nút và radio button, không bị lướt quá nhanh
+SLOW_MO_MS = 100
 
 # ---- File Excel lưu kết quả quét (link, caption, hashtag thật, chỉ số chất lượng) ----
 EXCEL_PATH = os.path.join(BASE_DIR, "data", "export_data.xlsx")
 
 # ---- Số luồng xử lý song song (có thể chỉnh trong GUI) ----
-SCRAPE_THREADS_DEFAULT = 3   # số luồng lấy metadata (yt-dlp --dump-json) song song
+SCRAPE_THREADS_DEFAULT = 8   # số luồng lấy metadata (yt-dlp --dump-json) song song
                               # để cao dễ bị TikTok chặn (lỗi "Unable to extract universal data") khi không có cookie
-UPLOAD_THREADS_DEFAULT = 1   # số luồng đăng video lên UCircle song song (mỗi luồng 1 browser riêng)
+UPLOAD_THREADS_DEFAULT = 8   # số luồng đăng video lên UCircle song song (mỗi luồng 1 browser riêng)
 
 # ---- Ngưỡng lọc chất lượng mặc định (chỉnh trong GUI được) ----
-MIN_VIEWS = 1000
+MIN_VIEWS = 100
 MIN_LIKES = 10
-MIN_RESOLUTION_HEIGHT = 720  # chiều cao video tối thiểu (px), vd 720 = HD
+MIN_RESOLUTION_HEIGHT = 1080  # chiều cao video tối thiểu (px), vd 720 = HD
+MAX_DURATION_SEC = 180        # thời lượng video tối đa (giây) - mặc định 3 phút (180s) để tránh video quá dài, quá nặng
+MAX_FILE_SIZE_MB = 195        # dung lượng tệp tối đa (MB) - UCircle giới hạn 200MB
 
 # ---- AI sinh caption khi video không có nội dung chữ thật (chỉ có hashtag) ----
 # Cùng kiểu endpoint với lib/keyAI.ts (OpenAI-compatible chat completions).

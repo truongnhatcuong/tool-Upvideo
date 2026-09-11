@@ -59,6 +59,20 @@ def extract_identity_id(raw_input: str) -> str:
     return raw_input
 
 
+def get_identity_name(raw_id_or_name: str) -> str:
+    """Trả về tên hiển thị dễ đọc của Circle/Kênh dựa trên ID, UUID hoặc Tên."""
+    if not raw_id_or_name:
+        return "Cá nhân (Tôi)"
+    clean = str(raw_id_or_name).strip()
+    if clean.lower() in ("me", "tôi", "toi"):
+        return "Tôi (Trang cá nhân)"
+    identities = load_identities()
+    for item in identities:
+        if item["id"].lower() == clean.lower() or item["name"].lower() == clean.lower():
+            return item["name"]
+    return clean
+
+
 def add_identity(name: str, raw_id_or_url: str) -> Dict[str, str]:
     """Thêm một Kênh/Fanpage mới vào danh bạ."""
     name = (name or "").strip()
