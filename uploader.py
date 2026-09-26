@@ -17,6 +17,29 @@ from tiktok_extractor import download_single_video
 _log_lock = threading.Lock()
 
 
+class UCircleQuotaExceeded(RuntimeError):
+    """UCircle account has no remaining video minutes; further uploads must stop."""
+
+
+def _quota_message(page):
+    """Return UCircle's quota warning text when the upload-capacity screen is visible."""
+    try:
+        body_text = page.locator("body").inner_text(timeout=1500)
+    except Exception:
+        return None
+
+    normalized = " ".join((body_text or "").split())
+    quota_markers = (
+        "Đã hết dung lượng video",
+        "chưa đăng thêm được",
+        "Xoá bớt một video cũ",
+        "Xóa bớt một video cũ",
+    )
+    if any(marker in normalized for marker in quota_markers):
+        return normalized[:500]
+    return None
+
+
 def log(msg: str, on_progress=None):
     line = f"[{datetime.datetime.now().isoformat(timespec='seconds')}] {msg}"
     with _log_lock:
@@ -249,6 +272,11 @@ def upload_one_video(page, file_path: str, record: dict, identity: str = None):
     # Bấm nút Đăng
     log(f"🚀 Bấm Đăng lên Circle 🏷️ [{circle_name}]...")
     page.click(sel["submit_button"])
+    page.wait_for_timeout(800)
+
+    quota_error = _quota_message(page)
+    if quota_error:
+        raise UCircleQuotaExceeded(quota_error)
 
     # Chờ xác nhận thành công hoặc phát hiện bảng lỗi của UCircle
     start_wait = time.time()
@@ -261,6 +289,12 @@ def upload_one_video(page, file_path: str, record: dict, identity: str = None):
         if page.query_selector(sel["success_indicator"]):
             success_found = True
             break
+
+        # Đây là lỗi cấp tài khoản, không phải lỗi video. Phát hiện ngay để
+        # không chờ đủ 90 giây rồi thử lần lượt toàn bộ danh sách.
+        quota_error = _quota_message(page)
+        if quota_error:
+            raise UCircleQuotaExceeded(quota_error)
 
         # 1. Kiểm tra nếu UCircle hiện bảng lỗi Ingest Stream (UCIRCLE_WAVEE_INGEST_STREAM_ALREADY_ATTACHED)
         err_modal = page.query_selector("text='Tải lên không thành công', text*='INGEST_STREAM', text*='ALREADY_ATTACHED'")
@@ -373,6 +407,13 @@ def _upload_worker(record: dict, target_identity: str, cookies_path: str, browse
 
     success = False
     with _ucircle_upload_lock:
+        if getattr(config, "UPLOAD_QUOTA_EXHAUSTED", False):
+            log(f"⏹️ Bỏ qua tải lên vì tài khoản UCircle đã hết dung lượng video: {link}", on_progress)
+            try:
+                os.remove(temp_path)
+            except Exception:
+                pass
+            return False
         try:
             with sync_playwright() as p:
                 browser = p.chromium.launch(headless=config.HEADLESS, slow_mo=getattr(config, "SLOW_MO_MS", 0))
@@ -384,6 +425,13 @@ def _upload_worker(record: dict, target_identity: str, cookies_path: str, browse
                 try:
                     upload_one_video(page, temp_path, record, identity=target_identity)
                     success = True
+                except UCircleQuotaExceeded as qe:
+                    config.UPLOAD_QUOTA_EXHAUSTED = True
+                    config.STOP_REQUESTED = True
+                    log("🛑 [HẾT DUNG LƯỢNG UCIRCLE] Tài khoản đã dùng hết số phút video cho phép.", on_progress)
+                    log("   Tool đã dừng toàn bộ lượt đăng; các video chưa chạy vẫn được giữ nguyên để đăng sau khi giải phóng/mua thêm dung lượng.", on_progress)
+                    log(f"   Chi tiết UCircle: {qe}", on_progress)
+                    _dump_debug_screenshot(page, link, on_progress)
                 except ValueError as ve:
                     err_str = str(ve)
                     if "200" in err_str or "nhẹ hơn" in err_str:
@@ -435,6 +483,8 @@ def run_uploads(
     distribution_mode: 'round_robin' (xoay vòng chia đều) hoặc 'all' (đăng mỗi video lên tất cả các kênh đã chọn).
     excel_path: nếu truyền vào, dùng file đó thay vì config.EXCEL_PATH mặc định."""
     threads = threads or config.UPLOAD_THREADS_DEFAULT
+    # Mỗi phiên chạy mới được phép kiểm tra lại dung lượng tài khoản.
+    config.UPLOAD_QUOTA_EXHAUSTED = False
     if excel_path:
         config.EXCEL_PATH = excel_path
 
@@ -617,7 +667,7 @@ def run_uploads(
                         s_curr = circle_stats[cid]["success"]
                         t_curr = circle_stats[cid]["total"]
                         log(f"   🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [{circle_label}]: \"{title_short}\" ({s_curr}/{t_curr} video)", on_progress)
-                        mark_as_posted(link, posted_set)
+                        mark_as_posted(link, posted_set, circle_name=circle_label)
                     return True  # Circle này đã hoàn thành xuất sắc 1 video trong đợt này!
 
                 else:

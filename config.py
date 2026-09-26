@@ -110,6 +110,6 @@ MAX_FILE_SIZE_MB = 195        # dung lượng tệp tối đa (MB) - UCircle gi�
 # ---- AI sinh caption khi video không có nội dung chữ thật (chỉ có hashtag) ----
 # Cùng kiểu endpoint với lib/keyAI.ts (OpenAI-compatible chat completions).
 # Điền AI_API_KEY sau khi có key, hoặc set biến môi trường API_KEY_AI.
-AI_API_KEY = ""
-AI_API_URL = "https://gpt4.shupremium.com/v1/chat/completions"
-AI_MODEL = "gpt-4o-mini"
+AI_API_KEY = "sk-e2wq2BTpuFpT9tqKeiwvSYwMVKxwvwSLd6cZ9Tcrh9Ql5yx8"
+AI_API_URL = "https://api1.shupremium.com/v1/chat/completions"
+AI_MODEL = "gemini-3-flash"

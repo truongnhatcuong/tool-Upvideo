@@ -90,3 +90,19 @@ def remove_records_by_target(target_circle: str) -> int:
             df.to_excel(config.EXCEL_PATH, index=False)
         return removed
 
+
+def get_pending_counts_by_circle() -> dict[str, int]:
+    """Đếm số lượng video đang chờ đăng (trong Excel và CHƯA có trong posted.json) theo từng Circle."""
+    import dedupe
+    posted_set = dedupe.load_posted_set()
+    records = load_all()
+    from collections import Counter
+    counts = Counter()
+    for r in records:
+        link = str(r.get("link", "")).strip()
+        c_name = str(r.get("target_circle", "") or "").strip()
+        if c_name and link and link not in posted_set:
+            counts[c_name] += 1
+    return dict(counts)
+
+

@@ -3,23 +3,11 @@
   "mode": "profile",
   "sources": [
     {
-      "url": "https://www.tiktok.com/@alominhngheday",
-      "circle": "Góc Nhỏ Podcast"
-    },
-    {
-      "url": "https://www.tiktok.com/@ilovelyrics08",
-      "circle": "𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘"
-    },
-    {
-      "url": "https://www.tiktok.com/@englishforeveryone72",
-      "circle": "Học Tiếng Anh Cùng Tôi"
-    },
-    {
-      "url": "https://www.tiktok.com/@thuquynh_95",
+      "url": "https://www.tiktok.com/@dajsytran.92",
       "circle": "Tập Nấu Ăn"
     },
     {
-      "url": "https://www.tiktok.com/@lionchampionshipvietnam",
+      "url": "https://www.tiktok.com/@levantuan.mma",
       "circle": "LION championship"
     },
     {
@@ -31,16 +19,28 @@
       "circle": "xe độ chiến"
     },
     {
-      "url": "https://www.tiktok.com/@_uocxuhuongtiktok_",
+      "url": "https://www.tiktok.com/@vitamingaixinh92",
       "circle": "Gái Xinh"
+    },
+    {
+      "url": "https://www.tiktok.com/@donglucpodcastt",
+      "circle": "Góc Nhỏ Podcast"
+    },
+    {
+      "url": "https://www.tiktok.com/@aris29080",
+      "circle": "𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘"
+    },
+    {
+      "url": "https://www.tiktok.com/@tienganhsongngu.vn",
+      "circle": "Học Tiếng Anh Cùng Tôi"
     }
   ],
-  "limit": "30",
+  "limit": "50",
   "browser_cookie": "Không dùng",
   "cookie_path": "",
   "min_views": "100",
   "min_likes": "10",
-  "min_res": "1080",
+  "min_res": "1024",
   "max_duration": "180",
   "dedupe_history": true,
   "scrape_threads": 8,

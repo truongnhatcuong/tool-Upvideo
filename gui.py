@@ -15,6 +15,7 @@ import uploader
 import scraper
 import dedupe
 import identity_manager
+import excel_store
 from playwright.sync_api import sync_playwright
 
 ctk.set_appearance_mode("dark")
@@ -48,6 +49,7 @@ class UCirclePipelineApp(ctk.CTk):
         self._build_ui()
         self.protocol("WM_DELETE_WINDOW", self._on_closing)
         self._load_settings()
+        self._update_circle_stats_display()
         self._prevent_mac_sleep()
 
         self.after(100, self._process_log_queue)
@@ -160,7 +162,13 @@ class UCirclePipelineApp(ctk.CTk):
         sources_tools.grid(row=0, column=1, sticky="e")
 
         ctk.CTkButton(
-            sources_tools, text="➕ Thêm Ô TikTok", width=130, height=28,
+            sources_tools, text="🔄 Cập Nhật Số Lượng", width=145, height=28,
+            fg_color="#10B981", hover_color="#059669", font=ctk.CTkFont(size=11, weight="bold"),
+            command=self._update_circle_stats_display
+        ).pack(side="left", padx=3)
+
+        ctk.CTkButton(
+            sources_tools, text="➕ Thêm Ô TikTok", width=125, height=28,
             fg_color="#0EA5E9", hover_color="#0284C7", font=ctk.CTkFont(size=11, weight="bold"),
             command=lambda: self._add_source_row()
         ).pack(side="left", padx=3)
@@ -235,6 +243,12 @@ class UCirclePipelineApp(ctk.CTk):
         ctk.CTkCheckBox(
             dedupe_box, text="🛡️ Tự động né video cũ",
             variable=self.dedupe_history_var, font=ctk.CTkFont(size=12, weight="bold")
+        ).pack(side="left", padx=(0, 15))
+
+        self.skip_abundant_var = ctk.BooleanVar(value=False)
+        ctk.CTkCheckBox(
+            dedupe_box, text="⏭️ Bỏ qua Circle đã có >= 15 video chờ",
+            variable=self.skip_abundant_var, font=ctk.CTkFont(size=12, weight="bold")
         ).pack(side="left")
 
         ctk.CTkButton(
@@ -317,6 +331,36 @@ class UCirclePipelineApp(ctk.CTk):
             if my_circle not in available and available:
                 r["dropdown"].set(available[0])
 
+    def _update_circle_stats_display(self):
+        """Cập nhật số lượng video (Chờ đăng & Đã đăng) theo từng Circle trên cả 2 Tab:
+        - Tab 1: Cập nhật nhãn count_lbl của từng hàng input
+        - Tab 2: Nạp lại nhãn số lượng trên các checkbox Circle"""
+        try:
+            pending_counts = excel_store.get_pending_counts_by_circle()
+            posted_counts = dedupe.get_circle_posted_counts()
+
+            # Cập nhật Tab 1
+            for r in getattr(self, "source_rows", []):
+                if not r.get("dropdown") or not r.get("count_lbl"):
+                    continue
+                c_name = r["dropdown"].get().strip()
+                p_cnt = pending_counts.get(c_name, 0)
+                d_cnt = posted_counts.get(c_name, 0)
+
+                lbl = r["count_lbl"]
+                if p_cnt == 0:
+                    lbl.configure(text=f"🛑 Hết (0) | ✅ Đã: {d_cnt}", text_color="#EF4444")
+                elif p_cnt < 5:
+                    lbl.configure(text=f"⚠️ Còn {p_cnt} (ít) | ✅ Đã: {d_cnt}", text_color="#F59E0B")
+                else:
+                    lbl.configure(text=f"⏳ Chờ: {p_cnt} | ✅ Đã: {d_cnt}", text_color="#38BDF8")
+
+            # Cập nhật Tab 2 nếu identities_frame đã tồn tại
+            if hasattr(self, "identities_frame") and self.identities_frame.winfo_exists():
+                self._reload_identity_checkboxes(trigger_dropdown_update=False)
+        except Exception as e:
+            print(f"[WARN] Lỗi khi cập nhật thống kê video: {e}")
+
     def _add_source_row(self, initial_url: str = "", initial_circle: str = None):
         """Thêm 1 hàng ô input TikTok riêng biệt.
         Nếu Circle đầu tiên đã có ô chọn thì ô mới sẽ tự động chọn Circle tiếp theo và ẩn Circle đã chọn."""
@@ -354,32 +398,39 @@ class UCirclePipelineApp(ctk.CTk):
         def on_dropdown_changed(_):
             self._update_all_dropdown_options()
             self._sync_tab1_to_tab2_checkboxes()
+            self._update_circle_stats_display()
             self._save_settings(verbose=False)
 
         dropdown = ctk.CTkOptionMenu(
-            row_frame, values=channel_names, width=205, height=36,
+            row_frame, values=channel_names, width=190, height=36,
             command=on_dropdown_changed
         )
         dropdown.set(selected_circle)
         dropdown.grid(row=0, column=3, padx=4, pady=5)
 
-        status_lbl = ctk.CTkLabel(row_frame, text="⚪ Chờ", width=100, font=ctk.CTkFont(size=12, weight="bold"), text_color="#94A3B8")
-        status_lbl.grid(row=0, column=4, padx=4, pady=5)
+        # Badge số lượng video của Circle này (Chờ đăng & Đã đăng)
+        count_lbl = ctk.CTkLabel(row_frame, text="⏳ Chờ: ... | ✅ Đã: ...", width=165,
+                                 font=ctk.CTkFont(size=11, weight="bold"), anchor="center")
+        count_lbl.grid(row=0, column=4, padx=4, pady=5)
+
+        status_lbl = ctk.CTkLabel(row_frame, text="⚪ Chờ", width=95, font=ctk.CTkFont(size=12, weight="bold"), text_color="#94A3B8")
+        status_lbl.grid(row=0, column=5, padx=4, pady=5)
 
         row_data = {
             "frame": row_frame,
             "idx_label": idx_label,
             "entry": entry,
             "dropdown": dropdown,
+            "count_lbl": count_lbl,
             "status_lbl": status_lbl,
         }
 
         rescan_btn = ctk.CTkButton(
-            row_frame, text="🔄 Quét lại", width=90, height=34,
+            row_frame, text="🔄 Quét lại", width=85, height=34,
             fg_color="#3B82F6", hover_color="#2563EB", font=ctk.CTkFont(size=12, weight="bold"),
             command=lambda: self._rescan_single_row(row_data)
         )
-        rescan_btn.grid(row=0, column=5, padx=4, pady=5)
+        rescan_btn.grid(row=0, column=6, padx=4, pady=5)
         row_data["rescan_btn"] = rescan_btn
 
         def delete_row():
@@ -388,6 +439,7 @@ class UCirclePipelineApp(ctk.CTk):
                 status_lbl.configure(text="⚪ Chờ", text_color="#94A3B8")
                 self._update_all_dropdown_options()
                 self._sync_tab1_to_tab2_checkboxes()
+                self._update_circle_stats_display()
                 self._save_settings(verbose=False)
                 return
             row_frame.destroy()
@@ -396,14 +448,16 @@ class UCirclePipelineApp(ctk.CTk):
             self._renumber_source_rows()
             self._update_all_dropdown_options()
             self._sync_tab1_to_tab2_checkboxes()
+            self._update_circle_stats_display()
             self._save_settings(verbose=False)
 
         del_btn = ctk.CTkButton(row_frame, text="✕", width=34, height=34, fg_color="#EF4444", hover_color="#DC2626", font=ctk.CTkFont(size=13, weight="bold"), command=delete_row)
-        del_btn.grid(row=0, column=6, padx=(4, 8), pady=5)
+        del_btn.grid(row=0, column=7, padx=(4, 8), pady=5)
 
         self.source_rows.append(row_data)
         self._update_all_dropdown_options()
         self._sync_tab1_to_tab2_checkboxes()
+        self._update_circle_stats_display()
 
     def _renumber_source_rows(self):
         """Cập nhật lại số thứ tự #1, #2, #3... cho các hàng input."""
@@ -431,6 +485,12 @@ class UCirclePipelineApp(ctk.CTk):
         if not url:
             messagebox.showwarning("Chưa nhập link", "Vui lòng nhập link kênh TikTok vào ô input trước khi quét lại!")
             return
+
+        # QUAN TRỌNG: Giải phóng các video cũ của kênh này khỏi scanned.json
+        # để khi quét lại KHÔNG bị né trùng làm mất video (tránh lãng phí video)!
+        cleared = dedupe.clear_scanned_for_channel(url)
+        if cleared > 0:
+            print(f"[RESCAN] Đã giải phóng {cleared} link trong bộ nhớ scan của kênh {url} để quét lại đầy đủ.")
 
         self._save_settings(verbose=False)
         config.STOP_REQUESTED = False
@@ -494,6 +554,7 @@ class UCirclePipelineApp(ctk.CTk):
 
                 self.after(0, update_ui)
                 self.after(0, self._sync_tab1_to_tab2_checkboxes)
+                self.after(0, self._update_circle_stats_display)
             except Exception as e:
                 print(f"[ERROR] Lỗi khi quét lại {url}: {e}")
                 self.after(0, lambda: row_data["status_lbl"].configure(text="❌ Lỗi", text_color="#EF4444"))
@@ -634,8 +695,8 @@ class UCirclePipelineApp(ctk.CTk):
         self.login_btn.grid(row=0, column=2, padx=4, sticky="ew")
         self._sync_tab1_to_tab2_checkboxes()
 
-    def _reload_identity_checkboxes(self):
-        """Xoá và nạp lại danh sách Checkbox Kênh từ identity_manager."""
+    def _reload_identity_checkboxes(self, trigger_dropdown_update=True):
+        """Xoá và nạp lại danh sách Checkbox Kênh từ identity_manager kèm thống kê số video Chờ / Đã đăng."""
         for widget in self.identities_frame.winfo_children():
             widget.destroy()
 
@@ -648,6 +709,9 @@ class UCirclePipelineApp(ctk.CTk):
                          text_color="#94A3B8").pack(pady=10)
             return
 
+        pending_counts = excel_store.get_pending_counts_by_circle()
+        posted_counts = dedupe.get_circle_posted_counts()
+
         for idx, item in enumerate(identities):
             id_val = item["id"]
             name = item["name"]
@@ -656,22 +720,33 @@ class UCirclePipelineApp(ctk.CTk):
             var = ctk.BooleanVar(value=init_val)
             self.identity_checkbox_vars[id_val] = var
 
-            display_text = f"📌 {name}   [ID: {id_val[:8]}...]" if len(id_val) > 15 else f"📌 {name}   [ID: {id_val}]"
+            p_cnt = pending_counts.get(name, 0)
+            d_cnt = posted_counts.get(name, 0)
+
+            status_suffix = ""
+            if p_cnt == 0:
+                status_suffix = "   🛑 [HẾT VIDEO]"
+            elif p_cnt < 5:
+                status_suffix = f"   ⚠️ [SẮP HẾT - CÒN {p_cnt}]"
+
+            id_str = f"{id_val[:8]}..." if len(id_val) > 15 else id_val
+            display_text = f"📌 {name}   [ID: {id_str}]   •   ⏳ Chờ đăng: {p_cnt} video   •   ✅ Đã đăng: {d_cnt} video{status_suffix}"
             cb = ctk.CTkCheckBox(
                 self.identities_frame, text=display_text, variable=var,
                 font=ctk.CTkFont(size=12), text_color="#E2E8F0"
             )
             cb.pack(anchor="w", padx=10, pady=3)
 
-        # Cập nhật lại dropdown trong các ô input TikTok ở Tab 1 (ẩn các circle đã bị ô khác chọn)
-        self._update_all_dropdown_options()
-
-        # Tự động tích chọn theo các Circle đã chọn ở Tab 1
-        self._sync_tab1_to_tab2_checkboxes()
+        if trigger_dropdown_update:
+            # Cập nhật lại dropdown trong các ô input TikTok ở Tab 1 (ẩn các circle đã bị ô khác chọn)
+            self._update_all_dropdown_options()
+            # Tự động tích chọn theo các Circle đã chọn ở Tab 1
+            self._sync_tab1_to_tab2_checkboxes()
 
     def _on_tab_changed(self):
         """Khi người dùng bấm chuyển qua lại giữa các Tab."""
         try:
+            self._update_circle_stats_display()
             cur_tab = self.tabview.get()
             if "Đăng" in cur_tab:
                 self._sync_tab1_to_tab2_checkboxes()
@@ -1147,12 +1222,37 @@ class UCirclePipelineApp(ctk.CTk):
         for r in self.source_rows:
             url = r["entry"].get().strip()
             target_circle = r["dropdown"].get().strip()
-            if url:
-                sources.append(f"{url} | {target_circle}")
-                r["status_lbl"].configure(text="⚪ Chờ...", text_color="#94A3B8")
+        pending_counts = excel_store.get_pending_counts_by_circle()
+        sources = []
+        skipped_circles = []
+
+        for r in self.source_rows:
+            url = r["entry"].get().strip()
+            target_circle = r["dropdown"].get().strip()
+            if not url:
+                continue
+
+            # Bỏ qua Circle đã có nhiều video nếu tuỳ chọn được bật
+            p_cnt = pending_counts.get(target_circle, 0)
+            if getattr(self, "skip_abundant_var", None) and self.skip_abundant_var.get() and p_cnt >= 15:
+                r["status_lbl"].configure(text=f"⏭️ Bỏ qua ({p_cnt})", text_color="#10B981")
+                skipped_circles.append(f"{target_circle} (còn {p_cnt} video)")
+                continue
+
+            sources.append(f"{url} | {target_circle}")
+            r["status_lbl"].configure(text="⚪ Chờ...", text_color="#94A3B8")
 
         if not sources:
-            messagebox.showwarning("Lỗi", "Vui lòng nhập ít nhất một link kênh TikTok vào ô input!")
+            if skipped_circles:
+                messagebox.showinfo(
+                    "Đã có sẵn video",
+                    f"🎉 Tất cả các Circle đều đã có đủ video (>= 15 video):\n• "
+                    + "\n• ".join(skipped_circles)
+                    + "\n\n👉 Tool đã tự động bỏ qua để tránh lãng phí video!\n"
+                    + "Nếu muốn quét thêm, hãy bỏ tích 'Bỏ qua Circle đã có nhiều video' hoặc bấm nút [🔄 Quét lại] ở từng hàng."
+                )
+            else:
+                messagebox.showwarning("Lỗi", "Vui lòng nhập ít nhất một link kênh TikTok vào ô input!")
             return
 
         self._save_settings(verbose=False)
@@ -1200,9 +1300,8 @@ class UCirclePipelineApp(ctk.CTk):
             old_stdout = sys.stdout
             sys.stdout = TextRedirector(self.log_queue)
             try:
-                if os.path.exists(config.EXCEL_PATH):
-                    os.remove(config.EXCEL_PATH)
-                    print("[!] Đã dọn dẹp file nháp cũ. Bắt đầu lưu danh sách mới tinh.")
+                # Quét và lưu nối tiếp vào Excel (bảo toàn các video cũ chưa đăng)
+                print("[!] Bắt đầu quét và lưu nối tiếp vào Excel (bảo toàn toàn bộ video đang chờ).")
 
                 with sync_playwright() as p:
                     result = scraper.scrape_and_filter(
@@ -1253,13 +1352,13 @@ class UCirclePipelineApp(ctk.CTk):
                         )
                 self.after(0, notify_result)
                 self.after(0, self._sync_tab1_to_tab2_checkboxes)
+                self.after(0, self._update_circle_stats_display)
 
             except Exception as e:
                 print(f"[ERROR] Lỗi nghiêm trọng khi quét: {e}")
             finally:
                 sys.stdout = old_stdout
-                if not getattr(config, "STOP_REQUESTED", False):
-                    self.after(0, lambda: self._set_busy(False, "🟢 Sẵn sàng", "#10B981"))
+                self.after(0, lambda: self._set_busy(False, "🟢 Sẵn sàng", "#10B981"))
 
         threading.Thread(target=task, daemon=True).start()
 
@@ -1422,6 +1521,7 @@ class UCirclePipelineApp(ctk.CTk):
                         )
 
                 self.after(0, show_completion)
+                self.after(0, self._update_circle_stats_display)
 
         threading.Thread(target=task, daemon=True).start()
 

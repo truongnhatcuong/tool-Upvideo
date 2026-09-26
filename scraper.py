@@ -8,11 +8,11 @@ import excel_store
 import dedupe
 
 
-def _fetch_metadata_staggered(link, cookies_path, browser_cookie):
+def _fetch_metadata_staggered(link, cookies_path, browser_cookie, target_circle=""):
     """Giãn cách nhỏ trước mỗi request để tránh nhiều luồng cùng bắn 1 lúc
     (dễ bị TikTok coi là bot -> lỗi 'Unable to extract universal data')."""
     time.sleep(random.uniform(0.3, 1.2))
-    return tiktok_extractor.fetch_metadata(link, cookies_path, browser_cookie)
+    return tiktok_extractor.fetch_metadata(link, cookies_path, browser_cookie, target_circle=target_circle)
 
 
 def quality_filter(meta: dict, min_views: int, min_likes: int, min_resolution: int, max_duration: int = None) -> bool:
@@ -22,8 +22,21 @@ def quality_filter(meta: dict, min_views: int, min_likes: int, min_resolution: i
         return False
     if meta.get("likes", 0) < min_likes:
         return False
-    if meta.get("height", 0) < min_resolution:
+
+    # Lấy cạnh lớn nhất của video (cho cả video dọc 576x1024, 720x1280, 1080x1920 và video ngang)
+    vid_h = meta.get("height", 0)
+    vid_w = meta.get("width", 0)
+    max_edge = max(vid_h, vid_w)
+
+    # TikTok video dọc chuẩn HD thường có kích thước 576x1024. Nếu người dùng cài 1080,
+    # cho phép ngưỡng 1000px để không vô tình loại toàn bộ video 1024px của TikTok.
+    req_res = min_resolution
+    if min_resolution >= 1080:
+        req_res = 1000
+
+    if max_edge > 0 and max_edge < req_res:
         return False
+
     max_duration = getattr(config, "MAX_DURATION_SEC", 180) if max_duration is None else max_duration
     dur = meta.get("duration", 0)
     if max_duration and dur and dur > max_duration:
@@ -153,7 +166,7 @@ def scrape_single_source(
 
     with ThreadPoolExecutor(max_workers=scrape_threads) as pool:
         futures = {
-            pool.submit(_fetch_metadata_staggered, link, cookies_path, browser_cookie): link
+            pool.submit(_fetch_metadata_staggered, link, cookies_path, browser_cookie, target_circle): link
             for link in links
         }
         for i, future in enumerate(as_completed(futures), 1):
@@ -183,12 +196,9 @@ def scrape_single_source(
                 rejected += 1
                 log(f"[{i}/{len(links)}] ⏭️ Loại (không đạt ngưỡng): {link}")
 
-    if passed_rows and target_label:
-        removed = excel_store.remove_records_by_target(target_label)
-        if removed > 0:
-            log(f"🧹 Đã dọn {removed} video cũ của Circle [{target_label}] trong Excel để nạp video mới.")
-
     added = excel_store.append_records(passed_rows)
+    if added > 0:
+        log(f"💾 Đã lưu nối tiếp {added} video mới của Circle [{target_label}] vào Excel (không làm mất video cũ chưa đăng).")
     if passed_rows:
         dedupe.mark_as_scanned([r["link"] for r in passed_rows])
 
@@ -364,7 +374,7 @@ def scrape_and_filter(
 
     with ThreadPoolExecutor(max_workers=scrape_threads) as pool:
         futures = {
-            pool.submit(_fetch_metadata_staggered, link, cookies_path, browser_cookie): link
+            pool.submit(_fetch_metadata_staggered, link, cookies_path, browser_cookie, link_to_circle.get(link, "")): link
             for link in all_links
         }
         for i, future in enumerate(as_completed(futures), 1):

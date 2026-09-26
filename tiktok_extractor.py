@@ -532,7 +532,7 @@ def _split_caption_and_hashtags(description: str, video_id: str):
     return clean_caption, hashtags
 
 
-def fetch_metadata(link: str, cookies_path: str = None, browser_cookie: str = None, max_retries: int = 3) -> dict:
+def fetch_metadata(link: str, cookies_path: str = None, browser_cookie: str = None, max_retries: int = 3, target_circle: str = "") -> dict:
     """Lấy caption, hashtag, view/like, độ phân giải TỪ METADATA (yt-dlp), KHÔNG tải file video.
     Trả về dict rỗng {} nếu lỗi/không lấy được (để bên gọi tự loại video này).
 
@@ -609,10 +609,6 @@ def fetch_metadata(link: str, cookies_path: str = None, browser_cookie: str = No
                     tag_pool = [f"#{t}" for t in (info.get('tags') or []) if t]
                     hashtags = [h for h in tag_pool if not _looks_like_fake_id_tag(h, video_id)]
 
-                # 3 trường hợp cần AI (luôn gen dựa theo ngữ cảnh có sẵn để đúng chủ đề):
-                #  - thiếu cả caption lẫn hashtag -> gen cả 2 (dựa theo kênh/tiêu đề)
-                #  - có hashtag, thiếu caption     -> gen caption (dựa theo hashtag)
-                #  - có caption, thiếu hashtag     -> gen hashtag (dựa theo caption)
                 import ai_caption
                 title = (info.get('title') or '').strip()
                 original_tags = [t for t in (info.get('tags') or []) if t]
@@ -630,28 +626,34 @@ def fetch_metadata(link: str, cookies_path: str = None, browser_cookie: str = No
 
                 topic_context = " | ".join(context_parts) or video_id or link
 
-                if not clean_caption and not hashtags:
-                    clean_caption, hashtags_str = ai_caption.generate_caption_and_hashtags(topic_context)
-                    hashtags = hashtags_str.split() if hashtags_str else []
-                    if not clean_caption:
-                        print(f"[SKIP] Bỏ qua vì video không có caption/hashtag và AI không sinh được: {link}")
-                        return {}
-                elif not clean_caption:
-                    clean_caption = ai_caption.generate_caption(" ".join(hashtags))
-                    if not clean_caption:
-                        print(f"[SKIP] Bỏ qua vì video không có caption thật và AI không sinh được: {link}")
-                        return {}
-                elif not hashtags:
-                    hashtags_str = ai_caption.generate_hashtags(clean_caption)
-                    hashtags = hashtags_str.split() if hashtags_str else []
-                    if not hashtags:
-                        print(f"[SKIP] Bỏ qua vì video không có hashtag thật và AI không sinh được: {link}")
-                        return {}
+                # Ưu tiên sử dụng AI để tối ưu bài đăng cho UCircle dựa vào tên kênh Circle
+                c_name = target_circle or "UCircle"
+                if ai_caption.has_ai_configured():
+                    ai_cap, ai_tags = ai_caption.generate_ucircle_post(
+                        tiktok_caption=clean_caption,
+                        tiktok_hashtags=" ".join(hashtags),
+                        circle_name=c_name,
+                        extra_context=topic_context,
+                    )
+                    if ai_cap:
+                        clean_caption = ai_cap
+                    if ai_tags:
+                        hashtags = [h for h in ai_tags.split() if h.startswith("#")]
+                else:
+                    # Fallback khi chưa cấu hình AI API key:
+                    if not clean_caption and not hashtags:
+                        clean_caption, hashtags_str = ai_caption.generate_caption_and_hashtags(topic_context, circle_name=c_name)
+                        hashtags = hashtags_str.split() if hashtags_str else []
+                    elif not clean_caption:
+                        clean_caption = ai_caption.generate_caption(" ".join(hashtags), circle_name=c_name)
+                    elif not hashtags:
+                        hashtags_str = ai_caption.generate_hashtags(clean_caption, circle_name=c_name)
+                        hashtags = hashtags_str.split() if hashtags_str else []
 
                 return {
                     "link": link,
-                    "caption": clean_caption,
-                    "hashtags": " ".join(hashtags),
+                    "caption": clean_caption or f"Video mới trên {c_name}",
+                    "hashtags": " ".join(hashtags) if hashtags else f"#ucircle #{c_name.replace(' ', '')}",
                     "views": int(info.get('view_count') or 0),
                     "likes": int(info.get('like_count') or 0),
                     "width": int(info.get('width') or 0),
