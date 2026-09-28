@@ -5882,3 +5882,522 @@ Call log:
 [2026-09-25T17:32:38] 👉 Lần sau khi bấm 'Bắt đầu đăng', tool sẽ tiếp tục đăng các video còn lại!
 [2026-09-25T17:32:38] ===========================================================================
 
+[2026-09-26T09:31:51] 
+[+] 🎯 Chế độ: 1 TIKTOK -> 1 UCIRCLE (Mỗi video thuộc đúng Circle đã chọn).
+[2026-09-26T09:31:51] [+] Tổng cộng 466 video được phân bổ cho 12 Kênh UCircle.
+[2026-09-26T09:31:51] 
+===========================================================================
+[2026-09-26T09:31:51] 🚀 [ĐỢT #1] ĐĂNG ĐỒNG THỜI CHO 12 CIRCLE (Số luồng: 8):
+[2026-09-26T09:31:51]    • Circle 🏷️ [Cường Mê Game] (còn 5 video): https://www.tiktok.com/@theshy2004/video/7665
+[2026-09-26T09:31:51]    • Circle 🏷️ [xe độ chiến] (còn 11 video): https://www.tiktok.com/@dip.lm.huy.dlk.te/vid
+[2026-09-26T09:31:51]    • Circle 🏷️ [Gái Xinh] (còn 54 video): https://www.tiktok.com/@vitamingaixinh92/vide
+[2026-09-26T09:31:51]    • Circle 🏷️ [Tập Nấu Ăn] (còn 39 video): https://www.tiktok.com/@dajsytran.92/video/76
+[2026-09-26T09:31:51]    • Circle 🏷️ [LION championship] (còn 42 video): https://www.tiktok.com/@levantuan.mma/video/7
+[2026-09-26T09:31:51]    • Circle 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘] (còn 40 video): https://www.tiktok.com/@aris29080/video/76887
+[2026-09-26T09:31:51]    • Circle 🏷️ [Góc Nhỏ Podcast] (còn 40 video): https://www.tiktok.com/@donglucpodcastt/video
+[2026-09-26T09:31:51]    • Circle 🏷️ [Học Tiếng Anh Cùng Tôi] (còn 41 video): https://www.tiktok.com/@tienganhsongngu.vn/vi
+[2026-09-26T09:31:51]    • Circle 🏷️ [Coi Là Cười] (còn 48 video): https://www.tiktok.com/@lng.t2007/video/76626
+[2026-09-26T09:31:51]    • Circle 🏷️ [Nghiện Làm Bánh] (còn 46 video): https://www.tiktok.com/@lovecakes_220/video/7
+[2026-09-26T09:31:51]    • Circle 🏷️ [Góc Setup] (còn 48 video): https://www.tiktok.com/@iitachi.pc/video/7669
+[2026-09-26T09:31:51]    • Circle 🏷️ [Hội Mê Câu Cá] (còn 52 video): https://www.tiktok.com/@tu_rophi/video/768458
+[2026-09-26T09:31:51] ===========================================================================
+[2026-09-26T09:31:54] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@dajsytran.92/video/7679440856281025800
+[2026-09-26T09:31:54]    ⚠️ [THỬ LẠI LẦN 2] Gặp lỗi khi đăng. Đang thử đăng lại video cho Circle 🏷️ [Tập Nấu Ăn]: "Bận mấy cũng phải ăn ngon! Làm nồi thịt kho b"...
+[2026-09-26T09:31:54] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@vitamingaixinh92/video/7681535272730840327
+[2026-09-26T09:31:54]    ⚠️ [THỬ LẠI LẦN 2] Gặp lỗi khi đăng. Đang thử đăng lại video cho Circle 🏷️ [Gái Xinh]: "Chỉ cần một ánh mắt, mọi thứ sẽ trở nên đẹp đ"...
+[2026-09-26T09:32:01] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@vitamingaixinh92/video/7681535272730840327
+[2026-09-26T09:32:01]    ❌ [LỖI] Video https://www.tiktok.com/@vitamingaixinh92/video/7681535272730840327 không đăng được cho Circle 🏷️ [Gái Xinh] sau khi thử lại.
+[2026-09-26T09:32:01]    🔄 [CHUYỂN TIẾP] Đang lấy video khác của Circle 🏷️ [Gái Xinh] (còn 53 video) để đăng bù ngay trong đợt này...
+[2026-09-26T09:32:01] 📤 Đang đăng: "https://www.tiktok.com/@levantuan.mma/video/7678734575077559" -> Circle: 🏷️ [LION championship]
+[2026-09-26T09:32:28] ⚠️ Đang chờ hiển thị danh sách tư cách đăng...
+[2026-09-26T09:32:28] ❌ KHÔNG TÌM THẤY Kênh UCircle: 'LION championship' [ID: 29a99f38-43f5-42c9-accf-f91c1cb85e6a].
+[2026-09-26T09:32:30] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@tienganhsongngu.vn/video/7660911287638969620
+[2026-09-26T09:32:30]    ⚠️ [THỬ LẠI LẦN 2] Gặp lỗi khi đăng. Đang thử đăng lại video cho Circle 🏷️ [Học Tiếng Anh Cùng Tôi]: "Khám phá ngay bí quyết tự học Tiếng Anh hiệu "...
+[2026-09-26T09:32:32] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: LION championship [ID: 29a99f38-43f5-42c9-accf-f91c1cb85e6a]
+[2026-09-26T09:32:38] 🚀 Bấm Đăng lên Circle 🏷️ [LION championship]...
+[2026-09-26T09:32:39] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@aris29080/video/7688798751703747861
+[2026-09-26T09:32:39]    ⚠️ [THỬ LẠI LẦN 2] Gặp lỗi khi đăng. Đang thử đăng lại video cho Circle 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]: "Quả Nhạc Cổ này Drill lên nghe có vẻ PEAK VCL"...
+[2026-09-26T09:32:52] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [LION championship]: "https://www.tiktok.com/@levantuan.mma/video/7678734575077559"
+[2026-09-26T09:32:55]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [LION championship]: "Video mới trên LION championship" (1/42 video)
+[2026-09-26T09:32:56] 📤 Đang đăng: "https://www.tiktok.com/@dip.lm.huy.dlk.te/video/767152298162" -> Circle: 🏷️ [xe độ chiến]
+[2026-09-26T09:33:03] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@donglucpodcastt/video/7683498282760391957
+[2026-09-26T09:33:03]    ⚠️ [THỬ LẠI LẦN 2] Gặp lỗi khi đăng. Đang thử đăng lại video cho Circle 🏷️ [Góc Nhỏ Podcast]: "Nếu phải chấm dứt một mối quan hệ không có kế"...
+[2026-09-26T09:33:07] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: xe độ chiến [ID: 7b944633-043c-445b-b516-aeeddb7bb7f9]
+[2026-09-26T09:33:18] 🚀 Bấm Đăng lên Circle 🏷️ [xe độ chiến]...
+[2026-09-26T09:33:23] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [xe độ chiến]: "https://www.tiktok.com/@dip.lm.huy.dlk.te/video/767152298162"
+[2026-09-26T09:33:26]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [xe độ chiến]: "Lên đường chinh phục đêm tối cùng xe độ chiến" (1/11 video)
+[2026-09-26T09:33:27] 📤 Đang đăng: "https://www.tiktok.com/@theshy2004/video/7665553166640991508" -> Circle: 🏷️ [Cường Mê Game]
+[2026-09-26T09:33:35] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Cường Mê Game [ID: d58c2b39-feb1-4bfc-9d5d-5e9984c86e96]
+[2026-09-26T09:33:45] 🚀 Bấm Đăng lên Circle 🏷️ [Cường Mê Game]...
+[2026-09-26T09:33:51] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Cường Mê Game]: "https://www.tiktok.com/@theshy2004/video/7665553166640991508"
+[2026-09-26T09:33:55]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Cường Mê Game]: "Mong cốt không thấy video này, nhưng bạn hãy " (1/5 video)
+[2026-09-26T09:33:55] 📤 Đang đăng: "https://www.tiktok.com/@dajsytran.92/video/76794408562810258" -> Circle: 🏷️ [Tập Nấu Ăn]
+[2026-09-26T09:34:04] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Tập Nấu Ăn [ID: bb16ea11-6f7c-46da-9add-13e4fca94ee2]
+[2026-09-26T09:34:15] 🚀 Bấm Đăng lên Circle 🏷️ [Tập Nấu Ăn]...
+[2026-09-26T09:34:29] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Tập Nấu Ăn]: "https://www.tiktok.com/@dajsytran.92/video/76794408562810258"
+[2026-09-26T09:34:32]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Tập Nấu Ăn]: "Bận mấy cũng phải ăn ngon! Làm nồi thịt kho b" (1/39 video)
+[2026-09-26T09:34:33] 📤 Đang đăng: "https://www.tiktok.com/@vitamingaixinh92/video/7681205210177" -> Circle: 🏷️ [Gái Xinh]
+[2026-09-26T09:34:41] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Gái Xinh [ID: dea448a6-b8e5-40e0-9cd7-68ea12abaac5]
+[2026-09-26T09:34:52] 🚀 Bấm Đăng lên Circle 🏷️ [Gái Xinh]...
+[2026-09-26T09:34:57] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Gái Xinh]: "https://www.tiktok.com/@vitamingaixinh92/video/7681205210177"
+[2026-09-26T09:35:00]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Gái Xinh]: "Khi sắc đẹp gặp cá tính, mọi ánh nhìn đều khô" (1/54 video)
+[2026-09-26T09:35:01] 📤 Đang đăng: "https://www.tiktok.com/@tienganhsongngu.vn/video/76609112876" -> Circle: 🏷️ [Học Tiếng Anh Cùng Tôi]
+[2026-09-26T09:35:10] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Học Tiếng Anh Cùng Tôi [ID: 99dc84b2-f324-4f1c-a73b-d5901fb0e2ec]
+[2026-09-26T09:35:22] 🚀 Bấm Đăng lên Circle 🏷️ [Học Tiếng Anh Cùng Tôi]...
+[2026-09-26T09:35:33] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Học Tiếng Anh Cùng Tôi]: "https://www.tiktok.com/@tienganhsongngu.vn/video/76609112876"
+[2026-09-26T09:35:36]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Học Tiếng Anh Cùng Tôi]: "Khám phá ngay bí quyết tự học Tiếng Anh hiệu " (1/41 video)
+[2026-09-26T09:35:37] 📤 Đang đăng: "https://www.tiktok.com/@lng.t2007/video/7662626617000217876" -> Circle: 🏷️ [Coi Là Cười]
+[2026-09-26T09:35:47] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Coi Là Cười [ID: ba4e066f-f9d8-49eb-84dd-428a24f5c38e]
+[2026-09-26T09:35:58] 🚀 Bấm Đăng lên Circle 🏷️ [Coi Là Cười]...
+[2026-09-26T09:36:05] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Coi Là Cười]: "https://www.tiktok.com/@lng.t2007/video/7662626617000217876"
+[2026-09-26T09:36:08]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Coi Là Cười]: "Pha giải cứu đi vào lòng đất khiến anh chồng " (1/48 video)
+[2026-09-26T09:36:08] 📤 Đang đăng: "https://www.tiktok.com/@aris29080/video/7688798751703747861" -> Circle: 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]
+[2026-09-26T09:36:17] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: 𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘 [ID: 58830551-136b-4a08-9cc2-540c74645958]
+[2026-09-26T09:36:29] 🚀 Bấm Đăng lên Circle 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]...
+[2026-09-26T09:36:38] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]: "https://www.tiktok.com/@aris29080/video/7688798751703747861"
+[2026-09-26T09:36:41]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]: "Quả Nhạc Cổ này Drill lên nghe có vẻ PEAK VCL" (1/40 video)
+[2026-09-26T09:36:41] 📤 Đang đăng: "https://www.tiktok.com/@donglucpodcastt/video/76834982827603" -> Circle: 🏷️ [Góc Nhỏ Podcast]
+[2026-09-26T09:36:50] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Góc Nhỏ Podcast [ID: cd8b9cce-da5b-4200-bd00-fc5c793ace8d]
+[2026-09-26T09:37:01] 🚀 Bấm Đăng lên Circle 🏷️ [Góc Nhỏ Podcast]...
+[2026-09-26T09:37:17] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Góc Nhỏ Podcast]: "https://www.tiktok.com/@donglucpodcastt/video/76834982827603"
+[2026-09-26T09:37:21]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Góc Nhỏ Podcast]: "Nếu phải chấm dứt một mối quan hệ không có kế" (1/40 video)
+[2026-09-26T09:37:21] 📤 Đang đăng: "https://www.tiktok.com/@lovecakes_220/video/7679787384967302" -> Circle: 🏷️ [Nghiện Làm Bánh]
+[2026-09-26T09:37:30] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Nghiện Làm Bánh [ID: 7508e1a8-36bf-4305-b84b-4e957c44b2f0]
+[2026-09-26T09:37:42] 🚀 Bấm Đăng lên Circle 🏷️ [Nghiện Làm Bánh]...
+[2026-09-26T09:37:50] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Nghiện Làm Bánh]: "https://www.tiktok.com/@lovecakes_220/video/7679787384967302"
+[2026-09-26T09:37:53]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Nghiện Làm Bánh]: "Mẫu bánh xe công trường cực ngầu dành riêng c" (1/46 video)
+[2026-09-26T09:37:53] 📤 Đang đăng: "https://www.tiktok.com/@iitachi.pc/video/7669853484065328392" -> Circle: 🏷️ [Góc Setup]
+[2026-09-26T09:38:02] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Góc Setup [ID: 4dd5d2e8-25d4-41d5-86b9-da85bebbaab0]
+[2026-09-26T09:38:13] 🚀 Bấm Đăng lên Circle 🏷️ [Góc Setup]...
+[2026-09-26T09:38:16] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Góc Setup]: "https://www.tiktok.com/@iitachi.pc/video/7669853484065328392"
+[2026-09-26T09:38:19]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Góc Setup]: "Góc setup mang phong cách Ghibli cực chill ch" (1/48 video)
+[2026-09-26T09:38:20] 📤 Đang đăng: "https://www.tiktok.com/@tu_rophi/video/7684587499867393300" -> Circle: 🏷️ [Hội Mê Câu Cá]
+[2026-09-26T09:38:28] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Hội Mê Câu Cá [ID: 1286f9c6-b04b-4ac6-b772-5afa6a8d3b5f]
+[2026-09-26T09:38:39] 🚀 Bấm Đăng lên Circle 🏷️ [Hội Mê Câu Cá]...
+[2026-09-26T09:38:51] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Hội Mê Câu Cá]: "https://www.tiktok.com/@tu_rophi/video/7684587499867393300"
+[2026-09-26T09:38:55]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Hội Mê Câu Cá]: "Kiên trì săn rô phi mâm mấy năm liền, đến mùa" (1/52 video)
+[2026-09-26T09:38:55] 
+---------------------------------------------------------------------------
+[2026-09-26T09:38:55] ✅ [ĐỢT #1 HOÀN TẤT] Tất cả các Circle đã hoàn thành video đợt này.
+[2026-09-26T09:38:55] ⏳ Còn 12 Circle có video cho đợt tiếp theo. Tạm dừng nghỉ 2899s (thời gian delay bạn đã cài đặt) trước khi tiếp tục...
+[2026-09-26T09:38:55] ---------------------------------------------------------------------------
+
+[2026-09-26T10:14:43] 
+[+] 🎯 Chế độ: 1 TIKTOK -> 1 UCIRCLE (Mỗi video thuộc đúng Circle đã chọn).
+[2026-09-26T10:14:43] [+] Tổng cộng 453 video được phân bổ cho 12 Kênh UCircle.
+[2026-09-26T10:14:43] 
+===========================================================================
+[2026-09-26T10:14:43] 🚀 [ĐỢT #1] ĐĂNG ĐỒNG THỜI CHO 12 CIRCLE (Số luồng: 8):
+[2026-09-26T10:14:43]    • Circle 🏷️ [Cường Mê Game] (còn 4 video): https://www.tiktok.com/@theshy2004/video/7664
+[2026-09-26T10:14:43]    • Circle 🏷️ [xe độ chiến] (còn 10 video): https://www.tiktok.com/@dip.lm.huy.dlk.te/vid
+[2026-09-26T10:14:43]    • Circle 🏷️ [Gái Xinh] (còn 52 video): https://www.tiktok.com/@vitamingaixinh92/vide
+[2026-09-26T10:14:43]    • Circle 🏷️ [Tập Nấu Ăn] (còn 38 video): https://www.tiktok.com/@dajsytran.92/video/76
+[2026-09-26T10:14:43]    • Circle 🏷️ [LION championship] (còn 41 video): https://www.tiktok.com/@levantuan.mma/video/7
+[2026-09-26T10:14:43]    • Circle 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘] (còn 39 video): https://www.tiktok.com/@aris29080/video/76890
+[2026-09-26T10:14:43]    • Circle 🏷️ [Góc Nhỏ Podcast] (còn 39 video): https://www.tiktok.com/@donglucpodcastt/video
+[2026-09-26T10:14:43]    • Circle 🏷️ [Học Tiếng Anh Cùng Tôi] (còn 40 video): https://www.tiktok.com/@tienganhsongngu.vn/vi
+[2026-09-26T10:14:43]    • Circle 🏷️ [Coi Là Cười] (còn 47 video): https://www.tiktok.com/@lng.t2007/video/76549
+[2026-09-26T10:14:43]    • Circle 🏷️ [Nghiện Làm Bánh] (còn 45 video): https://www.tiktok.com/@lovecakes_220/video/7
+[2026-09-26T10:14:43]    • Circle 🏷️ [Góc Setup] (còn 47 video): https://www.tiktok.com/@iitachi.pc/video/7628
+[2026-09-26T10:14:43]    • Circle 🏷️ [Hội Mê Câu Cá] (còn 51 video): https://www.tiktok.com/@tu_rophi/video/725294
+[2026-09-26T10:14:43] ===========================================================================
+[2026-09-26T10:14:56] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@dajsytran.92/video/7676824626974002440
+[2026-09-26T10:14:56]    ⚠️ [THỬ LẠI LẦN 2] Gặp lỗi khi đăng. Đang thử đăng lại video cho Circle 🏷️ [Tập Nấu Ăn]: "Rang muối kiểu này, cá rô phi ngon hơn tui tư"...
+[2026-09-26T10:15:03] 📤 Đang đăng: "https://www.tiktok.com/@tienganhsongngu.vn/video/76549769886" -> Circle: 🏷️ [Học Tiếng Anh Cùng Tôi]
+[2026-09-26T10:15:16] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Học Tiếng Anh Cùng Tôi [ID: 99dc84b2-f324-4f1c-a73b-d5901fb0e2ec]
+[2026-09-26T10:15:29] 🚀 Bấm Đăng lên Circle 🏷️ [Học Tiếng Anh Cùng Tôi]...
+[2026-09-26T10:15:35] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Học Tiếng Anh Cùng Tôi]: "https://www.tiktok.com/@tienganhsongngu.vn/video/76549769886"
+[2026-09-26T10:15:38]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Học Tiếng Anh Cùng Tôi]: "Dành ra đúng 54 giây xem video này để nạp nga" (1/40 video)
+[2026-09-26T10:15:39] 📤 Đang đăng: "https://www.tiktok.com/@levantuan.mma/video/7671092659448057" -> Circle: 🏷️ [LION championship]
+[2026-09-26T10:15:47] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: LION championship [ID: 29a99f38-43f5-42c9-accf-f91c1cb85e6a]
+[2026-09-26T10:15:51] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@dajsytran.92/video/7676824626974002440
+[2026-09-26T10:15:51]    ❌ [LỖI] Video https://www.tiktok.com/@dajsytran.92/video/7676824626974002440 không đăng được cho Circle 🏷️ [Tập Nấu Ăn] sau khi thử lại.
+[2026-09-26T10:15:51]    🔄 [CHUYỂN TIẾP] Đang lấy video khác của Circle 🏷️ [Tập Nấu Ăn] (còn 37 video) để đăng bù ngay trong đợt này...
+[2026-09-26T10:15:54] 🚀 Bấm Đăng lên Circle 🏷️ [LION championship]...
+[2026-09-26T10:15:58] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [LION championship]: "https://www.tiktok.com/@levantuan.mma/video/7671092659448057"
+[2026-09-26T10:16:01]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [LION championship]: "Tuổi tác thì càng ngày càng già đi Kèo đấu th" (1/41 video)
+[2026-09-26T10:16:01] 📤 Đang đăng: "https://www.tiktok.com/@theshy2004/video/7664776229928586517" -> Circle: 🏷️ [Cường Mê Game]
+[2026-09-26T10:16:23] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Cường Mê Game [ID: d58c2b39-feb1-4bfc-9d5d-5e9984c86e96]
+[2026-09-26T10:16:34] 🚀 Bấm Đăng lên Circle 🏷️ [Cường Mê Game]...
+[2026-09-26T10:16:39] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Cường Mê Game]: "https://www.tiktok.com/@theshy2004/video/7664776229928586517"
+[2026-09-26T10:16:42]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Cường Mê Game]: "Lần đầu khám phá thế giới Free Fire, bạn đã s" (1/4 video)
+[2026-09-26T10:16:42] 📤 Đang đăng: "https://www.tiktok.com/@vitamingaixinh92/video/7681351590447" -> Circle: 🏷️ [Gái Xinh]
+[2026-09-26T10:16:51] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Gái Xinh [ID: dea448a6-b8e5-40e0-9cd7-68ea12abaac5]
+[2026-09-26T10:17:01] 🚀 Bấm Đăng lên Circle 🏷️ [Gái Xinh]...
+[2026-09-26T10:17:05] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Gái Xinh]: "https://www.tiktok.com/@vitamingaixinh92/video/7681351590447"
+[2026-09-26T10:17:08]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Gái Xinh]: "Gái xinh không chỉ đẹp mà còn đầy sức hút, cù" (1/52 video)
+[2026-09-26T10:17:09] 📤 Đang đăng: "https://www.tiktok.com/@dip.lm.huy.dlk.te/video/767091133102" -> Circle: 🏷️ [xe độ chiến]
+[2026-09-26T10:17:17] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: xe độ chiến [ID: 7b944633-043c-445b-b516-aeeddb7bb7f9]
+[2026-09-26T10:17:28] 🚀 Bấm Đăng lên Circle 🏷️ [xe độ chiến]...
+[2026-09-26T10:17:34] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [xe độ chiến]: "https://www.tiktok.com/@dip.lm.huy.dlk.te/video/767091133102"
+[2026-09-26T10:17:37]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [xe độ chiến]: "Chiêm ngưỡng chiếc xe độ cực chất, mang phong" (1/10 video)
+[2026-09-26T10:17:38] 📤 Đang đăng: "https://www.tiktok.com/@aris29080/video/7689034536579108117" -> Circle: 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]
+[2026-09-26T10:17:46] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: 𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘 [ID: 58830551-136b-4a08-9cc2-540c74645958]
+[2026-09-26T10:17:58] 🚀 Bấm Đăng lên Circle 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]...
+[2026-09-26T10:18:02] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]: "https://www.tiktok.com/@aris29080/video/7689034536579108117"
+[2026-09-26T10:18:06]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]: "Mình chọn giành lấy có cả thế giới thế nhưng " (1/39 video)
+[2026-09-26T10:18:06] 📤 Đang đăng: "https://www.tiktok.com/@donglucpodcastt/video/76823856859696" -> Circle: 🏷️ [Góc Nhỏ Podcast]
+[2026-09-26T10:18:14] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Góc Nhỏ Podcast [ID: cd8b9cce-da5b-4200-bd00-fc5c793ace8d]
+[2026-09-26T10:18:25] 🚀 Bấm Đăng lên Circle 🏷️ [Góc Nhỏ Podcast]...
+[2026-09-26T10:18:32] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Góc Nhỏ Podcast]: "https://www.tiktok.com/@donglucpodcastt/video/76823856859696"
+[2026-09-26T10:18:36]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Góc Nhỏ Podcast]: "Nếu bạn không hẹn hò với mục đích kết hôn, có" (1/39 video)
+[2026-09-26T10:18:36] 📤 Đang đăng: "https://www.tiktok.com/@lng.t2007/video/7654935686490901780" -> Circle: 🏷️ [Coi Là Cười]
+[2026-09-26T10:18:44] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Coi Là Cười [ID: ba4e066f-f9d8-49eb-84dd-428a24f5c38e]
+[2026-09-26T10:18:56] 🚀 Bấm Đăng lên Circle 🏷️ [Coi Là Cười]...
+[2026-09-26T10:19:03] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Coi Là Cười]: "https://www.tiktok.com/@lng.t2007/video/7654935686490901780"
+[2026-09-26T10:19:06]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Coi Là Cười]: "Tưởng nhặt được tiền là đời sang trang, ai ng" (1/47 video)
+[2026-09-26T10:19:06] 📤 Đang đăng: "https://www.tiktok.com/@dajsytran.92/video/76700093455513387" -> Circle: 🏷️ [Tập Nấu Ăn]
+[2026-09-26T10:19:14] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Tập Nấu Ăn [ID: bb16ea11-6f7c-46da-9add-13e4fca94ee2]
+[2026-09-26T10:19:26] 🚀 Bấm Đăng lên Circle 🏷️ [Tập Nấu Ăn]...
+[2026-09-26T10:19:35] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Tập Nấu Ăn]: "https://www.tiktok.com/@dajsytran.92/video/76700093455513387"
+[2026-09-26T10:19:38]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Tập Nấu Ăn]: "Không ngờ một chiếc máy nhỏ lại khiến mình yê" (1/38 video)
+[2026-09-26T10:19:38] 📤 Đang đăng: "https://www.tiktok.com/@lovecakes_220/video/7673861258562571" -> Circle: 🏷️ [Nghiện Làm Bánh]
+[2026-09-26T10:19:47] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Nghiện Làm Bánh [ID: 7508e1a8-36bf-4305-b84b-4e957c44b2f0]
+[2026-09-26T10:19:58] 🚀 Bấm Đăng lên Circle 🏷️ [Nghiện Làm Bánh]...
+[2026-09-26T10:20:04] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Nghiện Làm Bánh]: "https://www.tiktok.com/@lovecakes_220/video/7673861258562571"
+[2026-09-26T10:20:07]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Nghiện Làm Bánh]: "40 giây video lung linh là đổi bằng 40 phút n" (1/45 video)
+[2026-09-26T10:20:07] 📤 Đang đăng: "https://www.tiktok.com/@iitachi.pc/video/7628684824559062280" -> Circle: 🏷️ [Góc Setup]
+[2026-09-26T10:20:16] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Góc Setup [ID: 4dd5d2e8-25d4-41d5-86b9-da85bebbaab0]
+[2026-09-26T10:20:27] 🚀 Bấm Đăng lên Circle 🏷️ [Góc Setup]...
+[2026-09-26T10:20:30] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Góc Setup]: "https://www.tiktok.com/@iitachi.pc/video/7628684824559062280"
+[2026-09-26T10:20:33]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Góc Setup]: "Khi màn đêm buông xuống cũng là lúc góc chill" (1/47 video)
+[2026-09-26T10:20:33] 📤 Đang đăng: "https://www.tiktok.com/@tu_rophi/video/7252940693763607813" -> Circle: 🏷️ [Hội Mê Câu Cá]
+[2026-09-26T10:20:42] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Hội Mê Câu Cá [ID: 1286f9c6-b04b-4ac6-b772-5afa6a8d3b5f]
+[2026-09-26T10:20:53] 🚀 Bấm Đăng lên Circle 🏷️ [Hội Mê Câu Cá]...
+[2026-09-26T10:21:02] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Hội Mê Câu Cá]: "https://www.tiktok.com/@tu_rophi/video/7252940693763607813"
+[2026-09-26T10:21:05]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Hội Mê Câu Cá]: "Lại thêm 2 em rô phi tự nhiên "hàng khủng" từ" (1/51 video)
+[2026-09-26T10:21:05] 
+---------------------------------------------------------------------------
+[2026-09-26T10:21:05] ✅ [ĐỢT #1 HOÀN TẤT] Tất cả các Circle đã hoàn thành video đợt này.
+[2026-09-26T10:21:05] ⏳ Còn 12 Circle có video cho đợt tiếp theo. Tạm dừng nghỉ 2548s (thời gian delay bạn đã cài đặt) trước khi tiếp tục...
+[2026-09-26T10:21:05] ---------------------------------------------------------------------------
+
+[2026-09-26T11:03:34] 
+===========================================================================
+[2026-09-26T11:03:34] 🚀 [ĐỢT #2] ĐĂNG ĐỒNG THỜI CHO 12 CIRCLE (Số luồng: 8):
+[2026-09-26T11:03:34]    • Circle 🏷️ [Cường Mê Game] (còn 3 video): https://www.tiktok.com/@theshy2004/video/7664
+[2026-09-26T11:03:34]    • Circle 🏷️ [xe độ chiến] (còn 9 video): https://www.tiktok.com/@dip.lm.huy.dlk.te/vid
+[2026-09-26T11:03:34]    • Circle 🏷️ [Gái Xinh] (còn 51 video): https://www.tiktok.com/@vitamingaixinh92/vide
+[2026-09-26T11:03:34]    • Circle 🏷️ [Tập Nấu Ăn] (còn 36 video): https://www.tiktok.com/@dajsytran.92/video/76
+[2026-09-26T11:03:34]    • Circle 🏷️ [LION championship] (còn 40 video): https://www.tiktok.com/@levantuan.mma/video/7
+[2026-09-26T11:03:34]    • Circle 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘] (còn 38 video): https://www.tiktok.com/@aris29080/video/76890
+[2026-09-26T11:03:34]    • Circle 🏷️ [Góc Nhỏ Podcast] (còn 38 video): https://www.tiktok.com/@donglucpodcastt/video
+[2026-09-26T11:03:34]    • Circle 🏷️ [Học Tiếng Anh Cùng Tôi] (còn 39 video): https://www.tiktok.com/@tienganhsongngu.vn/vi
+[2026-09-26T11:03:34]    • Circle 🏷️ [Coi Là Cười] (còn 46 video): https://www.tiktok.com/@lng.t2007/video/76685
+[2026-09-26T11:03:34]    • Circle 🏷️ [Nghiện Làm Bánh] (còn 44 video): https://www.tiktok.com/@lovecakes_220/video/7
+[2026-09-26T11:03:34]    • Circle 🏷️ [Góc Setup] (còn 46 video): https://www.tiktok.com/@iitachi.pc/video/7585
+[2026-09-26T11:03:34]    • Circle 🏷️ [Hội Mê Câu Cá] (còn 50 video): https://www.tiktok.com/@23thg0303/video/76868
+[2026-09-26T11:03:34] ===========================================================================
+[2026-09-26T11:03:36] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@dajsytran.92/video/7666838605570182407
+[2026-09-26T11:03:36]    ⚠️ [THỬ LẠI LẦN 2] Gặp lỗi khi đăng. Đang thử đăng lại video cho Circle 🏷️ [Tập Nấu Ăn]: "Bảo sao món này luôn nằm trong top món “hao c"...
+[2026-09-26T11:03:43] 📤 Đang đăng: "https://www.tiktok.com/@vitamingaixinh92/video/7681204949346" -> Circle: 🏷️ [Gái Xinh]
+[2026-09-26T11:03:55] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Gái Xinh [ID: dea448a6-b8e5-40e0-9cd7-68ea12abaac5]
+[2026-09-26T11:04:07] 🚀 Bấm Đăng lên Circle 🏷️ [Gái Xinh]...
+[2026-09-26T11:04:11] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Gái Xinh]: "https://www.tiktok.com/@vitamingaixinh92/video/7681204949346"
+[2026-09-26T11:04:14]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Gái Xinh]: "Cùng khám phá vẻ đẹp của những cô gái khiến t" (2/52 video)
+[2026-09-26T11:04:14] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@dajsytran.92/video/7666838605570182407
+[2026-09-26T11:04:14]    ❌ [LỖI] Video https://www.tiktok.com/@dajsytran.92/video/7666838605570182407 không đăng được cho Circle 🏷️ [Tập Nấu Ăn] sau khi thử lại.
+[2026-09-26T11:04:14]    🔄 [CHUYỂN TIẾP] Đang lấy video khác của Circle 🏷️ [Tập Nấu Ăn] (còn 35 video) để đăng bù ngay trong đợt này...
+[2026-09-26T11:04:14] 📤 Đang đăng: "https://www.tiktok.com/@aris29080/video/7689057942372502805" -> Circle: 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]
+[2026-09-26T11:04:22] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: 𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘 [ID: 58830551-136b-4a08-9cc2-540c74645958]
+[2026-09-26T11:04:32] 🚀 Bấm Đăng lên Circle 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]...
+[2026-09-26T11:04:36] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]: "https://www.tiktok.com/@aris29080/video/7689057942372502805"
+[2026-09-26T11:04:39]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]: "Quả nhạc Mới này Drill lên nghe có vẻ PEAK VC" (2/39 video)
+[2026-09-26T11:04:40] 📤 Đang đăng: "https://www.tiktok.com/@levantuan.mma/video/7653494350889880" -> Circle: 🏷️ [LION championship]
+[2026-09-26T11:04:48] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: LION championship [ID: 29a99f38-43f5-42c9-accf-f91c1cb85e6a]
+[2026-09-26T11:04:54] 🚀 Bấm Đăng lên Circle 🏷️ [LION championship]...
+[2026-09-26T11:04:58] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [LION championship]: "https://www.tiktok.com/@levantuan.mma/video/7653494350889880"
+[2026-09-26T11:05:02]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [LION championship]: "Video mới trên LION championship" (2/41 video)
+[2026-09-26T11:05:02] 📤 Đang đăng: "https://www.tiktok.com/@dip.lm.huy.dlk.te/video/767114983244" -> Circle: 🏷️ [xe độ chiến]
+[2026-09-26T11:05:10] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: xe độ chiến [ID: 7b944633-043c-445b-b516-aeeddb7bb7f9]
+[2026-09-26T11:05:21] 🚀 Bấm Đăng lên Circle 🏷️ [xe độ chiến]...
+[2026-09-26T11:05:26] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [xe độ chiến]: "https://www.tiktok.com/@dip.lm.huy.dlk.te/video/767114983244"
+[2026-09-26T11:05:29]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [xe độ chiến]: "Chưa kịp ra mắt đã có chủ mới bên Mỹ, quá chấ" (2/10 video)
+[2026-09-26T11:05:30] 📤 Đang đăng: "https://www.tiktok.com/@theshy2004/video/7664794799165197589" -> Circle: 🏷️ [Cường Mê Game]
+[2026-09-26T11:05:38] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Cường Mê Game [ID: d58c2b39-feb1-4bfc-9d5d-5e9984c86e96]
+[2026-09-26T11:05:49] 🚀 Bấm Đăng lên Circle 🏷️ [Cường Mê Game]...
+[2026-09-26T11:05:53] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Cường Mê Game]: "https://www.tiktok.com/@theshy2004/video/7664794799165197589"
+[2026-09-26T11:05:56]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Cường Mê Game]: "Cái tiếng gục ấy, khiến tim mình đập mạnh hơn" (2/4 video)
+[2026-09-26T11:05:57] 📤 Đang đăng: "https://www.tiktok.com/@tienganhsongngu.vn/video/76538860284" -> Circle: 🏷️ [Học Tiếng Anh Cùng Tôi]
+[2026-09-26T11:06:05] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Học Tiếng Anh Cùng Tôi [ID: 99dc84b2-f324-4f1c-a73b-d5901fb0e2ec]
+[2026-09-26T11:06:17] 🚀 Bấm Đăng lên Circle 🏷️ [Học Tiếng Anh Cùng Tôi]...
+[2026-09-26T11:06:21] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Học Tiếng Anh Cùng Tôi]: "https://www.tiktok.com/@tienganhsongngu.vn/video/76538860284"
+[2026-09-26T11:06:25]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Học Tiếng Anh Cùng Tôi]: "Muốn nói tiếng Anh trôi chảy thì nhất định ph" (2/40 video)
+[2026-09-26T11:06:25] 📤 Đang đăng: "https://www.tiktok.com/@donglucpodcastt/video/76812720498342" -> Circle: 🏷️ [Góc Nhỏ Podcast]
+[2026-09-26T11:06:33] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Góc Nhỏ Podcast [ID: cd8b9cce-da5b-4200-bd00-fc5c793ace8d]
+[2026-09-26T11:06:44] 🚀 Bấm Đăng lên Circle 🏷️ [Góc Nhỏ Podcast]...
+[2026-09-26T11:06:51] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Góc Nhỏ Podcast]: "https://www.tiktok.com/@donglucpodcastt/video/76812720498342"
+[2026-09-26T11:06:54]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Góc Nhỏ Podcast]: "Tỉ lệ ly hôn ngày càng cao, vì đàn ông vẫn mu" (2/39 video)
+[2026-09-26T11:06:55] 📤 Đang đăng: "https://www.tiktok.com/@lng.t2007/video/7668556023782837524" -> Circle: 🏷️ [Coi Là Cười]
+[2026-09-26T11:07:03] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Coi Là Cười [ID: ba4e066f-f9d8-49eb-84dd-428a24f5c38e]
+[2026-09-26T11:07:14] 🚀 Bấm Đăng lên Circle 🏷️ [Coi Là Cười]...
+[2026-09-26T11:07:18] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Coi Là Cười]: "https://www.tiktok.com/@lng.t2007/video/7668556023782837524"
+[2026-09-26T11:07:21]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Coi Là Cười]: "Chỉ ngửi nhẹ một cái thôi mà biểu cảm như vừa" (2/47 video)
+[2026-09-26T11:07:22] 📤 Đang đăng: "https://www.tiktok.com/@dajsytran.92/video/76783095873504576" -> Circle: 🏷️ [Tập Nấu Ăn]
+[2026-09-26T11:07:30] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Tập Nấu Ăn [ID: bb16ea11-6f7c-46da-9add-13e4fca94ee2]
+[2026-09-26T11:07:39] 🚀 Bấm Đăng lên Circle 🏷️ [Tập Nấu Ăn]...
+[2026-09-26T11:07:47] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Tập Nấu Ăn]: "https://www.tiktok.com/@dajsytran.92/video/76783095873504576"
+[2026-09-26T11:07:50]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Tập Nấu Ăn]: "Gà rán vảy xù giòn rụm, làm tại nhà mà ngon y" (2/38 video)
+[2026-09-26T11:07:51] 📤 Đang đăng: "https://www.tiktok.com/@lovecakes_220/video/7683883061414513" -> Circle: 🏷️ [Nghiện Làm Bánh]
+[2026-09-26T11:07:59] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Nghiện Làm Bánh [ID: 7508e1a8-36bf-4305-b84b-4e957c44b2f0]
+[2026-09-26T11:08:11] 🚀 Bấm Đăng lên Circle 🏷️ [Nghiện Làm Bánh]...
+[2026-09-26T11:08:18] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Nghiện Làm Bánh]: "https://www.tiktok.com/@lovecakes_220/video/7683883061414513"
+[2026-09-26T11:08:21]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Nghiện Làm Bánh]: "Mấy cầu thủ nhí dạo này cứ mê tít mẫu bánh si" (2/45 video)
+[2026-09-26T11:08:21] 📤 Đang đăng: "https://www.tiktok.com/@iitachi.pc/video/7585999301180919058" -> Circle: 🏷️ [Góc Setup]
+[2026-09-26T11:08:29] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Góc Setup [ID: 4dd5d2e8-25d4-41d5-86b9-da85bebbaab0]
+[2026-09-26T11:08:40] 🚀 Bấm Đăng lên Circle 🏷️ [Góc Setup]...
+[2026-09-26T11:08:43] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Góc Setup]: "https://www.tiktok.com/@iitachi.pc/video/7585999301180919058"
+[2026-09-26T11:08:46]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Góc Setup]: "Góc setup tone xanh lá đỉnh cao thế này thì n" (2/47 video)
+[2026-09-26T11:08:47] 📤 Đang đăng: "https://www.tiktok.com/@23thg0303/video/7686823969604898055" -> Circle: 🏷️ [Hội Mê Câu Cá]
+[2026-09-26T11:08:55] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Hội Mê Câu Cá [ID: 1286f9c6-b04b-4ac6-b772-5afa6a8d3b5f]
+[2026-09-26T11:09:05] 🚀 Bấm Đăng lên Circle 🏷️ [Hội Mê Câu Cá]...
+[2026-09-26T11:09:12] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Hội Mê Câu Cá]: "https://www.tiktok.com/@23thg0303/video/7686823969604898055"
+[2026-09-26T11:09:15]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Hội Mê Câu Cá]: "Lại tiếp tục báo cá khủng nha anh em, kéo em " (2/51 video)
+[2026-09-26T11:09:15] 
+---------------------------------------------------------------------------
+[2026-09-26T11:09:15] ✅ [ĐỢT #2 HOÀN TẤT] Tất cả các Circle đã hoàn thành video đợt này.
+[2026-09-26T11:09:15] ⏳ Còn 12 Circle có video cho đợt tiếp theo. Tạm dừng nghỉ 2344s (thời gian delay bạn đã cài đặt) trước khi tiếp tục...
+[2026-09-26T11:09:15] ---------------------------------------------------------------------------
+
+[2026-09-26T11:48:19] 
+===========================================================================
+[2026-09-26T11:48:19] 🚀 [ĐỢT #3] ĐĂNG ĐỒNG THỜI CHO 12 CIRCLE (Số luồng: 8):
+[2026-09-26T11:48:19]    • Circle 🏷️ [Cường Mê Game] (còn 2 video): https://www.tiktok.com/@theshy2004/video/7664
+[2026-09-26T11:48:19]    • Circle 🏷️ [xe độ chiến] (còn 8 video): https://www.tiktok.com/@dip.lm.huy.dlk.te/vid
+[2026-09-26T11:48:19]    • Circle 🏷️ [Gái Xinh] (còn 50 video): https://www.tiktok.com/@ngaytiziat5/video/758
+[2026-09-26T11:48:19]    • Circle 🏷️ [Tập Nấu Ăn] (còn 34 video): https://www.tiktok.com/@dajsytran.92/video/76
+[2026-09-26T11:48:19]    • Circle 🏷️ [LION championship] (còn 39 video): https://www.tiktok.com/@levantuan.mma/video/7
+[2026-09-26T11:48:19]    • Circle 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘] (còn 37 video): https://www.tiktok.com/@aris29080/video/76889
+[2026-09-26T11:48:19]    • Circle 🏷️ [Góc Nhỏ Podcast] (còn 37 video): https://www.tiktok.com/@donglucpodcastt/video
+[2026-09-26T11:48:19]    • Circle 🏷️ [Học Tiếng Anh Cùng Tôi] (còn 38 video): https://www.tiktok.com/@tienganhsongngu.vn/vi
+[2026-09-26T11:48:19]    • Circle 🏷️ [Coi Là Cười] (còn 45 video): https://www.tiktok.com/@lng.t2007/video/76826
+[2026-09-26T11:48:19]    • Circle 🏷️ [Nghiện Làm Bánh] (còn 43 video): https://www.tiktok.com/@lovecakes_220/video/7
+[2026-09-26T11:48:19]    • Circle 🏷️ [Góc Setup] (còn 45 video): https://www.tiktok.com/@iitachi.pc/video/7399
+[2026-09-26T11:48:19]    • Circle 🏷️ [Hội Mê Câu Cá] (còn 49 video): https://www.tiktok.com/@23thg0303/video/75746
+[2026-09-26T11:48:19] ===========================================================================
+[2026-09-26T11:48:23] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@dajsytran.92/video/7666443149404916999
+[2026-09-26T11:48:23]    ⚠️ [THỬ LẠI LẦN 2] Gặp lỗi khi đăng. Đang thử đăng lại video cho Circle 🏷️ [Tập Nấu Ăn]: "Tôm xốt bơ tỏi chuẩn vị ngoài hàng mà ai cũng"...
+[2026-09-26T11:48:45] 📤 Đang đăng: "https://www.tiktok.com/@dip.lm.huy.dlk.te/video/767041706612" -> Circle: 🏷️ [xe độ chiến]
+[2026-09-26T11:48:59] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@theshy2004/video/7664464082526801173
+[2026-09-26T11:48:59]    ⚠️ [THỬ LẠI LẦN 2] Gặp lỗi khi đăng. Đang thử đăng lại video cho Circle 🏷️ [Cường Mê Game]: "Cao nhân nào làm video này cho ngầu hơn nữa k"...
+[2026-09-26T11:49:18] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: xe độ chiến [ID: 7b944633-043c-445b-b516-aeeddb7bb7f9]
+[2026-09-26T11:49:21] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@dajsytran.92/video/7666443149404916999
+[2026-09-26T11:49:21]    ❌ [LỖI] Video https://www.tiktok.com/@dajsytran.92/video/7666443149404916999 không đăng được cho Circle 🏷️ [Tập Nấu Ăn] sau khi thử lại.
+[2026-09-26T11:49:21]    🔄 [CHUYỂN TIẾP] Đang lấy video khác của Circle 🏷️ [Tập Nấu Ăn] (còn 33 video) để đăng bù ngay trong đợt này...
+[2026-09-26T11:49:30] 🚀 Bấm Đăng lên Circle 🏷️ [xe độ chiến]...
+[2026-09-26T11:49:47] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@tienganhsongngu.vn/video/7659898334429089045
+[2026-09-26T11:49:47]    ⚠️ [THỬ LẠI LẦN 2] Gặp lỗi khi đăng. Đang thử đăng lại video cho Circle 🏷️ [Học Tiếng Anh Cùng Tôi]: "Cùng mình luyện nghe tiếng Anh qua bản tin so"...
+[2026-09-26T11:49:50] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [xe độ chiến]: "https://www.tiktok.com/@dip.lm.huy.dlk.te/video/767041706612"
+[2026-09-26T11:49:51] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@aris29080/video/7688974898223467797
+[2026-09-26T11:49:51]    ⚠️ [THỬ LẠI LẦN 2] Gặp lỗi khi đăng. Đang thử đăng lại video cho Circle 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]: "Hứa qua chở ẻm đi chơi..mà tại hồi chiều...ch"...
+[2026-09-26T11:49:53]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [xe độ chiến]: "Nâng cấp chiến mã thế nào cho đúng điệu? Cùng" (3/10 video)
+[2026-09-26T11:49:54] 📤 Đang đăng: "https://www.tiktok.com/@ngaytiziat5/video/758981974574725863" -> Circle: 🏷️ [Gái Xinh]
+[2026-09-26T11:49:57] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@lng.t2007/video/7682654205131115797
+[2026-09-26T11:49:57]    ⚠️ [THỬ LẠI LẦN 2] Gặp lỗi khi đăng. Đang thử đăng lại video cho Circle 🏷️ [Coi Là Cười]: "Đúng là ảo thuật gia hệ liều, ghẹo gái xong k"...
+[2026-09-26T11:50:09] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Gái Xinh [ID: dea448a6-b8e5-40e0-9cd7-68ea12abaac5]
+[2026-09-26T11:50:14] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@donglucpodcastt/video/7681999223495167253
+[2026-09-26T11:50:14]    ⚠️ [THỬ LẠI LẦN 2] Gặp lỗi khi đăng. Đang thử đăng lại video cho Circle 🏷️ [Góc Nhỏ Podcast]: "Em từng hỏi anh: “Anh hết yêu em từ khi nào?”"...
+[2026-09-26T11:50:20] 🚀 Bấm Đăng lên Circle 🏷️ [Gái Xinh]...
+[2026-09-26T11:50:32] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Gái Xinh]: "https://www.tiktok.com/@ngaytiziat5/video/758981974574725863"
+[2026-09-26T11:50:35]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Gái Xinh]: "Nạp chút vitamin ngọt ngào cho ngày mới tràn " (3/52 video)
+[2026-09-26T11:50:36] 📤 Đang đăng: "https://www.tiktok.com/@theshy2004/video/7664464082526801173" -> Circle: 🏷️ [Cường Mê Game]
+[2026-09-26T11:50:50] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Cường Mê Game [ID: d58c2b39-feb1-4bfc-9d5d-5e9984c86e96]
+[2026-09-26T11:50:53] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@donglucpodcastt/video/7681999223495167253
+[2026-09-26T11:50:53]    ❌ [LỖI] Video https://www.tiktok.com/@donglucpodcastt/video/7681999223495167253 không đăng được cho Circle 🏷️ [Góc Nhỏ Podcast] sau khi thử lại.
+[2026-09-26T11:50:53]    🔄 [CHUYỂN TIẾP] Đang lấy video khác của Circle 🏷️ [Góc Nhỏ Podcast] (còn 36 video) để đăng bù ngay trong đợt này...
+[2026-09-26T11:50:53] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@tienganhsongngu.vn/video/7659898334429089045
+[2026-09-26T11:50:53]    ❌ [LỖI] Video https://www.tiktok.com/@tienganhsongngu.vn/video/7659898334429089045 không đăng được cho Circle 🏷️ [Học Tiếng Anh Cùng Tôi] sau khi thử lại.
+[2026-09-26T11:50:53]    🔄 [CHUYỂN TIẾP] Đang lấy video khác của Circle 🏷️ [Học Tiếng Anh Cùng Tôi] (còn 37 video) để đăng bù ngay trong đợt này...
+[2026-09-26T11:51:01] 🚀 Bấm Đăng lên Circle 🏷️ [Cường Mê Game]...
+[2026-09-26T11:51:12] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Cường Mê Game]: "https://www.tiktok.com/@theshy2004/video/7664464082526801173"
+[2026-09-26T11:51:15]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Cường Mê Game]: "Cao nhân nào làm video này cho ngầu hơn nữa k" (3/4 video)
+[2026-09-26T11:51:15] 📤 Đang đăng: "https://www.tiktok.com/@dajsytran.92/video/76660724358289850" -> Circle: 🏷️ [Tập Nấu Ăn]
+[2026-09-26T11:51:18] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@lovecakes_220/video/7681279123590958357
+[2026-09-26T11:51:18]    ⚠️ [THỬ LẠI LẦN 2] Gặp lỗi khi đăng. Đang thử đăng lại video cho Circle 🏷️ [Nghiện Làm Bánh]: "Mẫu bánh sinh nhật Siêu Nhân Nhện cực ngầu dà"...
+[2026-09-26T11:51:29] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Tập Nấu Ăn [ID: bb16ea11-6f7c-46da-9add-13e4fca94ee2]
+[2026-09-26T11:51:30] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@donglucpodcastt/video/7683127875419213077
+[2026-09-26T11:51:30]    ⚠️ [THỬ LẠI LẦN 2] Gặp lỗi khi đăng. Đang thử đăng lại video cho Circle 🏷️ [Góc Nhỏ Podcast]: "Có những đứa trẻ xin ba mẹ từng đồng để mua s"...
+[2026-09-26T11:51:39] 🚀 Bấm Đăng lên Circle 🏷️ [Tập Nấu Ăn]...
+[2026-09-26T11:51:52] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Tập Nấu Ăn]: "https://www.tiktok.com/@dajsytran.92/video/76660724358289850"
+[2026-09-26T11:51:55]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Tập Nấu Ăn]: "Bộ dao này đúng kiểu dùng rồi là không muốn đ" (3/38 video)
+[2026-09-26T11:51:56] ❌ Lỗi khởi chạy trình duyệt: cannot schedule new futures after interpreter shutdown
+[2026-09-26T11:51:56]    ❌ [LỖI] Video https://www.tiktok.com/@aris29080/video/7688974898223467797 không đăng được cho Circle 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘] sau khi thử lại.
+[2026-09-26T11:51:56]    🔄 [CHUYỂN TIẾP] Đang lấy video khác của Circle 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘] (còn 36 video) để đăng bù ngay trong đợt này...
+[2026-09-26T11:51:56] ❌ Lỗi khởi chạy trình duyệt: cannot schedule new futures after interpreter shutdown
+[2026-09-26T11:51:56]    ❌ [LỖI] Video https://www.tiktok.com/@lng.t2007/video/7682654205131115797 không đăng được cho Circle 🏷️ [Coi Là Cười] sau khi thử lại.
+[2026-09-26T11:51:56]    🔄 [CHUYỂN TIẾP] Đang lấy video khác của Circle 🏷️ [Coi Là Cười] (còn 44 video) để đăng bù ngay trong đợt này...
+[2026-09-26T11:51:57] ❌ Lỗi khởi chạy trình duyệt: cannot schedule new futures after interpreter shutdown
+[2026-09-26T11:51:57]    ⚠️ [THỬ LẠI LẦN 2] Gặp lỗi khi đăng. Đang thử đăng lại video cho Circle 🏷️ [Học Tiếng Anh Cùng Tôi]: "Ngành dịch vụ thú cưng tại Việt Nam đang bùng"...
+[2026-09-26T11:51:57] ❌ Lỗi khởi chạy trình duyệt: cannot schedule new futures after interpreter shutdown
+[2026-09-26T11:51:57]    ⚠️ [THỬ LẠI LẦN 2] Gặp lỗi khi đăng. Đang thử đăng lại video cho Circle 🏷️ [Góc Setup]: "Góc máy tone trắng tối giản và ấm cúng thế nà"...
+[2026-09-26T11:51:57] ❌ Lỗi khởi chạy trình duyệt: cannot schedule new futures after interpreter shutdown
+[2026-09-26T11:51:57]    ❌ [LỖI] Video https://www.tiktok.com/@lovecakes_220/video/7681279123590958357 không đăng được cho Circle 🏷️ [Nghiện Làm Bánh] sau khi thử lại.
+[2026-09-26T11:51:57]    🔄 [CHUYỂN TIẾP] Đang lấy video khác của Circle 🏷️ [Nghiện Làm Bánh] (còn 42 video) để đăng bù ngay trong đợt này...
+[2026-09-26T11:51:58] ❌ Lỗi khởi chạy trình duyệt: cannot schedule new futures after interpreter shutdown
+[2026-09-26T11:51:58]    ❌ [LỖI] Video https://www.tiktok.com/@donglucpodcastt/video/7683127875419213077 không đăng được cho Circle 🏷️ [Góc Nhỏ Podcast] sau khi thử lại.
+[2026-09-26T11:51:58]    🔄 [CHUYỂN TIẾP] Đang lấy video khác của Circle 🏷️ [Góc Nhỏ Podcast] (còn 35 video) để đăng bù ngay trong đợt này...
+[2026-09-26T11:52:45] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@levantuan.mma/video/7662563739714997524
+[2026-09-26T11:52:45]    ⚠️ [THỬ LẠI LẦN 2] Gặp lỗi khi đăng. Đang thử đăng lại video cho Circle 🏷️ [LION championship]: "Lâu lâu lên cái video thôi chư bận bán phở lắ"...
+[2026-09-27T12:12:02] 
+[+] 🎯 Chế độ: 1 TIKTOK -> 1 UCIRCLE (Mỗi video thuộc đúng Circle đã chọn).
+[2026-09-27T12:12:02] [+] Tổng cộng 462 video được phân bổ cho 12 Kênh UCircle.
+[2026-09-27T12:12:02] 
+===========================================================================
+[2026-09-27T12:12:02] 🚀 [ĐỢT #1] ĐĂNG ĐỒNG THỜI CHO 12 CIRCLE (Số luồng: 8):
+[2026-09-27T12:12:02]    • Circle 🏷️ [Cường Mê Game] (còn 47 video): https://www.tiktok.com/@theshy2004/video/7664
+[2026-09-27T12:12:02]    • Circle 🏷️ [xe độ chiến] (còn 7 video): https://www.tiktok.com/@dip.lm.huy.dlk.te/vid
+[2026-09-27T12:12:02]    • Circle 🏷️ [Tập Nấu Ăn] (còn 32 video): https://www.tiktok.com/@dajsytran.92/video/76
+[2026-09-27T12:12:02]    • Circle 🏷️ [LION championship] (còn 39 video): https://www.tiktok.com/@levantuan.mma/video/7
+[2026-09-27T12:12:02]    • Circle 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘] (còn 36 video): https://www.tiktok.com/@aris29080/video/76890
+[2026-09-27T12:12:02]    • Circle 🏷️ [Góc Nhỏ Podcast] (còn 35 video): https://www.tiktok.com/@donglucpodcastt/video
+[2026-09-27T12:12:02]    • Circle 🏷️ [Học Tiếng Anh Cùng Tôi] (còn 37 video): https://www.tiktok.com/@tienganhsongngu.vn/vi
+[2026-09-27T12:12:02]    • Circle 🏷️ [Coi Là Cười] (còn 44 video): https://www.tiktok.com/@lng.t2007/video/76659
+[2026-09-27T12:12:02]    • Circle 🏷️ [Nghiện Làm Bánh] (còn 42 video): https://www.tiktok.com/@lovecakes_220/video/7
+[2026-09-27T12:12:02]    • Circle 🏷️ [Góc Setup] (còn 45 video): https://www.tiktok.com/@iitachi.pc/video/7399
+[2026-09-27T12:12:02]    • Circle 🏷️ [Gái Xinh] (còn 49 video): https://www.tiktok.com/@ngaytiziat5/video/757
+[2026-09-27T12:12:02]    • Circle 🏷️ [Hội Mê Câu Cá] (còn 49 video): https://www.tiktok.com/@23thg0303/video/75746
+[2026-09-27T12:12:02] ===========================================================================
+[2026-09-27T12:12:11] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@donglucpodcastt/video/7681626666036186388
+[2026-09-27T12:12:11]    ⚠️ [THỬ LẠI LẦN 2] Gặp lỗi khi đăng. Đang thử đăng lại video cho Circle 🏷️ [Góc Nhỏ Podcast]: "Nghịch cảnh và thất bại thường là động lực ti"...
+[2026-09-27T12:12:12] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@dajsytran.92/video/7664961905995369735
+[2026-09-27T12:12:12]    ⚠️ [THỬ LẠI LẦN 2] Gặp lỗi khi đăng. Đang thử đăng lại video cho Circle 🏷️ [Tập Nấu Ăn]: "Dùng rồi chỉ tiếc sao không mua sớm. 😍 VN"...
+[2026-09-27T12:12:26] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@tienganhsongngu.vn/video/7655358274174242056
+[2026-09-27T12:12:26]    ⚠️ [THỬ LẠI LẦN 2] Gặp lỗi khi đăng. Đang thử đăng lại video cho Circle 🏷️ [Học Tiếng Anh Cùng Tôi]: "Ngành dịch vụ thú cưng tại Việt Nam đang bùng"...
+[2026-09-27T12:12:30] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@dajsytran.92/video/7664961905995369735
+[2026-09-27T12:12:30]    ❌ [LỖI] Video https://www.tiktok.com/@dajsytran.92/video/7664961905995369735 không đăng được cho Circle 🏷️ [Tập Nấu Ăn] sau khi thử lại.
+[2026-09-27T12:12:30]    🔄 [CHUYỂN TIẾP] Đang lấy video khác của Circle 🏷️ [Tập Nấu Ăn] (còn 31 video) để đăng bù ngay trong đợt này...
+[2026-09-27T12:12:31] 📤 Đang đăng: "https://www.tiktok.com/@lng.t2007/video/7665956352983846164" -> Circle: 🏷️ [Coi Là Cười]
+[2026-09-27T12:12:59] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Coi Là Cười [ID: ba4e066f-f9d8-49eb-84dd-428a24f5c38e]
+[2026-09-27T12:13:05] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@aris29080/video/7689043401848655125
+[2026-09-27T12:13:05]    ⚠️ [THỬ LẠI LẦN 2] Gặp lỗi khi đăng. Đang thử đăng lại video cho Circle 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]: "Anh là nỗi đau đẹp nhất mà em chẳng thể nào q"...
+[2026-09-27T12:13:09] 🚀 Bấm Đăng lên Circle 🏷️ [Coi Là Cười]...
+[2026-09-27T12:13:30] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@dip.lm.huy.dlk.te/video/7670774810342870293
+[2026-09-27T12:13:30]    ⚠️ [THỬ LẠI LẦN 2] Gặp lỗi khi đăng. Đang thử đăng lại video cho Circle 🏷️ [xe độ chiến]: "🚀 Lên đường đến Mỹ với chiếc xe độ đỉnh nhất!"...
+[2026-09-27T12:13:31] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Coi Là Cười]: "https://www.tiktok.com/@lng.t2007/video/7665956352983846164"
+[2026-09-27T12:13:34]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Coi Là Cười]: "Đang yên đang lành tự nhiên gặp ca khó, chị n" (1/44 video)
+[2026-09-27T12:13:34] 📤 Đang đăng: "https://www.tiktok.com/@aris29080/video/7689043401848655125" -> Circle: 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]
+[2026-09-27T12:13:35] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@donglucpodcastt/video/7681626666036186388
+[2026-09-27T12:13:35]    ❌ [LỖI] Video https://www.tiktok.com/@donglucpodcastt/video/7681626666036186388 không đăng được cho Circle 🏷️ [Góc Nhỏ Podcast] sau khi thử lại.
+[2026-09-27T12:13:35]    🔄 [CHUYỂN TIẾP] Đang lấy video khác của Circle 🏷️ [Góc Nhỏ Podcast] (còn 34 video) để đăng bù ngay trong đợt này...
+[2026-09-27T12:13:42] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@tienganhsongngu.vn/video/7655358274174242056
+[2026-09-27T12:13:42]    ❌ [LỖI] Video https://www.tiktok.com/@tienganhsongngu.vn/video/7655358274174242056 không đăng được cho Circle 🏷️ [Học Tiếng Anh Cùng Tôi] sau khi thử lại.
+[2026-09-27T12:13:42]    🔄 [CHUYỂN TIẾP] Đang lấy video khác của Circle 🏷️ [Học Tiếng Anh Cùng Tôi] (còn 36 video) để đăng bù ngay trong đợt này...
+[2026-09-27T12:14:03] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: 𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘 [ID: 58830551-136b-4a08-9cc2-540c74645958]
+[2026-09-27T12:14:14] 🚀 Bấm Đăng lên Circle 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]...
+[2026-09-27T12:14:36] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]: "https://www.tiktok.com/@aris29080/video/7689043401848655125"
+[2026-09-27T12:14:39]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [𝘼𝙧𝙞𝙨 𝙈𝙪𝙨𝙞𝙘]: "Anh là nỗi đau đẹp nhất mà em chẳng thể nào q" (1/36 video)
+[2026-09-27T12:14:41] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@dip.lm.huy.dlk.te/video/7670774810342870293
+[2026-09-27T12:14:41]    ❌ [LỖI] Video https://www.tiktok.com/@dip.lm.huy.dlk.te/video/7670774810342870293 không đăng được cho Circle 🏷️ [xe độ chiến] sau khi thử lại.
+[2026-09-27T12:14:41]    🔄 [CHUYỂN TIẾP] Đang lấy video khác của Circle 🏷️ [xe độ chiến] (còn 6 video) để đăng bù ngay trong đợt này...
+[2026-09-27T12:14:45] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@theshy2004/video/7664069506045660437
+[2026-09-27T12:14:45]    ⚠️ [THỬ LẠI LẦN 2] Gặp lỗi khi đăng. Đang thử đăng lại video cho Circle 🏷️ [Cường Mê Game]: "Ai chửi mắng mình thì mình chỉ cần giả điếc, "...
+[2026-09-27T12:14:58] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@donglucpodcastt/video/7680142015832673557
+[2026-09-27T12:14:58]    ⚠️ [THỬ LẠI LẦN 2] Gặp lỗi khi đăng. Đang thử đăng lại video cho Circle 🏷️ [Góc Nhỏ Podcast]: "Sau này, em có thể kể về anh bằng rất nhiều đ"...
+[2026-09-27T12:14:59] 📤 Đang đăng: "https://www.tiktok.com/@dip.lm.huy.dlk.te/video/767054114072" -> Circle: 🏷️ [xe độ chiến]
+[2026-09-27T12:15:19] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: xe độ chiến [ID: 7b944633-043c-445b-b516-aeeddb7bb7f9]
+[2026-09-27T12:15:30] 🚀 Bấm Đăng lên Circle 🏷️ [xe độ chiến]...
+[2026-09-27T12:15:37] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@donglucpodcastt/video/7680142015832673557
+[2026-09-27T12:15:37]    ❌ [LỖI] Video https://www.tiktok.com/@donglucpodcastt/video/7680142015832673557 không đăng được cho Circle 🏷️ [Góc Nhỏ Podcast] sau khi thử lại.
+[2026-09-27T12:15:37]    🔄 [CHUYỂN TIẾP] Đang lấy video khác của Circle 🏷️ [Góc Nhỏ Podcast] (còn 33 video) để đăng bù ngay trong đợt này...
+[2026-09-27T12:15:37] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@dajsytran.92/video/7665694962461330696
+[2026-09-27T12:15:37]    ⚠️ [THỬ LẠI LẦN 2] Gặp lỗi khi đăng. Đang thử đăng lại video cho Circle 🏷️ [Tập Nấu Ăn]: "Ai ngờ bánh mì cũ làm kiểu này lại ngon dữ ."...
+[2026-09-27T12:15:41] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [xe độ chiến]: "https://www.tiktok.com/@dip.lm.huy.dlk.te/video/767054114072"
+[2026-09-27T12:15:44]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [xe độ chiến]: "Bài độ "khủng" nhất đã có mặt, anh em cùng ch" (1/7 video)
+[2026-09-27T12:15:45] 📤 Đang đăng: "https://www.tiktok.com/@iitachi.pc/video/7399306844394507528" -> Circle: 🏷️ [Góc Setup]
+[2026-09-27T12:16:04] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@tienganhsongngu.vn/video/7653137181074115858
+[2026-09-27T12:16:04]    ⚠️ [THỬ LẠI LẦN 2] Gặp lỗi khi đăng. Đang thử đăng lại video cho Circle 🏷️ [Học Tiếng Anh Cùng Tôi]: "Thả mình vào không gian bình yên nơi làng quê"...
+[2026-09-27T12:16:12] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Góc Setup [ID: 4dd5d2e8-25d4-41d5-86b9-da85bebbaab0]
+[2026-09-27T12:16:23] 🚀 Bấm Đăng lên Circle 🏷️ [Góc Setup]...
+[2026-09-27T12:16:24] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@lovecakes_220/video/7684624630023310612
+[2026-09-27T12:16:24]    ⚠️ [THỬ LẠI LẦN 2] Gặp lỗi khi đăng. Đang thử đăng lại video cho Circle 🏷️ [Nghiện Làm Bánh]: "Bánh vuông tạo hình Kuromi tone tím xinh hết "...
+[2026-09-27T12:16:37] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@ngaytiziat5/video/7578325540659137799
+[2026-09-27T12:16:37]    ⚠️ [THỬ LẠI LẦN 2] Gặp lỗi khi đăng. Đang thử đăng lại video cho Circle 🏷️ [Gái Xinh]: "Nạp chút "vitamin ngọt ngào" này cho ngày mới"...
+[2026-09-27T12:16:37] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Góc Setup]: "https://www.tiktok.com/@iitachi.pc/video/7399306844394507528"
+[2026-09-27T12:16:39] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@theshy2004/video/7664069506045660437
+[2026-09-27T12:16:39]    ❌ [LỖI] Video https://www.tiktok.com/@theshy2004/video/7664069506045660437 không đăng được cho Circle 🏷️ [Cường Mê Game] sau khi thử lại.
+[2026-09-27T12:16:39]    🔄 [CHUYỂN TIẾP] Đang lấy video khác của Circle 🏷️ [Cường Mê Game] (còn 46 video) để đăng bù ngay trong đợt này...
+[2026-09-27T12:16:40]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Góc Setup]: "Góc máy tone trắng tối giản và ấm cúng thế nà" (1/45 video)
+[2026-09-27T12:17:06] 📤 Đang đăng: "https://www.tiktok.com/@ngaytiziat5/video/757832554065913779" -> Circle: 🏷️ [Gái Xinh]
+[2026-09-27T12:17:07] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@donglucpodcastt/video/7680886311934250261
+[2026-09-27T12:17:07]    ⚠️ [THỬ LẠI LẦN 2] Gặp lỗi khi đăng. Đang thử đăng lại video cho Circle 🏷️ [Góc Nhỏ Podcast]: "Về quê chơi được đúng ba hôm... Mới ngày thứ "...
+[2026-09-27T12:17:15] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@dajsytran.92/video/7665694962461330696
+[2026-09-27T12:17:15]    ❌ [LỖI] Video https://www.tiktok.com/@dajsytran.92/video/7665694962461330696 không đăng được cho Circle 🏷️ [Tập Nấu Ăn] sau khi thử lại.
+[2026-09-27T12:17:15]    🔄 [CHUYỂN TIẾP] Đang lấy video khác của Circle 🏷️ [Tập Nấu Ăn] (còn 30 video) để đăng bù ngay trong đợt này...
+[2026-09-27T12:17:31] ⚠️ Đang chờ hiển thị danh sách tư cách đăng...
+[2026-09-27T12:17:31] ❌ KHÔNG TÌM THẤY Kênh UCircle: 'Gái Xinh' [ID: dea448a6-b8e5-40e0-9cd7-68ea12abaac5].
+[2026-09-27T12:17:42] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Gái Xinh [ID: dea448a6-b8e5-40e0-9cd7-68ea12abaac5]
+[2026-09-27T12:17:51] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@tienganhsongngu.vn/video/7653137181074115858
+[2026-09-27T12:17:51]    ❌ [LỖI] Video https://www.tiktok.com/@tienganhsongngu.vn/video/7653137181074115858 không đăng được cho Circle 🏷️ [Học Tiếng Anh Cùng Tôi] sau khi thử lại.
+[2026-09-27T12:17:51]    🔄 [CHUYỂN TIẾP] Đang lấy video khác của Circle 🏷️ [Học Tiếng Anh Cùng Tôi] (còn 35 video) để đăng bù ngay trong đợt này...
+[2026-09-27T12:17:53] 🚀 Bấm Đăng lên Circle 🏷️ [Gái Xinh]...
+[2026-09-27T12:18:09] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Gái Xinh]: "https://www.tiktok.com/@ngaytiziat5/video/757832554065913779"
+[2026-09-27T12:18:12]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Gái Xinh]: "Nạp chút "vitamin ngọt ngào" này cho ngày mới" (1/49 video)
+[2026-09-27T12:18:12] 📤 Đang đăng: "https://www.tiktok.com/@23thg0303/video/7574668255546084615" -> Circle: 🏷️ [Hội Mê Câu Cá]
+[2026-09-27T12:18:44] ⚠️ Đang chờ hiển thị danh sách tư cách đăng...
+[2026-09-27T12:18:44] ❌ KHÔNG TÌM THẤY Kênh UCircle: 'Hội Mê Câu Cá' [ID: 1286f9c6-b04b-4ac6-b772-5afa6a8d3b5f].
+[2026-09-27T12:18:54] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Hội Mê Câu Cá [ID: 1286f9c6-b04b-4ac6-b772-5afa6a8d3b5f]
+[2026-09-27T12:18:56] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@lovecakes_220/video/7684624630023310612
+[2026-09-27T12:18:56]    ❌ [LỖI] Video https://www.tiktok.com/@lovecakes_220/video/7684624630023310612 không đăng được cho Circle 🏷️ [Nghiện Làm Bánh] sau khi thử lại.
+[2026-09-27T12:18:56]    🔄 [CHUYỂN TIẾP] Đang lấy video khác của Circle 🏷️ [Nghiện Làm Bánh] (còn 41 video) để đăng bù ngay trong đợt này...
+[2026-09-27T12:19:05] 🚀 Bấm Đăng lên Circle 🏷️ [Hội Mê Câu Cá]...
+[2026-09-27T12:19:19] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Hội Mê Câu Cá]: "https://www.tiktok.com/@23thg0303/video/7574668255546084615"
+[2026-09-27T12:19:22]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Hội Mê Câu Cá]: "Cuối tuần xả stress cùng đam mê câu lure, anh" (1/49 video)
+[2026-09-27T12:19:23] 📤 Đang đăng: "https://www.tiktok.com/@tienganhsongngu.vn/video/76512750314" -> Circle: 🏷️ [Học Tiếng Anh Cùng Tôi]
+[2026-09-27T12:19:32] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@donglucpodcastt/video/7680886311934250261
+[2026-09-27T12:19:32]    ❌ [LỖI] Video https://www.tiktok.com/@donglucpodcastt/video/7680886311934250261 không đăng được cho Circle 🏷️ [Góc Nhỏ Podcast] sau khi thử lại.
+[2026-09-27T12:19:32]    🔄 [CHUYỂN TIẾP] Đang lấy video khác của Circle 🏷️ [Góc Nhỏ Podcast] (còn 32 video) để đăng bù ngay trong đợt này...
+[2026-09-27T12:19:34] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@lovecakes_220/video/7680171142086151445
+[2026-09-27T12:19:34]    ⚠️ [THỬ LẠI LẦN 2] Gặp lỗi khi đăng. Đang thử đăng lại video cho Circle 🏷️ [Nghiện Làm Bánh]: "Mỗi ngày một mẫu bánh xinh cho hội mê ngọt đâ"...
+[2026-09-27T12:19:42] ✅ Đã chọn CHÍNH XÁC Kênh UCircle: Học Tiếng Anh Cùng Tôi [ID: 99dc84b2-f324-4f1c-a73b-d5901fb0e2ec]
+[2026-09-27T12:19:54] 🚀 Bấm Đăng lên Circle 🏷️ [Học Tiếng Anh Cùng Tôi]...
+[2026-09-27T12:20:14] ✅ ĐĂNG THÀNH CÔNG lên Circle 🏷️ [Học Tiếng Anh Cùng Tôi]: "https://www.tiktok.com/@tienganhsongngu.vn/video/76512750314"
+[2026-09-27T12:20:18]    🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [Học Tiếng Anh Cùng Tôi]: "Muốn nói tiếng Anh phản xạ tự nhiên thì nhất " (1/37 video)
+[2026-09-27T12:20:22] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@dajsytran.92/video/7664212586266709255
+[2026-09-27T12:20:22]    ⚠️ [THỬ LẠI LẦN 2] Gặp lỗi khi đăng. Đang thử đăng lại video cho Circle 🏷️ [Tập Nấu Ăn]: "Bí quyết để cả nhà ăn sạch nồi cơm? Chính là "...
+[2026-09-27T12:20:47] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@kaito_live1/video/7690073186007928085
+[2026-09-27T12:20:47]    ⚠️ [THỬ LẠI LẦN 2] Gặp lỗi khi đăng. Đang thử đăng lại video cho Circle 🏷️ [Cường Mê Game]: "Thua một trận thì đã sao, làm lại ván mới gán"...
+[2026-09-27T12:21:26] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@lovecakes_220/video/7680171142086151445
+[2026-09-27T12:21:26]    ❌ [LỖI] Video https://www.tiktok.com/@lovecakes_220/video/7680171142086151445 không đăng được cho Circle 🏷️ [Nghiện Làm Bánh] sau khi thử lại.
+[2026-09-27T12:21:26]    🔄 [CHUYỂN TIẾP] Đang lấy video khác của Circle 🏷️ [Nghiện Làm Bánh] (còn 40 video) để đăng bù ngay trong đợt này...
+[2026-09-27T12:21:38] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@donglucpodcastt/video/7679405917246442772
+[2026-09-27T12:21:38]    ⚠️ [THỬ LẠI LẦN 2] Gặp lỗi khi đăng. Đang thử đăng lại video cho Circle 🏷️ [Góc Nhỏ Podcast]: "Cuộc đời một người con trai đi qua 4 giai đoạ"...
+[2026-09-27T12:22:22] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@lovecakes_220/video/7680805312575819029
+[2026-09-27T12:22:22]    ⚠️ [THỬ LẠI LẦN 2] Gặp lỗi khi đăng. Đang thử đăng lại video cho Circle 🏷️ [Nghiện Làm Bánh]: "Mẫu bánh tàu vũ trụ siêu cưng dành riêng cho "...
+[2026-09-27T12:23:14] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@dajsytran.92/video/7664212586266709255
+[2026-09-27T12:23:14]    ❌ [LỖI] Video https://www.tiktok.com/@dajsytran.92/video/7664212586266709255 không đăng được cho Circle 🏷️ [Tập Nấu Ăn] sau khi thử lại.
+[2026-09-27T12:23:14]    🔄 [CHUYỂN TIẾP] Đang lấy video khác của Circle 🏷️ [Tập Nấu Ăn] (còn 29 video) để đăng bù ngay trong đợt này...
+[2026-09-27T12:23:20] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@lovecakes_220/video/7680805312575819029
+[2026-09-27T12:23:20]    ❌ [LỖI] Video https://www.tiktok.com/@lovecakes_220/video/7680805312575819029 không đăng được cho Circle 🏷️ [Nghiện Làm Bánh] sau khi thử lại.
+[2026-09-27T12:23:20]    🔄 [CHUYỂN TIẾP] Đang lấy video khác của Circle 🏷️ [Nghiện Làm Bánh] (còn 39 video) để đăng bù ngay trong đợt này...
+[2026-09-27T12:24:24] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@kaito_live1/video/7690073186007928085
+[2026-09-27T12:24:24]    ❌ [LỖI] Video https://www.tiktok.com/@kaito_live1/video/7690073186007928085 không đăng được cho Circle 🏷️ [Cường Mê Game] sau khi thử lại.
+[2026-09-27T12:24:24]    🔄 [CHUYỂN TIẾP] Đang lấy video khác của Circle 🏷️ [Cường Mê Game] (còn 45 video) để đăng bù ngay trong đợt này...
+[2026-09-27T12:24:35] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@lovecakes_220/video/7686503340313726228
+[2026-09-27T12:24:35]    ⚠️ [THỬ LẠI LẦN 2] Gặp lỗi khi đăng. Đang thử đăng lại video cho Circle 🏷️ [Nghiện Làm Bánh]: "Em heo hồng cưng xỉu thế này thì làm sao mà l"...
+[2026-09-27T12:25:11] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@donglucpodcastt/video/7679405917246442772
+[2026-09-27T12:25:11]    ❌ [LỖI] Video https://www.tiktok.com/@donglucpodcastt/video/7679405917246442772 không đăng được cho Circle 🏷️ [Góc Nhỏ Podcast] sau khi thử lại.
+[2026-09-27T12:25:11]    🔄 [CHUYỂN TIẾP] Đang lấy video khác của Circle 🏷️ [Góc Nhỏ Podcast] (còn 31 video) để đăng bù ngay trong đợt này...
+[2026-09-27T12:25:20] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@dajsytran.92/video/7663401044449316114
+[2026-09-27T12:25:20]    ⚠️ [THỬ LẠI LẦN 2] Gặp lỗi khi đăng. Đang thử đăng lại video cho Circle 🏷️ [Tập Nấu Ăn]: "Tôm rim thịt ba chỉ kiểu này chỉ sợ cơm không"...
+[2026-09-27T12:25:28] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@levantuan.mma/video/7662563739714997524
+[2026-09-27T12:25:28]    ⚠️ [THỬ LẠI LẦN 2] Gặp lỗi khi đăng. Đang thử đăng lại video cho Circle 🏷️ [LION championship]: "Lâu lâu lên cái video thôi chư bận bán phở lắ"...
+[2026-09-27T12:25:39] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@lovecakes_220/video/7686503340313726228
+[2026-09-27T12:25:39]    ❌ [LỖI] Video https://www.tiktok.com/@lovecakes_220/video/7686503340313726228 không đăng được cho Circle 🏷️ [Nghiện Làm Bánh] sau khi thử lại.
+[2026-09-27T12:25:39]    🔄 [CHUYỂN TIẾP] Đang lấy video khác của Circle 🏷️ [Nghiện Làm Bánh] (còn 38 video) để đăng bù ngay trong đợt này...
+[2026-09-27T12:25:48] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@kaito_live1/video/7661128951129050389
+[2026-09-27T12:25:48]    ⚠️ [THỬ LẠI LẦN 2] Gặp lỗi khi đăng. Đang thử đăng lại video cho Circle 🏷️ [Cường Mê Game]: "Trang phục Nhất Tố bí ẩn vừa trình làng, anh "...
+[2026-09-27T12:26:48] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@donglucpodcastt/video/7678302942063217940
+[2026-09-27T12:26:48]    ⚠️ [THỬ LẠI LẦN 2] Gặp lỗi khi đăng. Đang thử đăng lại video cho Circle 🏷️ [Góc Nhỏ Podcast]: "Chúng ta làm sao biết được… vào một ngày đẹp "...
+[2026-09-27T12:26:56] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@lovecakes_220/video/7678674020870393109
+[2026-09-27T12:26:56]    ⚠️ [THỬ LẠI LẦN 2] Gặp lỗi khi đăng. Đang thử đăng lại video cho Circle 🏷️ [Nghiện Làm Bánh]: "Chiếc bánh sinh nhật ngọt ngào thế này đã đủ "...
+[2026-09-27T12:27:13] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@kaito_live1/video/7661128951129050389
+[2026-09-27T12:27:13]    ❌ [LỖI] Video https://www.tiktok.com/@kaito_live1/video/7661128951129050389 không đăng được cho Circle 🏷️ [Cường Mê Game] sau khi thử lại.
+[2026-09-27T12:27:13]    🔄 [CHUYỂN TIẾP] Đang lấy video khác của Circle 🏷️ [Cường Mê Game] (còn 44 video) để đăng bù ngay trong đợt này...
+[2026-09-27T12:27:33] 📤 Đang đăng: "https://www.tiktok.com/@lovecakes_220/video/7678674020870393" -> Circle: 🏷️ [Nghiện Làm Bánh]
+[2026-09-27T12:27:36] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@dajsytran.92/video/7663401044449316114
+[2026-09-27T12:27:36]    ❌ [LỖI] Video https://www.tiktok.com/@dajsytran.92/video/7663401044449316114 không đăng được cho Circle 🏷️ [Tập Nấu Ăn] sau khi thử lại.
+[2026-09-27T12:27:36]    🔄 [CHUYỂN TIẾP] Đang lấy video khác của Circle 🏷️ [Tập Nấu Ăn] (còn 28 video) để đăng bù ngay trong đợt này...
+[2026-09-27T12:27:37] ❌ Không tải được video (bị bóp băng thông hoặc lỗi TikTok): https://www.tiktok.com/@donglucpodcastt/video/7678302942063217940
+[2026-09-27T12:27:37]    ❌ [LỖI] Video https://www.tiktok.com/@donglucpodcastt/video/7678302942063217940 không đăng được cho Circle 🏷️ [Góc Nhỏ Podcast] sau khi thử lại.
+[2026-09-27T12:27:37]    🔄 [CHUYỂN TIẾP] Đang lấy video khác của Circle 🏷️ [Góc Nhỏ Podcast] (còn 30 video) để đăng bù ngay trong đợt này...
+[2026-09-27T12:27:41] ❌ Lỗi khi đăng https://www.tiktok.com/@lovecakes_220/video/7678674020870393109 (kênh [Nghiện Làm Bánh]) -> Page.wait_for_timeout: Page crashed
