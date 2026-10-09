@@ -3,6 +3,7 @@ import random
 import time
 import datetime
 import threading
+import uuid
 from concurrent.futures import ThreadPoolExecutor
 
 from playwright.sync_api import sync_playwright, TimeoutError as PWTimeout
@@ -10,7 +11,10 @@ from playwright.sync_api import sync_playwright, TimeoutError as PWTimeout
 import config
 import excel_store
 import identity_manager
-from dedupe import load_posted_set, is_duplicate, mark_as_posted
+from dedupe import (
+    load_posted_set, mark_as_posted, load_skipped_set,
+    mark_as_skipped, is_posted_for_circle, record_posted_for_circle,
+)
 from caption import caption_from_record
 from tiktok_extractor import download_single_video
 
@@ -369,17 +373,19 @@ def _upload_worker(record: dict, target_identity: str, cookies_path: str, browse
     3. Xoá file tạm và nhường khóa cho luồng tiếp theo."""
     link = record["link"]
     title = (record.get("title") or record.get("caption") or link)[:50]
+    if getattr(config, "STOP_REQUESTED", False):
+        return False
 
     # 1. Kiểm tra thời lượng nếu record có sẵn trong Excel
     dur = int(record.get("duration") or 0)
     max_dur = getattr(config, "MAX_DURATION_SEC", 180)
     if dur and dur > max_dur:
         log(f"⚠️ [BỎ QUA VIDEO QUÁ DÀI]: Video dài {dur}s ({dur//60}p > tối đa {max_dur}s) -> Bỏ qua: {link}", on_progress)
-        mark_as_posted(link, load_posted_set())
+        mark_as_skipped(link, f"duration {dur}s exceeds {max_dur}s")
         return False
 
     os.makedirs(config.VIDEO_FOLDER, exist_ok=True)
-    temp_path = os.path.join(config.VIDEO_FOLDER, f"tmp_{abs(hash(link))}.mp4")
+    temp_path = os.path.join(config.VIDEO_FOLDER, f"tmp_{uuid.uuid4().hex}.mp4")
 
     ok_download = download_single_video(link, temp_path, cookies_path, browser_cookie)
     if not ok_download:
@@ -402,13 +408,13 @@ def _upload_worker(record: dict, target_identity: str, cookies_path: str, browse
                 os.remove(temp_path)
             except Exception:
                 pass
-            mark_as_posted(link, load_posted_set())
+            mark_as_skipped(link, f"file size {size_mb:.1f}MB exceeds {max_size}MB")
             return False
 
     success = False
     with _ucircle_upload_lock:
-        if getattr(config, "UPLOAD_QUOTA_EXHAUSTED", False):
-            log(f"⏹️ Bỏ qua tải lên vì tài khoản UCircle đã hết dung lượng video: {link}", on_progress)
+        if getattr(config, "STOP_REQUESTED", False):
+            log(f"⏹️ Đã dừng; giữ video để đăng sau: {link}", on_progress)
             try:
                 os.remove(temp_path)
             except Exception:
@@ -437,7 +443,7 @@ def _upload_worker(record: dict, target_identity: str, cookies_path: str, browse
                     if "200" in err_str or "nhẹ hơn" in err_str:
                         log(f"⚠️ [UCIRCLE TỪ CHỐI TỆP]: {err_str}", on_progress)
                         log(f"   👉 Đánh dấu bỏ qua video này: {link}", on_progress)
-                        mark_as_posted(link, load_posted_set())
+                        mark_as_skipped(link, err_str)
                     else:
                         log(f"❌ Lỗi khi đăng {link} (kênh [{target_identity}]) -> {ve}", on_progress)
                         _dump_debug_screenshot(page, link, on_progress)
@@ -498,7 +504,8 @@ def run_uploads(
         ensure_logged_in(p)
 
     posted_set = load_posted_set()
-    pending = [r for r in excel_store.load_all() if not is_duplicate(r["link"], posted_set)]
+    excluded = posted_set | load_skipped_set()
+    pending = [r for r in excel_store.load_all() if r["link"] not in excluded]
 
     if not pending:
         log("⚠️ Không còn video 'pending' nào trong Excel để đăng.", on_progress)
@@ -507,23 +514,35 @@ def run_uploads(
     # Kiểm tra xem các record có target_circle riêng không (Chế độ 1 TikTok -> 1 UCircle)
     has_individual_targets = any(bool(str(r.get("target_circle", "")).strip()) for r in pending)
 
-    # Chia video theo từng Đợt (Round): trong mỗi đợt, tất cả các Circle đăng ĐỒNG THỜI
-    rounds = []
-
     is_mode_all = (mode == "all")
+    failure_limit = max(1, int(getattr(config, "MAX_CONSECUTIVE_UPLOAD_FAILURES", 3)))
+    paused_circles = set()
+    consecutive_failures = {}
+
+    def pause_after_failures(cid):
+        consecutive_failures[cid] = consecutive_failures.get(cid, 0) + 1
+        if consecutive_failures[cid] >= failure_limit:
+            paused_circles.add(cid)
+            log(f"🛑 [TẠM DỪNG CIRCLE] [{identity_manager.get_identity_name(cid)}] lỗi {failure_limit} video liên tiếp. Giữ toàn bộ video chưa đăng để thử trong lần chạy sau.", on_progress)
 
     if is_mode_all:
         # Người dùng chủ động chọn "ĐĂNG TẤT CẢ": Mỗi video sẽ đăng lên TOÀN BỘ các kênh đã tích chọn
         log(f"\n[+] 📢 Chế độ: ĐĂNG TẤT CẢ ({len(pending)} video x {len(target_identities)} kênh đã chọn).", on_progress)
-        total_tasks = len(pending) * len(target_identities)
+        all_tasks = {
+            rec["link"]: [cid for cid in target_identities
+                          if not is_posted_for_circle(rec["link"], identity_manager.get_identity_name(cid))]
+            for rec in pending
+        }
+        total_tasks = sum(len(cids) for cids in all_tasks.values())
         circle_stats = {}
         for id_val in target_identities:
             circle_stats[id_val] = {
                 "id": id_val,
                 "name": identity_manager.get_identity_name(id_val),
-                "total": len(pending),
+                "total": sum(id_val in cids for cids in all_tasks.values()),
                 "success": 0,
                 "failed": 0,
+                "skipped": 0,
             }
 
         success_count = 0
@@ -537,10 +556,12 @@ def run_uploads(
             link = rec["link"]
             title_short = (rec.get("title") or rec.get("caption") or link)[:45]
 
+            if getattr(config, "STOP_REQUESTED", False):
+                return False
             time.sleep(random.uniform(0.3, 1.2))
             ok = _upload_worker(rec, cid, cookies_path, browser_cookie, on_progress)
             if not ok and not getattr(config, "STOP_REQUESTED", False):
-                if not is_duplicate(link, load_posted_set()):
+                if link not in load_skipped_set():
                     log(f"   ⚠️ [THỬ LẠI LẦN 2] Đang thử đăng lại video cho Circle 🏷️ [{c_name}]: \"{title_short}\"...", on_progress)
                     time.sleep(3)
                     if not getattr(config, "STOP_REQUESTED", False):
@@ -550,13 +571,18 @@ def run_uploads(
                 if ok:
                     success_count += 1
                     circle_stats[cid]["success"] += 1
+                    consecutive_failures[cid] = 0
+                    record_posted_for_circle(link, c_name)
                     s_curr = circle_stats[cid]["success"]
                     t_curr = circle_stats[cid]["total"]
                     log(f"   🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [{c_name}]: \"{title_short}\" ({s_curr}/{t_curr} video)", on_progress)
-                else:
+                elif link in load_skipped_set():
+                    circle_stats[cid]["skipped"] += 1
+                elif not getattr(config, "STOP_REQUESTED", False):
                     failed_count += 1
                     circle_stats[cid]["failed"] += 1
-                    log(f"   ❌ [THẤT BẠI] Lỗi khi đăng vào Circle 🏷️ [{c_name}]: {link}", on_progress)
+                    log(f"   ❌ [THẤT BẠI] Giữ video để thử sau cho Circle 🏷️ [{c_name}]: {link}", on_progress)
+                    pause_after_failures(cid)
             return ok
 
         for v_idx, rec in enumerate(pending, 1):
@@ -564,7 +590,9 @@ def run_uploads(
                 log("\n🛑 [DỪNG TIẾN TRÌNH] Đã nhận lệnh dừng từ người dùng. Ngừng đăng các đợt tiếp theo!", on_progress)
                 break
 
-            batch = [(rec, cid) for cid in target_identities]
+            batch = [(rec, cid) for cid in all_tasks[rec["link"]] if cid not in paused_circles]
+            if not batch:
+                continue
             concurrency = max(1, min(len(batch), threads))
             v_title = (rec.get("title") or rec.get("link") or "")[:50]
             log("\n" + "=" * 75, on_progress)
@@ -572,7 +600,11 @@ def run_uploads(
             with ThreadPoolExecutor(max_workers=concurrency) as pool:
                 list(pool.map(upload_mode_all_task, batch))
 
-            mark_as_posted(rec["link"], posted_set)
+            if all(is_posted_for_circle(rec["link"], identity_manager.get_identity_name(cid))
+                   for cid in target_identities):
+                mark_as_posted(rec["link"], posted_set)
+            if len(paused_circles) == len(target_identities):
+                break
 
             if v_idx < len(pending):
                 if getattr(config, "STOP_REQUESTED", False):
@@ -614,6 +646,7 @@ def run_uploads(
                 "total": len(q),
                 "success": 0,
                 "failed": 0,
+                "skipped": 0,
             }
 
         queue_lock = threading.Lock()
@@ -625,12 +658,13 @@ def run_uploads(
             """Xử lý trong 1 đợt cho Circle cid:
             Cố gắng đăng thành công 1 video cho Circle này.
             Nếu video lỗi -> thử lại video đó.
-            Nếu vẫn lỗi -> lấy video tiếp theo của Circle đó để đăng bù ngay trong đợt này!"""
+            Nếu vẫn lỗi -> giữ video để thử trong phiên sau, lấy video kế tiếp.
+            Tạm dừng Circle khi lỗi liên tiếp đạt ngưỡng."""
             nonlocal success_count, failed_count
             circle_label = identity_manager.get_identity_name(cid)
 
             while True:
-                if getattr(config, "STOP_REQUESTED", False):
+                if getattr(config, "STOP_REQUESTED", False) or cid in paused_circles:
                     log(f"🛑 [DỪNG TIẾN TRÌNH] Bỏ qua tác vụ đăng của Circle 🏷️ [{circle_label}].", on_progress)
                     return False
 
@@ -648,8 +682,8 @@ def run_uploads(
 
                 # 2. Nếu lỗi và chưa có lệnh dừng: kiểm tra xem có thử lại được không
                 if not ok and not getattr(config, "STOP_REQUESTED", False):
-                    # Nếu video bị loại vĩnh viễn (do quá dài hoặc quá 200MB đã được mark_as_posted trong _upload_worker)
-                    if is_duplicate(link, load_posted_set()):
+                    # Video không đạt tiêu chuẩn được lưu riêng, không ghi là đã đăng.
+                    if link in load_skipped_set():
                         log(f"   ⏭️ [BỎ QUA] Video này không phù hợp tiêu chuẩn UCircle: {link}", on_progress)
                     else:
                         # Lỗi tải mạng / lỗi Playwright tạm thời -> THỬ LẠI CHÍNH VIDEO ĐÓ
@@ -664,6 +698,7 @@ def run_uploads(
                     with lock:
                         success_count += 1
                         circle_stats[cid]["success"] += 1
+                        consecutive_failures[cid] = 0
                         s_curr = circle_stats[cid]["success"]
                         t_curr = circle_stats[cid]["total"]
                         log(f"   🎉 [THÀNH CÔNG] Đã đăng vào Circle 🏷️ [{circle_label}]: \"{title_short}\" ({s_curr}/{t_curr} video)", on_progress)
@@ -671,14 +706,19 @@ def run_uploads(
                     return True  # Circle này đã hoàn thành xuất sắc 1 video trong đợt này!
 
                 else:
-                    # Video này lỗi cả 2 lần (hoặc không thể tải / bị từ chối)
+                    # Excel vẫn giữ record; chỉ ghi vào posted.json sau thành công.
                     with lock:
-                        failed_count += 1
-                        circle_stats[cid]["failed"] += 1
-                        log(f"   ❌ [LỖI] Video {link} không đăng được cho Circle 🏷️ [{circle_label}] sau khi thử lại.", on_progress)
-                        mark_as_posted(link, posted_set)  # Đánh dấu để không bị kẹt lặp lại
+                        if link in load_skipped_set():
+                            circle_stats[cid]["skipped"] += 1
+                        elif getattr(config, "STOP_REQUESTED", False):
+                            return False
+                        else:
+                            failed_count += 1
+                            circle_stats[cid]["failed"] += 1
+                            log(f"   ❌ [LỖI] Video {link} không đăng được cho Circle 🏷️ [{circle_label}] sau khi thử lại. Đã giữ lại để thử trong lần chạy sau.", on_progress)
+                            pause_after_failures(cid)
 
-                    if getattr(config, "STOP_REQUESTED", False):
+                    if getattr(config, "STOP_REQUESTED", False) or cid in paused_circles:
                         return False
 
                     with queue_lock:
@@ -689,7 +729,7 @@ def run_uploads(
                         time.sleep(2)
                         # Tiếp tục vòng lặp while True để lấy video kế tiếp của chính Circle này!
                     else:
-                        log(f"   ⚠️ Circle 🏷️ [{circle_label}] đã hết video dự phòng trong danh sách!", on_progress)
+                        log(f"   ⚠️ Circle 🏷️ [{circle_label}] đã thử hết video trong phiên này; video lỗi vẫn được giữ để thử sau.", on_progress)
                         return False
 
         round_idx = 0
@@ -699,7 +739,7 @@ def run_uploads(
                 break
 
             # Lấy danh sách các Circle còn video trong hàng đợi
-            active_circles = [cid for cid, q in circle_queues.items() if len(q) > 0]
+            active_circles = [cid for cid, q in circle_queues.items() if q and cid not in paused_circles]
             if not active_circles:
                 # Tất cả các Circle đã hết video sạch sẽ!
                 break
@@ -723,9 +763,9 @@ def run_uploads(
                 break
 
             # Kiểm tra xem còn Circle nào còn video cho các đợt tiếp theo không
-            remaining_circles = [cid for cid, q in circle_queues.items() if len(q) > 0]
+            remaining_circles = [cid for cid, q in circle_queues.items() if q and cid not in paused_circles]
             if not remaining_circles:
-                log("\n🎉 Tất cả các Circle đã đăng xong toàn bộ video trong danh sách!", on_progress)
+                log("\n✅ Đã xử lý xong các Circle đang hoạt động trong phiên này.", on_progress)
                 break
 
             delay = random_delay_sec()
@@ -751,7 +791,7 @@ def run_uploads(
         log("🛑 [TIẾN TRÌNH ĐÃ DỪNG LẠI THEO YÊU CẦU CỦA BẠN]", on_progress)
         log("📊 BẢNG TỔNG KẾT THEO TỪNG CIRCLE KHI DỪNG:", on_progress)
     else:
-        log("🎉 TẤT CẢ CÁC ĐỢT ĐÃ HOÀN TẤT THÀNH CÔNG!", on_progress)
+        log("✅ PHIÊN ĐĂNG ĐÃ KẾT THÚC.", on_progress)
         log("📊 BẢNG TỔNG KẾT CHI TIẾT TỪNG CIRCLE:", on_progress)
 
     for cid, st in circle_stats.items():
@@ -759,17 +799,15 @@ def run_uploads(
         s_count = st["success"]
         t_count = st["total"]
         f_count = st["failed"]
-        r_count = len(circle_queues.get(cid, [])) if not is_mode_all else (t_count - s_count - f_count)
-        if is_stopped:
-            log(f"   • 🏷️ [{c_name}]: ✅ Đã đăng {s_count}/{t_count} video  |  ⏳ Còn lại {r_count} video" + (f"  |  ❌ {f_count} lỗi" if f_count > 0 else ""), on_progress)
-        else:
-            log(f"   • 🏷️ [{c_name}]: ✅ {s_count}/{t_count} video thành công" + (f" (❌ {f_count} lỗi)" if f_count > 0 else ""), on_progress)
+        r_count = t_count - s_count - st["skipped"]
+        st["remaining"] = r_count
+        log(f"   • 🏷️ [{c_name}]: ✅ Đã đăng {s_count}/{t_count} video  |  ⏳ Còn lại {r_count} video (gồm video lỗi)" + (f"  |  ❌ {f_count} lỗi" if f_count > 0 else "") + (f"  |  ⏭️ {st['skipped']} không đạt chuẩn" if st["skipped"] else ""), on_progress)
 
     log("-" * 75, on_progress)
     log(f"📈 Kết quả tổng: {success_count}/{total_tasks} lượt đăng thành công, {failed_count} thất bại.", on_progress)
-    if is_stopped:
-        rem_all = sum(len(q) for q in circle_queues.values()) if not is_mode_all else (total_tasks - success_count - failed_count)
-        log(f"💾 Còn {rem_all} video chưa chạy vẫn được lưu nguyên vẹn trong Excel.", on_progress)
+    rem_all = sum(st["remaining"] for st in circle_stats.values())
+    if rem_all:
+        log(f"💾 Còn {rem_all} lượt đăng chưa thành công (gồm video lỗi), vẫn được giữ nguyên trong Excel.", on_progress)
         log("👉 Lần sau khi bấm 'Bắt đầu đăng', tool sẽ tiếp tục đăng các video còn lại!", on_progress)
     log("=" * 75 + "\n", on_progress)
 
@@ -778,6 +816,8 @@ def run_uploads(
         "success": success_count,
         "failed": failed_count,
         "stopped": is_stopped,
+        "remaining": rem_all,
+        "skipped": sum(st["skipped"] for st in circle_stats.values()),
+        "paused_circles": sorted(paused_circles),
         "circle_stats": circle_stats,
     }
-

@@ -44,5 +44,7 @@ Do TikTok cập nhật bảo mật (App-Bound Encryption), tool không thể t�
 - File `config.py` cũng chứa các XPath (Selectors) của web UCircle. Nếu UCircle đổi giao diện, bạn chỉ cần cập nhật lại selector ở đây mà không cần sửa code cốt lõi.
 
 ## Xử lý sự cố (Troubleshooting)
+- **Video lỗi mạng vẫn được giữ để thử lại:** Chỉ lượt đăng thành công mới được ghi vào `data/posted.json`. Video tải/đăng lỗi vẫn nằm trong Excel và sẽ được thử lại khi bấm **Bắt đầu đăng** lần sau. Mỗi Circle tạm dừng trong phiên hiện tại sau 3 video lỗi liên tiếp (`MAX_CONSECUTIVE_UPLOAD_FAILURES` trong `config.py`). Video quá dài/quá nặng được ghi riêng vào `data/skipped.json`.
+- **Khôi phục video lỗi bị phiên bản cũ trừ nhầm:** Dừng tool, chạy `python recover_failed_uploads.py --date 2026-10-05` để xem số video có thể khôi phục. Thêm `--apply` để áp dụng; lịch sử gốc và danh sách link khôi phục được sao lưu trong `data/backups/`. Chỉ khôi phục link có lỗi tải rõ ràng trong log, còn trong Excel và chưa có bằng chứng đăng thành công.
 - **Lỗi không lấy được video TikTok:** Đảm bảo file `cookies.txt` của bạn còn hạn (chưa bị đăng xuất trên web). Thử vào lại TikTok, export file cookie mới và nạp lại vào tool.
 - **Tool đăng lên UCircle nhưng bị dừng giữa chừng:** Theo dõi cửa sổ Chromium (chế độ Headless=False) xem có bị kẹt ở bước chọn Fanpage hay hashtag không. Nếu kẹt, cập nhật lại DOM Selector trong `config.py`.

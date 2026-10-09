@@ -76,6 +76,7 @@ CROSSPOST_TO_FEED = True
 MIN_DELAY_SEC = 1800        # delay tối thiểu giữa 2 lần đăng (giảm xuống 2 giây để tăng tốc)
 MAX_DELAY_SEC = 3600     # delay tối đa (5 giây)
 MAX_RETRIES_PER_VIDEO = 2
+MAX_CONSECUTIVE_UPLOAD_FAILURES = 3  # Tạm dừng Circle sau 3 video lỗi liên tiếp; giữ video để thử sau.
 
 # ---- Hashtag & caption ----
 HASHTAG_POOL = ["#trend", "#xuhuong", "#giaitri"]

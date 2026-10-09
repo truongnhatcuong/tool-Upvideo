@@ -1499,7 +1499,7 @@ class UCirclePipelineApp(ctk.CTk):
                             c_name = st["name"]
                             c_succ = st["success"]
                             c_tot = st["total"]
-                            c_rem = c_tot - c_succ - st.get("failed", 0)
+                            c_rem = st.get("remaining", c_tot - c_succ - st.get("skipped", 0))
                             c_lines.append(f"• 🏷️ [{c_name}]: Đã đăng {c_succ}/{c_tot} video (còn lại {c_rem})")
 
                         detail_str = "\n".join(c_lines) if c_lines else ""
@@ -1508,16 +1508,18 @@ class UCirclePipelineApp(ctk.CTk):
                             f"📊 Tổng kết trước khi dừng: {result['success']}/{result['total']} video đã đăng thành công.\n\n"
                             f"📋 Tình trạng từng Circle:\n{detail_str}\n\n"
                             f"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
-                            f"💡 Các video còn lại vẫn được lưu đầy đủ trong Excel.\n"
+                            f"💡 Các video chưa đăng, kể cả video lỗi mạng, vẫn được lưu đầy đủ trong Excel.\n"
                             f"Lần sau bạn bấm 'Bắt đầu đăng', tool sẽ tiếp tục đăng nối tiếp!"
                         )
                         messagebox.showinfo("Đã dừng tiến trình", msg)
                     else:
-                        self._set_busy(False, "🟢 Hoàn tất đăng!", "#10B981")
+                        remaining = result.get("remaining", 0)
+                        self._set_busy(False, "🟡 Còn video chờ thử lại" if remaining else "🟢 Hoàn tất đăng!", "#F59E0B" if remaining else "#10B981")
                         messagebox.showinfo(
                             "Đăng hoàn tất",
-                            f"🎉 Đã hoàn thành tất cả các lượt đăng lên UCircle!\n\n"
-                            f"📊 Kết quả: {result['success']}/{result['total']} lượt đăng thành công."
+                            f"Đã kết thúc phiên đăng lên UCircle.\n\n"
+                            f"📊 Kết quả: {result['success']}/{result['total']} lượt đăng thành công.\n"
+                            f"⏳ Còn {remaining} lượt chưa đăng thành công, được giữ lại để thử sau."
                         )
 
                 self.after(0, show_completion)

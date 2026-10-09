@@ -4,8 +4,9 @@ import re
 import threading
 import config
 
-_lock = threading.Lock()
+_lock = threading.RLock()
 POSTED_BY_CIRCLE_PATH = os.path.join(getattr(config, "BASE_DIR", "."), "data", "posted_by_circle.json")
+SKIPPED_PATH = os.path.join(getattr(config, "BASE_DIR", "."), "data", "skipped.json")
 
 
 def _ensure_file(path: str, default_content=None):
@@ -16,12 +17,13 @@ def _ensure_file(path: str, default_content=None):
 
 
 def load_posted_set() -> set:
-    _ensure_file(config.POSTED_HASH_DB_PATH)
-    try:
-        with open(config.POSTED_HASH_DB_PATH, "r", encoding="utf-8") as f:
-            return set(json.load(f))
-    except Exception:
-        return set()
+    with _lock:
+        _ensure_file(config.POSTED_HASH_DB_PATH)
+        try:
+            with open(config.POSTED_HASH_DB_PATH, "r", encoding="utf-8") as f:
+                return set(json.load(f))
+        except Exception:
+            return set()
 
 
 def save_posted_set(posted_set: set):
@@ -36,10 +38,38 @@ def is_duplicate(link: str, posted_set: set) -> bool:
 
 
 def mark_as_posted(link: str, posted_set: set, circle_name: str = None):
-    posted_set.add(link)
-    save_posted_set(posted_set)
-    if circle_name:
-        record_posted_for_circle(link, circle_name)
+    # Merge the latest file under the lock so concurrent workers cannot erase
+    # another Circle's successful upload history.
+    with _lock:
+        posted_set.update(load_posted_set())
+        posted_set.add(link)
+        save_posted_set(posted_set)
+        if circle_name:
+            record_posted_for_circle(link, circle_name)
+
+
+def load_skipped_set() -> set:
+    """Videos permanently rejected by the duration/file-size rules, not posted."""
+    with _lock:
+        if not os.path.exists(SKIPPED_PATH):
+            return set()
+        with open(SKIPPED_PATH, "r", encoding="utf-8") as f:
+            return set(json.load(f))
+
+
+def mark_as_skipped(link: str, reason: str):
+    with _lock:
+        _ensure_file(SKIPPED_PATH, default_content={})
+        with open(SKIPPED_PATH, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        data[link] = reason
+        with open(SKIPPED_PATH, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+
+
+def is_posted_for_circle(link: str, circle_name: str) -> bool:
+    with _lock:
+        return link in _load_posted_by_circle_dict().get(circle_name, [])
 
 
 # ---- Quản lý lịch sử các video đã từng quét (để tránh quét lại khi vào lại cùng kênh) ----
@@ -116,14 +146,15 @@ def clear_scanned_for_channel(channel_url_or_keyword: str) -> int:
 # ---- Thống kê số video đã đăng theo từng Circle ----
 
 def _load_posted_by_circle_dict() -> dict:
-    _ensure_file(POSTED_BY_CIRCLE_PATH, default_content={})
-    try:
-        with open(POSTED_BY_CIRCLE_PATH, "r", encoding="utf-8") as f:
-            data = json.load(f)
-            if isinstance(data, dict):
-                return data
-    except Exception:
-        pass
+    with _lock:
+        _ensure_file(POSTED_BY_CIRCLE_PATH, default_content={})
+        try:
+            with open(POSTED_BY_CIRCLE_PATH, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                if isinstance(data, dict):
+                    return data
+        except Exception:
+            pass
     return {}
 
 
@@ -138,12 +169,13 @@ def record_posted_for_circle(link: str, circle_name: str):
     if not circle_name:
         return
     c_name = str(circle_name).strip()
-    data = _load_posted_by_circle_dict()
-    if c_name not in data:
-        data[c_name] = []
-    if link not in data[c_name]:
-        data[c_name].append(link)
-    _save_posted_by_circle_dict(data)
+    with _lock:
+        data = _load_posted_by_circle_dict()
+        if c_name not in data:
+            data[c_name] = []
+        if link not in data[c_name]:
+            data[c_name].append(link)
+        _save_posted_by_circle_dict(data)
 
 
 def get_circle_posted_counts() -> dict[str, int]:
@@ -184,4 +216,3 @@ def _backfill_posted_from_log() -> dict:
     except Exception:
         pass
     return posted_by_circle
-
